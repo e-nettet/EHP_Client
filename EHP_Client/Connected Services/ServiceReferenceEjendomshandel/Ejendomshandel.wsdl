@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:tns="http://efpi.dk/ejendomshandel/xml/wsdl/" xmlns:ev1="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" name="Ejendomshandel.eFPI" targetNamespace="http://efpi.dk/ejendomshandel/xml/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+		
+		Changelog:
+		+---------+------------------------------------------------------------------------------
+		| Version | Description
+		+---------+------------------------------------------------------------------------------
+		| 0.2     | Initial release of wsdl and xsd. Not compilable and not verified
+		| 0.3     | Partial release of interfaces. All operations are draft in current version.
+		|         |   - Operations based on 1.29 baseline of not337.
+		|         |   - DockumentIlaeg and DokumentHent operations compliant with not337 v1.40
+		|         |   - Fields BoligAreal, OpfoertAar, Zonestatus and AntalVaerelser added to MATOPL
+		| 0.3.1   | Patch release:
+		|         |   - Absolute import and include paths made relative. Missing xsd schemas
+		|         |     added to release
+		|         |   - Added files are OIO compliant. Thus they cannot be compiled with 
+		|         |     standard wsdl compilers due to multiple imports into same namespace.
+		|         |     MSXML.Net a notable exception.
+		|         |   - Operations tagged with a completion level:
+		|         |        Draft:  Operation is in draft, and may be subject to change as development 
+		|         |                progresses.
+		|         |        Final:  Operation and arguments are stable. 
+		|         |        Intern: Operation is for internal use by EHP2011 (e-nettet). Do not use.
+		|         |   - Finansiering added to SalgsopstillingFormular
+		|  		  | Schemas corrected to allow compilation using standard tools.
+		| 1.0beta1| CR70:
+		|         | - Changes to EFPI_DokumentKategori_v1.xsd
+		|         |  - Formidlingsaftale -&gt; FormidlingsaftaleDokument
+		|		  |	 - FormidlingsaftaleFysisk -&gt; FormidlingsaftaleIndskannet
+		|		  |  - FormidlingsaftaleNoegledata (deleted)
+		|		  |  - Koebsaftale -&gt; KoebsaftaleDokument
+		|		  |  - KoebsaftalegrundlagetsNoegledata (deleted)
+		|		  |	 - KoebsaftaleIndskannet (added)
+		|		  | - Changes to EFPI_DokumentData_v1.xsd
+		|         |  - FormidlingsaftalensNoegledataDokument (deleted)
+		|         |  - formidlingsaftale -&gt; FormidlingsaftalensDokument
+		| 		  | Added operation:
+		|		  |	 -AdviseringHistorikHent
+		| 		  |  -DeponeringsInfoHent
+		|		  |  -DeponeringsInfoOpdater
+		|		  |  -DokumentgruppeDokumentHent
+		|		  |  -DokumentgruppeDokumentIlaeg
+		|		  |  -DokumentgruppeDokumentUgyldiggoer
+		|		  |  -EjendomsmaeglersDeponeringsKontoNrOpdater
+		|		  |  -FormidlingsaftaleBaselineHent
+		|		  |  -FormidlingsaftaleBaselineListeHent
+		| 		  |  -ForretningsdokumenterMetadataHent
+		|		  |  -ForretningsmaessigFejlmeldingHent
+		|		  |  -ForretningsmaessigHaendelseMeddel
+		|		  |  -FristforlaengelseAnmod
+		|		  |  -FristforlaengelseAnmodningSvar
+		|		  |  -HaendelseHistorikHent
+		|		  |  -KoebsaftalegrundlagBaselineHent
+		|		  |  -KoebsaftalegrundlagBaselineListeHent
+		|		  |  -SaelgersPIsDeponeringsKontoNrOpdater
+		|		  |  -SalgsopstillingRekvirentHent
+		|		  |  -SalgsopstillingSoeg
+		|      	  |  -UdestaaendeForbeholdHent
+		|		  |  -UdestaaendeForbeholdOpdater
+		|  		  | Defect 2320:
+		|		  |  -Changed RefOgKontaktInfoSamling to Part in DeltagerMetadata
+		|		  | Defect 2321:
+		|		  |  -Changed KontaktinformationEgenOpdaterRequestType
+		|		  |   to use EFPI_KontaktOplysninger_v1 instead of e-net:KontaktInformation. 
+		|		  | Defect 2322:
+		|		  |  -Changed KontaktinformationAndenPartOpdaterRequestType 
+		|		  |   to use EFPI_KontaktOplysninger_v1 instead of e-net:KontaktInformation.
+		|		  | Defect 2323:
+		|		  |  -Changed RolleindehaverSlet/Opret to use rolleogindehaver.
+		|		  | Defect 2324: 
+		|		  |  -Removed Ejendommaegler and used PartType instead in HaendelseKontekst.
+		|		  | Defect 2333: 
+		|		  |  -Created AftalePart to take Saelger and Koeber place.
+		|		  |  -Creates AftalePartSamling to take SaelgerSamling and KoeberSamling place.
+		|		  | Defect 2334:
+		|		  |  -Changed DokumentmetadataBeskrivelse according to KYSs specifications.
+		|		  |  -Added DokumentKategori
+		|		  |  -Change in operations:
+		|		  | 	-DokumentgruppeDokumentHent
+		|		  | 	-DokumentgruppeDokumentIlaeg
+		|		  | 	-DokumentgruppeDokumentUgyldiggoer
+		|		  | 	-DokumentHent
+		|		  | 	-DokumentIlaeg
+		|		  | Defect 2335: 
+		|		  |  -Made SealgersPengeinstitut and Ejendomsmaegler optionel in Deponeringskonti
+		|		  | Defect 2336:
+		|		  |  -Change the types(tns:KoebsaftalegrundlagBaselineHentResponseType)/enet:KoebsaftaleDokument
+		|		  |	  and (tns:FormidlingssaftaleBaselineHentResponseType)/enet:FormidlingsaftaleDokument 
+		|		  |	  to base64binary.
+		|		  | Defect 2620:
+		|		  |  -Removed Opsummering from Ejendomshandlensdata
+		|		  |  -Moved Afslutdato to Statusinfo
+		|		  |  -Udstaaendedeponi remove from Statusinfo.
+		|		  |  -Deponering removed.
+		|		  |  -Forretningsmaessigstatus removed from statusinfo.
+		|		  |  -Baseline in the name of Koebsaftale and Formidlingsaftale.
+		|		  | Defect 2905:
+		|		  |  -Integrated the proposed EFPI_Finansiering.xsd
+		|		  | Defect 2906:
+		|		  |  -Removed rolleogindehaversamling from OpretOgStart header.
+		|		  |  -Removed dokumentid from OpretOgStart response.
+		|		  | Defect 2907:
+		|		  |  -SecondaryPostalLabel replaced with xkom.dk\xml\schemas\2006\01\06\XKOM_AddressComplete.xsd incl.
+		|		  |   underlying schemas.
+		|		  | Defect 2908:
+		|		  |  -Removed all unnecessary schemas under efpi.dk/ehp2011, and moved the simple elements into the schemas
+		|		  |   they are used in.
+		|		  | Defect 2909:
+		|		  |  -Removed UdestaaendeDeponering from UdestaaendeForbeholdType.
+		|		  | Defect 2910:
+		|		  |  -Tingbogsattest has the type Ejendomsummariskhentresultat in EFPI_DokumentData
+		|		  |  -Importet all underlying schemas.
+		|		  | Defect 2911: 
+		|		  |  -Fristforlaengelseanmodning renamed to firstforlaengelse. This categori covers both anmodning and svar.
+		|		  |  -Fristforlaengseanmodningsvar added to dokumentdatatype.
+		|		  |  -Added begrundelse to Fristforlaengseanmodningsvar.
+		|		  | Defect 2912:
+		|		  |  -Added to Oekonomitype:
+		|		  | 	-Ejendomsvaerdi (1)
+		|		  | 	-Grundvaerdi (1)
+		|		  | 	-Stuehusvaerdi (0..1)
+		|		  | 	-Grundlagforejendomsskat (1)
+		|		  | 	-Grundskatteloftvaerd (1)
+		|		  | Defect 2913:
+		|		  |  -Beloeb move from SalgsopstillingDokument to ForhoejelseAfSikkerhedTilEF.			
+		|		  |  -ForhoejelseAfSikkerhedTilEF moved from SalgsopstillingDokument to SalgsopstillingFormular
+		|		  | Defect 2905: 			
+		|		  |  -Integrated the new EFPI_Finansiering.xsd preposed by Nicolas Norby, but with a small change to his structure to
+		|		  |   ensure proper inheritance between the types inside it. 			
+		|		  | Defect 3046:
+		|		  |  -Added "Request" to all header and body types.
+		|		  |  -Added draft (not yet implemented) or implemented (some backend code exists) to operations in WSDL			
+		|		  |  -InitierendeDeltager in OpretOgStart changed to DeltagerID			
+		|		  |  -sagsID in OpretOgStart changed to eFPISagsID to look like Guarantee.			
+		|		  |  -Interessenter changed to Interessent in EFPI_RolleID_v1.xsd			
+		|		  |  -Operation AdviseringHistorikHent removed
+		|		  |  -Operation DokumentGruppeDokumentHent now uses DokumentKategoriType, instead of DokumentGruppeAngivelse.			
+		|		  |  -Beskrivelse in DokumentGruppeDokumentIlaeg is now optional. 	
+		|		  |  -Part in DeltagerMetadata made optionel, to make EjendomsHandelDataHent work in 0.6. Will be made mandatory in later release. 
+		|		  |  -Custom header made for HaendelsesHistorikHent to make ProcesID optional.
+		|		  | Defect 3025:
+		|		  |  -Change HaendelsesHistorikHent to contain two dates called "DatoFra" and "DatoTil" with the types date.
+		|		  | Operation added: SalgsopstillingSoegSpecifik
+		|		  | Defect 3143:
+		|		  |  -Added fault of the operations UdestaaendeForbeholdHent and UdestaaendeForbeholdOpdater
+		|		  | CR073: SalgsopstillingSoge is implemented
+		|		  | SalgsopstillingSoegSpecifik removed
+		|		  | Defect 3266:
+		|		  |  -SagsAktivitetListeHent now marked as internal
+		|		  | Defect 3311:
+		|		  |  - KontaktinformationEgenopdater now uses Part rather than enettet:KontaktInfoType
+		|		  | Defect 3352:
+		|		  |  - Changed KontaktinformationEgenOpdaterRequest	to use EFPI_Part rather than kontaktinformation.	
+		|		  | Defect 3310: 
+		|		  |  - KontaktinformationAndenOpdater removed.
+		|		  | Misspelling:
+		|		  |  -Corrected the spelling of EjendomsmaeglerSagsID in EFPI_HaendelseKontekts
+		|		  | Correction:
+		|		  |  -Changed PTPDocumentsGeneralTest Signature to string from anyType in EFPI_GarantiDokument_v1
+		|		  |  -Made Ejendom optionel in EFPI_HaendelseKontekts_v1
+		|		  | Correction:
+		|		  |  - EFPI_Finansering_v1 - anyType change to String 
+		|		  | Correction:
+		|		  |  - EFPI_HaendelsesspecifikkeNoegledata_v1.xsd - Changed ForretningsmaessigFejlkode from anyType to type string
+		|		  | Internal operation added: TimerService
+		|		  | Defect 3703:
+		|		  |  - Changed wsa version from http://www.w3.org/2004/12/addressing to http://www.w3.org/2005/08/addressing
+		|		  | Internal operation changed: sagsAktivitetListeHent now returns more data about each process.		|		  |
+		|		  |
+		| 1.1.0.1 | CR091:
+		|		  |  - deponeringsInfoOpdater and deponeringsInfohent removed.
+		|		  | CR061:
+		|		  |  - UdestaaendeForbehold moved from EFPI_EHPOpsummering tom EFPI_Statusinformation
+		|		  |
+		|		  |
+		
+	</wsdl:documentation>
+  <wsdl:types>
+    <s:schema>
+      <s:import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../schemas/EFPI_Ejendomshandel_v1.xsd" namespace="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DokumentgruppeDokumentUgyldiggoerResponse">
+    <wsdl:part name="body" element="ev1:DokumentgruppeDokumentUgyldiggoerResponse" />
+  </wsdl:message>
+  <wsdl:message name="SagsAktivitetListeAktivRolleHent">
+    <wsdl:part name="header" element="ev1:SagsAktivitetListeAktivRolleHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:SagsAktivitetListeAktivRolleHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="KontaktinformationEgenOpdater">
+    <wsdl:part name="header" element="ev1:KontaktinformationEgenOpdaterRequestHeader" />
+    <wsdl:part name="body" element="ev1:KontaktinformationEgenOpdaterRequest" />
+  </wsdl:message>
+  <wsdl:message name="ProcesAfslut">
+    <wsdl:part name="header" element="ev1:ProcesAfslutRequestHeader" />
+    <wsdl:part name="body" element="ev1:ProcesAfslutRequest" />
+  </wsdl:message>
+  <wsdl:message name="KoebsaftalegrundlagBaselineHentResponse">
+    <wsdl:part name="body" element="ev1:KoebsaftalegrundlagBaselineHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RolleindehaverSamlingHentResponse">
+    <wsdl:part name="body" element="ev1:RolleindehaverSamlingHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ArkivpakkeHent">
+    <wsdl:part name="header" element="ev1:ArkivpakkeHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:ArkivpakkeHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="ArkivpakkeHentResponse">
+    <wsdl:part name="body" element="ev1:ArkivpakkeHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RolleindehaverSletResponse">
+    <wsdl:part name="body" element="ev1:RolleindehaverSletResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActionLogEntriesForPtpStatusResponse">
+    <wsdl:part name="body" element="ev1:ActionLogEntriesForPtpStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcesSoegResponse">
+    <wsdl:part name="body" element="ev1:ProcesSoegResponse" />
+  </wsdl:message>
+  <wsdl:message name="FristforlaengelseAnmodResponse">
+    <wsdl:part name="body" element="ev1:FristforlaengelseAnmodResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigFejlmeldingHent">
+    <wsdl:part name="header" element="ev1:ForretningsmaessigFejlmeldingHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:ForretningsmaessigFejlmeldingHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="DokumentHentResponse">
+    <wsdl:part name="body" element="ev1:DokumentHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalgsopstillingHent">
+    <wsdl:part name="header" element="ev1:SalgsopstillingHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:SalgsopstillingHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="DokumentIlaeg">
+    <wsdl:part name="header" element="ev1:DokumentIlaegRequestHeader" />
+    <wsdl:part name="body" element="ev1:DokumentIlaegRequest" />
+  </wsdl:message>
+  <wsdl:message name="HaendelsesHistorikHentResponse">
+    <wsdl:part name="body" element="ev1:HaendelsesHistorikHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="FristforlaengelsesAnmodningSvar">
+    <wsdl:part name="header" element="ev1:FristforlaengelsesAnmodningSvarRequestHeader" />
+    <wsdl:part name="body" element="ev1:FristforlaengelsesAnmodningSvarRequest" />
+  </wsdl:message>
+  <wsdl:message name="RolleindehaverSamlingHent">
+    <wsdl:part name="header" element="ev1:RolleindehaverSamlingHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:RolleindehaverSamlingHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="DokumentgruppeDokumentHentV2">
+    <wsdl:part name="header" element="ev1:DokumentgruppeDokumentHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:DokumentgruppeDokumentHentRequestV2" />
+  </wsdl:message>
+  <wsdl:message name="SalgsopstillingSoegResponse">
+    <wsdl:part name="body" element="ev1:SalgsopstillingSoegResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcesSoeg">
+    <wsdl:part name="header" element="ev1:ProcesSoegRequestHeader" />
+    <wsdl:part name="body" element="ev1:ProcesSoegRequest" />
+  </wsdl:message>
+  <wsdl:message name="TimerServiceResponse">
+    <wsdl:part name="body" element="ev1:TimerServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalgsopstillingHentResponse">
+    <wsdl:part name="body" element="ev1:SalgsopstillingHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalgsopstillingRekvirentHent">
+    <wsdl:part name="header" element="ev1:SalgsopstillingRekvirentHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:SalgsopstillingRekvirentHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="DokumentgruppeDokumentIlaeg">
+    <wsdl:part name="header" element="ev1:DokumentgruppeDokumentIlaegRequestHeader" />
+    <wsdl:part name="body" element="ev1:DokumentgruppeDokumentIlaegRequest" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigFejlMeldSendResponse">
+    <wsdl:part name="body" element="ev1:ForretningsmaessigFejlMeldSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalgsopstillingSoeg">
+    <wsdl:part name="header" element="ev1:SalgsopstillingSoegRequestHeader" />
+    <wsdl:part name="body" element="ev1:SalgsopstillingSoegRequest" />
+  </wsdl:message>
+  <wsdl:message name="FormidlingsaftaleBaselineListeHent">
+    <wsdl:part name="header" element="ev1:FormidlingsaftaleBaselineListeHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:FormidlingsaftaleBaselineListeHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigHaendelseMeddel">
+    <wsdl:part name="header" element="ev1:ForretningsmaessigHaendelseMeddelRequestHeader" />
+    <wsdl:part name="body" element="ev1:ForretningsmaessigHaendelseMeddelRequest" />
+  </wsdl:message>
+  <wsdl:message name="FormidlingsaftaleBaselineListeHentResponse">
+    <wsdl:part name="body" element="ev1:FormidlingsaftaleBaselineListeHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DokumentHent">
+    <wsdl:part name="header" element="ev1:DokumentHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:DokumentHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="SaelgersPIsDeponeringsKontoNrOpdater">
+    <wsdl:part name="header" element="ev1:SaelgersPIsDeponeringsKontoNrOpdaterRequestHeader" />
+    <wsdl:part name="body" element="ev1:SaelgersPIsDeponeringsKontoNrOpdaterRequest" />
+  </wsdl:message>
+  <wsdl:message name="FormidlingsaftaleBaselineHent">
+    <wsdl:part name="header" element="ev1:FormidlingsaftaleBaselineHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:FormidlingsaftaleBaselineHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="DokumentgruppeDokumentHent">
+    <wsdl:part name="header" element="ev1:DokumentgruppeDokumentHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:DokumentgruppeDokumentHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigHaendelseMeddelResponse">
+    <wsdl:part name="body" element="ev1:ForretningsmaessigHaendelseMeddelResponse" />
+  </wsdl:message>
+  <wsdl:message name="HaendelsesHistorikHentV2">
+    <wsdl:part name="header" element="ev1:HaendelsesHistorikHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:HaendelsesHistorikHentRequestV2" />
+  </wsdl:message>
+  <wsdl:message name="EjendomshandelOpsummeringHentResponse">
+    <wsdl:part name="body" element="ev1:EjendomshandelOpsummeringHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RolleindehaverSlet">
+    <wsdl:part name="header" element="ev1:RolleindehaverSletRequestHeader" />
+    <wsdl:part name="body" element="ev1:RolleindehaverSletRequest" />
+  </wsdl:message>
+  <wsdl:message name="FristforlaengelseAnmod">
+    <wsdl:part name="header" element="ev1:FristforlaengelseAnmodRequestHeader" />
+    <wsdl:part name="body" element="ev1:FristforlaengelseAnmodRequest" />
+  </wsdl:message>
+  <wsdl:message name="EFPIFault">
+    <wsdl:part name="parameters" element="ev1:error" />
+  </wsdl:message>
+  <wsdl:message name="EjendomshandlensDataHentResponse">
+    <wsdl:part name="body" element="ev1:EjendomshandlensDataHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ArkivpakkeHentV2">
+    <wsdl:part name="header" element="ev1:ArkivpakkeHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:ArkivpakkeHentRequestV2" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsdokumenterMetadataHent">
+    <wsdl:part name="header" element="ev1:ForretningsdokumenterMetadataHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:ForretningsdokumenterMetadataHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="KontaktinformationEgenOpdaterResponse">
+    <wsdl:part name="body" element="ev1:KontaktinformationEgenOpdaterResponse" />
+  </wsdl:message>
+  <wsdl:message name="DokumentgruppeDokumentIlaegResponse">
+    <wsdl:part name="body" element="ev1:DokumentgruppeDokumentIlaegResponse" />
+  </wsdl:message>
+  <wsdl:message name="FormidlingsaftaleBaselineHentResponse">
+    <wsdl:part name="body" element="ev1:FormidlingsaftaleBaselineHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="EjendomshandlensDataHentV2">
+    <wsdl:part name="header" element="ev1:EjendomshandlensDataHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:EjendomshandlensDataHentRequestV2" />
+  </wsdl:message>
+  <wsdl:message name="EjendomshandlensDataHent">
+    <wsdl:part name="header" element="ev1:EjendomshandlensDataHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:EjendomshandlensDataHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="EjendomsmaeglersDeponeringsKontoNrOpdater">
+    <wsdl:part name="header" element="ev1:EjendomsmaeglersDeponeringsKontoNrOpdaterRequestHeader" />
+    <wsdl:part name="body" element="ev1:EjendomsmaeglersDeponeringsKontoNrOpdaterRequest" />
+  </wsdl:message>
+  <wsdl:message name="OpretOgStart">
+    <wsdl:part name="header" element="ev1:OpretOgStartRequestHeader" />
+    <wsdl:part name="body" element="ev1:OpretOgStartRequest" />
+  </wsdl:message>
+  <wsdl:message name="UdestaaendeForbeholdHent">
+    <wsdl:part name="header" element="ev1:UdestaaendeForbeholdHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:UdestaaendeForbeholdHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="DokumentgruppeDokumentUgyldiggoer">
+    <wsdl:part name="header" element="ev1:DokumentgruppeDokumentUgyldiggoerRequestHeader" />
+    <wsdl:part name="body" element="ev1:DokumentgruppeDokumentUgyldiggoerRequest" />
+  </wsdl:message>
+  <wsdl:message name="KoebsaftalegrundlagBaselineListeHent">
+    <wsdl:part name="header" element="ev1:KoebsaftalegrundlagBaselineListeHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:KoebsaftalegrundlagBaselineListeHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="HaendelsesHistorikHent">
+    <wsdl:part name="header" element="ev1:HaendelsesHistorikHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:HaendelsesHistorikHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="SagsAktivitetListeAktivRolleHentResponse">
+    <wsdl:part name="body" element="ev1:SagsAktivitetListeAktivRolleHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentHaendelsesHistorikForProces">
+    <wsdl:part name="header" element="ev1:HentHaendelsesHistorikForProcesRequestHeader" />
+    <wsdl:part name="body" element="ev1:HentHaendelsesHistorikForProcesRequest" />
+  </wsdl:message>
+  <wsdl:message name="UdestaaendeForbeholdOpdater">
+    <wsdl:part name="header" element="ev1:UdestaaendeForbeholdOpdaterRequestHeader" />
+    <wsdl:part name="body" element="ev1:UdestaaendeForbeholdOpdaterRequest" />
+  </wsdl:message>
+  <wsdl:message name="UdestaaendeForbeholdHentResponse">
+    <wsdl:part name="body" element="ev1:UdestaaendeForbeholdHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigFejlmeldingHentResponse">
+    <wsdl:part name="body" element="ev1:ForretningsmaessigFejlmeldingHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RolleUdtraedAfResponse">
+    <wsdl:part name="body" element="ev1:RolleUdtraedAfResponse" />
+  </wsdl:message>
+  <wsdl:message name="DokumentIlaegResponse">
+    <wsdl:part name="body" element="ev1:DokumentIlaegResponse" />
+  </wsdl:message>
+  <wsdl:message name="EjendomsmaeglersDeponeringsKontoNrOpdaterResponse">
+    <wsdl:part name="body" element="ev1:EjendomsmaeglersDeponeringsKontoNrOpdaterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcesAfslutIndsigelseResponse">
+    <wsdl:part name="body" element="ev1:ProcesAfslutIndsigelseResponse" />
+  </wsdl:message>
+  <wsdl:message name="DokumentHentV2">
+    <wsdl:part name="header" element="ev1:DokumentHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:DokumentHentRequestV2" />
+  </wsdl:message>
+  <wsdl:message name="SalgsopstillingRekvirentHentResponse">
+    <wsdl:part name="body" element="ev1:SalgsopstillingRekvirentHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpretOgStartResponse">
+    <wsdl:part name="body" element="ev1:OpretOgStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="XMLDiffResponse">
+    <wsdl:part name="body" element="ev1:XMLDiffResponse" />
+  </wsdl:message>
+  <wsdl:message name="EjendomshandelOpsummeringHent">
+    <wsdl:part name="header" element="ev1:EjendomshandelOpsummeringHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:EjendomshandelOpsummeringHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="KoebsaftalegrundlagBaselineListeHentResponse">
+    <wsdl:part name="body" element="ev1:KoebsaftalegrundlagBaselineListeHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RolleUdtraedAf">
+    <wsdl:part name="header" element="ev1:RolleUdtraedAfRequestHeader" />
+    <wsdl:part name="body" element="ev1:RolleUdtraedAfRequest" />
+  </wsdl:message>
+  <wsdl:message name="ProcesAfslutIndsigelse">
+    <wsdl:part name="header" element="ev1:ProcesAfslutIndsigelseRequestHeader" />
+    <wsdl:part name="body" element="ev1:ProcesAfslutIndsigelseRequest" />
+  </wsdl:message>
+  <wsdl:message name="XMLDiff">
+    <wsdl:part name="header" element="ev1:XMLDiffRequestHeader" />
+    <wsdl:part name="body" element="ev1:XMLDiffRequest" />
+  </wsdl:message>
+  <wsdl:message name="TimerService">
+    <wsdl:part name="header" element="ev1:TimerServiceRequestHeader" />
+    <wsdl:part name="body" element="ev1:TimerServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="UdestaaendeForbeholdOpdaterResponse">
+    <wsdl:part name="body" element="ev1:UdestaaendeForbeholdOpdaterResponse" />
+  </wsdl:message>
+  <wsdl:message name="RolleindehaverOpret">
+    <wsdl:part name="header" element="ev1:RolleindehaverOpretRequestHeader" />
+    <wsdl:part name="body" element="ev1:RolleindehaverOpretRequest" />
+  </wsdl:message>
+  <wsdl:message name="DokumentgruppeDokumentHentResponse">
+    <wsdl:part name="body" element="ev1:DokumentgruppeDokumentHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaelgersPIsDeponeringsKontoNrOpdaterResponse">
+    <wsdl:part name="body" element="ev1:SaelgersPIsDeponeringsKontoNrOpdaterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsdokumenterMetadataHentResponse">
+    <wsdl:part name="body" element="ev1:ForretningsdokumenterMetadataHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="RolleindehaverOpretResponse">
+    <wsdl:part name="body" element="ev1:RolleindehaverOpretResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentHaendelsesHistorikForAktoerResponse">
+    <wsdl:part name="body" element="ev1:HentHaendelsesHistorikForAktoerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcesAfslutResponse">
+    <wsdl:part name="body" element="ev1:ProcesAfslutResponse" />
+  </wsdl:message>
+  <wsdl:message name="FristforlaengelsesAnmodningSvarResponse">
+    <wsdl:part name="body" element="ev1:FristforlaengelsesAnmodningSvarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigFejlMeldSend">
+    <wsdl:part name="header" element="ev1:ForretningsmaessigFejlMeldSendRequestHeader" />
+    <wsdl:part name="body" element="ev1:ForretningsmaessigFejlMeldSendRequest" />
+  </wsdl:message>
+  <wsdl:message name="HentHaendelsesHistorikForProcesResponse">
+    <wsdl:part name="body" element="ev1:HentHaendelsesHistorikForProcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="KoebsaftalegrundlagBaselineHent">
+    <wsdl:part name="header" element="ev1:KoebsaftalegrundlagBaselineHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:KoebsaftalegrundlagBaselineHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="HentHaendelsesHistorikForAktoer">
+    <wsdl:part name="header" element="ev1:HentHaendelsesHistorikForAktoerRequestHeader" />
+    <wsdl:part name="body" element="ev1:HentHaendelsesHistorikForAktoerRequest" />
+  </wsdl:message>
+  <wsdl:portType name="Ejendomshandel.eFPI">
+    <wsdl:operation name="ArkivpakkeHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ArkivpakkeHent" message="tns:ArkivpakkeHent" />
+      <wsdl:output message="tns:ArkivpakkeHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentgruppeDokumentHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentHent" message="tns:DokumentgruppeDokumentHent" />
+      <wsdl:output message="tns:DokumentgruppeDokumentHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentgruppeDokumentIlaeg">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentIlaeg" message="tns:DokumentgruppeDokumentIlaeg" />
+      <wsdl:output message="tns:DokumentgruppeDokumentIlaegResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentgruppeDokumentUgyldiggoer">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentUgyldiggoer" message="tns:DokumentgruppeDokumentUgyldiggoer" />
+      <wsdl:output message="tns:DokumentgruppeDokumentUgyldiggoerResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="EjendomsmaeglersDeponeringsKontoNrOpdater">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/EjendomsmaeglersDeponeringsKontoNrOpdater" message="tns:EjendomsmaeglersDeponeringsKontoNrOpdater" />
+      <wsdl:output message="tns:EjendomsmaeglersDeponeringsKontoNrOpdaterResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="FormidlingsaftaleBaselineListeHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/FormidlingsaftaleBaselineListeHent" message="tns:FormidlingsaftaleBaselineListeHent" />
+      <wsdl:output message="tns:FormidlingsaftaleBaselineListeHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="FormidlingsaftaleBaselineHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/FormidlingsaftaleBaselineHent" message="tns:FormidlingsaftaleBaselineHent" />
+      <wsdl:output message="tns:FormidlingsaftaleBaselineHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsdokumenterMetadataHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ForretningsdokumenterMetadataHent" message="tns:ForretningsdokumenterMetadataHent" />
+      <wsdl:output message="tns:ForretningsdokumenterMetadataHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsmaessigFejlmeldingHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ForretningsmaessigFejlmeldingHent" message="tns:ForretningsmaessigFejlmeldingHent" />
+      <wsdl:output message="tns:ForretningsmaessigFejlmeldingHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsmaessigHaendelseMeddel">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ForretningsmaessigHaendelseMeddel" message="tns:ForretningsmaessigHaendelseMeddel" />
+      <wsdl:output message="tns:ForretningsmaessigHaendelseMeddelResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="FristforlaengelseAnmod">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/FristforlaengelseAnmod" message="tns:FristforlaengelseAnmod" />
+      <wsdl:output message="tns:FristforlaengelseAnmodResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="FristforlaengelsesAnmodningSvar">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/FristforlaengelsesAnmodningSvar" message="tns:FristforlaengelsesAnmodningSvar" />
+      <wsdl:output message="tns:FristforlaengelsesAnmodningSvarResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHent" message="tns:HaendelsesHistorikHent" />
+      <wsdl:output message="tns:HaendelsesHistorikHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ActionLogEntriesForPtpStatus">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ActionLogEntriesForPtpStatus" message="tns:HaendelsesHistorikHent" />
+      <wsdl:output message="tns:ActionLogEntriesForPtpStatusResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HentHaendelsesHistorikForProces">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HentHaendelsesHistorikForProces" message="tns:HentHaendelsesHistorikForProces" />
+      <wsdl:output message="tns:HentHaendelsesHistorikForProcesResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HentHaendelsesHistorikForAktoer">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HentHaendelsesHistorikForAktoer" message="tns:HentHaendelsesHistorikForAktoer" />
+      <wsdl:output message="tns:HentHaendelsesHistorikForAktoerResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="KoebsaftalegrundlagBaselineHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/KoebsaftalegrundlagBaselineHent" message="tns:KoebsaftalegrundlagBaselineHent" />
+      <wsdl:output message="tns:KoebsaftalegrundlagBaselineHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="KoebsaftalegrundlagBaselineListeHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/KoebsaftalegrundlagBaselineListeHent" message="tns:KoebsaftalegrundlagBaselineListeHent" />
+      <wsdl:output message="tns:KoebsaftalegrundlagBaselineListeHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="SaelgersPIsDeponeringsKontoNrOpdater">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/SaelgersPIsDeponeringsKontoNrOpdater" message="tns:SaelgersPIsDeponeringsKontoNrOpdater" />
+      <wsdl:output message="tns:SaelgersPIsDeponeringsKontoNrOpdaterResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="SalgsopstillingRekvirentHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/SalgsopstillingRekvirentHent" message="tns:SalgsopstillingRekvirentHent" />
+      <wsdl:output message="tns:SalgsopstillingRekvirentHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="OpretOgStart">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/OpretOgStart" message="tns:OpretOgStart" />
+      <wsdl:output message="tns:OpretOgStartResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesAfslut">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ProcesAfslut" message="tns:ProcesAfslut" />
+      <wsdl:output message="tns:ProcesAfslutResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesAfslutIndsigelse">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ProcesAfslutIndsigelse" message="tns:ProcesAfslutIndsigelse" />
+      <wsdl:output message="tns:ProcesAfslutIndsigelseResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="SagsAktivitetListeAktivRolleHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/SagsAktivitetListeAktivRolleHent" message="tns:SagsAktivitetListeAktivRolleHent" />
+      <wsdl:output message="tns:SagsAktivitetListeAktivRolleHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsmaessigFejlMeldSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ForretningsmaessigFejlMeldSend" message="tns:ForretningsmaessigFejlMeldSend" />
+      <wsdl:output message="tns:ForretningsmaessigFejlMeldSendResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="RolleUdtraedAf">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/RolleUdtraedAf" message="tns:RolleUdtraedAf" />
+      <wsdl:output message="tns:RolleUdtraedAfResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="RolleindehaverOpret">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/RolleindehaverOpret" message="tns:RolleindehaverOpret" />
+      <wsdl:output message="tns:RolleindehaverOpretResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="RolleindehaverSlet">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/RolleindehaverSlet" message="tns:RolleindehaverSlet" />
+      <wsdl:output message="tns:RolleindehaverSletResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="RolleindehaverSamlingHent">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/RolleindehaverSamlingHent" message="tns:RolleindehaverSamlingHent" />
+      <wsdl:output message="tns:RolleindehaverSamlingHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="KontaktinformationEgenOpdater">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/KontaktinformationEgenOpdater" message="tns:KontaktinformationEgenOpdater" />
+      <wsdl:output message="tns:KontaktinformationEgenOpdaterResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentHent">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentHent" message="tns:DokumentHent" />
+      <wsdl:output message="tns:DokumentHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentIlaeg">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentIlaeg" message="tns:DokumentIlaeg" />
+      <wsdl:output message="tns:DokumentIlaegResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="EjendomshandlensDataHent">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/EjendomshandlensDataHent" message="tns:EjendomshandlensDataHent" />
+      <wsdl:output message="tns:EjendomshandlensDataHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="EjendomshandelOpsummeringHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/EjendomshandelOpsummeringHent" message="tns:EjendomshandelOpsummeringHent" />
+      <wsdl:output message="tns:EjendomshandelOpsummeringHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UdestaaendeForbeholdHent">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/UdestaaendeForbeholdHent" message="tns:UdestaaendeForbeholdHent" />
+      <wsdl:output message="tns:UdestaaendeForbeholdHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="UdestaaendeForbeholdOpdater">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/UdestaaendeForbeholdOpdater" message="tns:UdestaaendeForbeholdOpdater" />
+      <wsdl:output message="tns:UdestaaendeForbeholdOpdaterResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcesSoeg">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ProcesSoeg" message="tns:ProcesSoeg" />
+      <wsdl:output message="tns:ProcesSoegResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="SalgsopstillingHent">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/SalgsopstillingHent" message="tns:SalgsopstillingHent" />
+      <wsdl:output message="tns:SalgsopstillingHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="SalgsopstillingSoeg">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/SalgsopstillingSoeg" message="tns:SalgsopstillingSoeg" />
+      <wsdl:output message="tns:SalgsopstillingSoegResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="TimerService">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/TimerService" message="tns:TimerService" />
+      <wsdl:output message="tns:TimerServiceResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="XMLDiff">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/XMLDiff" message="tns:XMLDiff" />
+      <wsdl:output message="tns:XMLDiffResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ArkivpakkeHentV2">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ArkivpakkeHentV2" message="tns:ArkivpakkeHentV2" />
+      <wsdl:output message="tns:ArkivpakkeHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentgruppeDokumentHentV2">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentHentV2" message="tns:DokumentgruppeDokumentHentV2" />
+      <wsdl:output message="tns:DokumentgruppeDokumentHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentHentV2">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentHentV2" message="tns:DokumentHentV2" />
+      <wsdl:output message="tns:DokumentHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="EjendomshandlensDataHentV2">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/EjendomshandlensDataHentV2" message="tns:EjendomshandlensDataHentV2" />
+      <wsdl:output message="tns:EjendomshandlensDataHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHentV2">
+      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHentV2" message="tns:HaendelsesHistorikHentV2" />
+      <wsdl:output message="tns:HaendelsesHistorikHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

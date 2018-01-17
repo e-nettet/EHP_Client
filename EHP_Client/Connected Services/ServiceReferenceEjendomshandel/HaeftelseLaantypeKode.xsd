@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="HaeftelseLaantypeKode" type="model:HaeftelseLaantypeKodeType">
+    <annotation>
+      <documentation>Type af laan i pantebrev.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="HaeftelseLaantypeKodeType">
+    <annotation>
+      <documentation>Kontantlaan svarer til saerlige laanevilkaar kontantlaan.</documentation>
+    </annotation>
+    <restriction base="string">
+      <enumeration value="obligationslaan" />
+      <enumeration value="kontantlaan" />
+      <enumeration value="andenlaanetype" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xkom="http://rep.oio.dk/xkom.dk/xml/schemas/2005/03/15/" xmlns:tns="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:itst="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" xmlns:vd="http://rep.oio.dk/vd.dk/xml/schemas/2004/02/16/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../e-nettet.dk/xml/schemas/2007/07/01/RefOgKontaktInfo.xsd" />
+  <xs:element name="PartInformation" type="tns:PartInformationType" />
+  <xs:complexType name="PartInformationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="VedroerendePart">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="250" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element minOccurs="0" ref="tns:RefOgKontaktInfo" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

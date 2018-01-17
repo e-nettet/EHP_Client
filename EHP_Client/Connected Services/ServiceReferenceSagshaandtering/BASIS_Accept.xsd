@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Accept" type="tns:AcceptType" />
+  <complexType name="AcceptType">
+    <choice>
+      <element name="Accepteret">
+        <complexType />
+      </element>
+      <element name="Afvist">
+        <complexType>
+          <sequence>
+            <element name="AfvisningsKode" type="tns:AfvisningsKodeType" />
+            <element minOccurs="0" name="Aarsagsbeskrivelse" type="tns:AarsagsbeskrivelseType" />
+          </sequence>
+        </complexType>
+      </element>
+    </choice>
+  </complexType>
+  <simpleType name="AfvisningsKodeType">
+    <restriction base="string">
+      <enumeration value="Formalia" />
+      <enumeration value="Forretningsmaessig" />
+      <enumeration value="Andet" />
+    </restriction>
+  </simpleType>
+  <simpleType name="AarsagsbeskrivelseType">
+    <restriction base="string">
+      <maxLength value="256" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_AktoerInformation.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_ProcesDeltagelseSamling.xsd" />
+  <element name="AktoerData" type="tns:AktoerDataType" />
+  <complexType name="AktoerDataType">
+    <sequence>
+      <element ref="tns:AktoerInformation" />
+      <element ref="tns:ProcesDeltagelseSamling" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:koebesum="http://efpi.dk/ehp2011/xml/schemas/EFPI_Koebesum_v1" xmlns:saelgersraadgiversamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SaelgersRaadgiverSamling_v1" xmlns:tillaegsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_TillaegSamling_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleFormular_v1" xmlns:abonnementersamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AbonnementerSamling_v1" xmlns:forsikringstilbudsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForsikringsTilbudSamling_v1" xmlns:forbrugerbeskyttelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForbrugerBeskyttelse_v1" xmlns:indsigelsesberettigetpart="http://efpi.dk/ehp2011/xml/schemas/EFPI_IndsigelsesberettigetPart_v1" xmlns:gaeldudenforkoebesummensamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_GaeldUdenforKoebesummenSamling_v1" xmlns:koebersraadgiversamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebersRaadgiverSamling_v1" xmlns:individuellevilkaarsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_IndividuelleVilkaarSamling_v1" xmlns:frister="http://efpi.dk/ehp2011/xml/schemas/EFPI_Frister_v1" xmlns:vederlaghandelsomkostninger="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagHandelsomkostninger_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" xmlns:aftalepartsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftalePartSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleFormular_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Part_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_IndsigelsesberettigetPart_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_IndsigelsesberettigetPart_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AftalePartSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftalePartSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_KoebersRaadgiverSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebersRaadgiverSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SaelgersRaadgiverSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SaelgersRaadgiverSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AbonnementerSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AbonnementerSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ForsikringsTilbudSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForsikringsTilbudSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ForbrugerBeskyttelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForbrugerBeskyttelse_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GaeldUdenforKoebesummenSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GaeldUdenforKoebesummenSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_VederlagHandelsomkostninger_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagHandelsomkostninger_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Frister_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Frister_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_IndividuelleVilkaarSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_IndividuelleVilkaarSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Koebesum_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Koebesum_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TillaegSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TillaegSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <element name="KoebsaftaleFormular" type="tns:KoebsaftaleFormularType" />
+  <complexType name="KoebsaftaleFormularType">
+    <sequence>
+      <element name="KoeberSamling" type="aftalepartsamling:AftalePartSamlingType" />
+      <element name="SaelgerSamling" type="aftalepartsamling:AftalePartSamlingType" />
+      <element name="KoebersPengeinstitut" type="indsigelsesberettigetpart:IndsigelsesberettigetPartType" />
+      <element name="SaelgersPengeinstitut" type="indsigelsesberettigetpart:IndsigelsesberettigetPartType" />
+      <element ref="koebersraadgiversamling:KoebersRaadgiverSamling" />
+      <element ref="saelgersraadgiversamling:SaelgersRaadgiverSamling" />
+      <element minOccurs="0" name="SkoedeUdarbejdetAf" type="part:PartType" />
+      <element minOccurs="0" name="ReguleringOgRefusionUdarbejdetAf" type="part:PartType" />
+      <element minOccurs="0" name="HandlensBerigtigelseUdarbejdetAf" type="part:PartType" />
+      <element minOccurs="0" name="AnmelderSaelgerPtbEfterfinansiering" type="part:PartType" />
+      <element name="OvertagelsesDato" type="date" />
+      <element minOccurs="0" name="DispositionsDato" type="date" />
+      <element ref="abonnementersamling:AbonnementerSamling" />
+      <element ref="forsikringstilbudsamling:ForsikringsTilbudSamling" />
+      <element minOccurs="0" maxOccurs="1" ref="forbrugerbeskyttelse:ForbrugerBeskyttelse" />
+      <element ref="gaeldudenforkoebesummensamling:GaeldUdenforKoebesummenSamling" />
+      <element ref="vederlaghandelsomkostninger:VederlagHandelsomkostninger" />
+      <element ref="frister:Frister" />
+      <element ref="individuellevilkaarsamling:IndividuelleVilkaarSamling" />
+      <element ref="koebesum:Koebesum" />
+      <element ref="tillaegsamling:TillaegSamling" />
+      <element name="DeponeringSamling" type="tns:DeponeringSamlingType" />
+      <element name="SenestGarantistillelse" type="tns:SenestGarantistillelseType" />
+    </sequence>
+  </complexType>
+  <complexType name="DeponeringSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Deponering" type="tns:DeponeringType" />
+    </sequence>
+  </complexType>
+  <complexType name="DeponeringType">
+    <sequence>
+      <element name="SenestDato" type="date" />
+      <element name="DeponeresHosTekst" type="strings:StringMin2Max1K" />
+    </sequence>
+  </complexType>
+  <complexType name="SenestGarantistillelseType">
+    <sequence>
+      <element name="SenestDato" type="date" />
+    </sequence>
+  </complexType>
+</schema>

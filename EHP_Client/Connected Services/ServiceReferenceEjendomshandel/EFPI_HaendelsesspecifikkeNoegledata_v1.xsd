@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:garantiHaendelseInformation="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseInformation_v1" xmlns:rolleogindehaver="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelsesspecifikkeNoegledata_v1" xmlns:kontonummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" xmlns:fristforlaengelsesanmodningsvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" xmlns:rolleogindehaversamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" xmlns:fristforlaengelsesanmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" xmlns:dokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelsesspecifikkeNoegledata_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Kontonummer_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIfejl.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiHaendelseInformation_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseInformation_v1" />
+  <complexType name="HaendelsesspecifikkeNoegledataType">
+    <choice>
+      <element name="Deltager" type="rolleogindehaver:RolleOgIndehaverType" />
+      <element name="Dokument" type="dokument:DokumentMetaBeskrivelseType" />
+      <element name="Fejlmelding" type="basis:eFPIfejlType" />
+      <element minOccurs="0" name="GarantiHaendelseInformation" type="garantiHaendelseInformation:GarantiHaendelseInformationType" />
+    </choice>
+  </complexType>
+</schema>

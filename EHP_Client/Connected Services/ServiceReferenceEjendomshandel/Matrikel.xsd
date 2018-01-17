@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:kms="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/kms.dk/xml/schemas/2005/03/11/kms.xsd" namespace="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Matrikelnummer.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Broek.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Delareal.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/FaellesEjendomIdentifikator.xsd" />
+  <element name="Matrikel" type="model:MatrikelType">
+    <annotation>
+      <documentation>Angiver en matrikel.</documentation>
+    </annotation>
+  </element>
+  <complexType name="MatrikelType">
+    <sequence>
+      <element minOccurs="0" ref="kms:CadastralDistrictName">
+        <annotation>
+          <documentation>Den tekstmaessige betegnelse af et ejerlav. Ejerlavsbetegnelsen er ikke entydig.</documentation>
+        </annotation>
+      </element>
+      <element ref="kms:CadastralDistrictIdentifier">
+        <annotation>
+          <documentation>En paa landsbasis entydig identifikation af et ejerlav.</documentation>
+        </annotation>
+      </element>
+      <element ref="model:Matrikelnummer" />
+      <element minOccurs="0" name="FaelleslodBroek" type="model:BroekType">
+        <annotation>
+          <documentation>Udtrykker saerlige tilfaelde, hvor man har andel af et faelleslod.
+				  </documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:Delareal" />
+      <element minOccurs="0" ref="model:FaellesEjendomIdentifikator" />
+    </sequence>
+  </complexType>
+</schema>

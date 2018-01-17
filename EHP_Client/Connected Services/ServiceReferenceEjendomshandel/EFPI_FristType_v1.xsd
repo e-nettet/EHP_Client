@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristType_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristType_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="FristType" type="tns:FristTypeType">
+    <annotation>
+      <documentation>Type for frist.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="FristTypeType">
+    <restriction base="string">
+      <enumeration value="GodkendKoebersPI" />
+      <enumeration value="GodkendKoebersRaadgiver" />
+      <enumeration value="GodkendSaelgersPI" />
+      <enumeration value="GodkendSaelgersRaadgiver" />
+      <enumeration value="DeponerUdbetaling" />
+      <enumeration value="StilGarantiForRestkoebesum" />
+      <enumeration value="UdarbejdSkoede" />
+      <enumeration value="UnderskrivBetingetSkoede" />
+      <enumeration value="UnderskrivSkoede" />
+      <enumeration value="AnmeldSkoede" />
+    </restriction>
+  </simpleType>
+</schema>

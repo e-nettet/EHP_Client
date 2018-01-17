@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Kontonummer" type="tns:KontonummerType" />
+  <complexType name="KontonummerType">
+    <sequence>
+      <element name="reg" type="tns:KontoRegNummerType" />
+      <element name="id" type="tns:KontoIDType" />
+    </sequence>
+  </complexType>
+  <simpleType name="KontoIDType">
+    <restriction base="integer">
+      <pattern value="[0-9]{4,10}" />
+    </restriction>
+  </simpleType>
+  <simpleType name="KontoRegNummerType">
+    <restriction base="integer">
+      <totalDigits value="4" />
+    </restriction>
+  </simpleType>
+</schema>

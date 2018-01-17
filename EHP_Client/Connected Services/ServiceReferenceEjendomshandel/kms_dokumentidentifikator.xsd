@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:kms="http://rep.oio.dk/kms.dk/xml/schemas/2008/09/12/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/kms.dk/xml/schemas/2008/09/12/" version="1.0" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DokumentIdentifikator" type="kms:DokumentIdentifikatorType" />
+  <simpleType name="DokumentIdentifikatorType">
+    <restriction base="string">
+      <pattern value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+    </restriction>
+  </simpleType>
+</schema>

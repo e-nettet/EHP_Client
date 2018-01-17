@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="UdskriftDatoTid" type="dateTime">
+    <annotation>
+      <documentation>Tidspunktet for en udskrift</documentation>
+    </annotation>
+  </element>
+</schema>

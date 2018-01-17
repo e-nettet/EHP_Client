@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="HaeftelseSaerligeLaanevilkaarstype" type="model:HaeftelseSaerligeLaanevilkaarstypeType">
+    <annotation>
+      <documentation>Saerlige laanevilkaar for en fremtidig haeftelse.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="HaeftelseSaerligeLaanevilkaarstypeType">
+    <restriction base="string">
+      <enumeration value="mulighedForAfdragsfrihed">
+        <annotation>
+          <documentation>Angives i HaeftelseAfdragsfrihedIndikator uanset vaerdi.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="staaendeLaan">
+        <annotation>
+          <documentation>Angives i HaeftelseTilbagebetalingmaadeKode med vaerdien staaende_laan.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="kontantlaan">
+        <annotation>
+          <documentation>Angives i HaeftelseLaantypeKode med vaerdien kontantlaan.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="inkonvertibel">
+        <annotation>
+          <documentation>Angives i HaeftelseIndfrielseKonverterbar med vaerdien false.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="refinansiering">
+        <annotation>
+          <documentation>Angives i HaeftelseRefinasieringIndikator uanset vaerdi.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="indeksregulering">
+        <annotation>
+          <documentation>Hvis det er ekspeditionstype 24 IndekspantebrevFastEjendom.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="rentetilpasning">
+        <annotation>
+          <documentation>Hvis det er med variabel rente, dvs. at HaeftelseRenteVariabel er angivet.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="opskrevetHovedstol">
+        <annotation>
+          <documentation>Angives i HaeftelseVilkaarOpskrivning.</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

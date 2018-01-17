@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Anpart.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/AnpartLejetGrund.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BygningLejetGrund.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BygningLejetGrundAnparter.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BygningLejetGrundEjerlejligheder.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Ejerlejlighed.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EjerlejlighedBygningLejetGrund.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Grund.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HovedejendomAnparter.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HovedejendomEjerlejligheder.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HovedejendomTimeshare.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Timeshare.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/TimeshareUger.xsd" />
+  <element name="EjendomType" type="model:EjendomTypeType">
+    <annotation>
+      <documentation>Angiver typen af ejendom.</documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomTypeType">
+    <sequence>
+      <choice>
+        <element ref="model:Ejerlejlighed" />
+        <element ref="model:Anpart" />
+        <element ref="model:HovedejendomEjerlejligheder" />
+        <element ref="model:AnpartLejetGrund" />
+        <element ref="model:BygningLejetGrund" />
+        <element ref="model:BygningLejetGrundEjerlejligheder" />
+        <element ref="model:BygningLejetGrundAnparter" />
+        <element ref="model:Timeshare" />
+        <element ref="model:TimeshareUger" />
+        <element ref="model:HovedejendomTimeshare" />
+        <element ref="model:HovedejendomAnparter" />
+        <element ref="model:Grund" />
+        <element ref="model:EjerlejlighedBygningLejetGrund" />
+      </choice>
+    </sequence>
+  </complexType>
+</schema>

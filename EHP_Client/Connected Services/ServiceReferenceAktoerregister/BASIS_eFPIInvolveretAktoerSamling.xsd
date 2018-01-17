@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_AktoerID.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_AktoerRolleID.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_ProcesReference.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_AktoersKontaktInfo.xsd" />
+  <element name="eFPIInvolveretAktoerSamling" type="tns:eFPIInvolveretAktoerSamlingType" />
+  <complexType name="eFPIInvolveretAktoerSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="eFPIInvolveretAktoer">
+        <complexType>
+          <sequence>
+            <element name="AktoerID" type="tns:AktoerIDType" />
+            <element name="AktoerRolleID" type="tns:AktoerRolleIDType" />
+            <element name="AktoersEgenReference" type="tns:ProcesReferenceType" />
+            <element minOccurs="0" name="AktoersKontaktInfo" type="tns:AktoersKontaktInfoType" />
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

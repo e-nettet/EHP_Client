@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" xmlns:fristforlaengelsesanmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" />
+  <element name="FristforlaengelsesAnmodningSvar" type="tns:FristforlaengelsesAnmodningSvarType" />
+  <complexType name="FristforlaengelsesAnmodningSvarType">
+    <sequence>
+      <element ref="fristforlaengelsesanmodning:FristforlaengelsesAnmodning" />
+      <element name="FristforlaengelseAccepteretIndikator" type="boolean" />
+      <element minOccurs="0" name="Begrundelse" type="strings:StringMin2Max10K" />
+    </sequence>
+  </complexType>
+</schema>

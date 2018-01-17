@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:snapshot="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/snapshot/1/EjendomVurderingStruktur.xsd" />
+  <element name="EjendomVurderingSamling" type="snapshot:EjendomVurderingSamlingType">
+    <annotation>
+      <documentation>Der kan vaere mere end en ejendomsvurdering knyttet til en ejendom identificeret via EjendomIdentifikator. Dette sker i de situationer, hvor der for en EjendomIdentifikator eksisterer flere BBR numre. Der er en vurdering per BBR nummer (RealPropertyStructure).</documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomVurderingSamlingType">
+    <sequence>
+      <element maxOccurs="unbounded" ref="snapshot:EjendomVurderingStruktur" />
+    </sequence>
+  </complexType>
+</schema>

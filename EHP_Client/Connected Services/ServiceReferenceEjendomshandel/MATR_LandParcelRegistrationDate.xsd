@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:matr="http://rep.oio.dk/matr.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/matr.dk/xml/schemas/2006/04/25/" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="LandParcelRegistrationDate" type="date" />
+</schema>

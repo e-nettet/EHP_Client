@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp_="http://www.w3.org/ns/ws-policy" xmlns:wssp="http://www.bea.com/wls90/security/policy" xmlns:tns="http://efpi.dk/sagshaandtering/xml/wsdl/2007/07/01/" xmlns:wls="http://www.bea.com/wls90/security/policy/wsee#part" xmlns:wssutil="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" name="Sagshaandtering.eFPI" targetNamespace="http://efpi.dk/sagshaandtering/xml/wsdl/2007/07/01/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>eFPI sagshaandtering Implementation</wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:UsingPolicy wssutil:Required="true" />
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wssp="http://www.bea.com/wls90/security/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wls="http://www.bea.com/wls90/security/policy/wsee#part" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="securityPolicy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wssp:Integrity>
+          <wssp:SignatureAlgorithm URI="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+          <wssp:CanonicalizationAlgorithm URI="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          <wssp:Target>
+            <wssp:DigestAlgorithm URI="http://www.w3.org/2000/09/xmldsig#sha1" />
+            <wssp:MessageParts Dialect="http://schemas.xmlsoap.org/2002/12/wsse#part">
+							wsp:Body()
+						</wssp:MessageParts>
+          </wssp:Target>
+        </wssp:Integrity>
+      </wsp:All>
+      <wsp:All>
+        <sp:SupportingTokens>
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Always">
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="eFPISign">
+    <sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:InitiatorToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+              <wsp:Policy>
+                <sp:WssX509V3Token10 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:InitiatorToken>
+        <sp:RecipientToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+              <wsp:Policy>
+                <sp:WssX509V3Token10 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:RecipientToken>
+        <sp:AlgorithmSuite>
+          <wsp:Policy>
+            <sp:TripleDesRsa15 />
+          </wsp:Policy>
+        </sp:AlgorithmSuite>
+        <sp:Layout>
+          <wsp:Policy>
+            <sp:Lax />
+          </wsp:Policy>
+        </sp:Layout>
+        <sp:IncludeTimestamp />
+        <sp:OnlySignEntireHeadersAndBody />
+        <sp:ProtectTokens />
+        <!-- Sign BinarySecurityToken -->
+      </wsp:Policy>
+    </sp:AsymmetricBinding>
+    <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:MustSupportRefKeyIdentifier />
+        <sp:MustSupportRefIssuerSerial />
+      </wsp:Policy>
+    </sp:Wss10>
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <!--<sp:Header Name="Token" Namespace="anything"/> -->
+    </sp:SignedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="EHPSign">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:InitiatorToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:WssX509V3Token10 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:InitiatorToken>
+            <sp:RecipientToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:WssX509V3Token10 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:RecipientToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:TripleDesRsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:AsymmetricBinding>
+        <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportRefKeyIdentifier />
+            <sp:MustSupportRefIssuerSerial />
+          </wsp:Policy>
+        </sp:Wss10>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <ramp:RampartConfig xmlns:ramp="http://ws.apache.org/rampart/policy" />
+      </wsp:All>
+      <wsp:All>
+        <!-- Eventhough the policy is made optional, the behavior of EHP is that the policy is mandatory. 
+			 The reason for this implementation is that the combination of how CXF WS-SecurityPolicy implementation. -->
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="UsernameToken">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SupportingTokens>
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy />
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <!-- Eventhough the UsernameToken is made optional, the behavior of EHP is that the usernameToken is mandatory. 
+			 The reason for this implementation is that the combination of how the password is persisted and CXF WS-SecurityPolicy implementation. -->
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://efpi.dk/sagshaandtering/xml/wsdl/2007/07/01/" location="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?wsdl=EFPI_Sagshaandtering.eFPI.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="Sagshaandtering.eFPI.UsernameToken" type="tns:Sagshaandtering.eFPI">
+    <wsaw:UsingAddressing wsdl:required="true" />
+    <soap:binding transport="http://schemas.xmlsoap.org/wsdl/soap/http" />
+    <wsdl:operation name="OpretOgStartSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/OpretOgStartSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfslutSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfslutSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydProces">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydProces" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DokumentAnvendesIkke">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/DokumentAnvendesIkke" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentSagsHistorik">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSagsHistorik" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentProces">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentProces" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveSager">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveSager" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveProcesser">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveProcesser" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RapporterFejl">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/RapporterFejl" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Sagshaandtering.eFPI.eFPISign" type="tns:Sagshaandtering.eFPI">
+    <wsaw:UsingAddressing wsdl:required="true" />
+    <soap:binding transport="http://schemas.xmlsoap.org/wsdl/soap/http" />
+    <wsdl:operation name="OpretOgStartSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/OpretOgStartSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfslutSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfslutSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydProces">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydProces" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DokumentAnvendesIkke">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/DokumentAnvendesIkke" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentSagsHistorik">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSagsHistorik" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentProces">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentProces" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveSager">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveSager" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveProcesser">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveProcesser" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RapporterFejl">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/RapporterFejl" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Sagshaandtering.eFPI" type="tns:Sagshaandtering.eFPI">
+    <wsaw:UsingAddressing wsdl:required="true" />
+    <soap:binding transport="http://schemas.xmlsoap.org/wsdl/soap/http" />
+    <wsdl:operation name="OpretOgStartSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/OpretOgStartSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfslutSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfslutSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydProces">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydProces" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DokumentAnvendesIkke">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/DokumentAnvendesIkke" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentSag">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSag" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentSagsHistorik">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSagsHistorik" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HentProces">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentProces" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveSager">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveSager" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveProcesser">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveProcesser" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RapporterFejl">
+      <soap:operation soapAction="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/RapporterFejl" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Sagshaandtering.eFPI">
+    <wsdl:port name="Sagshaandtering.eFPI" binding="tns:Sagshaandtering.eFPI">
+      <soap:address location="jms://" />
+    </wsdl:port>
+    <wsdl:port name="Sagshaandtering.eFPI.eFPISign" binding="tns:Sagshaandtering.eFPI.eFPISign">
+      <soap:address location="jms://" />
+    </wsdl:port>
+    <wsdl:port name="Sagshaandtering.eFPI.UsernameToken" binding="tns:Sagshaandtering.eFPI.UsernameToken">
+      <soap:address location="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

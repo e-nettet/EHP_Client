@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ikkemedtagnepanthaefterlsertekstsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_IkkeMedtagnePantHaeftelserTekstSamling_v1" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:udbudsvilkaar="http://efpi.dk/ehp2011/xml/schemas/EFPI_Udbudsvilkaar_v1" xmlns:aftalepartsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftalePartSamling_v1" xmlns:saelgerpantebrevindtaegtersamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SaelgerPantebrevIndtaegterSamling_v1" xmlns:forbeholdsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForbeholdSamling_v1" xmlns:budget="http://efpi.dk/ehp2011/xml/schemas/EFPI_Budget_v1" xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Budget_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Budget_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Udbudsvilkaar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Udbudsvilkaar_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SaelgerPantebrevIndtaegterSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SaelgerPantebrevIndtaegterSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_IkkeMedtagnePantHaeftelserTekstSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_IkkeMedtagnePantHaeftelserTekstSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ForbeholdSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForbeholdSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AftalePartSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftalePartSamling_v1" />
+  <element name="SalgsbudgetFormular" type="ehp:SalgsbudgetFormularType" />
+  <complexType name="SalgsbudgetFormularType">
+    <sequence>
+      <element name="SaelgerSamling" type="aftalepartsamling:AftalePartSamlingType" />
+      <element ref="udbudsvilkaar:Udbudsvilkaar" />
+      <element name="BudgetFinansieret" type="budget:BudgetType" />
+      <element minOccurs="0" maxOccurs="1" name="BudgetKontant" type="budget:BudgetType" />
+      <element ref="saelgerpantebrevindtaegtersamling:SaelgerPantebrevIndtaegterSamling" />
+      <element name="RestancerBeloeb" type="model:BeloebValutaType" />
+      <element ref="ikkemedtagnepanthaefterlsertekstsamling:IkkeMedtagnePantHaeftelserTekstSamling" />
+      <element ref="forbeholdsamling:ForbeholdSamling" />
+    </sequence>
+  </complexType>
+</schema>

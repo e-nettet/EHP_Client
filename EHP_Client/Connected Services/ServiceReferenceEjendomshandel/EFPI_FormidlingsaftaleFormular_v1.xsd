@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:oplysningertilparterne="http://efpi.dk/ehp2011/xml/schemas/EFPI_OplysningTilParterne_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleFormular_v1" xmlns:energimaerkeregel="http://efpi.dk/ehp2011/xml/schemas/EFPI_EnergimaerkeRegel_v1" xmlns:oevrigevilkaarsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_OevrigeVilkaarSamling_v1" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:vaerdiansaettelseUdbudpris="http://efpi.dk/ehp2011/xml/schemas/EFPI_VaerdiansaettelseUdbudspris_v1" xmlns:byggetekniskgennemgangtilstandsrapport="http://efpi.dk/ehp2011/xml/schemas/EFPI_ByggetekniskGennemgangTilstandsrapport_v1" xmlns:vederlagejendomsmaeglersamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagEjendomsmaeglerSamling_v1" xmlns:byggetekniskgennemgang="http://efpi.dk/ehp2011/xml/schemas/EFPI_ByggetekniskGennemgang_v1" xmlns:tilstandsrapportregel="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilstandsrapportRegel_v1" xmlns:vederlagtiltredjemandsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagTilTredjemandSamling_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" xmlns:aftalepartsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftalePartSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleFormular_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Part_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AftalePartSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftalePartSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_VaerdiansaettelseUdbudspris_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VaerdiansaettelseUdbudspris_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_VederlagEjendomsmaeglerSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagEjendomsmaeglerSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_VederlagTilTredjemandSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagTilTredjemandSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_OplysningTilParterne_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_OplysningTilParterne_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ByggetekniskGennemgangTilstandsrapport_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ByggetekniskGennemgangTilstandsrapport_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TilstandsrapportRegel_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilstandsrapportRegel_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ByggetekniskGennemgang_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ByggetekniskGennemgang_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_EnergimaerkeRegel_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EnergimaerkeRegel_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_OevrigeVilkaarSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_OevrigeVilkaarSamling_v1" />
+  <element name="FormidlingsaftaleFormular" type="tns:FormidlingsaftaleFormularType" />
+  <complexType name="FormidlingsaftaleFormularType">
+    <sequence>
+      <element name="SaelgerAftaleSamling" type="aftalepartsamling:AftalePartSamlingType" />
+      <element ref="vaerdiansaettelseUdbudpris:VaerdiansaettelseUdbudspris" />
+      <element ref="vederlagejendomsmaeglersamling:VederlagEjendomsmaeglerSamling" />
+      <element ref="vederlagtiltredjemandsamling:VederlagTilTredjemandSamling" />
+      <element name="Dokumentation" type="model:TekstGruppeType" />
+      <element ref="oplysningertilparterne:OplysningTilParterne" />
+      <element name="AnsvarsforsikringsselskabTekst" type="strings:StringMin2Max10K" />
+      <element ref="byggetekniskgennemgangtilstandsrapport:ByggetekniskGennemgangTilstandsrapport" />
+      <element ref="tilstandsrapportregel:TilstandsrapportRegel" />
+      <element ref="byggetekniskgennemgang:ByggetekniskGennemgang" />
+      <element ref="energimaerkeregel:EnergimaerkeRegel" />
+      <element name="AftaleVarighedMaanederMaal" type="integer" />
+      <element ref="oevrigevilkaarsamling:OevrigeVilkaarSamling" />
+      <element name="SaelgersPengeinstitut" type="part:PartType" />
+    </sequence>
+  </complexType>
+</schema>

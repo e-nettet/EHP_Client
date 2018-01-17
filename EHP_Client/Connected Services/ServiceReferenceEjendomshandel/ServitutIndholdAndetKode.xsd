@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ServitutIndholdAndetKode" type="model:ServitutIndholdAndetKodeType">
+    <annotation>
+      <documentation>Angiver en kode for indholdet af et afsnit om andet i en servitut.
+       I forbindelse med kategoriseringen af de nuvaerende servitutter, er der foretaget
+       inddeling af de servitutter, der er tinglyst paa mere end 2.000 ejendomme. De oevri-
+       ge servitutter, dog med undtagelse af lokalplaner, byplanvedtaegter, samejeover-
+       enskomster og salgs- og pantsaetningsforbud, er alle angivet i kategorien "ikke_
+       kategoriseret". Denne kategori er saaledes en opsamling af de servitutter, hvor
+       der ikke konkret er taget stilling til, hvilken kategori som den paagaeldende servitut
+       tilhoerer. Denne kategori skal saaledes ikke sammenblandes med kategorien "Andet
+       - andet", hvor man konkret har taget stilling til, at servitutindholdet ikke berettiger
+       til at blive placeret i en af de andre kategorier.
+       </documentation>
+    </annotation>
+  </element>
+  <simpleType name="ServitutIndholdAndetKodeType">
+    <restriction base="string">
+      <enumeration value="andet" />
+      <enumeration value="ikkeKategoriseret" />
+      <enumeration value="vandloeb" />
+    </restriction>
+  </simpleType>
+</schema>

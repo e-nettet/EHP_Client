@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForbrugerBeskyttelse_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForbrugerBeskyttelse_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Part_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <element name="ForbrugerBeskyttelse" type="ehp:ForbrugerBeskyttelseType" />
+  <complexType name="ForbrugerBeskyttelseType">
+    <sequence>
+      <element name="FortrydelsesretIndikator" type="boolean" />
+      <element name="OmfattetAfLovOmFremmeAfEnergibesparelserIndikator" type="boolean" />
+      <element minOccurs="0" name="Ejerskifteforsikring">
+        <complexType>
+          <sequence>
+            <element name="UdarbejdetDato" type="date" />
+            <element name="UdarbejdetAf" type="part:PartType" />
+            <element name="IndskannetForsikringstilbud" type="basis:AttachmentBinaryDataType" />
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

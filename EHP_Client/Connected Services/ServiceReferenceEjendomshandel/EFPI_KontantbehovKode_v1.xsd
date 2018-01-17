@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontantbehovKode_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontantbehovKode_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="KontantbehovKode" type="tns:KontantbehovKodeType" />
+  <simpleType name="KontantbehovKodeType">
+    <restriction base="string">
+      <enumeration value="KoebersRaadgiver" />
+      <enumeration value="TinglysningAdkomst" />
+      <enumeration value="EjerskifteforsikringsPraemie" />
+      <enumeration value="OevrigeKontantbehov" />
+    </restriction>
+  </simpleType>
+</schema>

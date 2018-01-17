@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Tilstand" type="tns:TilstandType" />
+  <simpleType name="TilstandType">
+    <restriction base="string">
+      <enumeration value="AKTIV" />
+      <enumeration value="LUKKET" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsprovenuDokument_v1" xmlns:ded="http://efpi.dk/ehp2011/xml/schemas/EFPI_DEDokument_v1" xmlns:sf="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsprovenuDokument_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DEDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DEDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1" />
+  <element name="SalgsprovenuDokument" type="ehp:SalgsprovenuDokumentType" />
+  <complexType name="SalgsprovenuDokumentType">
+    <complexContent mixed="false">
+      <extension base="ded:DEDokumentType">
+        <sequence>
+          <element ref="sf:SalgsbudgetFormular" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+</schema>

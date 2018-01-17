@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_OplysningTilParterne_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_OplysningTilParterne_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <element name="OplysningTilParterne" type="ehp:OplysningTilParterneType" />
+  <complexType name="OplysningTilParterneType">
+    <sequence>
+      <element name="HarPersonligInteresseIndikator" type="boolean" />
+      <element name="HarSamarbejdsaftalerMed">
+        <complexType>
+          <sequence>
+            <element name="RealkreditinstitutTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="RealkreditinstitutTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="PengeinstitutTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="PengeinstitutTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="ForsikringsselskabTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="ForsikringsselskabTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="AndreTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="AndreTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ModtagerVederlagProvision">
+        <complexType>
+          <sequence>
+            <element name="FinansieringTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="FinansieringTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="PengeinstitutTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="PengeinstitutTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="ForsikringsselskabTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="ForsikringselskabTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="AnnonceringTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="AnnonceringTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+            <element name="AndreYdelserTekstSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="AndreYdelserTekst" type="strings:StringMin2Max10K" />
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

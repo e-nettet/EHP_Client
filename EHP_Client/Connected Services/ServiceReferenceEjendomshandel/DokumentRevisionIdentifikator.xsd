@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/DokumentIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/RevisionNummer.xsd" />
+  <element name="DokumentRevisionIdentifikator" type="model:DokumentRevisionIdentifikatorType">
+    <annotation>
+      <documentation>Identifikation af et dokument ved UUID og dets praecise revisionsnummer
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="DokumentRevisionIdentifikatorType">
+    <sequence>
+      <element ref="model:DokumentIdentifikator" />
+      <element minOccurs="0" ref="model:RevisionNummer" />
+    </sequence>
+  </complexType>
+</schema>

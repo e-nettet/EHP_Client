@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://e-nettet.dk/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://e-nettet.dk/xml/schemas/2007/07/01/" xml:lang="DA" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Meddelelsens_navn">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Z06" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Meddelelsens_type">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+      <xs:enumeration value="REQDOC" />
+      <xs:enumeration value="MORDOC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste1">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Ja" />
+      <xs:enumeration value="Nej" />
+      <xs:enumeration value="IA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste2">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Ja" />
+      <xs:enumeration value="Nej" />
+      <xs:enumeration value="Msk" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste3">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste4">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="PRI" />
+      <xs:enumeration value="EJP" />
+      <xs:enumeration value="SKA" />
+      <xs:enumeration value="SPK" />
+      <xs:enumeration value="STA" />
+      <xs:enumeration value="STK" />
+      <xs:enumeration value="BRF" />
+      <xs:enumeration value="DLR" />
+      <xs:enumeration value="DK" />
+      <xs:enumeration value="HKK" />
+      <xs:enumeration value="LRF" />
+      <xs:enumeration value="N" />
+      <xs:enumeration value="RD" />
+      <xs:enumeration value="TOT" />
+      <xs:enumeration value="UNI" />
+      <xs:enumeration value="FK" />
+      <xs:enumeration value="GI" />
+      <xs:enumeration value="IHF" />
+      <xs:enumeration value="IRF" />
+      <xs:enumeration value="JK" />
+      <xs:enumeration value="KI" />
+      <xs:enumeration value="PRF" />
+      <xs:enumeration value="ALL" />
+      <xs:enumeration value="BGK" />
+      <xs:enumeration value="NOR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste5">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="9" />
+      <xs:enumeration value="53" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste7">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="OI" />
+      <xs:enumeration value="OH" />
+      <xs:enumeration value="OB" />
+      <xs:enumeration value="OE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste10">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="B" />
+      <xs:enumeration value="IK" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="CL" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="AB-I" />
+      <xs:enumeration value="C-I" />
+      <xs:enumeration value="SIK" />
+      <xs:enumeration value="U" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste26">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="8" />
+      <xs:enumeration value="11" />
+      <xs:enumeration value="Z01" />
+      <xs:enumeration value="Z02" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste29">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="K" />
+      <xs:enumeration value="O" />
+      <xs:enumeration value="OM" />
+      <xs:enumeration value="KM" />
+      <xs:enumeration value="KO" />
+      <xs:enumeration value="RF" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="RP" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="SA" />
+      <xs:enumeration value="J" />
+      <xs:enumeration value="JA" />
+      <xs:enumeration value="U" />
+      <xs:enumeration value="VOM" />
+      <xs:enumeration value="VOU" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste30">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="U" />
+      <xs:enumeration value="RTP" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="IE" />
+      <xs:enumeration value="IS" />
+      <xs:enumeration value="RF" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="G" />
+      <xs:enumeration value="IJA" />
+      <xs:enumeration value="IJB" />
+      <xs:enumeration value="IJC" />
+      <xs:enumeration value="IJD" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste31">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="V" />
+      <xs:enumeration value="R" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste32">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="S" />
+      <xs:enumeration value="ST" />
+      <xs:enumeration value="AM" />
+      <xs:enumeration value="SM" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste33">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="A" />
+      <xs:enumeration value="B" />
+      <xs:enumeration value="C" />
+      <xs:enumeration value="D" />
+      <xs:enumeration value="E" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="G" />
+      <xs:enumeration value="H" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="J" />
+      <xs:enumeration value="K" />
+      <xs:enumeration value="L" />
+      <xs:enumeration value="S" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste34">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="K" />
+      <xs:enumeration value="I" />
+      <xs:enumeration value="KM" />
+      <xs:enumeration value="U" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste35">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="4" />
+      <xs:enumeration value="5" />
+      <xs:enumeration value="11" />
+      <xs:enumeration value="12" />
+      <xs:enumeration value="21" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste36">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Z52" />
+      <xs:enumeration value="Z53" />
+      <xs:enumeration value="Z54" />
+      <xs:enumeration value="Z55" />
+      <xs:enumeration value="Z56" />
+      <xs:enumeration value="Z57" />
+      <xs:enumeration value="Z58" />
+      <xs:enumeration value="Z59" />
+      <xs:enumeration value="Z60" />
+      <xs:enumeration value="Z61" />
+      <xs:enumeration value="Z62" />
+      <xs:enumeration value="Z63" />
+      <xs:enumeration value="Z64" />
+      <xs:enumeration value="Z65" />
+      <xs:enumeration value="Z66" />
+      <xs:enumeration value="Z67" />
+      <xs:enumeration value="Z68" />
+      <xs:enumeration value="Z69" />
+      <xs:enumeration value="Z70" />
+      <xs:enumeration value="Z71" />
+      <xs:enumeration value="Z72" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste37">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Z73" />
+      <xs:enumeration value="Z74" />
+      <xs:enumeration value="Z75" />
+      <xs:enumeration value="Z76" />
+      <xs:enumeration value="Z77" />
+      <xs:enumeration value="Z78" />
+      <xs:enumeration value="Z79" />
+      <xs:enumeration value="Z80" />
+      <xs:enumeration value="Z81" />
+      <xs:enumeration value="Z82" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste38">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Z83" />
+      <xs:enumeration value="Z84" />
+      <xs:enumeration value="Z85" />
+      <xs:enumeration value="Z86" />
+      <xs:enumeration value="Z87" />
+      <xs:enumeration value="Z88" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste39">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Z73" />
+      <xs:enumeration value="Z76" />
+      <xs:enumeration value="Z77" />
+      <xs:enumeration value="Z80" />
+      <xs:enumeration value="Z89" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste40">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="Z38" />
+      <xs:enumeration value="Z92" />
+      <xs:enumeration value="Z93" />
+      <xs:enumeration value="Z94" />
+      <xs:enumeration value="Z95" />
+      <xs:enumeration value="Z96" />
+      <xs:enumeration value="Z97" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste41">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="ANN" />
+      <xs:enumeration value="SER" />
+      <xs:enumeration value="STA" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste42">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="F" />
+      <xs:enumeration value="P" />
+      <xs:enumeration value="T" />
+      <xs:enumeration value="F+" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste43">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="1" />
+      <xs:enumeration value="2" />
+      <xs:enumeration value="3" />
+      <xs:enumeration value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Kodeliste51">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:enumeration value="GO5" />
+      <xs:enumeration value="SF1" />
+      <xs:enumeration value="SF2" />
+      <xs:enumeration value="SF3" />
+      <xs:enumeration value="SF4" />
+      <xs:enumeration value="SF5" />
+      <xs:enumeration value="SF6" />
+      <xs:enumeration value="G10" />
+      <xs:enumeration value="GF5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N1">
+    <xs:restriction base="xs:integer">
+      <xs:totalDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N2">
+    <xs:restriction base="xs:integer">
+      <xs:totalDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N3">
+    <xs:restriction base="xs:integer">
+      <xs:totalDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N4">
+    <xs:restriction base="xs:integer">
+      <xs:totalDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N5_2">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="5" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N6_2">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="6" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N8">
+    <xs:restriction base="xs:integer">
+      <xs:totalDigits value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N8_3">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="8" />
+      <xs:fractionDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N8_4">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="8" />
+      <xs:fractionDigits value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N10">
+    <xs:restriction base="xs:integer">
+      <xs:totalDigits value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N10_6">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="10" />
+      <xs:fractionDigits value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N13_9">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="13" />
+      <xs:fractionDigits value="9" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N15">
+    <xs:restriction base="xs:integer">
+      <xs:totalDigits value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="N17_2">
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="17" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN3">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN4">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN5">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN6">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN8">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN9">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="9" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN12">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="12" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN15">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN25">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="25" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN35">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="35" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN40">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN42">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="42" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN70">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="70" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AN280">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="280" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:row="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffElement_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_XMLDiffElement_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffElement_v1" />
+  <element name="XMLDiffResult" type="tns:XMLDiffResultType" />
+  <complexType name="XMLDiffResultType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Rows" type="row:XMLDiffRowType" />
+    </sequence>
+  </complexType>
+</schema>

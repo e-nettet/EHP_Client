@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://e-nettet.dk/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../e-nettet.dk/xml/schemas/2007/07/01/FeltTyper.xsd" />
+  <xs:element name="BBR" type="tns:BBR_Type" />
+  <xs:complexType name="BBR_Type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BBR-nr" type="tns:N10" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForretningsmaessigStatus_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForretningsmaessigStatus_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ForretningsmaessigStatus" type="tns:ForretningsmaessigStatusType" />
+  <complexType name="ForretningsmaessigStatusType">
+    <sequence>
+      <element name="Status" type="integer" />
+      <element name="Tidsstempel" type="dateTime" />
+    </sequence>
+  </complexType>
+</schema>

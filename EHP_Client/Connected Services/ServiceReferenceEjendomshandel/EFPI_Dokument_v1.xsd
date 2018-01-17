@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Dokument_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Dokument_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Dokument" type="tns:DokumentType" />
+  <complexType name="DokumentType">
+    <annotation>
+      <documentation>Abstract root type for all documents</documentation>
+    </annotation>
+  </complexType>
+</schema>

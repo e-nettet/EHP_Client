@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1" xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:tls="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" xmlns:deltagermetadataSamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerMetadataSamling_v1" xmlns:partSamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_PartSamling_v1" xmlns:ejendom="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:sagsnummeridentifikator="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" xmlns:deltagermetadata="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerMetadata_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/snapshot/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DeltagerMetadata_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerMetadata_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DeltagerMetadataSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerMetadataSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/e-nettet.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <element name="HaendelseKontekst" type="tns:HaendelseKontekstType" />
+  <complexType name="HaendelseKontekstType">
+    <sequence>
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element name="DeltagerSelv" type="deltagermetadata:DeltagerMetadataType" />
+      <element minOccurs="0" name="WebReference" type="anyURI" />
+      <element minOccurs="0" name="Ejendomsmaegler" type="deltagermetadata:DeltagerMetadataType" />
+      <element minOccurs="0" name="EjendomsmaeglerSagsID" type="sagsnummeridentifikator:SagsnummerIdentifikatorType" />
+      <element minOccurs="0" name="Ejendom" type="ejendom:STED_Type" />
+      <element minOccurs="0" name="SaelgerSamling" type="deltagermetadataSamling:DeltagerMetadataSamlingType" />
+      <element minOccurs="0" name="KoeberSamling" type="deltagermetadataSamling:DeltagerMetadataSamlingType" />
+    </sequence>
+  </complexType>
+</schema>

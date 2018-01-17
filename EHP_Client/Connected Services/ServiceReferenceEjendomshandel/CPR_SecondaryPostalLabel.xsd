@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dkcc="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/19/" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/10/31/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/10/31/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/19/dkcc.xsd" namespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/19/" />
+  <element name="SecondaryPostalLabel" type="cpr:SecondaryPostalLabelType" />
+  <complexType name="SecondaryPostalLabelType">
+    <sequence>
+      <element ref="dkcc:PostalAddressFirstLineText" />
+      <element ref="dkcc:PostalAddressSecondLineText" />
+      <element ref="dkcc:PostalAddressThirdLineText" />
+      <element minOccurs="0" ref="dkcc:PostalAddressFourthLineText" />
+      <element minOccurs="0" ref="dkcc:PostalAddressFifthLineText" />
+      <element minOccurs="0" ref="dkcc:PostalAddressSixthLineText" />
+    </sequence>
+  </complexType>
+</schema>

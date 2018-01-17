@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_DaekningsomfangKode_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DaekningsomfangKode_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DaekningsomfangKode" type="tns:DaekningsomfangKodeType" />
+  <simpleType name="DaekningsomfangKodeType">
+    <restriction base="string">
+      <enumeration value="bygningskasko" />
+      <enumeration value="brand" />
+      <enumeration value="svamp" />
+      <enumeration value="insekt" />
+      <enumeration value="skjulteroerskade" />
+      <enumeration value="stikledning" />
+      <enumeration value="stormskade" />
+      <enumeration value="glas" />
+      <enumeration value="kumme" />
+      <enumeration value="andet" />
+    </restriction>
+  </simpleType>
+</schema>

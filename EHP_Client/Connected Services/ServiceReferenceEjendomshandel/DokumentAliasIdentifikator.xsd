@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DokumentAliasIdentifikator" type="eakt:DokumentAliasIdentifikatorType">
+    <annotation>
+      <documentation>
+       Unikt dokument-alias bestaaende af dags dato og et loebenummer. F.eks. 20080304-1234567890
+       </documentation>
+    </annotation>
+  </element>
+  <simpleType name="DokumentAliasIdentifikatorType">
+    <restriction base="string">
+      <pattern value="\d{8}-\d{10}" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:address="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" xmlns:tilstand="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesTabelDataSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesTabelDataSamling_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Tilstand_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" />
+  <element name="ProcesTabelDataSamling" type="tns:ProcesTabelDataSamlingType" />
+  <complexType name="ProcesTabelDataSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="procesTableData" type="tns:ProcesTabelDataType" />
+    </sequence>
+  </complexType>
+  <complexType name="ProcesTabelDataType">
+    <sequence>
+      <element ref="basis:eFPIprocesID" />
+      <element minOccurs="0" name="Adresse" type="address:SalgsopstillingSoegAddresseType" />
+      <element minOccurs="0" name="KoebersNavn" type="strings:StringMin2Max256" />
+      <element minOccurs="0" name="SaelgersNavn" type="strings:StringMin2Max256" />
+      <element name="Opdateret" type="dateTime" />
+      <element name="Rolle" type="rolid:RolleIDType" />
+      <element name="Tilstand" type="tilstand:TilstandType" />
+    </sequence>
+  </complexType>
+</schema>

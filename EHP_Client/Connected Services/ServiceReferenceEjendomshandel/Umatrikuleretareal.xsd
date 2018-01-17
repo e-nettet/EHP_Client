@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:kms="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/kms.dk/xml/schemas/2005/03/11/kms.xsd" namespace="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/ois.dk/xml/schemas/2006/04/25/ois.xsd" namespace="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/UmatrikuleretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/UmatrikuleretType.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/UmatrikuleretKoordinater.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/UmatrikuleretarealBeskrivelse.xsd" />
+  <element name="Umatrikuleretareal" type="model:UmatrikuleretarealType">
+    <annotation>
+      <documentation>Angiver et umatrikuleret areal som er identificeret ved hjaelp af retskredsnumrene fra foer 2008 og en fiktiv 
+			ejerlavskode UMA samt et af tinglysningen tildelt fortloebende nummer. Paa et umatrikuleret areal kan der forefindes enheder.
+		  </documentation>
+    </annotation>
+  </element>
+  <complexType name="UmatrikuleretarealType">
+    <sequence>
+      <element ref="model:UmatrikuleretType" />
+      <element ref="model:UmatrikuleretIdentifikator" />
+      <element minOccurs="0" ref="model:UmatrikuleretKoordinater">
+        <annotation>
+          <documentation>Koordinater paa et umatrikuleretareal. Angivet med min. System 2000 (UTM EUREF 89).</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="ois:JurisdictionCode">
+        <annotation>
+          <documentation>Den 1. januar 2007 blev de tidligere 82 retskredse erstattet af 24 nye retskredse. Nye retskredse har et nummer der er 100 hoejere end de gamle, f.eks. Aalborg 102 - Roskilde 117 o.s.v.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="kms:CadastralDistrictName">
+        <annotation>
+          <documentation>Den tekstmaessige betegnelse af et ejerlav. Ejerlavsbetegnelsen er ikke entydig.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="kms:CadastralDistrictIdentifier">
+        <annotation>
+          <documentation>En paa landsbasis entydig identifikation af et ejerlav. Her angives det ejerlav, som det umatrikulerede areal er placeret i.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:UmatrikuleretarealBeskrivelse" />
+    </sequence>
+  </complexType>
+</schema>

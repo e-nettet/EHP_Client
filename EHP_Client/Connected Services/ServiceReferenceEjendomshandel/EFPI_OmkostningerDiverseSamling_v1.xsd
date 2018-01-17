@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_OmkostningerDiverseSamling_v1" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_OmkostningerDiverseSamling_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <element name="OmkostningerDiverseSamling" type="ehp:OmkostningerDiverseSamlingType" />
+  <complexType name="OmkostningerDiverseSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="OmkostningerDiverse" type="model:BeloebValutaType" />
+    </sequence>
+  </complexType>
+</schema>

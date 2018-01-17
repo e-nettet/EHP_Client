@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:udestaaendeforbehold="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeForbehold_v1" xmlns:forretningsmaessigstatus="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForretningsmaessigStatus_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Statusinformation_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Statusinformation_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ForretningsmaessigStatus_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForretningsmaessigStatus_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_UdestaaendeForbehold_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeForbehold_v1" />
+  <element name="Statusinformation" type="tns:StatusinformationType" />
+  <complexType name="StatusinformationType">
+    <sequence>
+      <element minOccurs="0" name="UdestaaendeForbehold" type="boolean" />
+      <element minOccurs="0" name="AfslutDato" type="dateTime" />
+    </sequence>
+  </complexType>
+</schema>

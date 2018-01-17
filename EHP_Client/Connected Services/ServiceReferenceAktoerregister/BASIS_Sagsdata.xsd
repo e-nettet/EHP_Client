@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_ProcesdataSamling.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_SagsReference.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_AktoerID.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPISagsStatus.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPISagsType.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPISagsID.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIDokumentSamling.xsd" />
+  <element name="Sagsdata" type="tns:SagsdataType" />
+  <complexType name="SagsdataType">
+    <sequence>
+      <element ref="tns:eFPISagsID" />
+      <element ref="tns:eFPISagsStatus" />
+      <element ref="tns:eFPISagsType" />
+      <element name="InitierendeAktoer" type="tns:AktoerIDType" />
+      <element minOccurs="0" name="InitierendeAktoersEgenSagsReference" type="tns:SagsReferenceType" />
+      <element ref="tns:eFPIDokumentSamling" />
+      <element ref="tns:ProcesdataSamling" />
+    </sequence>
+  </complexType>
+</schema>

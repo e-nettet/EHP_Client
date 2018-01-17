@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:anmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_Anmodning_v1" xmlns:ehp="urn:oio:enettet:ehp:0" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Erstatningsanmodning_v1" xmlns:garanti="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Erstatningsanmodning_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Anmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Anmodning_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <element name="Erstatningsanmodning" type="tns:ErstatningsanmodningType" />
+  <complexType name="ErstatningsanmodningType">
+    <sequence>
+      <element minOccurs="0" name="Begrundelse" type="strings:StringMin2Max10K" />
+      <element ref="garanti:GarantiForRestkoebesumSigneret" />
+    </sequence>
+  </complexType>
+</schema>

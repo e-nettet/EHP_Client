@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ReferenceRenteNavn" type="model:ReferenceRenteNavnType">
+    <annotation>
+      <documentation>Angiver de mulige navne paa en referencerente. Hvis anden_referencerente anvendes, skal navnet paa den
+        anvendte referencerente angives i vilkaarsteksten.
+      </documentation>
+    </annotation>
+  </element>
+  <simpleType name="ReferenceRenteNavnType">
+    <restriction base="string">
+      <enumeration value="CIBOR1" />
+      <enumeration value="CIBOR3" />
+      <enumeration value="CIBOR6" />
+      <enumeration value="CIBOR12" />
+      <enumeration value="EURIBOR3" />
+      <enumeration value="EURIBOR6" />
+      <enumeration value="EURIBOR12" />
+      <enumeration value="nationalbankensIndskudsbevisrente" />
+      <enumeration value="nationalbankensDiskonto" />
+      <enumeration value="andenRentereference" />
+    </restriction>
+  </simpleType>
+</schema>

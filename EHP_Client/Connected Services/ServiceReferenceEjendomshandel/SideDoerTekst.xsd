@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="SideDoerTekst" type="model:SideDoerTekstType">
+    <annotation>
+      <documentation>
+			Identification which describes the location of a specific entrance door on a floor or level (repos) in the staircase referred to.
+			</documentation>
+    </annotation>
+  </element>
+  <simpleType name="SideDoerTekstType">
+    <restriction base="string">
+      <pattern value="(TH|TV|MF|([1-9][0-9]{0,2})?[A-Z]?)" />
+    </restriction>
+  </simpleType>
+</schema>

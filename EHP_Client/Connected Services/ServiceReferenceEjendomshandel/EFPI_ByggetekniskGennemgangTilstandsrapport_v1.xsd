@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_ByggetekniskGennemgangTilstandsrapport_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ByggetekniskGennemgangTilstandsrapport_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ByggetekniskGennemgangTilstandsrapport" type="ehp:ByggetekniskGennemgangTilstandsrapportType" />
+  <complexType name="ByggetekniskGennemgangTilstandsrapportType">
+    <sequence>
+      <element name="ByggeTekniskGennemgangPaakraevetIndikator" type="boolean" />
+      <element name="OmfattetAfForbrugerbeskyttelseIndikator" type="boolean" />
+    </sequence>
+  </complexType>
+</schema>

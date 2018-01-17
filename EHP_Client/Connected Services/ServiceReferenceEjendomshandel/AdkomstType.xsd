@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="AdkomstType" type="eakt:AdkomstType">
+    <annotation>
+      <documentation>Angiver adkomsttype.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="AdkomstType">
+    <restriction base="string">
+      <enumeration value="skoede" />
+      <enumeration value="aegtepagt" />
+      <enumeration value="andenAdkomst" />
+      <enumeration value="auktionsskoede" />
+      <enumeration value="bodelingsoverenskomst" />
+      <enumeration value="ejendomsdom" />
+      <enumeration value="skifteretsattest" />
+      <enumeration value="skoedeBetinget" />
+    </restriction>
+  </simpleType>
+</schema>

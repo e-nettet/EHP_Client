@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../basis/xml/schemas/2007/07/01/BASIS_eFPIDokument.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../basis/xml/schemas/2007/07/01/BASIS_DokumentRolleID.xsd" />
+  <element name="eFPIInvolveretDokumentSamling" type="tns:eFPIInvolveretDokumentSamlingType" />
+  <complexType name="eFPIInvolveretDokumentSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="eFPIInvolveretDokument">
+        <complexType>
+          <sequence>
+            <element ref="tns:eFPIDokument" />
+            <element name="eFPIDokumentRolle" type="tns:DokumentRolleIDType" />
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

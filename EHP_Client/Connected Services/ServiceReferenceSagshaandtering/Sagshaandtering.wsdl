@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:tns="http://efpi.dk/sagshaandtering/xml/wsdl/2007/07/01/" xmlns:sv1="http://efpi.dk/sagshaandtering/xml/schemas/EFPI_Sagshaandtering" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:s="http://www.w3.org/2001/XMLSchema" name="Sagshaandtering.eFPI" targetNamespace="http://efpi.dk/sagshaandtering/xml/wsdl/2007/07/01/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>eFPI Sagshaandtering</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://efpi.dk/sagshaandtering/xml/schemas/EFPI_Sagshaandtering">
+      <s:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../schemas/EFPI_Sagshaandtering.xsd" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EFPIFault">
+    <wsdl:part name="parameters" element="sv1:error" />
+  </wsdl:message>
+  <wsdl:message name="ListAktiveSager">
+    <wsdl:part name="body" element="sv1:ListAktiveSager" />
+  </wsdl:message>
+  <wsdl:message name="HentSagsHistorikResponse">
+    <wsdl:part name="body" element="sv1:HentSagsHistorikResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentSagResponse">
+    <wsdl:part name="body" element="sv1:HentSagResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentSagsHistorik">
+    <wsdl:part name="body" element="sv1:HentSagsHistorik" />
+  </wsdl:message>
+  <wsdl:message name="RapporterFejl">
+    <wsdl:part name="body" element="sv1:RapporterFejl" />
+  </wsdl:message>
+  <wsdl:message name="AfslutSag">
+    <wsdl:part name="body" element="sv1:AfslutSag" />
+  </wsdl:message>
+  <wsdl:message name="ListAktiveProcesser">
+    <wsdl:part name="body" element="sv1:ListAktiveProcesser" />
+  </wsdl:message>
+  <wsdl:message name="HentSag">
+    <wsdl:part name="body" element="sv1:HentSag" />
+  </wsdl:message>
+  <wsdl:message name="DokumentAnvendesIkke">
+    <wsdl:part name="body" element="sv1:DokumentAnvendesIkke" />
+  </wsdl:message>
+  <wsdl:message name="ListAktiveSagerResponse">
+    <wsdl:part name="body" element="sv1:ListAktiveSagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentProcesResponse">
+    <wsdl:part name="body" element="sv1:HentProcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpretOgStartSagResponse">
+    <wsdl:part name="body" element="sv1:OpretOgStartSagResponse" />
+  </wsdl:message>
+  <wsdl:message name="AfbrydSagResponse">
+    <wsdl:part name="body" element="sv1:AfbrydSagResponse" />
+  </wsdl:message>
+  <wsdl:message name="AfbrydProcesResponse">
+    <wsdl:part name="body" element="sv1:AfbrydProcesResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpretOgStartSag">
+    <wsdl:part name="body" element="sv1:OpretOgStartSag" />
+  </wsdl:message>
+  <wsdl:message name="AfslutSagResponse">
+    <wsdl:part name="body" element="sv1:AfslutSagResponse" />
+  </wsdl:message>
+  <wsdl:message name="RapporterFejlResponse">
+    <wsdl:part name="body" element="sv1:RapporterFejlResponse" />
+  </wsdl:message>
+  <wsdl:message name="DokumentAnvendesIkkeResponse">
+    <wsdl:part name="body" element="sv1:DokumentAnvendesIkkeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AfbrydSag">
+    <wsdl:part name="body" element="sv1:AfbrydSag" />
+  </wsdl:message>
+  <wsdl:message name="AfbrydProces">
+    <wsdl:part name="body" element="sv1:AfbrydProces" />
+  </wsdl:message>
+  <wsdl:message name="ListAktiveProcesserResponse">
+    <wsdl:part name="body" element="sv1:ListAktiveProcesserResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentProces">
+    <wsdl:part name="body" element="sv1:HentProces" />
+  </wsdl:message>
+  <wsdl:portType name="Sagshaandtering.eFPI">
+    <wsdl:operation name="OpretOgStartSag">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/OpretOgStartSag" message="tns:OpretOgStartSag" />
+      <wsdl:output message="tns:OpretOgStartSagResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydSag">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydSag" message="tns:AfbrydSag" />
+      <wsdl:output message="tns:AfbrydSagResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="AfslutSag">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfslutSag" message="tns:AfslutSag" />
+      <wsdl:output message="tns:AfslutSagResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="AfbrydProces">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/AfbrydProces" message="tns:AfbrydProces" />
+      <wsdl:output message="tns:AfbrydProcesResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DokumentAnvendesIkke">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/DokumentAnvendesIkke" message="tns:DokumentAnvendesIkke" />
+      <wsdl:output message="tns:DokumentAnvendesIkkeResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HentSag">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSag" message="tns:HentSag" />
+      <wsdl:output message="tns:HentSagResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HentSagsHistorik">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentSagsHistorik" message="tns:HentSagsHistorik" />
+      <wsdl:output message="tns:HentSagsHistorikResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HentProces">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/HentProces" message="tns:HentProces" />
+      <wsdl:output message="tns:HentProcesResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveSager">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveSager" message="tns:ListAktiveSager" />
+      <wsdl:output message="tns:ListAktiveSagerResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ListAktiveProcesser">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/ListAktiveProcesser" message="tns:ListAktiveProcesser" />
+      <wsdl:output message="tns:ListAktiveProcesserResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="RapporterFejl">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Sagshaandtering.eFPI/RapporterFejl" message="tns:RapporterFejl" />
+      <wsdl:output message="tns:RapporterFejlResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

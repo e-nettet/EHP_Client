@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:eamsg="http://rep.oio.dk/tinglysning.dk/service/message/elektroniskakt/1/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/service/message/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../w3.org/xml/schemas/TR/xmldsig-core/xmldsig-core-schema.xsd" namespace="http://www.w3.org/2000/09/xmldsig#" />
+  <element name="EjendomSummariskHentResultat" type="eamsg:EjendomSummariskHentResultatType">
+    <annotation>
+      <documentation>Resultat fra en forespoergsel paa rettighedsoverblik paa en ejendom.
+       I EjendomSummarisk indeholder hver instans af AdkomstSummarisk, HaeftelseSummarisk og ServitutSummarisk
+       et DokumentAlias, som enten er en AktHistoriskIdentifikator eller en DokumentAliasIdentifikator. Hvis det er en
+       AktHistoriskIdentifikator er der tale om et indskannetakt pdf dokument. Man henter dette PDF dokument ved at
+       anvende EjendomIndskannetAktHent operationen. Hver PDF fil indeholder alle indskannede dokumenter, der ved-
+       roerer gaeldende dokumenter til den paagaeldende ejendom, som er konverteret fra det gamle system. I de tilfaelde
+       der er konverteret gaeldende servituter, der gaar paa tvaers af flere ejendomme eller er lyst til lokalplaner, kan der
+       optraede flere PDF referencer (AktHistoriskIdentifikator) for en ejendom. Da der er tale om PDF dokumenter, som
+       kan vaere ganske store tillades det ikke, at man faar mere end et dokument ad gangen</documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomSummariskHentResultatType">
+    <sequence>
+      <element ref="eakt:EjendomSummarisk" />
+      <element ref="model:ForespoergselsIdentifikator" />
+      <element minOccurs="0" ref="eakt:UdskriftDatoTid" />
+      <element minOccurs="0" ref="eakt:AnmeldelseModtagetIndikator" />
+      <element ref="ds:Signature" />
+    </sequence>
+  </complexType>
+</schema>

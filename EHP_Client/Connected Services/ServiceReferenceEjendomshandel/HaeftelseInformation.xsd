@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:cvr="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:cpr-1="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/cpr.xsd" namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/cvr.xsd" namespace="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeHaeftelseFastEjendomIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeHaeftelseBilIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeHaeftelseAndelIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeHaeftelseLoesoereIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseBeloeb.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseLaantypeKode.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseRenteSats.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseSaerligeLaanevilkaarstypeSamling.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/IDAttributGruppe.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/RolleNavnAdresseGruppe.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/RolleInformationSamling.xsd" />
+  <element name="HaeftelseInformation" type="model:HaeftelseInformationType">
+    <annotation>
+      <documentation>Angivelse af haeftelse information.</documentation>
+    </annotation>
+  </element>
+  <complexType name="HaeftelseInformationType">
+    <sequence>
+      <element ref="model:HaeftelseBeloeb">
+        <annotation>
+          <documentation>Angivelse af hovedstol og valuta.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:HaeftelseRenteSats">
+        <annotation>
+          <documentation>Angivelse af rentesats. Angives ikke ved feks kontantlaan.</documentation>
+        </annotation>
+      </element>
+      <element name="KreditorInformationSamling" type="model:RolleInformationSamlingType">
+        <annotation>
+          <documentation>Angivelse af kreditorer.</documentation>
+        </annotation>
+      </element>
+      <choice>
+        <element minOccurs="0" ref="model:EkspeditionstypeHaeftelseFastEjendomIdentifikator">
+          <annotation>
+            <documentation>Angivelse af fastejendomshaeftelsetype, som skal respekteres.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" ref="model:EkspeditionstypeHaeftelseBilIdentifikator">
+          <annotation>
+            <documentation>Angivelse af bilhaeftelsetype, som skal respekteres.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" ref="model:EkspeditionstypeHaeftelseAndelIdentifikator">
+          <annotation>
+            <documentation>Angivelse af andelhaeftelsetype, som skal respekteres.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" ref="model:EkspeditionstypeHaeftelseLoesoereIdentifikator">
+          <annotation>
+            <documentation>Angivelse af loesoerehaeftelsetype, som skal respekteres.</documentation>
+          </annotation>
+        </element>
+      </choice>
+      <element minOccurs="0" ref="model:HaeftelseSaerligeLaanevilkaarstypeSamling" />
+      <element minOccurs="0" ref="model:HaeftelseLaantypeKode" />
+    </sequence>
+  </complexType>
+</schema>

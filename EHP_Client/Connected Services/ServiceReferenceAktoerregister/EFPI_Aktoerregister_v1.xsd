@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/aktoerregister/xml/schemas/EFPI_Aktoerregister_v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/aktoerregister/xml/schemas/EFPI_Aktoerregister_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <element name="HentAktoerInformation" type="tns:HentAktoerInformationType" />
+  <element name="HentAktoerInformationResponse" type="tns:HentAktoerInformationResponseType" />
+  <element name="HentAlleAktoerInformationer" type="tns:HentAlleAktoerInformationerType" />
+  <element name="HentAlleAktoerInformationerResponse" type="tns:HentAlleAktoerInformationerResponseType" />
+  <element name="FindDokumenttyper" type="tns:FindDokumenttyperType" />
+  <element name="FindDokumenttyperResponse" type="tns:FindDokumenttyperResponseType" />
+  <element name="FindProcesversioner" type="tns:FindProcesversionerType" />
+  <element name="FindProcesversionerResponse" type="tns:FindProcesversionerResponseType" />
+  <element name="KanProcesUdfoeres" type="tns:KanProcesUdfoeresType" />
+  <element name="KanProcesUdfoeresResponse" type="tns:KanProcesUdfoeresResponseType" />
+  <element name="error" type="basis:eFPIDetailsErrorType" />
+  <complexType name="HentAktoerInformationType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+    </sequence>
+  </complexType>
+  <complexType name="HentAktoerInformationResponseType">
+    <sequence>
+      <element ref="basis:AktoerInformation" />
+    </sequence>
+  </complexType>
+  <complexType name="HentAlleAktoerInformationerType">
+    <sequence />
+  </complexType>
+  <complexType name="HentAlleAktoerInformationerResponseType">
+    <sequence>
+      <element name="Tidsstempel" type="dateTime" />
+      <element ref="basis:AktoerDataSamling" />
+    </sequence>
+  </complexType>
+  <complexType name="FindDokumenttyperType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+    </sequence>
+  </complexType>
+  <complexType name="FindDokumenttyperResponseType">
+    <sequence>
+      <element ref="basis:DokumentTypeSamling" />
+    </sequence>
+  </complexType>
+  <complexType name="FindProcesversionerType">
+    <sequence>
+      <element name="ProcesNavn" type="basis:ProcesNavnType" />
+      <element ref="basis:AktoerRolleSamling" />
+    </sequence>
+  </complexType>
+  <complexType name="FindProcesversionerResponseType">
+    <sequence>
+      <element ref="basis:ProcesversionSamling" />
+    </sequence>
+  </complexType>
+  <complexType name="KanProcesUdfoeresType">
+    <sequence>
+      <element ref="basis:Procesversion" />
+      <element ref="basis:AktoerRolleSamling" />
+    </sequence>
+  </complexType>
+  <complexType name="KanProcesUdfoeresResponseType">
+    <sequence>
+      <element name="KanUdfoeres" type="boolean" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_TimerServiceTaskType_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TimerServiceTaskType_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="TimerServiceTaskType" type="tns:TimerServiceTaskType" />
+  <simpleType name="TimerServiceTaskType">
+    <restriction base="string">
+      <enumeration value="CLOSE_PROCESSES" />
+      <enumeration value="INVOICE" />
+      <enumeration value="SEND_CLOSURE_NOTIFICATIONS" />
+      <enumeration value="SEND_DAILY_NOTIFICATIONS" />
+      <enumeration value="SEND_FAILED_DAILY_NOTIFICATIONS" />
+      <enumeration value="ALL" />
+    </restriction>
+  </simpleType>
+</schema>

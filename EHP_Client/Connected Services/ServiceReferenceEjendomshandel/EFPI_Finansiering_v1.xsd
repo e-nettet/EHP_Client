@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:felt="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Finansiering_v1" xmlns:kms="http://rep.oio.dk/kms.dk/xml/schemas/2008/09/12/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Finansiering_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/kms.dk/xml/schemas/2008/09/12/kms.xsd" namespace="http://rep.oio.dk/kms.dk/xml/schemas/2008/09/12/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/FeltTyper.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <element name="Finansiering" type="tns:FinansieringType" />
+  <complexType name="FinansieringType">
+    <sequence>
+      <choice maxOccurs="unbounded">
+        <element name="FinansieringElementHaeftelse" type="tns:FinansieringElementHaeftelseType" />
+        <element name="FinansieringElementDeponering" type="tns:FinansieringElementDeponeringType" />
+        <element name="FinansieringElementEksisterendeHaeftelse" type="tns:FinansieringElementEksisterendeHaeftelseType" />
+      </choice>
+      <element name="Nettoydelse" type="model:BeloebValutaType" />
+      <element name="Bruttoydelse" type="model:BeloebValutaType" />
+    </sequence>
+  </complexType>
+  <complexType name="FinansieringElementType" abstract="true">
+    <sequence>
+      <element name="Kontantvaerdi" type="model:BeloebValutaType" />
+    </sequence>
+  </complexType>
+  <complexType name="FinansieringElementHaeftelseType">
+    <complexContent mixed="false">
+      <extension base="tns:FinansieringElementType">
+        <sequence>
+          <element name="Hovedstol" type="model:BeloebValutaType" />
+          <element name="Type" type="eakt:HaeftelseTypeType" />
+          <element name="Kreditor" type="string" />
+          <element minOccurs="0" name="Produktbeskrivelse" type="string" />
+          <element minOccurs="0" name="Amortisering" type="tns:AmortiseringType" />
+          <element name="AAOP" type="double" />
+          <element name="Nettoydelse" type="model:BeloebValutaType" />
+          <element name="Bruttoydelse" type="model:BeloebValutaType" />
+          <element minOccurs="0" name="Amortiseringsmetode" type="felt:Kodeliste30" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FinansieringElementDeponeringType">
+    <complexContent mixed="false">
+      <extension base="tns:FinansieringElementType">
+        <sequence>
+          <element name="Bankgaranti" type="boolean" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="FinansieringElementEksisterendeHaeftelseType">
+    <complexContent mixed="false">
+      <extension base="tns:FinansieringElementHaeftelseType">
+        <sequence>
+          <element name="eactIdentifikator" type="tns:eactIdentifikatorType" />
+          <element name="Handling" type="string" />
+          <element minOccurs="0" name="Tinglysningsdato" type="date" />
+          <element minOccurs="0" name="Indfrielseskurs" type="double" />
+          <element minOccurs="0" name="Indfrielsesgebyr" type="model:BeloebValutaType" />
+          <element minOccurs="0" name="Kurtage" type="model:BeloebValutaType" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="AmortiseringType">
+    <sequence>
+      <element name="PrimoRestgaeld" type="model:BeloebValutaType" />
+      <element name="PrimoDato" type="date" />
+      <element minOccurs="0" name="PrimoObligationsRestgaeld" type="model:BeloebValutaType" />
+      <element name="Ydelse" type="model:BeloebValutaType" />
+      <element name="Rente" type="model:BeloebValutaType" />
+      <element name="Afdrag" type="model:BeloebValutaType" />
+      <element minOccurs="0" name="Bidrag" type="model:BeloebValutaType" />
+      <element name="UltimoRestgaeld" type="model:BeloebValutaType" />
+      <element name="UltimoDato" type="date" />
+      <element minOccurs="0" name="UltimoObligationsRestgaeld" type="model:BeloebValutaType" />
+      <element name="RestloebetidTerminer" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="eactIdentifikatorType">
+    <sequence>
+      <element ref="eakt:DokumentAliasIdentifikator" />
+      <element name="DokumentIdentifikator" type="kms:DokumentIdentifikatorType" />
+      <element name="RettighedsIdentifikator" type="model:UUIDType" />
+    </sequence>
+  </complexType>
+</schema>

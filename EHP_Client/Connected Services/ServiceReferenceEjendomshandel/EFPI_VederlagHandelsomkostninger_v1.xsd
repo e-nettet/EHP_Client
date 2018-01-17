@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagHandelsomkostninger_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagHandelsomkostninger_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <element name="VederlagHandelsomkostninger" type="ehp:VederlagHandelsomkostningerType" />
+  <complexType name="VederlagHandelsomkostningerType">
+    <sequence>
+      <element name="TinglysningsAfgiftSkoedeSaelgerAndelTekst" type="strings:StringMin2Max10K" />
+      <element name="UdstedelseSkoedeSaelgerAndelTekst" type="strings:StringMin2Max10K" />
+      <element name="ReguleringOgRefusionSaelgerAndelTekst" type="strings:StringMin2Max10K" />
+      <element name="BerigtigelsesomkostningerSaelgerAndelTekst" type="strings:StringMin2Max10K" />
+    </sequence>
+  </complexType>
+</schema>

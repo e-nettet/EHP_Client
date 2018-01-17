@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="eFPISoapFault" type="tns:eFPISoapFaultType" />
+  <complexType name="eFPISoapFaultType">
+    <sequence>
+      <element name="faultcode" type="QName" />
+      <element name="faultstring" type="string" />
+      <element minOccurs="0" name="faultactor" type="anyURI" />
+      <element minOccurs="0" name="detail" type="anyType" />
+    </sequence>
+  </complexType>
+</schema>

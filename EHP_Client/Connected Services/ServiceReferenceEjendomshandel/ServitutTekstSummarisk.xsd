@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ServitutTekstSummarisk" type="string">
+    <annotation>
+      <documentation>Summarisk udgave af servituttekst. Der returneres kun overskrift fra ServitutTekst. De samme regler gaelder hvis der i e-TL er gemt i FraseIdentifikator, som indeholder overskrift og afsnit. Hvis der ikke er angivet overskrift optraeder elementet ikke.</documentation>
+    </annotation>
+  </element>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/Anmaerkning.xsd" />
+  <element name="AnmaerkningSamling" type="eakt:AnmaerkningSamlingType">
+    <annotation>
+      <documentation>Samling af anmaerkninger. Det kan vaere anmaerkninger om servitutter og haeftelser angivet ved nummer. Anmaerkninger vedroerer altid respekter. Mangler der i en anmeldelse respekt for en eller flere haeftelser eller servitutter, giver sagsbehandlingen anledning til anmaerkninger herom. Anmaerkning for servitutter indeholder  kode for yderligere oplysninger om servitutten.
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="AnmaerkningSamlingType">
+    <sequence>
+      <element maxOccurs="unbounded" ref="eakt:Anmaerkning" />
+    </sequence>
+  </complexType>
+</schema>

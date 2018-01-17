@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" xmlns:delid="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DeltagerID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" />
+  <element name="RolleOgIndehaver" type="tns:RolleOgIndehaverType" />
+  <complexType name="RolleOgIndehaverType">
+    <sequence>
+      <element name="RolleAngivelse" type="rolid:RolleIDType">
+        <annotation>
+          <documentation>Angivelse af proces-rolle Enum: [rollerne]</documentation>
+        </annotation>
+      </element>
+      <element name="RolleIndehaver" type="delid:DeltagerIDType">
+        <annotation>
+          <documentation>Angivelse af indehaveren af rollen</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

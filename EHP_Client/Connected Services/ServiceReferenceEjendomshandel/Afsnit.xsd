@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Afsnit" type="model:AfsnitType">
+    <annotation>
+      <documentation>Et afsnit tekst er en streng. Der gaelder foelgende regler:<ul xmlns="http://www.w3.org/2001/XMLSchema"><li>Strengen maa ikke vaere tom</li><li>Hoejst 4.000 karakterer - ellers skal der laves flere afsnit</li><li>Maa ikke starte eller slutte med en blank karakter</li><li>Maa ikke indeholde tabs, CR/LF og tilsvarende</li><li>Maa hoejst indholde to blanke karakterer i traek</li><li>Maa kun indholde foelgende unicode karakterklasser:
+                      <ul><li>Bogstaver (L - All Letters)</li><li>Ikke-luftige accenter (Mn Marks - nonspacing)</li><li>Arabertal (0-9)</li><li>Bogstaver (P - All Punctuation)</li><li>Symbols (S - All Symbols)</li></ul></li></ul></documentation>
+    </annotation>
+  </element>
+  <simpleType name="AfsnitType">
+    <restriction base="string">
+      <minLength value="1" />
+      <maxLength value="4000" />
+    </restriction>
+  </simpleType>
+</schema>

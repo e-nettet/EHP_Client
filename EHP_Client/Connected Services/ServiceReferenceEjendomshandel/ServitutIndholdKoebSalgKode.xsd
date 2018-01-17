@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ServitutIndholdKoebSalgKode" type="model:ServitutIndholdKoebSalgKodeType">
+    <annotation>
+      <documentation>Angiver en kode for indholdet af et afsnit om koeb og salg i en servitut.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="ServitutIndholdKoebSalgKodeType">
+    <restriction base="string">
+      <enumeration value="andet" />
+      <enumeration value="forkoebsret" />
+      <enumeration value="salgsforhold" />
+      <enumeration value="tilbagekoebsretPligtHjemfaldspligt" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjerudgiftKode_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjerudgiftKode_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="EjerudgiftKode" type="tns:EjerudgiftKodeType" />
+  <simpleType name="EjerudgiftKodeType">
+    <restriction base="string">
+      <enumeration value="aconto_faellesudgifter_ejerforening" />
+      <enumeration value="grundejerforeningkontingent" />
+      <enumeration value="renovation" />
+      <enumeration value="faellesantenne" />
+      <enumeration value="rottebekaempelse" />
+      <enumeration value="skorstensfejer" />
+      <enumeration value="andet" />
+    </restriction>
+  </simpleType>
+</schema>

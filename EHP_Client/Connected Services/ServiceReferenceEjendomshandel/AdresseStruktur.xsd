@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dkcc="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/03/15/" xmlns:snapshot="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" xmlns:xkom="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2005/03/15/dkcc.xsd" namespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/03/15/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/xkom.xsd" namespace="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" />
+  <element name="AdresseStruktur" type="snapshot:AdresseStrukturType">
+    <annotation>
+      <documentation>
+         Indeholder oplysninger for en adresse baseret paa koder.
+         Det kan fx vaere i en RolleStrukur (ogsaa fra snapshots), hvor adressen paa en person eller virksomhed er angivet
+         som standard OIO-adresse med vejkode/kommunekode (AddressSpecific), eller det kan vaere fra en adresseangivelse
+         paa en ejendom i selve anmeldelsen.
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="AdresseStrukturType">
+    <sequence>
+      <element ref="xkom:AddressSpecific" />
+      <element ref="dkcc:StreetName" />
+      <element ref="dkcc:PostCodeIdentifier" />
+      <element ref="dkcc:DistrictName" />
+      <element minOccurs="0" ref="dkcc:DistrictSubdivisionIdentifier" />
+    </sequence>
+  </complexType>
+</schema>

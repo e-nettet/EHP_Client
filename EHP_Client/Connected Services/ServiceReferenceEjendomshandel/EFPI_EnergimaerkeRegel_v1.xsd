@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_EnergimaerkeRegel_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EnergimaerkeRegel_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="EnergimaerkeRegel" type="ehp:EnergimaerkeRegelType" />
+  <complexType name="EnergimaerkeRegelType">
+    <sequence>
+      <element name="OmfattetAfEnergibesparelseslovIndikator" type="boolean" />
+      <element name="EnergimaerkepligtIndikator" type="boolean" />
+      <element name="ForeliggerGyldigEnergimaerkningIndikator" type="boolean" />
+    </sequence>
+  </complexType>
+</schema>

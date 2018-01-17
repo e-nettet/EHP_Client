@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/EjendomNoteringTekst.xsd" />
+  <element name="EjendomNoteringTekstSamling" type="eakt:EjendomNoteringTekstSamlingType">
+    <annotation>
+      <documentation>Samling af noteringer paa ejendommen</documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomNoteringTekstSamlingType">
+    <sequence>
+      <element maxOccurs="unbounded" ref="eakt:EjendomNoteringTekst" />
+    </sequence>
+  </complexType>
+</schema>

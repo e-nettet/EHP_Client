@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SimpelPart_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" />
+  <element name="GarantiHaendelseKontekst" type="tns:GarantiHaendelseKontekstType" />
+  <complexType name="GarantiHaendelseKontekstType">
+    <sequence>
+      <element name="ProcesType" type="basis:eFPIProcesTypeType" />
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element name="GarantiStiller" type="basis:AktoerIDType" />
+      <element name="GarantiStillerNavn" type="strings:StringMin2Max256" />
+      <element name="GarantiModtagerPI" type="basis:AktoerIDType" />
+      <element name="GarantiModtagerPINavn" type="strings:StringMin2Max256" />
+      <element name="EgenRolle" type="rolid:RolleIDType" />
+      <element minOccurs="0" name="EgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" name="WebReference" type="anyURI" />
+      <element minOccurs="0" maxOccurs="unbounded" name="KoeberSamling" type="part:SimpelPartType" />
+      <element minOccurs="0" maxOccurs="unbounded" name="SaelgerSamling" type="part:SimpelPartType" />
+    </sequence>
+  </complexType>
+</schema>

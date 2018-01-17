@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dkcc="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/" xmlns:vd="http://rep.oio.dk/vd.dk/xml/schemas/2004/02/16/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/vd.dk/xml/schemas/2004/02/16/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/dkcc.xsd" namespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/" />
+  <complexType name="PersonNameType">
+    <annotation>
+      <documentation>Type for names of persons.</documentation>
+    </annotation>
+    <sequence>
+      <element ref="dkcc:PersonGivenName" />
+      <element minOccurs="0" ref="dkcc:PersonMiddleName" />
+      <element ref="dkcc:PersonSurnameName" />
+    </sequence>
+  </complexType>
+  <element name="PersonName" type="vd:PersonNameType">
+    <annotation>
+      <documentation>Person name including given name, an optional middle name and a surname.</documentation>
+    </annotation>
+  </element>
+</schema>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dbv="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumenteretBeloebValuta_v1" xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagTilvalgteYdelserSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagTilvalgteYdelserSamling_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumenteretBeloebValuta_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumenteretBeloebValuta_v1" />
+  <element name="VederlagTilvalgteYdelserSamling" type="ehp:VederlagTilvalgteYdelserSamlingType" />
+  <complexType name="VederlagTilvalgteYdelserSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="VederlagTilvalgteYdelser" type="dbv:DokumenteretBeloebValutaType" />
+    </sequence>
+  </complexType>
+</schema>

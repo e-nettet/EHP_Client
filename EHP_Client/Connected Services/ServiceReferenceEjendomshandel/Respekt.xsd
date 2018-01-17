@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/RespektHaeftelseFremtidig.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/RettighedIdentifikator.xsd" />
+  <element name="Respekt" type="model:RespektType">
+    <annotation>
+      <documentation>Angivelse af respekt.</documentation>
+    </annotation>
+  </element>
+  <complexType name="RespektType">
+    <choice>
+      <element ref="model:RettighedIdentifikator">
+        <annotation>
+          <documentation>Angiver specifik rettighed der respekteres.</documentation>
+        </annotation>
+      </element>
+      <element name="RespektServitutDato" type="date">
+        <annotation>
+          <documentation>Angiver respekt af servitut foer og inklusive den angivne dato, hvilket vil sige, at servitutter lyst
+            efter den angivne dato ikke vil vaere respekteret. Dette er kun relevant for ejendomme.
+          </documentation>
+        </annotation>
+      </element>
+      <element ref="model:RespektHaeftelseFremtidig">
+        <annotation>
+          <documentation>Angiver respekt af endnu ikke tinglyst haeftelse.</documentation>
+        </annotation>
+      </element>
+    </choice>
+  </complexType>
+</schema>

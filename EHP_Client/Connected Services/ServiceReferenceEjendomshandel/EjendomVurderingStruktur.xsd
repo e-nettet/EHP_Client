@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:snapshot="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" xmlns:svur="http://rep.oio.dk/svur.dk/xml/schemas/2006/04/25/" xmlns:bbr="http://rep.oio.dk/bbr.dk/xml/schemas/2005/12/15/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/bbr.dk/xml/schemas/2005/12/15/bbr.xsd" namespace="http://rep.oio.dk/bbr.dk/xml/schemas/2005/12/15/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/svur.dk/xml/schemas/2006/04/25/svur.xsd" namespace="http://rep.oio.dk/svur.dk/xml/schemas/2006/04/25/" />
+  <element name="EjendomVurderingStruktur" type="snapshot:EjendomVurderingStrukturType">
+    <annotation>
+      <documentation>Indeholder information fra LIFA om seneste ejendomsvurdering eller regulering af ejendomvurderingen. Der informeres om ejendomsvaerdien, grunden vaerdi af den samlede ejendom og dato for vurdering eller regulering.</documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomVurderingStrukturType">
+    <sequence>
+      <element ref="bbr:RealPropertyStructure">
+        <annotation>
+          <documentation>Indeholder det kommunale ejendomsnummer. Der kan vaere flere numre til e-TL ejendom, fordi ESR og Tinglysningsretten ikke har samme ejendomsbegreb. En ejendomsvurdering haenger dog sammen med et bbr nummer.
+			</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="DelvistBeroertESREjendomIndikator" type="boolean">
+        <annotation>
+          <documentation>Da ESR og Tinglysningsretten ikke har samme ejendomsbegreb er der ikke altid 100% match mellem en ejendom i e-TL og ESR. Denne indikator er false, hvis det positivt kan afgoeres, at der IKKE er 100% match mellem EjendomIdentifikator og bbr:RealPropertyIdentifier. Denne indikator er true, hvis det positivt kan afgoeres, at der er 100% match mellem EjendomIdentifikator og bbr:RealPropertyIdentifier. Denne indikator udelades, hvis det ikke er muligt at afgoere graden af match.
+					</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="EjendomVaerdi" type="decimal">
+        <annotation>
+          <documentation>Den samlede ejendomsvaerdi fra LIFA i hele kroner. 
+					</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="svur:ParcelLandValueAssessmentCalculationAmount">
+        <annotation>
+          <documentation>Den beregnede grundvaerdi fra LIFA i hele kroner. Grundvaerdien er en del af den samlede ejendomsvaerdi.
+					</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="svur:AssessmentChangedDate">
+        <annotation>
+          <documentation>Dato for seneste ejendomsvurdering eller regulering af ejendomsvaerdien.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

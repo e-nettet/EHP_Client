@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="EkspeditionstypeRealkreditpantebrevOpretIdentifikator" type="model:EkspeditionstypeRealkreditpantebrevOpretIdentifikatorType">
+    <annotation>
+      <documentation>Angiver de mulige ekspeditionstyper i RealkreditPantebrevOpret.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="EkspeditionstypeRealkreditpantebrevOpretIdentifikatorType">
+    <restriction base="nonNegativeInteger">
+      <enumeration value="23">
+        <annotation>
+          <documentation>RealkreditPantebrev</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="211">
+        <annotation>
+          <documentation>SDROPantebrev</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="212">
+        <annotation>
+          <documentation>SDOPantebrev</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

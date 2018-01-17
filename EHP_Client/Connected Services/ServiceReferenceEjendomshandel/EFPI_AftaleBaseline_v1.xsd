@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dokumentsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelseSamling_v1" xmlns:reference="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentReference_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftaleBaseline_v1" xmlns:samling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftaleElementSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftaleBaseline_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentReference_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentReference_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AftaleElementSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftaleElementSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelseSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelseSamling_v1" />
+  <element name="AftaleBaseline" type="tns:AftaleBaselineType" />
+  <complexType name="AftaleBaselineType">
+    <sequence>
+      <element name="Tidsstempel" type="dateTime" />
+      <element name="NoegleDataVersion" type="integer" />
+      <element minOccurs="0" ref="reference:DokumentReference" />
+      <element name="AftaleElementSamling" type="dokumentsamling:DokumentMetaBeskrivelseSamlingType" />
+    </sequence>
+  </complexType>
+</schema>

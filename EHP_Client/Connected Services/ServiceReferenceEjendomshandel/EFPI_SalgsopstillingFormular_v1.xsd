@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:oekonomi="http://efpi.dk/ehp2011/xml/schemas/EFPI_Oekonomi_v1" xmlns:sikkerhed="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForhoejelseAfSikkerhedTilEF_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingFormular_v1" xmlns:ejendomareal="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomAreal_v1" xmlns:forsikringer="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForsikringSamling_v1" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ejendomsskat="http://efpi.dk/ehp2011/xml/schemas/EFPI_Ejendomsskat_v1" xmlns:tilstandsrapport="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstandsrapport_v1" xmlns:ejendomtype="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomType_v1" xmlns:foto="http://efpi.dk/ehp2011/xml/schemas/EFPI_FotoSamling_v1" xmlns:finansiering="http://efpi.dk/ehp2011/xml/schemas/EFPI_Finansiering_v1" xmlns:udgiftsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AnvendelsesudgiftSamling_v1" xmlns:energimaerke="http://efpi.dk/ehp2011/xml/schemas/EFPI_Energimaerke_v1" xmlns:ns1="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomArealSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingFormular_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FotoSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FotoSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AnvendelsesudgiftSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AnvendelsesudgiftSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Tilstandsrapport_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstandsrapport_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Energimaerke_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Energimaerke_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Oekonomi_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Oekonomi_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ForsikringSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForsikringSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Finansiering_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Finansiering_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ForhoejelseAfSikkerhedTilEF_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ForhoejelseAfSikkerhedTilEF_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_EjendomType_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomType_v1" />
+  <element name="SalgsopstillingFormular" type="tns:SalgsopstillingFormularType" />
+  <complexType name="SalgsopstillingFormularType">
+    <sequence>
+      <element name="Dato" type="date" />
+      <element name="Ejendomsbeskrivelse" type="model:TekstGruppeType" />
+      <element ref="ejendomtype:EjendomType" />
+      <element ref="foto:FotoSamling" />
+      <element name="Tilbehoer" type="model:TekstGruppeType" />
+      <element ref="udgiftsamling:AnvendelsesudgiftSamling" />
+      <element minOccurs="0" ref="tilstandsrapport:Tilstandsrapport" />
+      <element minOccurs="0" ref="energimaerke:Energimaerke" />
+      <element name="OevrigeForhold" type="model:TekstGruppeType" />
+      <element ref="oekonomi:Oekonomi" />
+      <element ref="forsikringer:ForsikringSamling" />
+      <element ref="sikkerhed:ForhoejelseAfSikkerhedTilEF" />
+    </sequence>
+  </complexType>
+</schema>

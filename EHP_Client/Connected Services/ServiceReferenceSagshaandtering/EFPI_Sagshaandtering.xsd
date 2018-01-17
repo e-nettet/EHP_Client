@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:e-net="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/sagshaandtering/xml/schemas/EFPI_Sagshaandtering" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/sagshaandtering/xml/schemas/EFPI_Sagshaandtering" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../e-nettet.dk/xml/schemas/2007/07/01/e-nettet.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <element name="OpretOgStartSag" type="tns:OpretOgStartSagType" />
+  <element name="OpretOgStartSagResponse" type="tns:OpretOgStartSagResponseType" />
+  <element name="AfbrydSag" type="tns:AfbrydSagType" />
+  <element name="AfbrydSagResponse" type="tns:AfbrydSagResponseType" />
+  <element name="AfslutSag" type="tns:AfslutSagType" />
+  <element name="AfslutSagResponse" type="tns:AfslutSagResponseType" />
+  <element name="AfbrydProces" type="tns:AfbrydProcesType" />
+  <element name="AfbrydProcesResponse" type="tns:AfbrydProcesResponseType" />
+  <element name="DokumentAnvendesIkke" type="tns:DokumentAnvendesIkkeType" />
+  <element name="DokumentAnvendesIkkeResponse" type="tns:DokumentAnvendesIkkeResponseType" />
+  <element name="RapporterFejl" type="tns:RapporterFejlType" />
+  <element name="RapporterFejlResponse" type="tns:RapporterFejlResponseType" />
+  <element name="HentSag" type="tns:HentSagType" />
+  <element name="HentSagResponse" type="tns:HentSagResponseType" />
+  <element name="HentSagsHistorik" type="tns:HentSagsHistorikType" />
+  <element name="HentSagsHistorikResponse" type="tns:HentSagsHistorikResponseType" />
+  <element name="HentProces" type="tns:HentProcesType" />
+  <element name="HentProcesResponse" type="tns:HentProcesResponseType" />
+  <element name="ListAktiveSager" type="tns:ListAktiveSagerType" />
+  <element name="ListAktiveSagerResponse" type="tns:ListAktiveSagerResponseType" />
+  <element name="ListAktiveProcesser" type="tns:ListAktiveProcesserType" />
+  <element name="ListAktiveProcesserResponse" type="tns:ListAktiveProcesserResponseType" />
+  <element name="error" type="basis:eFPIDetailsErrorType" />
+  <element name="ModtagNotifikation" type="tns:ModtagNotifikationType" />
+  <element name="ModtagNotifikationResponse" type="tns:ModtagNotifikationResponseType" />
+  <element name="ModtagFejl" type="tns:ModtagFejlType" />
+  <element name="ModtagFejlResponse" type="tns:ModtagFejlResponseType" />
+  <complexType name="ModtagNotifikationType">
+    <sequence>
+      <element name="Notifikation" type="basis:NotifikationType" />
+      <element name="NotifikationsReference" type="anyURI" />
+      <element minOccurs="0" name="AktoersEgenNotifikationsReference" type="string" />
+      <element minOccurs="0" name="NotifikationsBeskrivelse" type="string" />
+      <element name="TidsStempel" type="dateTime" />
+      <element name="AktoerID" type="basis:AktoerIDType" />
+      <choice>
+        <element ref="basis:Sagsdata" />
+        <element name="NotifikationsData">
+          <complexType>
+            <sequence>
+              <element minOccurs="0" ref="basis:ProcesdataSamling" />
+              <element minOccurs="0" ref="basis:eFPIDokumentSamling" />
+            </sequence>
+          </complexType>
+        </element>
+      </choice>
+    </sequence>
+  </complexType>
+  <complexType name="ModtagNotifikationResponseType">
+    <sequence />
+  </complexType>
+  <complexType name="ModtagFejlType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element ref="basis:AktoerID" />
+      <choice>
+        <sequence>
+          <element ref="basis:eFPISagsID" />
+          <element minOccurs="0" name="AktoersEgenSagsReference" type="basis:SagsReferenceType" />
+        </sequence>
+        <sequence>
+          <element ref="basis:eFPIprocesID" />
+          <element minOccurs="0" name="AktoersEgenProcesReference" type="basis:ProcesReferenceType" />
+        </sequence>
+        <sequence>
+          <element ref="basis:DokumentID" />
+        </sequence>
+      </choice>
+      <element ref="basis:eFPIfejl" />
+    </sequence>
+  </complexType>
+  <complexType name="ModtagFejlResponseType">
+    <sequence />
+  </complexType>
+  <complexType name="OpretOgStartSagType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPISagsType" />
+      <element minOccurs="0" name="AktoersEgenSagsReference" type="basis:SagsReferenceType" />
+    </sequence>
+  </complexType>
+  <complexType name="OpretOgStartSagResponseType">
+    <sequence>
+      <element ref="basis:eFPISagsID" />
+    </sequence>
+  </complexType>
+  <complexType name="AfbrydSagType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPISagsID" />
+    </sequence>
+  </complexType>
+  <complexType name="AfbrydSagResponseType">
+    <sequence />
+  </complexType>
+  <complexType name="AfslutSagType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPISagsID" />
+    </sequence>
+  </complexType>
+  <complexType name="AfslutSagResponseType">
+    <sequence />
+  </complexType>
+  <complexType name="AfbrydProcesType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPIprocesID" />
+    </sequence>
+  </complexType>
+  <complexType name="AfbrydProcesResponseType">
+    <sequence />
+  </complexType>
+  <complexType name="DokumentAnvendesIkkeType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:DokumentID" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentAnvendesIkkeResponseType">
+    <sequence />
+  </complexType>
+  <complexType name="RapporterFejlType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element ref="basis:AktoerID" />
+      <choice>
+        <element ref="basis:eFPISagsID" />
+        <element ref="basis:eFPIprocesID" />
+        <element ref="basis:DokumentID" />
+      </choice>
+      <element ref="basis:eFPIfejl" />
+    </sequence>
+  </complexType>
+  <complexType name="RapporterFejlResponseType">
+    <sequence />
+  </complexType>
+  <complexType name="HentSagType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPISagsID" />
+    </sequence>
+  </complexType>
+  <complexType name="HentSagResponseType">
+    <sequence>
+      <element ref="basis:Sagsdata" />
+    </sequence>
+  </complexType>
+  <complexType name="HentSagsHistorikType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPISagsID" />
+    </sequence>
+  </complexType>
+  <complexType name="HentSagsHistorikResponseType">
+    <sequence>
+      <element ref="basis:SagsHistorik" />
+    </sequence>
+  </complexType>
+  <complexType name="HentProcesType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPIprocesID" />
+    </sequence>
+  </complexType>
+  <complexType name="HentProcesResponseType">
+    <sequence>
+      <element ref="basis:Procesdata" />
+    </sequence>
+  </complexType>
+  <complexType name="ListAktiveSagerType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+    </sequence>
+  </complexType>
+  <complexType name="ListAktiveSagerResponseType">
+    <sequence>
+      <element ref="basis:eFPISagsIDSamling" />
+    </sequence>
+  </complexType>
+  <complexType name="ListAktiveProcesserType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+    </sequence>
+  </complexType>
+  <complexType name="ListAktiveProcesserResponseType">
+    <sequence>
+      <element ref="basis:eFPIprocesIDSamling" />
+    </sequence>
+  </complexType>
+</schema>

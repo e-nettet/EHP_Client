@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dbv="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumenteretBeloebValuta_v1" xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_Ejerskiftelaan_v1" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:kb="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontantvaerdiBeloeb_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Ejerskiftelaan_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumenteretBeloebValuta_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumenteretBeloebValuta_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_KontantvaerdiBeloeb_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontantvaerdiBeloeb_v1" />
+  <element name="Ejerskiftelaan" type="ehp:EjerskiftelaanType" />
+  <complexType name="EjerskiftelaanType">
+    <sequence>
+      <element name="Obligationshovedstol" type="model:BeloebValutaType" />
+      <element name="Kurs" type="double" />
+      <element name="Kursvaerdi" type="model:BeloebValutaType" />
+      <element name="Tinglysningsafgift" type="model:BeloebValutaType" />
+      <element name="Stiftelsesprovision" type="model:BeloebValutaType" />
+      <element name="Kurtage" type="model:BeloebValutaType" />
+      <element name="Laanesagsgebyr" type="model:BeloebValutaType" />
+      <element name="Laanehjemtagelse" type="model:BeloebValutaType" />
+      <element name="Oevrige" type="dbv:DokumenteretBeloebValutaType" />
+      <element ref="kb:KontantvaerdiBeloeb" />
+    </sequence>
+  </complexType>
+</schema>

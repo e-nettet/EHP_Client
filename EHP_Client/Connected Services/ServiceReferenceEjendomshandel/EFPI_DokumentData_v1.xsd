@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/service/message/elektroniskakt/1/" xmlns:fristforlaengelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentData_v1" xmlns:fristforlaengelsesvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" xmlns:koebsaftale="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1" xmlns:salgsprovenu="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsprovenuDokument_v1" xmlns:garantidokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" xmlns:formidlingsaftale="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" xmlns:salgsopstilling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentData_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsprovenuDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsprovenuDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/service/message/elektroniskakt/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/service/message/elektroniskakt/1/" />
+  <element name="DokumentData" type="tns:DokumentDataType" />
+  <complexType name="DokumentDataType">
+    <choice>
+      <element name="binaer" type="base64Binary" />
+      <element name="FormidlingsaftalensDokument" type="formidlingsaftale:FormidlingsaftaleDokumentType" />
+      <element name="KoebsaftalensDokument" type="koebsaftale:KoebsaftaleDokumentType" />
+      <element ref="fristforlaengelse:FristforlaengelsesAnmodning" />
+      <element ref="fristforlaengelsesvar:FristforlaengelsesAnmodningSvar" />
+      <element ref="garantidokument:GarantiForRestkoebesumSigneret" />
+      <element ref="salgsopstilling:SalgsopstillingDokument" />
+      <element ref="salgsprovenu:SalgsprovenuDokument" />
+      <element name="Tingbogsattest" type="eakt:EjendomSummariskHentResultatType" />
+    </choice>
+  </complexType>
+</schema>

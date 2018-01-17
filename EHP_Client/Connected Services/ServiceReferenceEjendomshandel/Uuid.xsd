@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="UUID" type="model:UUIDType">
+    <annotation>
+      <documentation>ISO UUDI - se http://en.wikipedia.org/wiki/Uuid. A UUID is a 16-byte (128-bit) number. The number of
+        theoretically possible UUIDs is therefore 216*8 = 2128 = 25616 or about 3.4 × 1038. This means that 1 trillion UUIDs would
+        have to be created every nanosecond for 10 billion years to exhaust the number of UUIDs. In its canonical form, a UUID
+        consists of 32 hexadecimal digits, displayed in 5 groups separated by hyphens, in the form 8-4-4-4-12 for a total of 36
+        characters. For example: 550e8400-e29b-41d4-a716-446655440000
+      </documentation>
+    </annotation>
+  </element>
+  <simpleType name="UUIDType">
+    <restriction base="string">
+      <pattern value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+    </restriction>
+  </simpleType>
+</schema>

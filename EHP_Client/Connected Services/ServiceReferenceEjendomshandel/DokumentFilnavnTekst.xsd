@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DokumentFilnavnTekst" type="eakt:DokumentFilnavnTekstType">
+    <annotation>
+      <documentation>Dokumentets filnavn.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="DokumentFilnavnTekstType">
+    <restriction base="string" />
+  </simpleType>
+</schema>

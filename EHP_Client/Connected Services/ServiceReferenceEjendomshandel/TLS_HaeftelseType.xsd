@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tls="http://rep.oio.dk/tinglysning.dk/xml.schema/2008.01.01/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/xml.schema/2008.01.01/" version="1.0" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="HaeftelseType" type="tls:HaeftelseTypeType">
+    <annotation>
+      <documentation>Type for haeftelse.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="HaeftelseTypeType">
+    <restriction base="string">
+      <enumeration value="arrest" />
+      <enumeration value="udlaeg" />
+      <enumeration value="ejendomsforbehold" />
+      <enumeration value="ejerpantebrev" />
+      <enumeration value="hoestpantebrev" />
+      <enumeration value="privat_indekspantebrev" />
+      <enumeration value="privat_pantebrev" />
+      <enumeration value="realkreditpantebrev" />
+      <enumeration value="skadesloesbrev" />
+    </restriction>
+  </simpleType>
+</schema>

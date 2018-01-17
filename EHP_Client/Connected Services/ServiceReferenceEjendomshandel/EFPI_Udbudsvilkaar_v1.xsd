@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_Udbudsvilkaar_v1" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:udbetalingbeloeb="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdbetalingBeloeb_v1" xmlns:kontantprisbeloeb="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontantPrisBeloeb_v1" xmlns:finansieretprisbeloeb="http://efpi.dk/ehp2011/xml/schemas/EFPI_FinansieretPrisBeloeb_v1" xmlns:nettoudgiftpermaaned="http://efpi.dk/ehp2011/xml/schemas/EFPI_NettoUdgiftPerMaaned_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Udbudsvilkaar_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_KontantPrisBeloeb_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontantPrisBeloeb_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FinansieretPrisBeloeb_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FinansieretPrisBeloeb_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_UdbetalingBeloeb_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdbetalingBeloeb_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_NettoUdgiftPerMaaned_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_NettoUdgiftPerMaaned_v1" />
+  <element name="Udbudsvilkaar" type="ehp:UdbudsvilkaarType" />
+  <complexType name="UdbudsvilkaarType">
+    <sequence>
+      <element ref="kontantprisbeloeb:KontantPrisBeloeb" />
+      <element ref="finansieretprisbeloeb:FinansieretPrisBeloeb" />
+      <element ref="udbetalingbeloeb:UdbetalingBeloeb" />
+      <element name="BruttoUdgiftPerMaanedBeloeb" type="model:BeloebValutaType" />
+      <element ref="nettoudgiftpermaaned:NettoUdgiftPerMaaned" />
+    </sequence>
+  </complexType>
+</schema>

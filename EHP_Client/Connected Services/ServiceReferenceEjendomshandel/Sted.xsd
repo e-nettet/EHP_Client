@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://e-nettet.dk/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://e-nettet.dk/xml/schemas/2007/07/01/" xml:lang="DA" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/FeltTyper.xsd" />
+  <xs:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/BBR.xsd" />
+  <xs:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/Matopl.xsd" />
+  <xs:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/Ejdmbm.xsd" />
+  <xs:element name="STED" type="tns:STED_Type" />
+  <xs:complexType name="STED_Type">
+    <xs:sequence>
+      <xs:element name="Vejnavn" type="tns:AN40" />
+      <xs:element minOccurs="0" name="Vej_nr" type="tns:AN6" />
+      <xs:element minOccurs="0" name="Etage" type="tns:AN4" />
+      <xs:element minOccurs="0" name="Lejlighedsnummer" type="tns:AN6" />
+      <xs:element name="Bynavn" type="tns:AN35" />
+      <xs:element minOccurs="0" name="Postnummer" type="tns:AN9" />
+      <xs:element name="Land" type="tns:AN3" />
+      <xs:element minOccurs="0" maxOccurs="99" ref="tns:EJDMBM" />
+      <xs:element ref="tns:BBR" />
+      <xs:element minOccurs="1" maxOccurs="unbounded" ref="tns:MATOPL" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

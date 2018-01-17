@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:bbr="http://rep.oio.dk/bbr.dk/xml/schemas/2005/03/11/" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/bbr.dk/xml/schemas/2005/03/11/" version="1.0" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/cpr.xsd" namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/bbr.dk/xml/schemas/2005/03/11/BBR_MunicipalRealPropertyIdentifier.xsd" />
+  <element name="RealPropertyIdentifier" type="bbr:RealPropertyIdentifierType">
+    <annotation>
+      <documentation>A unique key to the property in e.g. ESR stamregister (Real property base register) and Vurderingssystemet (Real property assessment system). The key consists of  two key fields: Municipality code and real property number.</documentation>
+    </annotation>
+  </element>
+  <complexType name="RealPropertyIdentifierType">
+    <sequence>
+      <element ref="cpr:MunicipalityCode" />
+      <element ref="bbr:MunicipalRealPropertyIdentifier" />
+    </sequence>
+  </complexType>
+</schema>

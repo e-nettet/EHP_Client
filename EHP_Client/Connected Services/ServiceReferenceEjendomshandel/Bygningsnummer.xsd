@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Bygningsnummer" type="model:BygningsnummerType">
+    <annotation>
+      <documentation>Entydigt nummer der repraesenterer en bygning/bygninger som er en del af en ejendom. Nummeret kan bestaa af baade tal og bogstaver.
+		   Der gaelder foelgende regler:
+		   <ul xmlns="http://www.w3.org/2001/XMLSchema"><li>Strengen maa ikke vaere tom</li><li>Hoejst 5 karakterer</li><li>Maa ikke indeholde foranstillet nuller</li><li>Maa indeholde 0-9, A-aa og -(bindestreg)</li></ul></documentation>
+    </annotation>
+  </element>
+  <simpleType name="BygningsnummerType">
+    <restriction base="string">
+      <minLength value="1" />
+      <maxLength value="5" />
+      <pattern value="[1-9A-Zaeoeaa]([0-9A-Zaeoeaa\-])*" />
+    </restriction>
+  </simpleType>
+</schema>

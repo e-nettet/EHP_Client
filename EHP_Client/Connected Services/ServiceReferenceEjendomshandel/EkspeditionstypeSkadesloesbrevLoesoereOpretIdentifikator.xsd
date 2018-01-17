@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="EkspeditionstypeSkadesloesbrevLoesoereOpretIdentifikator" type="model:EkspeditionstypeSkadesloesbrevLoesoereOpretIdentifikatorType">
+    <annotation>
+      <documentation>Angiver ekspeditionstypen i SkadesloesbrevLoesoereOpret.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="EkspeditionstypeSkadesloesbrevLoesoereOpretIdentifikatorType">
+    <restriction base="nonNegativeInteger">
+      <enumeration value="27">
+        <annotation>
+          <documentation>Skadesloesbrev - loesoere</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="29">
+        <annotation>
+          <documentation>Skadeloesbrev - virksomhedspant</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="30">
+        <annotation>
+          <documentation>skadeloesbrev - fordringspant</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

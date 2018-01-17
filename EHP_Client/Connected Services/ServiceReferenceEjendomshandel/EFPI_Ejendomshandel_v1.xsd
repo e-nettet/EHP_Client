@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:attachmentbinarydatasamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryDataSamling_v1" xmlns:kontaktoplysninger="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1" xmlns:salgsopstillingdokumentsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokumentSamling_v1" xmlns:haendelsemedkontekstsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" xmlns:internalSorting="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" xmlns:tstt="http://efpi.dk/ehp2011/xml/schemas/EFPI_TimerServiceTaskType_v1" xmlns:ejendomshandlensData="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomshandlensData_v1" xmlns:processoeg="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesSoeg_v1" xmlns:tls="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" xmlns:udestaaendedeponering="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeDeponering_v1" xmlns:formidlingsaftaledokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" xmlns:dokumentkat="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentKategori_v1" xmlns:salgsopsoeg="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" xmlns:beskrivelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Beskrivelse_v1" xmlns:tilstand="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" xmlns:dokumentdata="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentData_v1" xmlns:tmt="http://efpi.dk/ehp2011/xml/schemas/EFPI_TomtElement_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" xmlns:garantihaendelsekontekst="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1" xmlns:rolids="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleIDSamling_v1" xmlns:loebenummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Loebenummer_v1" xmlns:haendelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xmlns:udestaaendestatus="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeStatus_v1" xmlns:rolins="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" xmlns:koebsaftaledokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1" xmlns:haendelsekontekst="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1" xmlns:fristforlaengelsesanmodningsvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" xmlns:delid="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xmlns:kontonummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" xmlns:dokumentmetabeskrivelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" xmlns:opsummering="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" xmlns:diff="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" xmlns:rekvirentelementsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_RekvirentElementSamling_v1" xmlns:sagsnummeridentifikator="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" xmlns:salgsopstilling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:rolleogindehaver="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" xmlns:fristforlaengelsesanmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" xmlns:haendelsesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" xmlns:attachmentbinarydata="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" xmlns:tns="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xmlns:procestabeldatasamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesTabelDataSamling_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/snapshot/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RekvirentElementSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RekvirentElementSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DeltagerID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Dokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Dokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentData_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentData_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TimerServiceTaskType_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TimerServiceTaskType_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleIDSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleIDSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TomtElement_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TomtElement_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_EjendomshandlensData_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomshandlensData_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_EHPOpsummering_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AttachmentBinaryDataSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryDataSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_UdestaaendeDeponering_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeDeponering_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Loebenummer_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Loebenummer_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Beskrivelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Beskrivelse_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Kontonummer_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Haendelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsopstillingDokumentSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokumentSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_UdestaaendeStatus_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeStatus_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentKategori_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentKategori_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Part_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ProcesSoeg_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesSoeg_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ProcesTabelDataSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesTabelDataSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../internalschemas/KolonneSortingsretning.xsd" namespace="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Tilstand_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_XMLDiffResult_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1" />
+  <element name="ArkivpakkeHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="ArkivpakkeHentRequest" type="tmt:TomtElementType" />
+  <element name="ArkivpakkeHentRequestV2" type="tmt:TomtElementType" />
+  <element name="ArkivpakkeHentResponse" type="tns:ArkivpakkeHentResponseType" />
+  <element name="DokumentgruppeDokumentHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="DokumentgruppeDokumentHentRequest" type="tns:DokumentgruppeDokumentHentRequestType" />
+  <element name="DokumentgruppeDokumentHentRequestV2" type="tns:DokumentgruppeDokumentHentRequestType" />
+  <element name="DokumentgruppeDokumentHentResponse" type="tns:DokumentgruppeDokumentHentResponseType" />
+  <element name="DokumentgruppeDokumentIlaegRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="DokumentgruppeDokumentIlaegRequest" type="tns:DokumentgruppeDokumentIlaegRequestType" />
+  <element name="DokumentgruppeDokumentIlaegResponse" type="tns:LoebenummerParmType" />
+  <element name="DokumentgruppeDokumentUgyldiggoerRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="DokumentgruppeDokumentUgyldiggoerRequest" type="tns:DokumentgruppeDokumentUgyldiggoerRequestType" />
+  <element name="DokumentgruppeDokumentUgyldiggoerResponse" type="tmt:TomtElementType" />
+  <element name="DokumentHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="DokumentHentRequest" type="tns:DokumentHentRequestType" />
+  <element name="DokumentHentRequestV2" type="tns:DokumentHentRequestType" />
+  <element name="DokumentHentResponse" type="tns:DokumentHentResponseType" />
+  <element name="DokumentIlaegRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="DokumentIlaegRequest" type="tns:DokumentIlaegRequestType" />
+  <element name="DokumentIlaegResponse" type="tns:DokumentIlaegResponseType" />
+  <element name="EjendomshandelOpsummeringHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="EjendomshandelOpsummeringHentRequest" type="tmt:TomtElementType" />
+  <element name="EjendomshandelOpsummeringHentResponse" type="tns:EjendomshandelOpsummeringHentResponseType" />
+  <element name="EjendomshandlensDataHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="EjendomshandlensDataHentRequest" type="tmt:TomtElementType" />
+  <element name="EjendomshandlensDataHentRequestV2" type="tmt:TomtElementType" />
+  <element name="EjendomshandlensDataHentResponse" type="tns:EjendomshandlensDataHentResponseType" />
+  <element name="EjendomsmaeglersDeponeringsKontoNrOpdaterRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="EjendomsmaeglersDeponeringsKontoNrOpdaterRequest" type="tns:EjendomsmaeglersDeponeringsKontoNrOpdaterRequestType" />
+  <element name="EjendomsmaeglersDeponeringsKontoNrOpdaterResponse" type="tmt:TomtElementType" />
+  <element name="FormidlingsaftaleBaselineHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="FormidlingsaftaleBaselineHentRequest" type="tns:FormidlingsaftaleBaselineHentRequestType" />
+  <element name="FormidlingsaftaleBaselineHentResponse" type="tns:FormidlingssaftaleBaselineHentResponseType" />
+  <element name="FormidlingsaftaleBaselineListeHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="FormidlingsaftaleBaselineListeHentRequest" type="tmt:TomtElementType" />
+  <element name="FormidlingsaftaleBaselineListeHentResponse" type="tns:FormidlingsaftaleBaselineListeHentResponseType" />
+  <element name="ForretningsdokumenterMetadataHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="ForretningsdokumenterMetadataHentRequest" type="tns:ForretningsdokumenterMetadataHentRequestType" />
+  <element name="ForretningsdokumenterMetadataHentResponse" type="tns:ForretningsdokumenterMetadataHentResponseType" />
+  <element name="ForretningsmaessigFejlMeldSendRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="ForretningsmaessigFejlMeldSendRequest" type="tns:ForretningsmaessigFejlMeldSendRequestType" />
+  <element name="ForretningsmaessigFejlMeldSendResponse" type="tmt:TomtElementType" />
+  <element name="ForretningsmaessigFejlmeldingHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="ForretningsmaessigFejlmeldingHentRequest" type="tns:ForretningsmaessigFejlmeldingHentRequestType" />
+  <element name="ForretningsmaessigFejlmeldingHentResponse" type="tns:ForretningsmaessigFejlmeldingHentResponseType" />
+  <element name="ForretningsmaessigHaendelseMeddelRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="ForretningsmaessigHaendelseMeddelRequest" type="tns:ForretningsmaessigHaendelseMeddelRequestType" />
+  <element name="ForretningsmaessigHaendelseMeddelResponse" type="tmt:TomtElementType" />
+  <element name="FristforlaengelseAnmodRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="FristforlaengelseAnmodRequest" type="tns:FristforlaengelseAnmodRequestType" />
+  <element name="FristforlaengelseAnmodResponse" type="tmt:TomtElementType" />
+  <element name="FristforlaengelsesAnmodningSvarRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="FristforlaengelsesAnmodningSvarRequest" type="tns:FristforlaengelsesAnmodningSvarRequestType" />
+  <element name="FristforlaengelsesAnmodningSvarResponse" type="tmt:TomtElementType" />
+  <element name="HaendelsesHistorikHentRequestHeader" type="tns:HaendelsesHistorikHentRequestHeaderType" />
+  <element name="HaendelsesHistorikHentRequest" type="tns:HaendelsesHistorikHentRequestType" />
+  <element name="HaendelsesHistorikHentRequestV2" type="tns:HaendelsesHistorikHentRequestType" />
+  <element name="HaendelsesHistorikHentResponse" type="tns:HaendelsesHistorikHentResponseType" />
+  <element name="ActionLogEntriesForPtpStatusResponse" type="tns:ActionLogEntriesForPtpStatusResponseType" />
+  <element name="HentHaendelsesHistorikForProcesRequestHeader" type="tns:HentHaendelsesHistorikForProcesRequestHeaderType" />
+  <element name="HentHaendelsesHistorikForProcesRequest" type="tmt:TomtElementType" />
+  <element name="HentHaendelsesHistorikForProcesResponse" type="tns:HentHaendelsesHistorikForProcesResponseType" />
+  <element name="HentHaendelsesHistorikForAktoerRequestHeader" type="tns:HentHaendelsesHistorikForAktoerRequestHeaderType" />
+  <element name="HentHaendelsesHistorikForAktoerRequest" type="tns:HaendelsesHistorikHentRequestType" />
+  <element name="HentHaendelsesHistorikForAktoerResponse" type="tns:HentHaendelsesHistorikForAktoerResponseType" />
+  <element name="KoebsaftalegrundlagBaselineHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="KoebsaftalegrundlagBaselineHentRequest" type="tns:KoebsaftalegrundlagBaselineHentRequestType" />
+  <element name="KoebsaftalegrundlagBaselineHentResponse" type="tns:KoebsaftalegrundlagBaselineHentResponseType" />
+  <element name="KoebsaftalegrundlagBaselineListeHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="KoebsaftalegrundlagBaselineListeHentRequest" type="tmt:TomtElementType" />
+  <element name="KoebsaftalegrundlagBaselineListeHentResponse" type="tns:KoebsaftalegrundlagBaselineListeHentResponseType" />
+  <element name="KontaktinformationEgenOpdaterRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="KontaktinformationEgenOpdaterRequest" type="tns:KontaktinformationEgenOpdaterRequestType" />
+  <element name="KontaktinformationEgenOpdaterResponse" type="tmt:TomtElementType" />
+  <element name="OpretOgStartRequestHeader" type="tns:OpretOgStartRequestHeaderType" />
+  <element name="OpretOgStartRequest" type="tmt:TomtElementType" />
+  <element name="OpretOgStartResponse" type="tns:OpretOgStartResponseType" />
+  <element name="ProcesAfslutRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="ProcesAfslutRequest" type="tmt:TomtElementType" />
+  <element name="ProcesAfslutResponse" type="tmt:TomtElementType" />
+  <element name="ProcesAfslutIndsigelseRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="ProcesAfslutIndsigelseRequest" type="tns:ProcesAfslutIndsigelseRequestType" />
+  <element name="ProcesAfslutIndsigelseResponse" type="tmt:TomtElementType" />
+  <element name="ProcesSoegRequestHeader" type="tns:ProcesSoegRequestHeaderType" />
+  <element name="ProcesSoegRequest" type="tns:ProcesSoegRequestType" />
+  <element name="ProcesSoegResponse" type="tns:ProcesSoegResponseType" />
+  <element name="RolleUdtraedAfRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="RolleUdtraedAfRequest" type="tmt:TomtElementType" />
+  <element name="RolleUdtraedAfResponse" type="tmt:TomtElementType" />
+  <element name="RolleindehaverOpretRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="RolleindehaverOpretRequest" type="tns:RolleindehaverOpretRequestType" />
+  <element name="RolleindehaverOpretResponse" type="tmt:TomtElementType" />
+  <element name="RolleindehaverSletRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="RolleindehaverSletRequest" type="tns:RolleindehaverSletRequestType" />
+  <element name="RolleindehaverSletResponse" type="tmt:TomtElementType" />
+  <element name="RolleindehaverSamlingHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="RolleindehaverSamlingHentRequest" type="tmt:TomtElementType" />
+  <element name="RolleindehaverSamlingHentResponse" type="tns:RolleindehaverSamlingHentResponseType" />
+  <element name="SaelgersPIsDeponeringsKontoNrOpdaterRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="SaelgersPIsDeponeringsKontoNrOpdaterRequest" type="tns:SaelgersPIsDeponeringsKontoNrOpdaterRequestType" />
+  <element name="SaelgersPIsDeponeringsKontoNrOpdaterResponse" type="tmt:TomtElementType" />
+  <element name="SagsAktivitetListeAktivRolleHentRequestHeader" type="tns:SagsAktivitetListeHentRequestHeaderType" />
+  <element name="SagsAktivitetListeAktivRolleHentRequest" type="tmt:TomtElementType" />
+  <element name="SagsAktivitetListeAktivRolleHentResponse" type="tns:SagsAktivitetListeHentResponseType" />
+  <element name="SalgsopstillingHentRequestHeader" type="tns:SalgsopstillingHentRequestHeaderType" />
+  <element name="SalgsopstillingHentRequest" type="tmt:TomtElementType" />
+  <element name="SalgsopstillingHentResponse" type="tns:SalgsopstillingHentResponseType" />
+  <element name="SalgsopstillingRekvirentHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="SalgsopstillingRekvirentHentRequest" type="tmt:TomtElementType" />
+  <element name="SalgsopstillingRekvirentHentResponse" type="tns:SalgsopstillingRekvirentHentResponseType" />
+  <element name="SalgsopstillingSoegRequestHeader" type="tns:SalgsopstillingSoegRequestHeaderType" />
+  <element name="SalgsopstillingSoegRequest" type="tns:SalgsopstillingSoegRequestType" />
+  <element name="SalgsopstillingSoegResponse" type="tns:SalgsopstillingSoegResponseType" />
+  <element name="TimerServiceRequestHeader" type="tns:TimerServiceHeaderType" />
+  <element name="TimerServiceRequest" type="tmt:TomtElementType" />
+  <element name="TimerServiceResponse" type="tmt:TomtElementType" />
+  <element name="UdestaaendeForbeholdHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="UdestaaendeForbeholdHentRequest" type="tmt:TomtElementType" />
+  <element name="UdestaaendeForbeholdHentResponse" type="tns:UdestaaendeForbeholdHentResponseType" />
+  <element name="UdestaaendeForbeholdOpdaterRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="UdestaaendeForbeholdOpdaterRequest" type="tns:UdestaaendeForbeholdOpdaterRequestType" />
+  <element name="UdestaaendeForbeholdOpdaterResponse" type="tmt:TomtElementType" />
+  <element name="XMLDiffRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="XMLDiffRequest" type="tns:XMLDiffRequestType" />
+  <element name="XMLDiffResponse" type="tns:XMLDiffResponseType" />
+  <complexType name="ArkivpakkeHentResponseType">
+    <sequence>
+      <element name="Arkiv" type="attachmentbinarydata:AttachmentBinaryDataType" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentgruppeDokumentHentRequestType">
+    <sequence>
+      <element name="DokumentKategori" type="dokumentkat:DokumentKategoriType" />
+      <element ref="loebenummer:Loebenummer" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentgruppeDokumentHentResponseType">
+    <sequence>
+      <element ref="dokumentdata:DokumentData" />
+      <element ref="dokumentmetabeskrivelse:DokumentMetaBeskrivelse" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentgruppeDokumentIlaegRequestType">
+    <sequence>
+      <element ref="beskrivelse:Beskrivelse" />
+      <element name="DokumentKategori" type="dokumentkat:DokumentKategoriType" />
+      <element ref="dokumentdata:DokumentData" />
+      <element minOccurs="0" name="DokumentAfDato" type="dateTime" />
+      <element minOccurs="0" name="Modtagere" type="rolids:RolleIDSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentgruppeDokumentUgyldiggoerRequestType">
+    <sequence>
+      <element name="DokumentKategori" type="dokumentkat:DokumentKategoriType" />
+      <element ref="loebenummer:Loebenummer" />
+      <element minOccurs="0" name="Kommentar" type="strings:StringMin2Max10K" />
+    </sequence>
+  </complexType>
+  <complexType name="EjendomsmaeglersDeponeringsKontoNrOpdaterRequestType">
+    <sequence>
+      <element name="DeponeringsKontoNr" type="kontonummer:KontonummerType" />
+    </sequence>
+  </complexType>
+  <complexType name="EHPStandardRequestHeaderType">
+    <sequence>
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element ref="rolid:RolleID" />
+      <element minOccurs="0" name="DeltagersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" name="DeltagersKontaktinformation" type="basis:AktoersKontaktInfoType" />
+    </sequence>
+  </complexType>
+  <complexType name="TimerServiceHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element minOccurs="0" name="TimerServiceTask" type="tstt:TimerServiceTaskType" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelsesHistorikHentRequestHeaderType">
+    <sequence>
+      <element minOccurs="0" name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element minOccurs="0" ref="rolid:RolleID" />
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element minOccurs="0" name="DeltagersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" name="DeltagersKontaktinformation" type="basis:AktoersKontaktInfoType" />
+    </sequence>
+  </complexType>
+  <simpleType name="HaendelsesHistorikHentKolonneType">
+    <restriction base="string">
+      <enumeration value="ProcesType" />
+      <enumeration value="Sagsreference" />
+      <enumeration value="Rolle" />
+      <enumeration value="Beskrivelse" />
+      <enumeration value="UdfoertAf" />
+      <enumeration value="Haendelse" />
+      <enumeration value="Udfoerselstid" />
+    </restriction>
+  </simpleType>
+  <simpleType name="ProcesRettighederType">
+    <restriction base="string">
+      <enumeration value="Garanti" />
+      <enumeration value="Ejendomshandel" />
+      <enumeration value="Begge" />
+    </restriction>
+  </simpleType>
+  <element name="error" type="basis:eFPIDetailsErrorType" />
+  <complexType name="FormidlingsaftaleBaselineHentRequestType">
+    <sequence>
+      <element minOccurs="0" name="BaselineLoebenummer" type="loebenummer:LoebenummerType" />
+    </sequence>
+  </complexType>
+  <complexType name="FormidlingssaftaleBaselineHentResponseType">
+    <sequence>
+      <element name="FormidlingsaftaleDokument" type="base64Binary" />
+      <element name="FormidlingsaftaleAendringElementSamling" type="attachmentbinarydatasamling:AttachmentBinaryDataSamlingType" />
+      <element name="FormidlingsaftaleNoegledata" type="formidlingsaftaledokument:FormidlingsaftaleDokumentType" />
+    </sequence>
+  </complexType>
+  <complexType name="FormidlingsaftaleBaselineListeHentResponseType">
+    <sequence>
+      <element name="FormidlingsaftaleBaselineListe" type="anyType" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsmaessigFejlMeldSendRequestType">
+    <sequence>
+      <element name="ForretningsmaessigFejlmeldingSend" type="basis:eFPIfejlType" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsdokumenterMetadataHentRequestType">
+    <sequence>
+      <element minOccurs="0" default="false" name="VisOgsaaTidligereVersioner" type="boolean" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsdokumenterMetadataHentResponseType">
+    <sequence>
+      <element name="ForretningsdokumenterMetadata" type="formidlingsaftaledokument:FormidlingsaftaleDokumentType" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsmaessigFejlmeldingHentRequestType">
+    <sequence>
+      <element minOccurs="0" name="MeddelelsesID" type="anyURI" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsmaessigFejlmeldingHentResponseType">
+    <sequence>
+      <element name="ForretningsmaessigFejlmelding" type="basis:eFPIfejlType" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsmaessigHaendelseMeddelRequestType">
+    <sequence>
+      <element ref="haendelse:Haendelse" />
+    </sequence>
+  </complexType>
+  <complexType name="FristforlaengelseAnmodRequestType">
+    <sequence>
+      <element ref="fristforlaengelsesanmodning:FristforlaengelsesAnmodning" />
+    </sequence>
+  </complexType>
+  <complexType name="FristforlaengelsesAnmodningSvarRequestType">
+    <sequence>
+      <element ref="fristforlaengelsesanmodningsvar:FristforlaengelsesAnmodningSvar" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelsesHistorikHentRequestType">
+    <sequence>
+      <element minOccurs="0" name="DatoFra" type="date" />
+      <element minOccurs="0" name="KlokkesletFra" type="time" />
+      <element minOccurs="0" name="DatoTil" type="date" />
+      <element minOccurs="0" name="KlokkesletTil" type="time" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelsesHistorikHentResponseType">
+    <sequence>
+      <element name="HaendelseHistorikSamling" type="haendelsemedkontekstsamling:HaendelseMedKontekstSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="ActionLogEntriesForPtpStatusResponseType">
+    <sequence>
+      <element name="HaendelseSamling" type="haendelsesamling:HaendelseSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="HentHaendelsesHistorikForProcesRequestHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element minOccurs="0" name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element name="Offset" type="integer" />
+      <element name="AntalRaekker" type="integer" />
+      <element name="ProcessType" type="string" />
+      <element minOccurs="0" name="Rolle" type="rolid:RolleIDType" />
+    </sequence>
+  </complexType>
+  <complexType name="HentHaendelsesHistorikForProcesResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="HaendelsesInternElement" type="tns:HaendelseForProcesElementType" />
+      <element name="SamletAntalHaendelser" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelseForProcesElementType">
+    <sequence>
+      <element name="UdloestAfDeltagerID" type="delid:DeltagerIDType" />
+      <element name="HaendelseBeskrivelse" type="strings:StringMin2Max10K" />
+      <element name="Tidsstempel" type="dateTime" />
+    </sequence>
+  </complexType>
+  <complexType name="HentHaendelsesHistorikForAktoerRequestHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element name="Kolonne" type="tns:HaendelsesHistorikHentKolonneType" />
+      <element name="ProcesRettigheder" type="tns:ProcesRettighederType" />
+      <element ref="internalSorting:KolonneSorteringsretning" />
+      <element name="Offset" type="integer" />
+      <element name="AntalRaekker" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="HentHaendelsesHistorikForAktoerResponseType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="HaendelsesInternElement" type="tns:HaendelseForAktoerElementType" />
+      <element name="SamletAntalHaendelser" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelseForAktoerElementType">
+    <sequence>
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element name="ProcessType" type="string" />
+      <element minOccurs="0" name="CaseReference" type="string" />
+      <element name="EgenRolle" type="rolid:RolleIDType" />
+      <element minOccurs="0" name="Beskrivelse" type="strings:StringMax1000" />
+      <element name="UdloestAfDeltagerID" type="delid:DeltagerIDType" />
+      <element name="HaendelseBeskrivelse" type="strings:StringMin2Max10K" />
+      <element name="Tidsstempel" type="dateTime" />
+    </sequence>
+  </complexType>
+  <complexType name="KoebsaftalegrundlagBaselineHentRequestType">
+    <sequence>
+      <element name="BaselineLoebenummer" type="loebenummer:LoebenummerType" />
+    </sequence>
+  </complexType>
+  <complexType name="KoebsaftalegrundlagBaselineHentResponseType">
+    <sequence>
+      <element name="KoebsaftaleDokument" type="base64Binary" />
+      <element name="KoebsaftalegrundlagElementSamling" type="attachmentbinarydatasamling:AttachmentBinaryDataSamlingType" />
+      <element name="KoebsaftalegrundlagNoegledata" type="koebsaftaledokument:KoebsaftaleDokumentType" />
+    </sequence>
+  </complexType>
+  <complexType name="KoebsaftalegrundlagBaselineListeHentResponseType">
+    <sequence>
+      <element name="KoebsaftalegrundlagBaselineListe" />
+    </sequence>
+  </complexType>
+  <complexType name="LoebenummerParmType">
+    <sequence>
+      <element ref="loebenummer:Loebenummer" />
+    </sequence>
+  </complexType>
+  <complexType name="OpretOgStartRequestHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element ref="basis:eFPISagsID" />
+      <element minOccurs="0" name="AktoersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" name="AktoersKontaktInformation" type="basis:AktoersKontaktInfoType" />
+      <element name="EjendomsmaeglerPart" type="part:PartType" />
+    </sequence>
+  </complexType>
+  <complexType name="OpretOgStartResponseType">
+    <sequence>
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+    </sequence>
+  </complexType>
+  <complexType name="ProcesAfslutResponseType">
+    <sequence>
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+    </sequence>
+  </complexType>
+  <complexType name="ProcesAfslutIndsigelseRequestType">
+    <sequence>
+      <element name="Begrundelse" type="strings:StringMin2Max10K" />
+    </sequence>
+  </complexType>
+  <complexType name="SagsAktivitetListeHentRequestHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element name="Kolonne" type="tns:SagsAktivitetListeHentKolonneType" />
+      <element ref="internalSorting:KolonneSorteringsretning" />
+      <element name="Offset" type="integer" />
+      <element name="AntalRaekker" type="integer" />
+      <element name="InkluderLukket" type="boolean" />
+    </sequence>
+  </complexType>
+  <simpleType name="SagsAktivitetListeHentKolonneType">
+    <restriction base="string">
+      <enumeration value="Rolle" />
+      <enumeration value="Beskrivelse" />
+      <enumeration value="Opdateret" />
+      <enumeration value="Tilstand" />
+    </restriction>
+  </simpleType>
+  <complexType name="SagsAktivitetListeHentResponseType">
+    <sequence>
+      <element name="ProcesSamling" type="procestabeldatasamling:ProcesTabelDataSamlingType" />
+      <element name="SamletAntalProcess" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="RolleindehaverOpretRequestType">
+    <sequence>
+      <element name="RolleOgIndehaver" type="rolleogindehaver:RolleOgIndehaverType" />
+      <element name="IndehaverPart" type="part:PartType" />
+    </sequence>
+  </complexType>
+  <complexType name="RolleindehaverSletRequestType">
+    <sequence>
+      <element name="RolleOgIndehaver" type="rolleogindehaver:RolleOgIndehaverType" />
+    </sequence>
+  </complexType>
+  <complexType name="RolleindehaverSamlingHentResponseType">
+    <sequence>
+      <element name="RolleIDSamling" type="rolins:RolleOgIndehaverSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="KontaktinformationEgenOpdaterRequestType">
+    <sequence>
+      <element minOccurs="0" name="DeltagerID" type="delid:DeltagerIDType" />
+      <element minOccurs="0" name="RolleID" type="rolid:RolleIDType" />
+      <element minOccurs="0" maxOccurs="unbounded" ref="kontaktoplysninger:KontaktOplysninger" />
+      <element minOccurs="0" name="SagsReference" type="strings:StringMin3Max256" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentHentRequestType">
+    <sequence>
+      <element name="DokumentKategori" type="dokumentkat:DokumentKategoriType" />
+      <element minOccurs="0" name="Dokumentversion" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentHentResponseType">
+    <sequence>
+      <element name="Dokument" type="dokumentdata:DokumentDataType" />
+      <element ref="dokumentmetabeskrivelse:DokumentMetaBeskrivelse" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentIlaegRequestType">
+    <sequence>
+      <element name="DokumentKategori" type="dokumentkat:DokumentKategoriType" />
+      <element minOccurs="0" name="DokumentBeskrivelse" type="strings:StringMin2Max256" />
+      <element name="Dokument" type="dokumentdata:DokumentDataType" />
+      <element minOccurs="0" name="DokumentAfDato" type="dateTime" />
+    </sequence>
+  </complexType>
+  <complexType name="DokumentIlaegResponseType">
+    <sequence>
+      <element name="Dokumentversion" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="EjendomshandlensDataHentResponseType">
+    <sequence>
+      <element ref="ejendomshandlensData:EjendomshandlensData" />
+    </sequence>
+  </complexType>
+  <complexType name="EjendomshandelOpsummeringHentResponseType">
+    <sequence>
+      <element name="Opsummering" type="opsummering:EHPOpsummeringType" />
+    </sequence>
+  </complexType>
+  <complexType name="SaelgersPIsDeponeringsKontoNrOpdaterRequestType">
+    <sequence>
+      <element name="DeponeringsKontoNr" type="kontonummer:KontonummerType" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingRekvirentHentResponseType">
+    <sequence>
+      <element minOccurs="0" name="RekvirentListe" type="rekvirentelementsamling:RekvirentElementSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="UdestaaendeForbeholdHentResponseType">
+    <sequence>
+      <element name="UdestaaendeForbeholdStatus" type="udestaaendestatus:UdestaaendeStatusType" />
+    </sequence>
+  </complexType>
+  <complexType name="UdestaaendeForbeholdOpdaterRequestType">
+    <sequence>
+      <element name="UdestaaendeForbeholdStatus" type="boolean" />
+    </sequence>
+  </complexType>
+  <complexType name="ProcesSoegRequestHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+    </sequence>
+  </complexType>
+  <complexType name="ProcesSoegRequestType">
+    <sequence>
+      <element name="Soegestreng" type="string" />
+      <element default="false" name="SlowSearch" type="boolean" />
+      <element default="false" name="PtpAccess" type="boolean" />
+      <element default="false" name="GpAccess" type="boolean" />
+      <element default="false" name="CvrCprSearch" type="boolean" />
+    </sequence>
+  </complexType>
+  <complexType name="ProcesSoegResponseType">
+    <sequence>
+      <element name="ProcesSoegFundSamling" type="processoeg:ProcesSoegFundSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingHentRequestHeaderType">
+    <sequence>
+      <element ref="delid:DeltagerID" />
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingSoegRequestHeaderType">
+    <sequence>
+      <element ref="delid:DeltagerID" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingSoegRequestType">
+    <sequence>
+      <element name="Soegeparameter" type="salgsopsoeg:SalgsopstillingSoegParameterType" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingHentResponseType">
+    <sequence>
+      <element ref="salgsopstilling:SalgsopstillingDokument" />
+      <element ref="dokumentmetabeskrivelse:DokumentMetaBeskrivelse" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingSoegResponseType">
+    <sequence>
+      <element name="SalgsopstillingSoegFundSamling" type="salgsopsoeg:SalgsopstillingSoegFundSamlingType" />
+      <element name="AntalFundneSalgsopstillinger" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="XMLDiffRequestType">
+    <sequence>
+      <element name="DokumentKategori" type="dokumentkat:DokumentKategoriType" />
+      <element name="Dokumentversion" type="integer" />
+      <element name="Dokument" type="dokumentdata:DokumentDataType" />
+    </sequence>
+  </complexType>
+  <complexType name="XMLDiffResponseType">
+    <sequence>
+      <element name="XMLDiffResult" type="diff:XMLDiffResultType" />
+    </sequence>
+  </complexType>
+</schema>

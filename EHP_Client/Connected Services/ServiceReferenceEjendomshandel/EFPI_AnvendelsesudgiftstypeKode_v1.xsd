@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_AnvendelsesudgiftstypeKode_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AnvendelsesudgiftstypeKode_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="AnvendelsesudgiftstypeKode" type="tns:AnvendelsesudgiftstypeKodeType" />
+  <simpleType name="AnvendelsesudgiftstypeKodeType">
+    <restriction base="string">
+      <enumeration value="vand" />
+      <enumeration value="elektricitet" />
+      <enumeration value="elektricitetopvarmning" />
+      <enumeration value="gas" />
+      <enumeration value="naturgas" />
+      <enumeration value="olie" />
+      <enumeration value="traepiller" />
+      <enumeration value="fjernvarme" />
+      <enumeration value="rapsolie" />
+      <enumeration value="Andet" />
+    </restriction>
+  </simpleType>
+</schema>

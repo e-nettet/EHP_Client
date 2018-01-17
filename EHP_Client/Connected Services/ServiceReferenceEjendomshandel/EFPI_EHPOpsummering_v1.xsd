@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tilstand="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" xmlns:beloebvaluta="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIprocesID.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Tilstand_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" />
+  <element name="EHPOpsummering" type="tns:EHPOpsummeringType" />
+  <complexType name="EHPOpsummeringType">
+    <sequence>
+      <element name="EjendomshandlensNavn" type="strings:StringMin2Max256" />
+      <element minOccurs="0" name="Kontantpris" type="beloebvaluta:BeloebValutaType" />
+      <element name="SidstOpdateret" type="dateTime" />
+      <element minOccurs="0" name="FristForKoebersGodkendelseDato" type="dateTime" />
+      <element minOccurs="0" name="FristForKoebersIndsigelserDato" type="dateTime" />
+      <element minOccurs="0" name="FristForSaelgersGodkendelseDato" type="dateTime" />
+      <element minOccurs="0" name="FristForSaelgersIndsigelserDato" type="dateTime" />
+      <element minOccurs="0" name="FoersteUdbetalingDato" type="dateTime" />
+      <element minOccurs="0" name="FristForStilingAfGarantiDato" type="dateTime" />
+      <element minOccurs="0" name="FristForUdarbejdSkoedeDato" type="dateTime" />
+      <element minOccurs="0" name="FristForSigneringAfBetingetSkoedeDato" type="dateTime" />
+      <element minOccurs="0" name="FristForSigneringAfSkoedeDato" type="dateTime" />
+      <element minOccurs="0" name="FristForAnmeldelseDato" type="dateTime" />
+      <element minOccurs="0" name="GarantiBeloeb" type="beloebvaluta:BeloebValutaType" />
+      <element minOccurs="0" name="Garantinummer" type="strings:StringMin2Max256" />
+      <element minOccurs="0" name="Koeber" type="tns:NavneSamlingType" />
+      <element minOccurs="0" name="KoeberUnderskrevetDato" type="dateTime" />
+      <element minOccurs="0" name="Overtagelsesdato" type="dateTime" />
+      <element minOccurs="0" name="Saelger" type="tns:NavneSamlingType" />
+      <element minOccurs="0" name="SaelgerUnderskrevetDato" type="dateTime" />
+      <element minOccurs="0" name="AfslutDato" type="dateTime" />
+      <element minOccurs="0" name="GarantiprocesID" type="basis:eFPIprocesIDType" />
+      <element name="TransportNotice" type="boolean" />
+      <element name="Tilstand" type="tilstand:TilstandType" />
+    </sequence>
+  </complexType>
+  <complexType name="NavneSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Navn" type="strings:StringMin2Max256" />
+    </sequence>
+  </complexType>
+</schema>

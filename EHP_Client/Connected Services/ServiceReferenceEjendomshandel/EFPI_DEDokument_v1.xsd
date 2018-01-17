@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:sagsnummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_DEDokument_v1" xmlns:ejendom="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:sted2Samling="http://e-nettet.dk/xml/schemas/2007/07/01/EFPI_Sted2Samling" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DEDokument_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Part_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/e-nettet.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/Sted2Samling.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/EFPI_Sted2Samling" />
+  <element name="DEDokument" type="tns:DEDokumentType" />
+  <complexType name="DEDokumentType">
+    <sequence>
+      <element ref="sagsnummer:SagsnummerIdentifikator" />
+      <element name="Ejendomsmaegler" type="part:PartType" />
+      <element name="Ejendom" type="ejendom:STED_Type" />
+      <element name="STED2Samling" type="sted2Samling:STED2Samling_Type" />
+    </sequence>
+  </complexType>
+</schema>

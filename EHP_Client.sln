@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EHP_Client", "EHP_Client\EHP_Client.csproj", "{5F7E5D7F-CFEE-430A-AC6F-CA9118AD2380}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F7E5D7F-CFEE-430A-AC6F-CA9118AD2380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F7E5D7F-CFEE-430A-AC6F-CA9118AD2380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F7E5D7F-CFEE-430A-AC6F-CA9118AD2380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F7E5D7F-CFEE-430A-AC6F-CA9118AD2380}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C099918-EFF8-4F91-AF50-94D96C264B5D}
+	EndGlobalSection
+EndGlobal

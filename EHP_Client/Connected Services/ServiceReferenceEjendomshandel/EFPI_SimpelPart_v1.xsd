@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:kontaktoplysninger="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" xmlns:xkom="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" xmlns:cpr-2="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/10/31/" xmlns:virksomhed="http://efpi.dk/ehp2011/xml/schemas/EFPI_Virksomhed_v1" xmlns:person="http://efpi.dk/ehp2011/xml/schemas/EFPI_Person_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Person_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Person_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Virksomhed_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Virksomhed_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/10/31/cpr.xsd" namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/10/31/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/xkom.xsd" namespace="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" />
+  <element name="SimpelPart" type="tns:SimpelPartType" />
+  <complexType name="SimpelPartType">
+    <sequence>
+      <choice>
+        <element ref="person:Person" />
+        <element ref="virksomhed:Virksomhed" />
+      </choice>
+      <element minOccurs="0" ref="xkom:AddressComplete" />
+      <element minOccurs="0" maxOccurs="unbounded" ref="kontaktoplysninger:KontaktOplysninger" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dkcc="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/cpr.xsd" namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/dkcc.xsd" namespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/SideDoerTekst.xsd" />
+  <element name="AndelIdentifikator" type="model:AndelIdentifikatorType">
+    <annotation>
+      <documentation>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">Identifikation af en andel.</p>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">Adressen paa andelen angivet med</p>
+        <ul xmlns="http://www.w3.org/2001/XMLSchema">
+          <li>kommunekode</li>
+          <li>vejkode</li>
+          <li>husnummer</li>
+          <li>etage - angives kun hvis det er relevant</li>
+          <li>side - angives kun hvis det er relevant</li>
+        </ul>
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="AndelIdentifikatorType">
+    <sequence>
+      <element ref="cpr:MunicipalityCode" />
+      <element ref="cpr:StreetCode" />
+      <element ref="dkcc:StreetBuildingIdentifier" />
+      <element minOccurs="0" ref="dkcc:FloorIdentifier" />
+      <element minOccurs="0" ref="model:SideDoerTekst" />
+    </sequence>
+  </complexType>
+</schema>

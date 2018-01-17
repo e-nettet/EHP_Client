@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:itst1="http://rep.oio.dk/itst.dk/xml/schemas/2006/01/17/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:cvr="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" xmlns:xcom="http://rep.oio.dk/xkom.dk/xml/schemas/2005/03/15/" xmlns:itst2="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/xkom.dk/xml/schemas/2005/03/15/xkom.xsd" namespace="http://rep.oio.dk/xkom.dk/xml/schemas/2005/03/15/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/itst.dk/xml/schemas/2005/01/10/itst.xsd" namespace="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/itst.dk/xml/schemas/2006/01/17/itst.xsd" namespace="http://rep.oio.dk/itst.dk/xml/schemas/2006/01/17/" />
+  <element name="AktoersKontaktInfo" type="tns:AktoersKontaktInfoType" />
+  <complexType name="AktoersKontaktInfoType">
+    <sequence>
+      <element name="ForretningsEnhed">
+        <complexType>
+          <sequence>
+            <element name="Betegnelse">
+              <simpleType>
+                <restriction base="string">
+                  <maxLength value="20" />
+                </restriction>
+              </simpleType>
+            </element>
+            <element minOccurs="0" name="Telefon" type="itst2:TelephoneNumberIdentifierType" />
+            <element minOccurs="0" name="Email" type="xcom:EmailAddressIdentifierType" />
+            <element name="MedarbejderSamling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" maxOccurs="unbounded" name="Medarbejder">
+                    <complexType>
+                      <sequence>
+                        <element name="Navn" type="itst1:PersonNameStructureType" />
+                        <element minOccurs="0" name="Telefon" type="itst2:TelephoneNumberIdentifierType" />
+                        <element minOccurs="0" name="Email" type="xcom:EmailAddressIdentifierType" />
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

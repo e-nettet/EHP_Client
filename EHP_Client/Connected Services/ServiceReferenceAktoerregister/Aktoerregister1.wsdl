@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:av1="http://efpi.dk/aktoerregister/xml/schemas/EFPI_Aktoerregister_v1" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://efpi.dk/aktoerregister/xml/wsdl/" xmlns:wsa="http://www.w3.org/2004/12/addressing" name="Aktoerregister.eFPI" targetNamespace="http://efpi.dk/aktoerregister/xml/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>eFPI Aktoerregister</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://efpi.dk/aktoerregister/xml/schemas/EFPI_Aktoerregister_v1">
+      <s:include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../schemas/EFPI_Aktoerregister_v1.xsd" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FindDokumenttyperResponse">
+    <wsdl:part name="body" element="av1:FindDokumenttyperResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentAlleAktoerInformationer">
+    <wsdl:part name="body" element="av1:HentAlleAktoerInformationer" />
+  </wsdl:message>
+  <wsdl:message name="FindProcesversioner">
+    <wsdl:part name="body" element="av1:FindProcesversioner" />
+  </wsdl:message>
+  <wsdl:message name="FindDokumenttyper">
+    <wsdl:part name="body" element="av1:FindDokumenttyper" />
+  </wsdl:message>
+  <wsdl:message name="KanProcesUdfoeresResponse">
+    <wsdl:part name="body" element="av1:KanProcesUdfoeresResponse" />
+  </wsdl:message>
+  <wsdl:message name="EFPIFault">
+    <wsdl:part name="parameters" element="av1:error" />
+  </wsdl:message>
+  <wsdl:message name="HentAktoerInformationResponse">
+    <wsdl:part name="body" element="av1:HentAktoerInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="KanProcesUdfoeres">
+    <wsdl:part name="body" element="av1:KanProcesUdfoeres" />
+  </wsdl:message>
+  <wsdl:message name="FindProcesversionerResponse">
+    <wsdl:part name="body" element="av1:FindProcesversionerResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentAlleAktoerInformationerResponse">
+    <wsdl:part name="body" element="av1:HentAlleAktoerInformationerResponse" />
+  </wsdl:message>
+  <wsdl:message name="HentAktoerInformation">
+    <wsdl:part name="body" element="av1:HentAktoerInformation" />
+  </wsdl:message>
+  <wsdl:portType name="Aktoerregister.eFPI">
+    <wsdl:operation name="HentAktoerInformation">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Aktoerregister.eFPI/HentAktoerInformation" message="tns:HentAktoerInformation" />
+      <wsdl:output message="tns:HentAktoerInformationResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HentAlleAktoerInformationer">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Aktoerregister.eFPI/HentAlleAktoerInformationer" message="tns:HentAlleAktoerInformationer" />
+      <wsdl:output message="tns:HentAlleAktoerInformationerResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="FindDokumenttyper">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Aktoerregister.eFPI/FindDokumenttyper" message="tns:FindDokumenttyper" />
+      <wsdl:output message="tns:FindDokumenttyperResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="FindProcesversioner">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Aktoerregister.eFPI/FindProcesversioner" message="tns:FindProcesversioner" />
+      <wsdl:output message="tns:FindProcesversionerResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="KanProcesUdfoeres">
+      <wsdl:input wsa:Action="http://service.efpi.dk/2007/07/01/Aktoerregister.eFPI/KanProcesUdfoeres" message="tns:KanProcesUdfoeres" />
+      <wsdl:output message="tns:KanProcesUdfoeresResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

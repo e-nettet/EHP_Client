@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="FuldmagtOmfangIdentifikator" type="model:FuldmagtOmfangIdentifikatorType">
+    <annotation>
+      <documentation>Angiver de mulige vaerdier for omfanget af en fuldmagt.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="FuldmagtOmfangIdentifikatorType">
+    <restriction base="nonNegativeInteger">
+      <enumeration value="1">
+        <annotation>
+          <documentation>Fuldmagtshaver bemyndiges til paa mine vegne at underskrive paategninger af enhver art
+           herunder kvitterings-, transport-, moderations- og relaksationspaategninger</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="2">
+        <annotation>
+          <documentation>Fuldmagtshaver bemyndiges til paa mine vegne at underskrive endeligt skoede paa ejendommen,
+           naar betingelserne i det betingede skoede er opfyldt.</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

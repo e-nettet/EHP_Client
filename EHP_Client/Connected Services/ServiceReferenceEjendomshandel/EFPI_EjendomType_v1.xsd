@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ns1="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomArealSamling_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomType_v1" xmlns:ns2="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomAreal_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomType_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_EjendomArealSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomArealSamling_v1" />
+  <element name="EjendomType" type="tns:EjendomTypeType" />
+  <complexType name="EjendomTypeType">
+    <sequence>
+      <element ref="ns1:EjendomArealSamling" />
+      <element name="FuldeEtager" type="integer" />
+      <element name="EtagerInklusivKaelder" type="integer" />
+      <element name="Type" type="string" />
+      <element name="MaaBenyttesTil" type="string" />
+    </sequence>
+  </complexType>
+</schema>

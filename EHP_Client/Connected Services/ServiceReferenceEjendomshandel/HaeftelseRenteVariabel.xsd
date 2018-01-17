@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseReferenceRente.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseRenteSats.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseRenteSatsInterval.xsd" />
+  <element name="HaeftelseRenteVariabel" type="model:HaeftelseRenteVariabelType">
+    <annotation>
+      <documentation>Oplysninger om rente paa haeftelse med variabel rente. Det er ikke kraevet at oplyse den aktuelle rentesats. HaeftelseRenteVariabel kan derfor vaere et tomt element, der kun indikerer at der er tale om variable rentevilkaar.</documentation>
+    </annotation>
+  </element>
+  <complexType name="HaeftelseRenteVariabelType">
+    <sequence>
+      <element minOccurs="0" name="HaeftelseRentePaalydendeSats" type="model:HaeftelseRenteSatsType">
+        <annotation>
+          <documentation>Haeftelsens paalydende aarlige rentesats.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="HaeftelseRenteNominelSats" type="model:HaeftelseRenteSatsType">
+        <annotation>
+          <documentation>Haeftelsens aarlige rente inkl. renters rente.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:HaeftelseReferenceRente" />
+      <element minOccurs="0" name="AftaleOmRenteniveau" type="model:HaeftelseRenteSatsIntervalType">
+        <annotation>
+          <documentation>Definerer eventuelle minimums og maksimums rentesatser for laanet.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

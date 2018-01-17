@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="AttachmentBinaryData" type="tns:AttachmentBinaryDataType" />
+  <complexType name="AttachmentBinaryDataType">
+    <simpleContent>
+      <extension base="base64Binary">
+        <attribute name="mimetypeCode" type="tns:MimetypeCodeType" use="required" />
+        <attribute name="ID" type="ID" use="required" />
+      </extension>
+    </simpleContent>
+  </complexType>
+  <simpleType name="MimetypeCodeType">
+    <restriction base="string">
+      <maxLength value="1000" />
+    </restriction>
+  </simpleType>
+</schema>

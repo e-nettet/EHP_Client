@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:laantilindfrielsesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_LaanTilIndfrielseSamling_v1" xmlns:vederlagobligatoriskeydelsersamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagObligatoriskeYdelserSamling_v1" xmlns:omkostningerdiversesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_OmkostningerDiverseSamling_v1" xmlns:udlaegtiltredjemand="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdlaegTilTredjemand_v1" xmlns:salgsfremmendeforanstaltninger="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsfremmendeForanstaltninger_v1" xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_Udgifter_v1" xmlns:vederlagtilvalgteydelsersamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagTilvalgteYdelserSamling_v1" xmlns:dokumentationsomkostningersamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentationsomkostningerSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Udgifter_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_LaanTilIndfrielseSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_LaanTilIndfrielseSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_VederlagObligatoriskeYdelserSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagObligatoriskeYdelserSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_VederlagTilvalgteYdelserSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_VederlagTilvalgteYdelserSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsfremmendeForanstaltninger_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsfremmendeForanstaltninger_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_UdlaegTilTredjemand_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdlaegTilTredjemand_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_OmkostningerDiverseSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_OmkostningerDiverseSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentationsomkostningerSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentationsomkostningerSamling_v1" />
+  <element name="Udgifter">
+    <complexType>
+      <sequence>
+        <element ref="laantilindfrielsesamling:LaanTilIndfrielseSamling" />
+        <element ref="vederlagobligatoriskeydelsersamling:VederlagObligatoriskeYdelserSamling" />
+        <element ref="vederlagtilvalgteydelsersamling:VederlagTilvalgteYdelserSamling" />
+        <element ref="salgsfremmendeforanstaltninger:SalgsfremmendeForanstaltninger" />
+        <element ref="udlaegtiltredjemand:UdlaegTilTredjemand" />
+        <element ref="omkostningerdiversesamling:OmkostningerDiverseSamling" />
+        <element ref="dokumentationsomkostningersamling:DokumentationsomkostningerSamling" />
+      </sequence>
+    </complexType>
+  </element>
+</schema>

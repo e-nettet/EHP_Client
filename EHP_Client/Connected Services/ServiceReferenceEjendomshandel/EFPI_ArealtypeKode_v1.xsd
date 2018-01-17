@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_ArealtypeKode_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ArealtypeKode_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ArealtypeKode" type="tns:ArealtypeKodeType" />
+  <simpleType name="ArealtypeKodeType">
+    <restriction base="string">
+      <enumeration value="AndreBygningerAreal" />
+      <enumeration value="BebyggetAreal" />
+      <enumeration value="BoligAreal" />
+      <enumeration value="BygningAreal" />
+      <enumeration value="CarportAreal" />
+      <enumeration value="GrundAreal" />
+      <enumeration value="HovedBygningAreal" />
+      <enumeration value="HovedbygningBebyggetAreal" />
+      <enumeration value="KaelderAreal" />
+      <enumeration value="UdhusAreal" />
+      <enumeration value="UdnyttetTagetageAreal" />
+      <enumeration value="VejAreal" />
+    </restriction>
+  </simpleType>
+</schema>

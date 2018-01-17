@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="BeloebVaerdi" type="model:BeloebVaerdiType">
+    <annotation>
+      <documentation>Beloebsveardi. Tallet skal vaere nul eller positivt tal. Det kan maximalt vaere paa 20 cifre og der kan maksimalt angives 2 decimaler.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="BeloebVaerdiType">
+    <restriction base="decimal">
+      <totalDigits value="20" />
+      <fractionDigits value="2" />
+    </restriction>
+  </simpleType>
+</schema>

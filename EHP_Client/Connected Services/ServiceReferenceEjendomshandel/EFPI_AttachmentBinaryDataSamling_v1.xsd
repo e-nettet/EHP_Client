@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:attachmentbinarydata="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryDataSamling_v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryDataSamling_v1" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" />
+  <element name="AttachmentBinaryDataSamling" type="tns:AttachmentBinaryDataSamlingType" />
+  <complexType name="AttachmentBinaryDataSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" ref="attachmentbinarydata:AttachmentBinaryData" />
+    </sequence>
+  </complexType>
+</schema>

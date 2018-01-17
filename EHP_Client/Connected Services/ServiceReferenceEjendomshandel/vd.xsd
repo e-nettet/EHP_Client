@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://rep.oio.dk/vd.dk/xml/schemas/2004/02/16/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/vd.dk/xml/schemas/2004/02/16/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/vd.dk/xml/schemas/2004/02/16/VD_PersonName.xsd" />
+</schema>

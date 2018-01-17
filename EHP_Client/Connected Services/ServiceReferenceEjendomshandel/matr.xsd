@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/matr.dk/xml/schemas/2006/04/25/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/matr.dk/xml/schemas/2006/04/25/MATR_AgriculturalNotationTypeText.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/matr.dk/xml/schemas/2006/04/25/MATR_LandParcelRegistrationDate.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/matr.dk/xml/schemas/2006/04/25/MATR_RoadAreaMeasure.xsd" />
+</schema>

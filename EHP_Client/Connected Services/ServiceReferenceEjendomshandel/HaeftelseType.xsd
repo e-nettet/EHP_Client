@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="HaeftelseType" type="eakt:HaeftelseTypeType">
+    <annotation>
+      <documentation>Type for haeftelse.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="HaeftelseTypeType">
+    <restriction base="string">
+      <enumeration value="anden" />
+      <enumeration value="arrest" />
+      <enumeration value="udlaeg" />
+      <enumeration value="ejerpantebrev" />
+      <enumeration value="privatIndekspantebrev" />
+      <enumeration value="privatPantebrev" />
+      <enumeration value="realkreditpantebrev" />
+      <enumeration value="skadesloesbrev" />
+    </restriction>
+  </simpleType>
+</schema>

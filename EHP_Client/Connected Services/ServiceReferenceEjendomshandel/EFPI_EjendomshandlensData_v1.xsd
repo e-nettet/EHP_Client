@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:status="http://efpi.dk/ehp2011/xml/schemas/EFPI_Statusinformation_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomshandlensData_v1" xmlns:opsummering="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" xmlns:deltagermetadatasamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerMetadataSamling_v1" xmlns:deponeringskonti="http://efpi.dk/ehp2011/xml/schemas/EFPI_Deponeringskonti_v1" xmlns:dokumentsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelseSamling_v1" xmlns:aftalesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftaleBaselineSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomshandlensData_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_EHPOpsummering_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Statusinformation_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Statusinformation_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AftaleBaselineSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AftaleBaselineSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DeltagerMetadataSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerMetadataSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelseSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelseSamling_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Deponeringskonti_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Deponeringskonti_v1" />
+  <element name="EjendomshandlensData" type="tns:EjendomshandlensDataType" />
+  <complexType name="EjendomshandlensDataType">
+    <sequence>
+      <element name="Statusinformation" type="status:StatusinformationType" />
+      <element name="FormidlingsaftaleBaseline" type="aftalesamling:AftaleBaselineSamlingType" />
+      <element name="KoebsaftaleBaseline" type="aftalesamling:AftaleBaselineSamlingType" />
+      <element name="DeltagerMetadataSamling" type="deltagermetadatasamling:DeltagerMetadataSamlingType" />
+      <element name="ForretningsDokumenterMetadataSamling" type="dokumentsamling:DokumentMetaBeskrivelseSamlingType" />
+      <element ref="deponeringskonti:Deponeringskonti" />
+    </sequence>
+  </complexType>
+</schema>

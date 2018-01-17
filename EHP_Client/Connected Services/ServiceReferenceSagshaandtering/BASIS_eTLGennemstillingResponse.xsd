@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="eTLGennemstillingResponse">
+    <complexType />
+  </element>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:cvr="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ns1="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/cvr.xsd" namespace="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" />
+  <element name="VirksomhedSimpelIdentifikator" type="ns1:VirksomhedSimpelIdentifikatorType">
+    <annotation>
+      <documentation>Simpel identifikation af en virksomhed med CVRnummer og navn</documentation>
+    </annotation>
+  </element>
+  <complexType name="VirksomhedSimpelIdentifikatorType">
+    <sequence>
+      <element ref="cvr:LegalUnitName" />
+      <element minOccurs="0" ref="cvr:CVRnumberIdentifier" />
+    </sequence>
+  </complexType>
+</schema>

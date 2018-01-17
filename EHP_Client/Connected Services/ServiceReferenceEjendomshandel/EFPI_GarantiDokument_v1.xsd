@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:gb="http://efpi.dk/ehp2011/xml/schemas/EFPI_Garantibetingelser_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" xmlns:garanti="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiIdentifikator_v1" xmlns:beloebvaluta="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ejdmidsvar="http://e-nettet.dk/xml/schemas/2007/07/01/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SimpelPart_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/e-nettet.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Garantibetingelser_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Garantibetingelser_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiIdentifikator_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiIdentifikator_v1" />
+  <element name="GarantiForRestkoebesum" type="tns:GarantiForRestkoebesumType">
+    <annotation>
+      <documentation>Comment describing your root element</documentation>
+    </annotation>
+  </element>
+  <complexType name="GarantiForRestkoebesumType">
+    <complexContent mixed="false">
+      <extension base="tns:GarantiType">
+        <sequence>
+          <element name="KoebsaftaleIdentifikator" type="strings:StringMin2Max256" />
+          <element name="Ejendom" type="ejdmidsvar:EJDMIDSVAR_Type" />
+          <element name="KoebsaftaleDato" type="dateTime" />
+          <element name="Overtagelsesdato" type="dateTime" />
+          <element name="SaelgersPengeinstitut" type="part:SimpelPartType" />
+          <element name="TransportITilbagesoegningskrav" type="boolean" />
+          <element minOccurs="0" name="Berigtiger" type="part:SimpelPartType" />
+        </sequence>
+        <attribute name="ID" type="ID" use="optional" />
+      </extension>
+    </complexContent>
+  </complexType>
+  <complexType name="GarantiType">
+    <sequence>
+      <element name="GarantiIdentifikator" type="garanti:GarantiIdentifikator" />
+      <element minOccurs="0" name="ErstatterGarantiIdentifikator" type="garanti:GarantiIdentifikator" />
+      <element maxOccurs="unbounded" name="PrincipalSamling" type="part:SimpelPartType" />
+      <element name="Garant" type="part:SimpelPartType" />
+      <element maxOccurs="unbounded" name="BeneficiantSamling" type="part:SimpelPartType" />
+      <element name="Garantibeloeb" type="beloebvaluta:BeloebValutaType" />
+      <element name="Garantibetingelser" type="gb:GarantibetingelserType" />
+    </sequence>
+  </complexType>
+  <element name="GarantiForRestkoebesumSigneret" type="tns:GarantiForRestkoebesumSigneretType" />
+  <complexType name="GarantiForRestkoebesumSigneretType">
+    <sequence>
+      <element ref="tns:GarantiForRestkoebesum" />
+      <element minOccurs="0" ref="basis:ValideringskvitteringSamling" />
+      <element minOccurs="0" ref="basis:SignaturSamling" />
+    </sequence>
+  </complexType>
+</schema>

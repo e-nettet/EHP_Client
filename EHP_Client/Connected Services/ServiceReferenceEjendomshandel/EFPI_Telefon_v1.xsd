@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Telefon_v1" xmlns:telefonkode="http://efpi.dk/ehp2011/xml/schemas/EFPI_TelefonKode_v1" xmlns:itst-1="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Telefon_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TelefontypeKode_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TelefonKode_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/itst.dk/xml/schemas/2005/01/10/itst.xsd" namespace="http://rep.oio.dk/itst.dk/xml/schemas/2005/01/10/" />
+  <element name="Telefon" type="tns:TelefonType" />
+  <complexType name="TelefonType">
+    <sequence>
+      <element ref="telefonkode:TelefontypeKode" />
+      <element ref="itst-1:TelephoneNumberIdentifier" />
+    </sequence>
+  </complexType>
+</schema>

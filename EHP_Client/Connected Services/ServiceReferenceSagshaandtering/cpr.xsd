@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_AuthorityCode.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_MunicipalityCode.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_PersonCivilRegistrationIdentifier.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_StreetCode.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/sagshaandtering/Sagshaandtering.eFPI?xsd=../../../../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/CPR_StreetNameForAddressingName.xsd" />
+</schema>

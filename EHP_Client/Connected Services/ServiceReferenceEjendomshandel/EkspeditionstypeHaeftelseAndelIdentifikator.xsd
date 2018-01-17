@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeEjerpantebrevAndelOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeForhoejelseAndelIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypePantebrevAndelOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeRespektHaeftelseAndelIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeSkadesloesbrevAndelOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeUdvidelseSkiftAfPantHaeftelseAndelIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeUnderpantsaetningAndelOpretIdentifikator.xsd" />
+  <element name="EkspeditionstypeHaeftelseAndelIdentifikator" type="model:EkspeditionstypeHaeftelseAndelIdentifikatorType">
+    <annotation>
+      <documentation>Angiver de mulige ekspeditionstyper i RespektHaeftelseFremtidig.</documentation>
+    </annotation>
+  </element>
+  <complexType name="EkspeditionstypeHaeftelseAndelIdentifikatorType">
+    <sequence>
+      <choice>
+        <element ref="model:EkspeditionstypeEjerpantebrevAndelOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeForhoejelseAndelIdentifikator" />
+        <element ref="model:EkspeditionstypePantebrevAndelOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeRespektHaeftelseAndelIdentifikator" />
+        <element ref="model:EkspeditionstypeSkadesloesbrevAndelOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeUdvidelseSkiftAfPantHaeftelseAndelIdentifikator" />
+        <element ref="model:EkspeditionstypeUnderpantsaetningAndelOpretIdentifikator" />
+      </choice>
+    </sequence>
+  </complexType>
+</schema>

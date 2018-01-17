@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_AktoerID.xsd" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/aktoerregister/Aktoerregister.eFPI?xsd=../../../../w3.org/xml/schemas/TR/xmldsig-core/xmldsig-core-schema.xsd" namespace="http://www.w3.org/2000/09/xmldsig#" />
+  <element name="SignaturSamling" type="tns:SignaturSamlingType" />
+  <complexType name="SignaturSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" ref="ds:Signature" />
+    </sequence>
+  </complexType>
+  <element name="ValideringskvitteringSamling" type="tns:ValideringskvitteringSamlingType" />
+  <complexType name="ValideringskvitteringSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" ref="tns:Valideringskvittering" />
+    </sequence>
+  </complexType>
+  <element name="Valideringskvittering" type="tns:ValideringskvitteringType" />
+  <complexType name="ValideringskvitteringType">
+    <sequence>
+      <element ref="tns:Valideringsversion" />
+      <element ref="tns:Tidspunkt" />
+      <element ref="tns:UnderskrivendeVirksomhed" />
+      <element ref="tns:MedarbejdersignaturSamling" />
+      <element minOccurs="0" ref="tns:Valideringsspecifikation" />
+    </sequence>
+    <attribute name="ID" type="ID" use="optional" />
+  </complexType>
+  <element name="Valideringsversion" type="tns:ValideringsversionType" />
+  <simpleType name="ValideringsversionType">
+    <restriction base="string">
+      <maxLength value="256" />
+    </restriction>
+  </simpleType>
+  <element name="Tidspunkt" type="tns:TidspunktType" />
+  <simpleType name="TidspunktType">
+    <restriction base="dateTime" />
+  </simpleType>
+  <element name="UnderskrivendeVirksomhed" type="tns:AktoerIDType" />
+  <element name="MedarbejdersignaturSamling" type="tns:MedarbejdersignaturSamlingType" />
+  <complexType name="MedarbejdersignaturSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" ref="tns:Medarbejdersignatur" />
+    </sequence>
+  </complexType>
+  <element name="Medarbejdersignatur" type="tns:MedarbejdersignaturType" />
+  <complexType name="MedarbejdersignaturType">
+    <sequence>
+      <element ref="tns:Tidspunkt" />
+      <element ref="tns:Medarbejderrettighed" />
+      <element ref="tns:MedarbejdercertifikatInfo" />
+      <element ref="tns:stylesheetBase64" />
+      <element ref="tns:signatureBase64" />
+    </sequence>
+  </complexType>
+  <element name="Medarbejderrettighed" type="tns:MedarbejderrettighedType" />
+  <simpleType name="MedarbejderrettighedType">
+    <restriction base="string">
+      <enumeration value="Medunderskriver" />
+      <enumeration value="Eneunderskriver" />
+    </restriction>
+  </simpleType>
+  <element name="MedarbejdercertifikatInfo" type="ds:KeyInfoType" />
+  <element name="Valideringsspecifikation" type="base64Binary" />
+  <element name="stylesheetBase64" type="base64Binary" />
+  <element name="signatureBase64" type="base64Binary" />
+</schema>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ForrKvitUdbedes" type="tns:ForrKvitUdbedesType" />
+  <complexType name="ForrKvitUdbedesType">
+    <sequence>
+      <element minOccurs="0" name="SvarFrist" type="dateTime" />
+      <element name="Udbedes" type="tns:UdbedesType" />
+    </sequence>
+  </complexType>
+  <simpleType name="UdbedesType">
+    <restriction base="string">
+      <enumeration value="Ja" />
+      <enumeration value="Nej" />
+    </restriction>
+  </simpleType>
+</schema>

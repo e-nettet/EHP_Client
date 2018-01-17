@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BilagReference.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutIndholdBebyggelseKode.xsd" />
+  <element name="ServitutIndholdBebyggelse" type="model:ServitutIndholdBebyggelseType">
+    <annotation>
+      <documentation>Angiver indholdet af et afsnit om bebyggelse i en servitut.</documentation>
+    </annotation>
+  </element>
+  <complexType name="ServitutIndholdBebyggelseType">
+    <sequence>
+      <element ref="model:ServitutIndholdBebyggelseKode" />
+    </sequence>
+  </complexType>
+</schema>

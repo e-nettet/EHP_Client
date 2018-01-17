@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dedokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_DEDokument_v1" xmlns:formidlingsaftaleformular="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleFormular_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" xmlns:sf="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsbudgetFormular_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DEDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DEDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FormidlingsaftaleFormular_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleFormular_v1" />
+  <element name="FormidlingsaftaleDokument" type="tns:FormidlingsaftaleDokumentType" />
+  <complexType name="FormidlingsaftaleDokumentType">
+    <complexContent mixed="false">
+      <extension base="dedokument:DEDokumentType">
+        <sequence>
+          <element ref="formidlingsaftaleformular:FormidlingsaftaleFormular" />
+          <element name="EjendomsmaeglerSalgsbudgetFormular" type="sf:SalgsbudgetFormularType" />
+          <element name="UdbudSalgsbudgetFormular" type="sf:SalgsbudgetFormularType" />
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+</schema>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeAndenHaeftelseFastEjendomOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeEjerpantebrevFastEjendomOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeForhoejelseFastEjendomIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeIndekspantebrevFastEjendomOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypePantebrevFastEjendomOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeRealkreditpantebrevOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeRespektHaeftelseFastEjendomIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeSkadesloesbrevFastEjendomOpretIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeUdvidelseSkiftAfPantHaeftelseFastEjendomIdentifikator.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EkspeditionstypeUnderpantsaetningFastEjendomOpretIdentifikator.xsd" />
+  <element name="EkspeditionstypeHaeftelseFastEjendomIdentifikator" type="model:EkspeditionstypeHaeftelseFastEjendomIdentifikatorType">
+    <annotation>
+      <documentation>Angiver de mulige ekspeditionstyper i RespektHaeftelseFremtidig.</documentation>
+    </annotation>
+  </element>
+  <complexType name="EkspeditionstypeHaeftelseFastEjendomIdentifikatorType">
+    <sequence>
+      <choice>
+        <element ref="model:EkspeditionstypeAndenHaeftelseFastEjendomOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeEjerpantebrevFastEjendomOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeForhoejelseFastEjendomIdentifikator" />
+        <element ref="model:EkspeditionstypeIndekspantebrevFastEjendomOpretIdentifikator" />
+        <element ref="model:EkspeditionstypePantebrevFastEjendomOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeRealkreditpantebrevOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeRespektHaeftelseFastEjendomIdentifikator" />
+        <element ref="model:EkspeditionstypeSkadesloesbrevFastEjendomOpretIdentifikator" />
+        <element ref="model:EkspeditionstypeUdvidelseSkiftAfPantHaeftelseFastEjendomIdentifikator" />
+        <element ref="model:EkspeditionstypeUnderpantsaetningFastEjendomOpretIdentifikator" />
+      </choice>
+    </sequence>
+  </complexType>
+</schema>

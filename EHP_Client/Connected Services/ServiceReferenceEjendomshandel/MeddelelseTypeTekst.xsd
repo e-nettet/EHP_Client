@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="MeddelelseTypeTekst" type="eakt:MeddelelseTypeTekstType">
+    <annotation>
+      <documentation>Angiver mulige typer af meddelelser i BAP.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="MeddelelseTypeTekstType">
+    <restriction base="string">
+      <enumeration value="meddelelseBobestyrer" />
+      <enumeration value="meddelelseDoedsfald" />
+      <enumeration value="meddelelseGaeldssanering" />
+      <enumeration value="meddelelseKonkurs" />
+      <enumeration value="meddelelseRaadighedsfratagelseKonkursloven" />
+      <enumeration value="meddelelseKonfiskation" />
+      <enumeration value="meddelelseTvangsakkord" />
+      <enumeration value="meddelelseBeslaglaeggelse" />
+      <enumeration value="meddelelseRaadighedsfratagelseSkifteloven" />
+      <enumeration value="meddelelsePantsaetningsforbud" />
+    </restriction>
+  </simpleType>
+</schema>

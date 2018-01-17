@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_SenesteAarsforbrugenhedKode_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SenesteAarsforbrugenhedKode_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="SenesteAarsforbrugEnhedKode" type="tns:SenesteAarsforbrugEnhedKodeType" />
+  <simpleType name="SenesteAarsforbrugEnhedKodeType">
+    <restriction base="string">
+      <enumeration value="m3" />
+      <enumeration value="kWh" />
+      <enumeration value="Andet" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:matr="http://rep.oio.dk/matr.dk/xml/schemas/2006/04/25/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:snapshot="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" xmlns:svur="http://rep.oio.dk/svur.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/matr.dk/xml/schemas/2006/04/25/matr.xsd" namespace="http://rep.oio.dk/matr.dk/xml/schemas/2006/04/25/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/svur.dk/xml/schemas/2006/04/25/svur.xsd" namespace="http://rep.oio.dk/svur.dk/xml/schemas/2006/04/25/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../rep.oio.dk/ois.dk/xml/schemas/2006/04/25/ois.xsd" namespace="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <element name="MatrikelStruktur" type="snapshot:MatrikelStrukturType">
+    <annotation>
+      <documentation>Indeholder beriget information om en matrikel, der indgaar i anmeldelsen. 
+Informationer er berigelse der er skabt under proevelsen. Der er tale om data hentet fra eksterne registre saasom LIFA. 
+</documentation>
+    </annotation>
+  </element>
+  <complexType name="MatrikelStrukturType">
+    <sequence>
+      <element ref="model:Matrikel" />
+      <element ref="svur:SpecificParcelAreaMeasure">
+        <annotation>
+          <documentation>Indeholder grundarealets stoerrelse angivet for matrikel. Informationen er en berigelse, der sket under proevelsen. 
+Informationen stammer fra Tinglysningsretten. 
+			</documentation>
+        </annotation>
+      </element>
+      <element ref="matr:LandParcelRegistrationDate">
+        <annotation>
+          <documentation>Indeholder matriklens approbationsdato, dvs. dato for godkendelse. 
+			</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="matr:RoadAreaMeasure">
+        <annotation>
+          <documentation>Det areal af et jordstykke (matrikel), der udgoeres af vej. Vaerdien angives som heltal i kvadratmeter.
+			</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:MatrikelNoteringTekstSamling" />
+      <element minOccurs="0" ref="ois:JurisdictionCode">
+        <annotation>
+          <documentation>Den af de tidligere 82 retskredse, som ejendommen tilhoerte</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>
