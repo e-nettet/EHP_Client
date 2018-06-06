@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="http://main.realkreditnettet.dk" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:tns2="http://model.realkreditnettet.dk" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://main.realkreditnettet.dk" targetNamespace="http://main.realkreditnettet.dk" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns:intf="http://main.realkreditnettet.dk" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://main.realkreditnettet.dk">
+      <xsd:import namespace="http://model.realkreditnettet.dk" />
+      <xsd:element name="getStatusText">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="code" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getStatusTextResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getStatusTextReturn" nillable="true" type="tns2:StatusTextResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="changePassword">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="partyid" nillable="true" type="xsd:string" />
+            <xsd:element name="password" nillable="true" type="xsd:string" />
+            <xsd:element name="newpassword" nillable="true" type="xsd:string" />
+            <xsd:element name="confirmpassword" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="changePasswordResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="changePasswordReturn" nillable="true" type="tns2:ChangePasswordResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getLogMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="partyid" nillable="true" type="xsd:string" />
+            <xsd:element name="password" nillable="true" type="xsd:string" />
+            <xsd:element name="logid" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getLogMessageResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getLogMessageReturn" nillable="true" type="tns2:LogMessageResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validateParty">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="partyid" nillable="true" type="xsd:string" />
+            <xsd:element name="password" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="validatePartyResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="validatePartyReturn" nillable="true" type="tns2:ValidatePartyResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="simpleValidateParty">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="partyid" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="simpleValidatePartyResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="simpleValidatePartyReturn" type="tns2:SimpleValidatePartyResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="doTransaction">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="partyid" nillable="true" type="xsd:string" />
+            <xsd:element name="password" nillable="true" type="xsd:string" />
+            <xsd:element name="flowname" nillable="true" type="xsd:string" />
+            <xsd:element name="serverid" nillable="true" type="xsd:string" />
+            <xsd:element name="query" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="doTransactionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="doTransactionReturn" nillable="true" type="tns2:TransactionReponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="doTransactionBinary">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="partyid" nillable="true" type="xsd:string" />
+            <xsd:element name="password" nillable="true" type="xsd:string" />
+            <xsd:element name="flowname" nillable="true" type="xsd:string" />
+            <xsd:element name="serverid" nillable="true" type="xsd:string" />
+            <xsd:element name="query" nillable="true" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="doTransactionBinaryResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="doTransactionBinaryReturn" nillable="true" type="tns2:TransactionBinaryResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOf_xsd_nillable_string">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="error">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="errorLocations" type="tns2:errorLocations" />
+            <xsd:element minOccurs="0" name="errordetails" type="xsd:anyType" />
+            <xsd:element minOccurs="0" name="logcorrelation" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:intf="http://main.realkreditnettet.dk" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://model.realkreditnettet.dk">
+      <xsd:import namespace="http://main.realkreditnettet.dk" />
+      <xsd:complexType name="TransactionReponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns2:Response">
+            <xsd:sequence>
+              <xsd:element name="resultString" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="TransactionBinaryResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns2:Response">
+            <xsd:sequence>
+              <xsd:element name="resultBinary" nillable="true" type="xsd:base64Binary" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="Response" abstract="true">
+        <xsd:sequence>
+          <xsd:element name="backEndStatusCode" type="xsd:int" />
+          <xsd:element name="backEndStatusText" nillable="true" type="xsd:string" />
+          <xsd:element name="backEndRootCause" nillable="true" type="xsd:string" />
+          <xsd:element name="logId" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StatusTextResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns2:Response">
+            <xsd:sequence>
+              <xsd:element name="status" nillable="true" type="xsd:string" />
+              <xsd:element name="code" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ChangePasswordResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns2:Response">
+            <xsd:sequence />
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="LogMessageResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns2:Response">
+            <xsd:sequence>
+              <xsd:element name="logMessage" nillable="true" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ValidatePartyResponse">
+        <xsd:complexContent mixed="false">
+          <xsd:extension base="tns2:Response">
+            <xsd:sequence>
+              <xsd:element name="rknetid" nillable="true" type="xsd:string" />
+              <xsd:element name="outInfoflows" nillable="true" type="impl:ArrayOf_xsd_nillable_string" />
+              <xsd:element name="passwordExpireDays" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SimpleValidatePartyResponse">
+        <xsd:sequence>
+          <xsd:element name="valid" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="errorLocations">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Body" />
+          <xsd:enumeration value="Header" />
+          <xsd:enumeration value="Unknown" />
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getLogMessageResponse">
+    <wsdl:part name="parameters" element="impl:getLogMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="changePasswordRequest">
+    <wsdl:part name="parameters" element="impl:changePassword" />
+  </wsdl:message>
+  <wsdl:message name="getStatusTextRequest">
+    <wsdl:part name="parameters" element="impl:getStatusText" />
+  </wsdl:message>
+  <wsdl:message name="doTransactionRequest">
+    <wsdl:part name="parameters" element="impl:doTransaction" />
+  </wsdl:message>
+  <wsdl:message name="changePasswordResponse">
+    <wsdl:part name="parameters" element="impl:changePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="validatePartyResponse">
+    <wsdl:part name="parameters" element="impl:validatePartyResponse" />
+  </wsdl:message>
+  <wsdl:message name="RKNetFault">
+    <wsdl:part name="parameters" element="impl:error" />
+  </wsdl:message>
+  <wsdl:message name="getLogMessageRequest">
+    <wsdl:part name="parameters" element="impl:getLogMessage" />
+  </wsdl:message>
+  <wsdl:message name="doTransactionBinaryResponse">
+    <wsdl:part name="parameters" element="impl:doTransactionBinaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="validatePartyRequest">
+    <wsdl:part name="parameters" element="impl:validateParty" />
+  </wsdl:message>
+  <wsdl:message name="doTransactionBinaryRequest">
+    <wsdl:part name="parameters" element="impl:doTransactionBinary" />
+  </wsdl:message>
+  <wsdl:message name="simpleValidatePartyRequest">
+    <wsdl:part name="parameters" element="impl:simpleValidateParty" />
+  </wsdl:message>
+  <wsdl:message name="simpleValidatePartyResponse">
+    <wsdl:part name="parameters" element="impl:simpleValidatePartyResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStatusTextResponse">
+    <wsdl:part name="parameters" element="impl:getStatusTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="doTransactionResponse">
+    <wsdl:part name="parameters" element="impl:doTransactionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Main">
+    <wsdl:operation name="doTransaction">
+      <wsdl:input name="doTransactionRequest" message="impl:doTransactionRequest" />
+      <wsdl:output name="doTransactionResponse" message="impl:doTransactionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="doTransactionBinary">
+      <wsdl:input name="doTransactionBinaryRequest" message="impl:doTransactionBinaryRequest" />
+      <wsdl:output name="doTransactionBinaryResponse" message="impl:doTransactionBinaryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStatusText">
+      <wsdl:input name="getStatusTextRequest" message="impl:getStatusTextRequest" />
+      <wsdl:output name="getStatusTextResponse" message="impl:getStatusTextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <wsdl:input name="changePasswordRequest" message="impl:changePasswordRequest" />
+      <wsdl:output name="changePasswordResponse" message="impl:changePasswordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getLogMessage">
+      <wsdl:input name="getLogMessageRequest" message="impl:getLogMessageRequest" />
+      <wsdl:output name="getLogMessageResponse" message="impl:getLogMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="validateParty">
+      <wsdl:input name="validatePartyRequest" message="impl:validatePartyRequest" />
+      <wsdl:output name="validatePartyResponse" message="impl:validatePartyResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="simpleValidateParty">
+      <wsdl:input name="simpleValidatePartyRequest" message="impl:simpleValidatePartyRequest" />
+      <wsdl:output name="simpleValidatePartyResponse" message="impl:simpleValidatePartyResponse" />
+      <wsdl:fault name="RKNetFault" message="impl:RKNetFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MainSoapBinding" type="impl:Main">
+    <wsaw:UsingAddressing wsdl:required="false" />
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="doTransaction">
+      <wsdlsoap:operation soapAction="doTransaction" />
+      <wsdl:input name="doTransactionRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="doTransactionResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doTransactionBinary">
+      <wsdlsoap:operation soapAction="doTransactionBinary" />
+      <wsdl:input name="doTransactionBinaryRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="doTransactionBinaryResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatusText">
+      <wsdlsoap:operation soapAction="getStatusText" />
+      <wsdl:input name="getStatusTextRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getStatusTextResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changePassword">
+      <wsdlsoap:operation soapAction="changePassword" />
+      <wsdl:input name="changePasswordRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="changePasswordResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLogMessage">
+      <wsdlsoap:operation soapAction="getLogMessage" />
+      <wsdl:input name="getLogMessageRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getLogMessageResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="validateParty">
+      <wsdlsoap:operation soapAction="validateParty" />
+      <wsdl:input name="validatePartyRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="validatePartyResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="simpleValidateParty">
+      <wsdlsoap:operation soapAction="simpleValidateParty" />
+      <wsdl:input name="simpleValidatePartyRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="simpleValidatePartyResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RKNetFault">
+        <wsdlsoap:fault name="RKNetFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MainService">
+    <wsdl:port name="Main" binding="impl:MainSoapBinding">
+      <wsdlsoap:address location="http://tbisws.e-nettet.dk:80/TBISWS/Main" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

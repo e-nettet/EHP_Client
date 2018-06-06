@@ -1,10 +1,12 @@
-C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.csprojResolveAssemblyReference.cache
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.Properties.Resources.resources
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.csproj.GenerateResource.Cache
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.csproj.CoreCompileInputs.cache
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\bin\Debug\EHP_Client.exe.config
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\bin\Debug\EHP_Client.exe
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\bin\Debug\EHP_Client.pdb
-C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.Form1.resources
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.exe
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.pdb
+c:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.csprojAssemblyReference.cache
+c:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.UserControlVaelg.resources
+c:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.UserControlLogon.resources
+C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.FormHent.resources

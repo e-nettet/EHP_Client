@@ -64,18 +64,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\ServiceReferenceTBIS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="EjendomshandelUtils.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormHent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormHent.Designer.cs">
+      <DependentUpon>FormHent.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RKNet_Utils.cs" />
     <Compile Include="SagshaandteringUtils.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="UserControlLogon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlLogon.designer.cs">
+      <DependentUpon>UserControlLogon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlVaelg.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlVaelg.Designer.cs">
+      <DependentUpon>UserControlVaelg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WizardTabcontrol.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WizardTabcontrol.Designer.cs" />
+    <EmbeddedResource Include="FormHent.resx">
+      <DependentUpon>FormHent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,6 +108,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlLogon.resx">
+      <DependentUpon>UserControlLogon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlVaelg.resx">
+      <DependentUpon>UserControlVaelg.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Connected Services\ServiceReferenceAktoerregister\Aktoerregister.wsdl" />
     <None Include="Connected Services\ServiceReferenceAktoerregister\Aktoerregister1.wsdl" />
     <None Include="Connected Services\ServiceReferenceAktoerregister\basis.xsd">
@@ -2792,6 +2820,49 @@
     <None Include="Connected Services\ServiceReferenceSagshaandtering\xmldsig-core-schema.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.ChangePasswordResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.changePasswordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.doTransactionBinaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.doTransactionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.getLogMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.getStatusTextResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.LogMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.SimpleValidatePartyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.simpleValidatePartyResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.StatusTextResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.TransactionBinaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.TransactionReponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.ValidatePartyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\EHP_Client.ServiceReferenceTBIS.validatePartyResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReferenceTBIS\Main.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -2803,7 +2874,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -2812,6 +2885,7 @@
     <WCFMetadataStorage Include="Connected Services\ServiceReferenceAktoerregister\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReferenceEjendomshandel\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReferenceSagshaandtering\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReferenceTBIS\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReferenceSagshaandtering\configuration91.svcinfo" />
@@ -2845,6 +2919,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReferenceAktoerregister\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceTBIS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceTBIS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReferenceTBIS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

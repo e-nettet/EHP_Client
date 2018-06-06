@@ -9,8 +9,6 @@ using EHP_Client.ServiceReferenceSagshaandtering;
 
 namespace EHP_Client
 {
-    public enum Miljoe { Test, Staging, Produktion };
-
     public static class ClientFactory
     {
         
@@ -28,31 +26,31 @@ namespace EHP_Client
             return (s);
         }
 
-        public static EjendomshandeleFPIClient GetEjendomshandeleFPIClient(string partyid, string password) 
+        public static EjendomshandeleFPIClient GetEjendomshandeleFPIClient(string partyid, string password, string endpointAddress) 
         {
             EjendomshandeleFPIClient client = new EjendomshandeleFPIClient(Endpoint_Ejendomshandel);
             client.ClientCredentials.UserName.UserName = partyid;
             client.ClientCredentials.UserName.Password = password;
-            SetEndpoint(client.Endpoint, ToActoerID(partyid), EjendomshandelUtils.GetEndpointAddress(Miljoe.Test));
+            SetEndpoint(client.Endpoint, ToActoerID(partyid), endpointAddress);
             return (client);
         }
 
 
-        public static SagshaandteringeFPIClient GetSagshaandteringeFPIClient(string partyid, string password)
+        public static SagshaandteringeFPIClient GetSagshaandteringeFPIClient(string partyid, string actAs, string password, string endpointAddress)
         {
             SagshaandteringeFPIClient client = new SagshaandteringeFPIClient(Endpoint_Sagshaandtering);
             client.ClientCredentials.UserName.UserName = partyid;
             client.ClientCredentials.UserName.Password = password;
-            SetEndpoint(client.Endpoint, ToActoerID(partyid), SagshaandteringUtils.GetEndpointAddress(Miljoe.Test));
+            SetEndpoint(client.Endpoint, ToActoerID(actAs), endpointAddress);
             return (client);
         }
 
-        public static AktoerregistereFPIClient GetAktoerregistereFPIClient(string partyid, string password)
+        public static AktoerregistereFPIClient GetAktoerregistereFPIClient(string partyid, string password, string endpointaddress)
         {
             AktoerregistereFPIClient client = new AktoerregistereFPIClient(Endpoint_Aktoerregister);
             client.ClientCredentials.UserName.UserName = partyid;
             client.ClientCredentials.UserName.Password = password;
-            SetEndpoint(client.Endpoint, ToActoerID(partyid), AktoerregisterUtils.GetEndpointAddress(Miljoe.Test));
+            SetEndpoint(client.Endpoint, ToActoerID(partyid), endpointaddress);
             return (client);
         }
 

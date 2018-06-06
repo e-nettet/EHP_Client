@@ -1,13 +1,25 @@
 ﻿using System;
-using System.Linq;
 using EHP_Client.ServiceReferenceEjendomshandel;
 
 
 namespace EHP_Client
 {
-    public static class EjendomshandelUtils
+    public class EjendomshandelUtils
     {
-        public static string GetEndpointAddress(Miljoe miljoe)
+        private Miljoe miljoe;
+        private string partyid;
+        private string actas; // Agere på vegne af
+        private string password;
+
+        public EjendomshandelUtils(Miljoe miljoe, string partyid, string actas, string password)
+        {
+            this.miljoe = miljoe;
+            this.partyid = partyid;
+            this.actas = actas;
+            this.password = password;
+        }
+
+        public string GetEndpointAddress()
         {
             string s = "";
             switch (miljoe)
@@ -25,6 +37,18 @@ namespace EHP_Client
                     break;
             }
             return (s);
+        }
+
+        public HaendelsesHistorikHentResponseType GetHaendelsesHistorikHentResponseType()
+        {
+            EjendomshandeleFPIClient client = ClientFactory.GetEjendomshandeleFPIClient(partyid, password, GetEndpointAddress());
+            HaendelsesHistorikHentRequestHeaderType header = new HaendelsesHistorikHentRequestHeaderType();
+            header.DeltagerID = ClientFactory.ToActoerID(actas);
+            HaendelsesHistorikHentRequestType request = new HaendelsesHistorikHentRequestType();
+            request.DatoFra = DateTime.Now.AddDays(-14);
+            request.DatoFraSpecified = true;
+            HaendelsesHistorikHentResponseType response = client.HaendelsesHistorikHentV2(header, request);
+            return (response);
         }
     }
 }

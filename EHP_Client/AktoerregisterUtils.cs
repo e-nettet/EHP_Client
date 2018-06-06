@@ -1,16 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EHP_Client.ServiceReferenceAktoerregister;
 
 namespace EHP_Client
 
 {
-    public static class AktoerregisterUtils
+    public class AktoerregisterUtils
     {
-        public static string GetEndpointAddress(Miljoe miljoe)
+        private Miljoe miljoe;
+        private string partyid;
+        private string actas; // Agere på vegne af
+        private string password;
+
+        public AktoerregisterUtils(Miljoe miljoe, string partyid, string actas, string password)
+        {
+            this.miljoe = miljoe;
+            this.partyid = partyid;
+            this.actas = actas;
+            this.password = password;
+        }
+
+
+        public string GetEndpointAddress()
         {
             string s;
             switch (miljoe)
@@ -27,6 +37,12 @@ namespace EHP_Client
                     break;
             }
             return (s);
+        }
+        public HentAlleAktoerInformationerResponseType GetHentAlleAktoerInformationer()
+        {
+            AktoerregistereFPIClient client = ClientFactory.GetAktoerregistereFPIClient(partyid, password, GetEndpointAddress());
+            HentAlleAktoerInformationerResponseType response = client.HentAlleAktoerInformationer(new HentAlleAktoerInformationerType());
+            return (response);
         }
     }
 }

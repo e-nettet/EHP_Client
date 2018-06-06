@@ -7,9 +7,22 @@ using EHP_Client.ServiceReferenceSagshaandtering;
 
 namespace EHP_Client
 {
-    public static class SagshaandteringUtils
+    public class SagshaandteringUtils
     {
-        public static string GetEndpointAddress(Miljoe miljoe)
+        private Miljoe miljoe;
+        private string partyid;
+        private string actas; // Agere på vegne af
+        private string password;
+
+        public SagshaandteringUtils(Miljoe miljoe, string partyid, string actas, string password)
+        {
+            this.miljoe = miljoe;
+            this.partyid = partyid;
+            this.actas = actas;
+            this.password = password;
+        }
+
+        public string GetEndpointAddress(Miljoe miljoe)
         {
             string s;
             switch (miljoe)
@@ -27,5 +40,9 @@ namespace EHP_Client
             }
             return (s);
         }
+
     }
+
+
+
 }
