@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EHP_Client.ServiceReferenceSagshaandtering;
 
 namespace EHP_Client
@@ -22,7 +18,7 @@ namespace EHP_Client
             this.password = password;
         }
 
-        public string GetEndpointAddress(Miljoe miljoe)
+        private string GetEndpointAddress()
         {
             string s;
             switch (miljoe)
@@ -39,6 +35,15 @@ namespace EHP_Client
                     break;
             }
             return (s);
+        }
+
+        public ListAktiveProcesserResponseType GetListAktiveProcesser()
+        {
+            SagshaandteringeFPIClient client = ClientFactory.GetSagshaandteringeFPIClient(partyid, password, GetEndpointAddress());
+            ListAktiveProcesserType l = new ListAktiveProcesserType();
+            l.AktoerID = ClientFactory.ToActoerID(actas);
+            ListAktiveProcesserResponseType response = client.ListAktiveProcesser(l);
+            return (response);
         }
 
     }

@@ -36,12 +36,12 @@ namespace EHP_Client
         }
 
 
-        public static SagshaandteringeFPIClient GetSagshaandteringeFPIClient(string partyid, string actAs, string password, string endpointAddress)
+        public static SagshaandteringeFPIClient GetSagshaandteringeFPIClient(string partyid, string password, string endpointAddress)
         {
             SagshaandteringeFPIClient client = new SagshaandteringeFPIClient(Endpoint_Sagshaandtering);
             client.ClientCredentials.UserName.UserName = partyid;
             client.ClientCredentials.UserName.Password = password;
-            SetEndpoint(client.Endpoint, ToActoerID(actAs), endpointAddress);
+            SetEndpoint(client.Endpoint, ToActoerID(partyid), endpointAddress);
             return (client);
         }
 
