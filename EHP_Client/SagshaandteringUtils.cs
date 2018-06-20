@@ -9,6 +9,7 @@ namespace EHP_Client
         private string partyid;
         private string actas; // Agere på vegne af
         private string password;
+        private SagshaandteringeFPIClient client;
 
         public SagshaandteringUtils(Miljoe miljoe, string partyid, string actas, string password)
         {
@@ -16,11 +17,12 @@ namespace EHP_Client
             this.partyid = partyid;
             this.actas = actas;
             this.password = password;
+            client = ClientFactory.GetSagshaandteringeFPIClient(partyid, password, GetEndpointAddress());
         }
 
         private string GetEndpointAddress()
         {
-            string s;
+            string s = "";
             switch (miljoe)
             {
                 case Miljoe.Test:
@@ -31,7 +33,6 @@ namespace EHP_Client
                     s = "https://e-bolighandel.e-nettet.dk/efpi/sagshaandtering/Sagshaandtering.eFPI";
                     break;
                 default:
-                    s = "";
                     break;
             }
             return (s);
@@ -39,12 +40,12 @@ namespace EHP_Client
 
         public ListAktiveProcesserResponseType GetListAktiveProcesser()
         {
-            SagshaandteringeFPIClient client = ClientFactory.GetSagshaandteringeFPIClient(partyid, password, GetEndpointAddress());
             ListAktiveProcesserType l = new ListAktiveProcesserType();
             l.AktoerID = ClientFactory.ToActoerID(actas);
             ListAktiveProcesserResponseType response = client.ListAktiveProcesser(l);
             return (response);
         }
+
 
     }
 

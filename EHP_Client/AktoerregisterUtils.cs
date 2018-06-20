@@ -44,5 +44,20 @@ namespace EHP_Client
             HentAlleAktoerInformationerResponseType response = client.HentAlleAktoerInformationer(new HentAlleAktoerInformationerType());
             return (response);
         }
+
+        public string GetPrettyRoller(ProcesDeltagelseType[] p)
+        {
+            string s = "";
+            for (int i = 0; i < p.Length; i++)
+            {
+                for (int j = 0; j < p[i].Rolle.Length; j++)
+                {
+                    if (s.Length > 0) { s += ", "; }
+                    s += p[i].Rolle[j] + " (" + p[i].Procesversion.ProcesNavn + ")";
+                }
+            }
+            if (s.Length == 0) { s = "Ingen roller"; }
+            return (s);
+        }
     }
 }

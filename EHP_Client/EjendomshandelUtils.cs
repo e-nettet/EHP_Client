@@ -10,6 +10,7 @@ namespace EHP_Client
         private string partyid;
         private string actas; // Agere på vegne af
         private string password;
+        private EjendomshandeleFPIClient client;
 
         public EjendomshandelUtils(Miljoe miljoe, string partyid, string actas, string password)
         {
@@ -17,9 +18,10 @@ namespace EHP_Client
             this.partyid = partyid;
             this.actas = actas;
             this.password = password;
+            client = ClientFactory.GetEjendomshandeleFPIClient(partyid, password, GetEndpointAddress());
         }
 
-        public string GetEndpointAddress()
+        private string GetEndpointAddress()
         {
             string s = "";
             switch (miljoe)
@@ -41,14 +43,54 @@ namespace EHP_Client
 
         public HaendelsesHistorikHentResponseType GetHaendelsesHistorikHentResponseType()
         {
-            EjendomshandeleFPIClient client = ClientFactory.GetEjendomshandeleFPIClient(partyid, password, GetEndpointAddress());
-            HaendelsesHistorikHentRequestHeaderType header = new HaendelsesHistorikHentRequestHeaderType();
-            header.DeltagerID = ClientFactory.ToActoerID(actas);
-            HaendelsesHistorikHentRequestType request = new HaendelsesHistorikHentRequestType();
-            request.DatoFra = DateTime.Now.AddDays(-14);
-            request.DatoFraSpecified = true;
+            HaendelsesHistorikHentRequestHeaderType header = new HaendelsesHistorikHentRequestHeaderType()
+            {
+                DeltagerID = ClientFactory.ToActoerID(actas)
+            };
+            HaendelsesHistorikHentRequestType request = new HaendelsesHistorikHentRequestType()
+            {
+                DatoFra = DateTime.Now.AddDays(-14),
+                DatoFraSpecified = true
+            };
             HaendelsesHistorikHentResponseType response = client.HaendelsesHistorikHentV2(header, request);
             return (response);
         }
+        public EjendomshandlensDataHentResponseType GetEjendomshandlensData(string procesID, RolleIDType rolleIDType)
+        {
+            EHPStandardRequestHeaderType header = new EHPStandardRequestHeaderType()
+            {
+                DeltagerID = actas,
+                ProcesID = procesID,
+                RolleID = rolleIDType
+            };
+            EjendomshandlensDataHentResponseType response = client.EjendomshandlensDataHent(header, new TomtElementType());
+            return (response);
+        }
+
+        public SagsAktivitetListeHentResponseType GetSagsAktivitetListeHentResponseType()
+        {
+            SagsAktivitetListeHentRequestHeaderType header = new SagsAktivitetListeHentRequestHeaderType()
+            {
+                Offset = "10",
+                AntalRaekker = "9999",
+                Kolonne = SagsAktivitetListeHentKolonneType.Opdateret,
+                KolonneSorteringsretning = KolonneSorteringsretningType.Faldende,
+                DeltagerID = actas,
+                InkluderLukket = false,
+            };
+            SagsAktivitetListeHentResponseType response = client.SagsAktivitetListeAktivRolleHent(header, new TomtElementType());
+            return (response);
+        }
+
+        public string GetPrettyAddress(SalgsopstillingSoegAddresseType a)
+        {
+            string s = "";
+            s += a.Vejnavn + " " + a.Vej_nr;
+            if (a.Etage.Length > 0) { s += ", " + a.Etage; };
+            if (a.Lejlighedsnummer.Length > 0) { s += ", lejlighedsnummer " + a.Lejlighedsnummer; };
+            s += ", " + a.Postnummer + " " + a.Bynavn;
+            return (s);
+        }
+
     }
 }
