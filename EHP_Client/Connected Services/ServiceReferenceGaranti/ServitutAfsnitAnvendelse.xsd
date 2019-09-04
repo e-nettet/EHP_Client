@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutIndholdAnvendelse.xsd" />
+  <element name="ServitutAfsnitAnvendelse" type="model:ServitutAfsnitAnvendelseType">
+    <annotation>
+      <documentation>Angiver et afsnit om anvendelse i en servitut.</documentation>
+    </annotation>
+  </element>
+  <complexType name="ServitutAfsnitAnvendelseType">
+    <sequence>
+      <element maxOccurs="unbounded" ref="model:ServitutIndholdAnvendelse" />
+    </sequence>
+  </complexType>
+</schema>

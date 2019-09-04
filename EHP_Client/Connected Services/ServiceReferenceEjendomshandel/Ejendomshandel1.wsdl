@@ -292,6 +292,20 @@
         <soap:fault use="literal" name="EFPIFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GarantiudskriftHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/GarantiudskriftHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GarantiudskriftHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="HaendelsesHistorikHent">
       <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHent" />
       <wsdl:input>
@@ -762,6 +776,34 @@
       <wsdl:input>
         <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
         <soap:header message="tns:HaendelsesHistorikHentV2" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHentV3">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHentV3" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:HaendelsesHistorikHentV3" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ProceslisteMedGarantifristHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ProceslisteMedGarantifristHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:ProceslisteMedGarantifristHent" part="header" use="literal" />
         <soap:body use="literal" parts="body" />
       </wsdl:input>
       <wsdl:output>
@@ -955,6 +997,21 @@
         <soap:fault use="literal" name="EFPIFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GarantiudskriftHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/FristforlaengelsesAnmodningSvar" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GarantiudskriftHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="HaendelsesHistorikHent">
       <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHent" />
       <wsdl:input>
@@ -1458,6 +1515,36 @@
       <wsdl:input>
         <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
         <soap:header message="tns:HaendelsesHistorikHentV2" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHentV3">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHentV3" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:HaendelsesHistorikHentV3" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ProceslisteMedGarantifristHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ProceslisteMedGarantifristHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:ProceslisteMedGarantifristHent" part="header" use="literal" />
         <soap:body use="literal" parts="body" />
       </wsdl:input>
       <wsdl:output>
@@ -1652,6 +1739,21 @@
         <soap:fault use="literal" name="EFPIFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="GarantiudskriftHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/GarantiudskriftHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GarantiudskriftHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="HaendelsesHistorikHent">
       <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHent" />
       <wsdl:input>
@@ -2155,6 +2257,36 @@
       <wsdl:input>
         <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
         <soap:header message="tns:HaendelsesHistorikHentV2" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHentV3">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHentV3" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:HaendelsesHistorikHentV3" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ProceslisteMedGarantifristHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ProceslisteMedGarantifristHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:ProceslisteMedGarantifristHent" part="header" use="literal" />
         <soap:body use="literal" parts="body" />
       </wsdl:input>
       <wsdl:output>

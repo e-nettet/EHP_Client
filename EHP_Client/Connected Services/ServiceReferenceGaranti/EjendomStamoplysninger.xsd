@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" xmlns:xkom-2="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" xmlns:snp="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:matr="http://rep.oio.dk/matr.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/matr.dk/xml/schemas/2006/04/25/matr.xsd" namespace="http://rep.oio.dk/matr.dk/xml/schemas/2006/04/25/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/snapshot/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/EjendomIndskannetAktSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/EjendomNoteringTekstSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/HovedNotering.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/RaadighedsindskraenkningSummariskSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/AnmeldelseModtagetIndikator.xsd" />
+  <element name="EjendomStamoplysninger" type="eakt:EjendomStamoplysningerType">
+    <annotation>
+      <documentation>Stamoplysninger for en ejendom.
+			 RealPropertyStructure er ejendommens stamnummer og findes i EjendomVurderingStruktur under EjendomVurderingSamling.
+			 RealPropertyStructure og EjendomVurdering er ikke altid til stede ved umatrikuleret areal.
+			 </documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomStamoplysningerType">
+    <sequence>
+      <element minOccurs="0" ref="snp:AdresseStruktur">
+        <annotation>
+          <documentation>Indeholder den specifikke adresse.
+					 </documentation>
+        </annotation>
+      </element>
+      <element ref="model:EjendomIdentifikator" />
+      <element minOccurs="0" ref="snp:MatrikelStrukturSamling" />
+      <element minOccurs="0" ref="snp:EjendomVurderingSamling" />
+      <element minOccurs="0" ref="model:Fordelingtal" />
+      <element minOccurs="0" ref="matr:AgriculturalNotationTypeText" />
+      <element minOccurs="0" ref="eakt:EjendomIndskannetAktSamling" />
+      <element minOccurs="0" name="TillaegstekstSamling" type="model:TekstAngivelseSamlingType">
+        <annotation>
+          <documentation>Resulterende tekst fra Tinglysningsrettens behandling af saerllige ekspeditionstyper af kategorien meddeleleser. Indholdet er relateret til den interne sagsportal.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="eakt:EjendomNoteringTekstSamling" />
+      <element minOccurs="0" ref="eakt:HovedNotering" />
+      <element minOccurs="0" ref="eakt:RaadighedsindskraenkningSummariskSamling" />
+    </sequence>
+  </complexType>
+</schema>

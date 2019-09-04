@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/05/19/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/05/19/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/05/19/CPR_CompletePostalLabelText.xsd" />
+</schema>

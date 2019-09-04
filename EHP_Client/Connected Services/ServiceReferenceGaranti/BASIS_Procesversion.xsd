@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Procesversion" type="tns:ProcesversionType" />
+  <complexType name="ProcesversionType">
+    <sequence>
+      <element name="ProcesNavn" type="tns:ProcesNavnType" />
+      <element name="Version" type="tns:VersionType" />
+    </sequence>
+  </complexType>
+  <simpleType name="ProcesNavnType">
+    <restriction base="string">
+      <minLength value="1" />
+      <maxLength value="50" />
+    </restriction>
+  </simpleType>
+  <simpleType name="VersionType">
+    <restriction base="string">
+      <minLength value="1" />
+      <maxLength value="256" />
+    </restriction>
+  </simpleType>
+</schema>

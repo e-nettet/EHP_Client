@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:itst-2="http://rep.oio.dk/itst.dk/xml/schemas/2006/01/17/" xmlns:itst-1="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/03/15/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2005/03/15/dkcc.xsd" namespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/03/15/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/itst.dk/xml/schemas/2006/01/17/itst.xsd" namespace="http://rep.oio.dk/itst.dk/xml/schemas/2006/01/17/" />
+  <element name="PersonSimpelIdentifikator" type="model:PersonSimpelIdentifikatorType">
+    <annotation>
+      <documentation>Simpel identifikation af en person, baseret paa navn og foedselsdato.</documentation>
+    </annotation>
+  </element>
+  <complexType name="PersonSimpelIdentifikatorType">
+    <sequence>
+      <element ref="itst-2:PersonName" />
+      <element minOccurs="0" ref="itst-1:BirthDate">
+        <annotation>
+          <documentation>Angives altid for ikke-overfoert dokument.
+           Angives for et overfoert dokument, hvis oplysningen findes.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

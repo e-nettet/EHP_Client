@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://efpi.dk/garanti/xml/wsdl/" xmlns:gv1="http://efpi.dk/garanti/xml/schemas/EFPI_Garanti_v1" xmlns:wsa="http://www.w3.org/2005/08/addressing" name="Garanti.eFPI" targetNamespace="http://efpi.dk/garanti/xml/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+
+		Changelog:
+		+---------+------------------------------------------------------------------------------
+		| Version | Description
+		+---------+------------------------------------------------------------------------------
+		| 0.2 | Initial release of wsdl and xsd. Not compilable and not verified
+		| 0.3 | Partial release of interfaces. All operqaqtions are draft in current version.
+		| | - Operations based on 1.29 baseline of not337.
+		| 0.3.1 | Patch release:
+		| | - Absolute import and include paths made relative. Missing xsd schemas
+		| | added to release
+		| | - Added files are OIO compliant. Thus they cannot be compiled with
+		| | standard wsdl compilers due to multiple imports into same namespace.
+		| | MSXML.Net a notable exception.
+		| | - Operations tagged with a completion level:
+		| | Draft: Operation is in draft, and may be subject to change as development
+		| | progresses.
+		| | Final: Operation and arguments are stable.
+		| | Intern: Operation is for internal use by EHP2011 (e-nettet). Do not use.
+		| |
+		- GarantiForRestkoebesum schema added (EFPI_GarantiDokument_v1.xsd)
+		| | Schemas corrected to allow compilation using standard tools.
+		| 1.0beta1 |
+		| | Defect 2330:
+		| | -ErstatningSvarSend response and ErstatningSvarModtag response no uses the same type.
+		| | Defect 2331:
+		| | -ErstatningSvarSend now contains the entire original request.
+		| | Defect 2332:
+		| | -TilbagekaldelseAnmodning no longer extends Anmodning.
+		| | -TilbagekaldelseAnmodningSvar now contains AnmodningAccepteretIndikator, a begrundelse and a tilbagekaldelseanmodning.
+		| | Defect 2906:
+		| | -Removed dokumentid from OpretOgStart response.
+		| | Defect 3046:
+		| | -Added "Request" to all header and body types.
+		| | -Changed initierendeAktoerID to AktoerID in OpretOgStart
+		| | -Change AktoerRolleSamling to RolleOgIndehaverSamling in OpretOgStart
+		| | -Added draft (not yet implemented), implemented (some backend code exists) or internal (only for internal use) to operations in WSDL
+		| |
+		| | Revocation and Replacement request answers were updated to include original request's body part
+		| | Added operations:
+		| | -HaendelsesHistorikHent
+              | | -GarantierListeHent. This is an internal operation.
+		| | - OpretOgStart schema updated (OpretOgStartRequestHeaderType updated)
+
+	</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://efpi.dk/garanti/xml/schemas/EFPI_Garanti_v1">
+      <s:include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../schemas/EFPI_Garanti_v1.xsd" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ArkivpakkeHentResponse">
+    <wsdl:part name="body" element="gv1:ArkivpakkeHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ArkivpakkeHent">
+    <wsdl:part name="header" element="gv1:ArkivpakkeHentRequestHeader" />
+    <wsdl:part name="body" element="gv1:ArkivpakkeHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="GarantiDokumentUdkastIlaegResponse">
+    <wsdl:part name="body" element="gv1:GarantiDokumentUdkastIlaegResponse" />
+  </wsdl:message>
+  <wsdl:message name="GuaranteeTimerService">
+    <wsdl:part name="header" element="gv1:GuaranteeTimerServiceRequestHeader" />
+    <wsdl:part name="body" element="gv1:GuaranteeTimerServiceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GarantiSend">
+    <wsdl:part name="body" element="gv1:GarantiSendRequest" />
+    <wsdl:part name="header" element="gv1:GarantiSendRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="TilbagekaldelseAnmodningSendResponse">
+    <wsdl:part name="body" element="gv1:TilbagekaldelseAnmodningSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="HaendelsesHistorikHentResponse">
+    <wsdl:part name="body" element="gv1:HaendelsesHistorikHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GarantiDokumentUdkastIlaeg">
+    <wsdl:part name="body" element="gv1:GarantiDokumentUdkastIlaegRequest" />
+    <wsdl:part name="header" element="gv1:GarantiDokumentUdkastIlaegRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="GarantierListeHentResponse">
+    <wsdl:part name="body" element="gv1:GarantierListeHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpretOgStartResponse">
+    <wsdl:part name="body" element="gv1:OpretOgStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="ErstatningAnmodningSendResponse">
+    <wsdl:part name="body" element="gv1:ErstatningAnmodningSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="TilbagekaldelseSvarSend">
+    <wsdl:part name="header" element="gv1:TilbagekaldelseSvarSendRequestHeader" />
+    <wsdl:part name="body" element="gv1:TilbagekaldelseSvarSendRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeponeringskontonrSendResponse">
+    <wsdl:part name="body" element="gv1:DeponeringskontonrSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="GemBegrundelseOgOpretUdkastResponse">
+    <wsdl:part name="body" element="gv1:GemBegrundelseOgOpretUdkastResponse" />
+  </wsdl:message>
+  <wsdl:message name="TilbagekaldelseAnmodningSend">
+    <wsdl:part name="header" element="gv1:TilbagekaldelseAnmodningSendRequestHeader" />
+    <wsdl:part name="body" element="gv1:TilbagekaldelseAnmodningSendRequest" />
+  </wsdl:message>
+  <wsdl:message name="GarantierListeHent">
+    <wsdl:part name="body" element="gv1:GarantierListeHentRequest" />
+    <wsdl:part name="header" element="gv1:GarantierListeHentRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="ErstatningAnmodningSend">
+    <wsdl:part name="body" element="gv1:ErstatningAnmodningSendRequest" />
+    <wsdl:part name="header" element="gv1:ErstatningAnmodningSendRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="GemBegrundelseOgOpretUdkast">
+    <wsdl:part name="header" element="gv1:GemBegrundelseOgOpretUdkastRequestHeader" />
+    <wsdl:part name="body" element="gv1:GemBegrundelseOgOpretUdkastRequest" />
+  </wsdl:message>
+  <wsdl:message name="DeponeringskontonrSend">
+    <wsdl:part name="body" element="gv1:DeponeringskontonrSendRequest" />
+    <wsdl:part name="header" element="gv1:DeponeringskontonrSendRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyInformationResponse">
+    <wsdl:part name="body" element="gv1:GetPropertyInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GarantiProcesHentResponse">
+    <wsdl:part name="body" element="gv1:GarantiProcesHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GarantiInformationHent">
+    <wsdl:part name="header" element="gv1:GarantiInformationRequestHeader" />
+    <wsdl:part name="body" element="gv1:GarantiInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="ErstatningSvarSend">
+    <wsdl:part name="body" element="gv1:ErstatningSvarSendRequest" />
+    <wsdl:part name="header" element="gv1:ErstatningSvarSendRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="TilbagekaldelseSvarSendResponse">
+    <wsdl:part name="body" element="gv1:TilbagekaldelseSvarSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="GarantiInformationHentResponse">
+    <wsdl:part name="body" element="gv1:GarantiInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigFejlMeldSendResponse">
+    <wsdl:part name="body" element="gv1:ForretningsmaessigFejlMeldSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="GarantiSendResponse">
+    <wsdl:part name="body" element="gv1:GarantiSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyOwnersResponse">
+    <wsdl:part name="body" element="gv1:GetPropertyOwnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="HaendelsesHistorikHent">
+    <wsdl:part name="body" element="gv1:HaendelsesHistorikHentRequest" />
+    <wsdl:part name="header" element="gv1:HaendelsesHistorikHentRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="ErstatningSvarSendResponse">
+    <wsdl:part name="body" element="gv1:ErstatningSvarSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpretOgStart">
+    <wsdl:part name="body" element="gv1:OpretOgStartRequest" />
+    <wsdl:part name="header" element="gv1:OpretOgStartRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="ForretningsmaessigFejlMeldSend">
+    <wsdl:part name="header" element="gv1:ForretningsmaessigFejlMeldSendRequestHeader" />
+    <wsdl:part name="body" element="gv1:ForretningsmaessigFejlMeldSendRequest" />
+  </wsdl:message>
+  <wsdl:message name="GarantiProcesHent">
+    <wsdl:part name="body" element="gv1:GarantiProcesHentRequest" />
+    <wsdl:part name="header" element="gv1:GarantiProcesHentRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="EFPIFault">
+    <wsdl:part name="parameters" element="gv1:error" />
+  </wsdl:message>
+  <wsdl:message name="GetPropertyInformation">
+    <wsdl:part name="header" element="gv1:GetPropertyInformationRequestHeader" />
+    <wsdl:part name="body" element="gv1:GetPropertyInformationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GuaranteeTimerServiceResponse">
+    <wsdl:part name="body" element="gv1:GuaranteeTimerServiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Garanti.eFPI">
+    <wsdl:operation name="ArkivpakkeHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ArkivpakkeHent" message="tns:ArkivpakkeHent" />
+      <wsdl:output message="tns:ArkivpakkeHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="DeponeringskontonrSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/DeponeringskontonrSend" message="tns:DeponeringskontonrSend" />
+      <wsdl:output message="tns:DeponeringskontonrSendResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningAnmodningSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningAnmodningSend" message="tns:ErstatningAnmodningSend" />
+      <wsdl:output message="tns:ErstatningAnmodningSendResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningSvarSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningSvarSend" message="tns:ErstatningSvarSend" />
+      <wsdl:output message="tns:ErstatningSvarSendResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsmaessigFejlMeldSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ForretningsmaessigFejlMeldSend" message="tns:ForretningsmaessigFejlMeldSend" />
+      <wsdl:output message="tns:ForretningsmaessigFejlMeldSendResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="OpretOgStart">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/OpretOgStart" message="tns:OpretOgStart" />
+      <wsdl:output message="tns:OpretOgStartResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GarantiDokumentUdkastIlaeg">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiDokumentUdkastIlaeg" message="tns:GarantiDokumentUdkastIlaeg" />
+      <wsdl:output message="tns:GarantiDokumentUdkastIlaegResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GarantiProcesHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiProcesHent" message="tns:GarantiProcesHent" />
+      <wsdl:output message="tns:GarantiProcesHentResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GarantiInformationHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiInformationHent" message="tns:GarantiInformationHent" />
+      <wsdl:output message="tns:GarantiInformationHentResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GarantiSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiSend" message="tns:GarantiSend" />
+      <wsdl:output message="tns:GarantiSendResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GemBegrundelseOgOpretUdkast">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GemBegrundelseOgOpretUdkast" message="tns:GemBegrundelseOgOpretUdkast" />
+      <wsdl:output message="tns:GemBegrundelseOgOpretUdkastResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseAnmodningSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseAnmodningSend" message="tns:TilbagekaldelseAnmodningSend" />
+      <wsdl:output message="tns:TilbagekaldelseAnmodningSendResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseSvarSend">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseSvarSend" message="tns:TilbagekaldelseSvarSend" />
+      <wsdl:output message="tns:TilbagekaldelseSvarSendResponse" />
+      <wsdl:fault name="fault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/HaendelsesHistorikHent" message="tns:HaendelsesHistorikHent" />
+      <wsdl:output message="tns:HaendelsesHistorikHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GarantierListeHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantierListeHent" message="tns:GarantierListeHent" />
+      <wsdl:output message="tns:GarantierListeHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GuaranteeTimerService">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GuaranteeTimerService" message="tns:GuaranteeTimerService" />
+      <wsdl:output message="tns:GuaranteeTimerServiceResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartialPropertyInformation">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPartialPropertyInformation" message="tns:GetPropertyInformation" />
+      <wsdl:output message="tns:GetPropertyInformationResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullPropertyInformation">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetFullPropertyInformation" message="tns:GetPropertyInformation" />
+      <wsdl:output message="tns:GetPropertyInformationResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyOwners">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPropertyOwners" message="tns:GetPropertyInformation" />
+      <wsdl:output message="tns:GetPropertyOwnersResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

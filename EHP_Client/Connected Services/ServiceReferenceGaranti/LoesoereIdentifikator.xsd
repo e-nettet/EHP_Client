@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:cvr="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/cvr.xsd" namespace="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/cpr.xsd" namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" />
+  <element name="LoesoereIdentifikator" type="model:LoesoereIdentifikatorType">
+    <annotation>
+      <documentation>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">Identifikation af loesoere</p>
+        <ol xmlns="http://www.w3.org/2001/XMLSchema">
+          <li>Person</li>
+          <ul>
+            <li>Angiv vaerdi i foerste cpr:PersonCivilRegistrationIdentifier</li>
+          </ul>
+          <li>Virksomhed (ikke enkeltmandsvirksomhed</li>
+          <ul>
+            <li>Angiv vaerdi i cvr:CVRnumberIdentifier</li>
+          </ul>
+          <li>Enkeltmandsvirksomhed</li>
+          <ul>
+            <li>Angiv vaerdi i cvr:CVRnumberIdentifier</li>
+            <li>Angiv vaerdi i det sidste cpr:PersonCivilRegistrationIdentifier</li>
+          </ul>
+        </ol>
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="LoesoereIdentifikatorType">
+    <choice>
+      <element ref="cpr:PersonCivilRegistrationIdentifier">
+        <annotation>
+          <documentation>Benytte ved identifikation af en person</documentation>
+        </annotation>
+      </element>
+      <element ref="cvr:CVRnumberIdentifier">
+        <annotation>
+          <documentation>Benytte ved identifikation af en virksomhed</documentation>
+        </annotation>
+      </element>
+      <element name="CVRnumberIdentifierAndPersonCivilRegistrationIdentifier" type="model:CVRnumberIdentifierAndPersonCivilRegistrationIdentifierType" />
+    </choice>
+  </complexType>
+  <complexType name="CVRnumberIdentifierAndPersonCivilRegistrationIdentifierType">
+    <sequence>
+      <element ref="cvr:CVRnumberIdentifier">
+        <annotation>
+          <documentation>Benytte ved identifikation af en virksomhed</documentation>
+        </annotation>
+      </element>
+      <element ref="cpr:PersonCivilRegistrationIdentifier">
+        <annotation>
+          <documentation>Dette felt benyttes kun ved enkeltmandsvirksomheder, til at angive CPR nummer</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

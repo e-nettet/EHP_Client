@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseRenteSats.xsd" />
+  <element name="HaeftelseRenteFast" type="model:HaeftelseRenteFastType">
+    <annotation>
+      <documentation>Oplysninger om rente paa en haeftelse med fast rente.</documentation>
+    </annotation>
+  </element>
+  <complexType name="HaeftelseRenteFastType">
+    <sequence>
+      <element name="HaeftelseRentePaalydendeSats" type="model:HaeftelseRenteSatsType">
+        <annotation>
+          <documentation>Haeftelsens paalydende aarlige rentesats.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="HaeftelseRenteNominelSats" type="model:HaeftelseRenteSatsType">
+        <annotation>
+          <documentation>Haeftelsens aarlige rente inkl. renters rente.</documentation>
+        </annotation>
+      </element>
+      <element name="HaeftelseRenteSatsForeloebigIndikator" type="boolean">
+        <annotation>
+          <documentation>True angiver at rentesats er foreloebig fastsat. False angiver at rentesats er endelig fastsat.
+          </documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="errorlocation" type="tns:errorLocations" />
+  <simpleType name="errorLocations">
+    <restriction base="string">
+      <enumeration value="Body" />
+      <enumeration value="Header" />
+      <enumeration value="Unknown" />
+    </restriction>
+  </simpleType>
+</schema>

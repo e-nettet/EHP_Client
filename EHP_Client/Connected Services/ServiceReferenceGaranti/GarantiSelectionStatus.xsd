@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/internalschemas/GarantiSelectionStatus_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/internalschemas/GarantiSelectionStatus_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="GarantiSelectionStatus" type="tns:GarantiSelectionStatusType" />
+  <simpleType name="GarantiSelectionStatusType">
+    <restriction base="string">
+      <enumeration value="WaitingForGuaranteeDocumentLabel" />
+      <enumeration value="ActiveLabel" />
+      <enumeration value="AwaitingFullfilmentLabel" />
+      <enumeration value="GuaranteeTriedReplacedLabel" />
+      <enumeration value="GuaranteeTriedWithdrawnLabel" />
+      <enumeration value="ProcessFailLabel" />
+      <enumeration value="NormallyCompletedLabel" />
+      <enumeration value="ProcessInterruptedLabel" />
+      <enumeration value="All" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:s="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" xmlns:garanti="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiIdentifikator_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiIdentifikator_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiIdentifikator_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Erstatningsanmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Erstatningsanmodning_v1" />
+  <element abstract="true" name="ErstatningAnmodningSvar" type="tns:ErstatningAnmodningSvarType">
+    <annotation>
+      <documentation>Comment describing your root element</documentation>
+    </annotation>
+  </element>
+  <complexType name="ErstatningAnmodningSvarType">
+    <sequence>
+      <element name="AnmodningAccepteretIndikator" type="boolean" />
+      <element minOccurs="0" name="Begrundelse" type="s:StringMin2Max10K" />
+      <element name="NyGarantiIdentifikator" type="garanti:GarantiIdentifikator" />
+      <element name="ErstatterGarantiIdentifikator" type="garanti:GarantiIdentifikator" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:dkcc="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/13/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/13/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/13/DKCC_PostOfficeBoxIdentifier.xsd" />
+</schema>

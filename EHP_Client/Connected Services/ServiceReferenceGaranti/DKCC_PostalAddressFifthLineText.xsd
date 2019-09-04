@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:cpr="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/05/19/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2005/05/19/" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/05/19/cpr.xsd" namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/05/19/" />
+  <element name="PostalAddressFifthLineText" type="cpr:CompletePostalLabelTextType" />
+</schema>

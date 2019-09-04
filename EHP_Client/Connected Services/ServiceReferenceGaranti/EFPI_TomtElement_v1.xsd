@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TomtElement_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <complexType name="TomtElementType">
+    <sequence />
+  </complexType>
+</schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="KortStelnummer" type="model:KortStelnummerType">
+    <annotation>
+      <documentation>Ikke unik stelnummer paa mindre en 17 karakter</documentation>
+    </annotation>
+  </element>
+  <simpleType name="KortStelnummerType">
+    <restriction base="string">
+      <pattern value="[A-Z0-9]{3,16}" />
+    </restriction>
+  </simpleType>
+</schema>

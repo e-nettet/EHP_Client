@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Anpartsnummer" type="model:AnpartsnummerType">
+    <annotation>
+      <documentation>Entydigt nummer der repraesenterer en ejendom af typen anpart. Nummeret kan bestaa af baade tal og bogstaver. Antallet karakterer er 5.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="AnpartsnummerType">
+    <restriction base="string">
+      <maxLength value="5" />
+    </restriction>
+  </simpleType>
+</schema>

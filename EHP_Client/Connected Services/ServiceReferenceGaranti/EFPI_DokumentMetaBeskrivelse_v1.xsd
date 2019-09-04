@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:rolids="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleIDSamling_v1" xmlns:loebenummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Loebenummer_v1" xmlns:diff="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" xmlns:dokumentkat="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentKategori_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DokumentKategori_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentKategori_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Loebenummer_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Loebenummer_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleIDSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleIDSamling_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_XMLDiffResult_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" />
+  <element name="DokumentMetaBeskrivelse" type="tns:DokumentMetaBeskrivelseType" />
+  <complexType name="DokumentMetaBeskrivelseType">
+    <sequence>
+      <element ref="dokumentkat:DokumentKategori" />
+      <element name="Tidsstempel" type="dateTime" />
+      <element minOccurs="0" name="DokumentBeskrivelse" type="strings:StringMin2Max256" />
+      <element name="Size" type="int" />
+      <element minOccurs="0" name="Modtagere" type="rolids:RolleIDSamlingType" />
+      <element minOccurs="0" name="DokumentAfDato" type="dateTime" />
+      <element minOccurs="0" name="Afsender" type="rolid:RolleIDType" />
+      <choice>
+        <element name="Versioneret" type="tns:VersioneretType" />
+        <element name="Loebenummereret" type="tns:LobenummereretType" />
+      </choice>
+    </sequence>
+  </complexType>
+  <complexType name="VersioneretType">
+    <sequence>
+      <element name="Versionsnummer" type="integer" />
+      <element minOccurs="0" name="Forskel" type="diff:XMLDiffResultType" />
+    </sequence>
+  </complexType>
+  <complexType name="LobenummereretType">
+    <sequence>
+      <element ref="loebenummer:Loebenummer" />
+      <element name="Status" type="tns:StatusType" />
+      <element minOccurs="0" name="InvalideringsKommentar" type="strings:StringMin2Max4K" />
+    </sequence>
+  </complexType>
+  <simpleType name="StatusType">
+    <restriction base="string">
+      <enumeration value="ugyldig" />
+      <enumeration value="gyldig" />
+    </restriction>
+  </simpleType>
+</schema>

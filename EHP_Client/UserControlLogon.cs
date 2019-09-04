@@ -40,5 +40,19 @@ namespace EHP_Client
         {
             ActAs = textBoxActAs.Text;
         }
+
+        private void textBoxPartID_Leave(object sender, EventArgs e)
+        {
+            textBoxPartID.Text = TextToPartyID(textBoxPartID.Text);
+            if (textBoxActAs.Text.Length == 0) { textBoxActAs.Text = textBoxPartID.Text; }
+        }
+
+        private string TextToPartyID(string text)
+        {
+            string s = text;
+            s = s.Replace(":14", "");
+            s = ("5790000000000").Substring(0, 13 - s.Length) + s + ":14";
+            return (s);
+        }
     }
 }

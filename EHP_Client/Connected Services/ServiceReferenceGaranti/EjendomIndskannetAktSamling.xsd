@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentFilnavnTekst.xsd" />
+  <element name="EjendomIndskannetAktSamling" type="eakt:EjendomIndskannetAktSamlingType">
+    <annotation>
+      <documentation>Samling af identifikatorer paa indskannede akter for en ejendom. Hver identifikator er filnavnet.
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomIndskannetAktSamlingType">
+    <sequence>
+      <element maxOccurs="unbounded" ref="eakt:DokumentFilnavnTekst" />
+    </sequence>
+  </complexType>
+</schema>

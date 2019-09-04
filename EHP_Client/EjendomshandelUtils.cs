@@ -6,10 +6,10 @@ namespace EHP_Client
 {
     public class EjendomshandelUtils
     {
-        private Miljoe miljoe;
-        private string partyid;
+        private readonly Miljoe miljoe;
+        private readonly string partyid;
         private string actas; // Agere på vegne af
-        private string password;
+        private readonly string password;
         private EjendomshandeleFPIClient client;
 
         public EjendomshandelUtils(Miljoe miljoe, string partyid, string actas, string password)
@@ -59,7 +59,7 @@ namespace EHP_Client
         {
             EHPStandardRequestHeaderType header = new EHPStandardRequestHeaderType()
             {
-                DeltagerID = actas,
+                DeltagerID = ClientFactory.ToActoerID( actas),
                 ProcesID = procesID,
                 RolleID = rolleIDType
             };
@@ -75,7 +75,7 @@ namespace EHP_Client
                 AntalRaekker = "9999",
                 Kolonne = SagsAktivitetListeHentKolonneType.Opdateret,
                 KolonneSorteringsretning = KolonneSorteringsretningType.Faldende,
-                DeltagerID = actas,
+                DeltagerID = ClientFactory.ToActoerID( actas),
                 InkluderLukket = false,
             };
             SagsAktivitetListeHentResponseType response = client.SagsAktivitetListeAktivRolleHent(header, new TomtElementType());
@@ -92,5 +92,35 @@ namespace EHP_Client
             return (s);
         }
 
+        public ProcesSoegResponseType ProcesSoeg(string soegestreng) // This is an internal e-nettet operation and can be changed without warning
+        {
+            ProcesSoegRequestHeaderType header = new ProcesSoegRequestHeaderType()
+            {
+                DeltagerID = ClientFactory.ToActoerID( actas)
+            };
+            ProcesSoegRequestType request = new ProcesSoegRequestType()
+            {
+                CvrCprSearch = true,
+                Soegestreng = soegestreng
+            };
+            ProcesSoegResponseType response = client.ProcesSoeg(header, request);
+            return (response);
+        }
+
+        public DokumentHentResponseType DokumentHent(string procesID, RolleIDType rolle, DokumentKategoriType dokumentKategoriType)
+        {
+            EHPStandardRequestHeaderType header = new EHPStandardRequestHeaderType()
+            {
+                DeltagerID = ClientFactory.ToActoerID( actas),
+                ProcesID = procesID,
+                RolleID = rolle
+            };
+            DokumentHentRequestType request = new DokumentHentRequestType()
+            {
+                DokumentKategori = dokumentKategoriType,
+            };
+            DokumentHentResponseType response = client.DokumentHent(header, request);
+            return (response);
+        }
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/PrioritetNummer.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/RettighedIdentifikator.xsd" />
+  <element name="Pantrettighed" type="model:PantrettighedType">
+    <annotation>
+      <documentation>
+        Den sammenkobling, der sker mellem et haeftelsesdokument og en ejendom benaevnes en
+        pantrettighed.
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="PantrettighedType">
+    <sequence>
+      <element ref="model:RettighedIdentifikator" />
+      <element ref="model:PrioritetNummer">
+        <annotation>
+          <documentation>
+            Den faktiske prioritet for rettigheden. Ud af dokumentet kan laeses respekterne, som
+            angiver den oenskede prioritet. Dette modereres evt. af anmaerkninger og giver den
+            faktiske prioritet. 
+          </documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

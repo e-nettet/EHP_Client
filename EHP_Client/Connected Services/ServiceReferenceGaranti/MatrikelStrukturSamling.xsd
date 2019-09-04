@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:snapshot="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/snapshot/1/MatrikelStruktur.xsd" />
+  <element name="MatrikelStrukturSamling" type="snapshot:MatrikelStrukturSamlingType">
+    <annotation>
+      <documentation>Indeholder berigede matrikler.</documentation>
+    </annotation>
+  </element>
+  <complexType name="MatrikelStrukturSamlingType">
+    <sequence>
+      <element maxOccurs="unbounded" ref="snapshot:MatrikelStruktur" />
+    </sequence>
+  </complexType>
+</schema>

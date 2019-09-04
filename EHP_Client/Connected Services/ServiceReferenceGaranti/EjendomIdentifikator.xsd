@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:kms="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" xmlns:xkom-2="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/EjendomType.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Matrikel.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Umatrikuleretareal.xsd" />
+  <element name="EjendomIdentifikator" type="model:EjendomIdentifikatorType">
+    <annotation>
+      <documentation>Identifikation af en ejendom.</documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomIdentifikatorType">
+    <sequence>
+      <element minOccurs="0" ref="model:EjendomType">
+        <annotation>
+          <documentation>Angives hvis typen af ejendom er en af de af DSS godkendte typer af ejendom.</documentation>
+        </annotation>
+      </element>
+      <choice>
+        <element maxOccurs="unbounded" ref="model:Matrikel" />
+        <element ref="model:Umatrikuleretareal" />
+      </choice>
+    </sequence>
+  </complexType>
+</schema>

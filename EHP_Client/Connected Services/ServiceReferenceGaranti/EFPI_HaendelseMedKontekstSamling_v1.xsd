@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:haendelsesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekst_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseMedKontekst_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekst_v1" />
+  <element name="HaendelseMedKontekstSamling" type="tns:HaendelseMedKontekstSamlingType" />
+  <complexType name="HaendelseMedKontekstSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" ref="haendelsesamling:HaendelseMedKontekst" />
+    </sequence>
+  </complexType>
+</schema>

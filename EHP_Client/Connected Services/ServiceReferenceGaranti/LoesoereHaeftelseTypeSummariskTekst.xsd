@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="LoesoereHaeftelseTypeSummariskTekst" type="eakt:LoesoereHaeftelseTypeSummariskTekstType">
+    <annotation>
+      <documentation>Type af haeftelse for loesoere.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="LoesoereHaeftelseTypeSummariskTekstType">
+    <restriction base="string">
+      <enumeration value="ejerpantebrev" />
+      <enumeration value="hoestpantebrev" />
+      <enumeration value="privatPantebrev" />
+      <enumeration value="skadesloesbrevLoesoere" />
+      <enumeration value="skadesloesbrevVirksomhedspant" />
+      <enumeration value="skadesloesbrevFordringspant" />
+    </restriction>
+  </simpleType>
+</schema>

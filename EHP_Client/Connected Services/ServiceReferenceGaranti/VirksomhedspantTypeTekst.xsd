@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="VirksomhedspantTypeTekst" type="model:VirksomhedspantTypeTekstType">
+    <annotation>
+      <documentation>Type af objekt, som SkadesloesbrevVirksomhedspant daekker.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="VirksomhedspantTypeTekstType">
+    <restriction base="string">
+      <enumeration value="simpleFordringer" />
+      <enumeration value="lagreRaavarerHalvfabrikataFaerdigvarer" />
+      <enumeration value="motorkoeretoejer" />
+      <enumeration value="driftsinventarDriftsmateriel" />
+      <enumeration value="drivmidlerAndreHjaelpestoffer" />
+      <enumeration value="besaetning" />
+      <enumeration value="goodwill" />
+    </restriction>
+  </simpleType>
+</schema>

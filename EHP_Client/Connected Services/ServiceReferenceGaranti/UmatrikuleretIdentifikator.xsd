@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="UmatrikuleretIdentifikator" type="model:UmatrikuleretIdentifikatorType">
+    <annotation>
+      <documentation>UmatikuleretIdentifikator er et loebenummer paa mellem 1 og 7 tal</documentation>
+    </annotation>
+  </element>
+  <simpleType name="UmatrikuleretIdentifikatorType">
+    <restriction base="nonNegativeInteger">
+      <pattern value="\d{1,7}" />
+    </restriction>
+  </simpleType>
+</schema>

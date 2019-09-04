@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Delareal" type="model:DelarealType">
+    <annotation>
+      <documentation>Angiver et delareal, som altid er stedfaestet til netop et matrikelnummer. Delarealer er geografisk afgraensede omraader - benaevnt og nummereret som delarealer - der fastlaegges af landinspektoer i forbindelse med en matrikulaer aendring af en fast ejendom. Det er landinspektoeren, der fastsaetter nummereret paa delarealet.</documentation>
+    </annotation>
+  </element>
+  <complexType name="DelarealType">
+    <sequence>
+      <element name="DelarealNummer" type="nonNegativeInteger" />
+      <element name="DelarealStoerrelse" type="nonNegativeInteger">
+        <annotation>
+          <documentation>Angives i kvm. Oplysning om stoerrelsen af et delareal, opgjort i kvm., samt med angivelse af, hvor mange af disse kvm., der udgoer vejareal. Oplysningen indberettes af landinspektoeren.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="DelarealStoerrelseVej" type="nonNegativeInteger">
+        <annotation>
+          <documentation>Angives i kvm. Oplysning om stoerrelsen af vejarealet. Stoerrelsen paa vejarealet indgaar i det samlede delareal. Oplysningen indberettes af landinspektoeren.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

@@ -2,9 +2,10 @@
 using System.ServiceModel.Description;
 using System.ServiceModel;
 using System.ServiceModel.Dispatcher;
-using EHP_Client.ServiceReferenceAktoerregister;
 using EHP_Client.ServiceReferenceEjendomshandel;
+using EHP_Client.ServiceReferenceGaranti;
 using EHP_Client.ServiceReferenceSagshaandtering;
+using EHP_Client.ServiceReferenceAktoerregister;
 
 
 namespace EHP_Client
@@ -13,6 +14,7 @@ namespace EHP_Client
     {
         
         private static string Endpoint_Ejendomshandel = "Ejendomshandel";
+        private static string Endpoint_Garanti = "Garanti";
         private static string Endpoint_Sagshaandtering = "Sagshaandtering";
         private static string Endpoint_Aktoerregister = "Aktoerregister";
 
@@ -35,6 +37,14 @@ namespace EHP_Client
             return (client);
         }
 
+        public static GarantieFPIClient GetGarantieFPIClient(string partyid, string password, string endpointAddress)
+        {
+            GarantieFPIClient client = new GarantieFPIClient(Endpoint_Garanti);
+            client.ClientCredentials.UserName.UserName = partyid;
+            client.ClientCredentials.UserName.Password = password;
+            SetEndpoint(client.Endpoint, ToActoerID(partyid), endpointAddress);
+            return (client);
+        }
 
         public static SagshaandteringeFPIClient GetSagshaandteringeFPIClient(string partyid, string password, string endpointAddress)
         {
@@ -57,7 +67,6 @@ namespace EHP_Client
         public static void SetEndpoint(ServiceEndpoint serviceEndpoint, string aktoerID, string endpointAddress)
         {
             serviceEndpoint.Behaviors.Add(new eFPIBehavior(aktoerID));
-            //serviceEndpoint.Behaviors.Add(new ClientViaBehavior(new Uri(endpointAddress)));
         }
     }
 

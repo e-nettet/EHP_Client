@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokumentIntern_v1" xmlns:efpistrings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokumentIntern_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <element name="GarantiDokumentIntern" type="tns:GarantiDokumentType">
+    <annotation>
+      <documentation>For internal use only</documentation>
+    </annotation>
+  </element>
+  <complexType name="GarantiDokumentType">
+    <sequence>
+      <element name="GarantiDokumentSomString" type="efpistrings:StringMin2Max10mio" />
+      <element name="GarantiDokumentTilstand" type="tns:DocumentStateType" />
+      <element minOccurs="0" name="Signatar1" type="efpistrings:StringMin2Max256" />
+      <element minOccurs="0" name="Signatar2" type="efpistrings:StringMin2Max256" />
+      <element minOccurs="0" name="Signatur1Dato" type="dateTime" />
+      <element minOccurs="0" name="Signatur2Dato" type="dateTime" />
+      <element minOccurs="0" name="Certifikatserienummer1" type="efpistrings:StringMin2Max256" />
+      <element minOccurs="0" name="Certifikatserienummer2" type="efpistrings:StringMin2Max256" />
+      <element minOccurs="0" name="SignatureValidity" type="tns:SignatureValidityType" />
+    </sequence>
+  </complexType>
+  <simpleType name="DocumentStateType">
+    <restriction base="string">
+      <enumeration value="Draft" />
+      <enumeration value="Current" />
+      <enumeration value="ReplacementRequested" />
+      <enumeration value="Obsolete" />
+    </restriction>
+  </simpleType>
+  <simpleType name="SignatureValidityType">
+    <restriction base="string">
+      <enumeration value="SIGNATURE_DONE_BY_OTHER_BANK" />
+      <enumeration value="SIGNATURE_IS_INVALID" />
+      <enumeration value="MORE_THAN_ONE_SIGNATURE" />
+      <enumeration value="NO_SIGNATURE" />
+      <enumeration value="SIGNATURE_DONE_BY_UNEXPECTED_ENTITY" />
+      <enumeration value="CERTIFICATE_IS_INVALID" />
+      <enumeration value="UNEXPECTED_ATTESTATION" />
+      <enumeration value="ATTESTATION_IS_MISSING" />
+      <enumeration value="SIGNED_DOCUMENT_IS_NOT_ENVELOPED" />
+      <enumeration value="SIGNATURE_OK" />
+      <enumeration value="NOT_VALIDATED_YET" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="RolleID" type="tns:RolleIDType" />
+  <simpleType name="RolleIDType">
+    <restriction base="string">
+      <enumeration value="Garantistiller" />
+      <enumeration value="GarantiModtagersPI" />
+      <enumeration value="Interessent" />
+      <enumeration value="Ejendomsmaegler" />
+      <enumeration value="Koeber" />
+      <enumeration value="KoebersPengeinstitut" />
+      <enumeration value="KoebersRaadgiver" />
+      <enumeration value="Saelger" />
+      <enumeration value="SaelgersPengeinstitut" />
+      <enumeration value="SaelgersRaadgiverIOevrigt" />
+      <enumeration value="Skoedeskriver" />
+      <enumeration value="BerigtigerIOevrigt" />
+      <enumeration value="Refusions-/ReguleringsOpgoerer" />
+    </restriction>
+  </simpleType>
+</schema>

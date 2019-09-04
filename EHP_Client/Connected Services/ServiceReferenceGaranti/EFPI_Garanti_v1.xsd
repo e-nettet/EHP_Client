@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:ejdmidsvar="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:tilbagekaldelsesanmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelsesAnmodning_v1" xmlns:erstatningsanmodningsvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" xmlns:s="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:gs="http://efpi.dk/internalschemas/GarantiSelectionStatus_v1" xmlns:tmt="http://efpi.dk/ehp2011/xml/schemas/EFPI_TomtElement_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" xmlns:tilbagekaldelsesanmodningsvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelseAnmodningSvar_v1" xmlns:erstatningsanmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_Erstatningsanmodning_v1" xmlns:haendelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xmlns:rolins="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" xmlns:anmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_Anmodning_v1" xmlns:adviseringomprocesaktivitet="http://efpi.dk/ehp2011/xml/schemas/EFPI_AdviseringOmProcesAktivitet_v1" xmlns:haendelsemedkontekstsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" xmlns:garantiinformationsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiInformationSamling_v1" xmlns:internalSorting="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" xmlns:tnt="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" xmlns:delid="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xmlns:garantisamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiSamling_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:garantidokumentintern="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokumentIntern_v1" xmlns:attachmentbinarydata="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" xmlns:ehp="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsTilknytning_v1" xmlns:haendelsesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" xmlns:tns="http://efpi.dk/garanti/xml/schemas/EFPI_Garanti_v1" xmlns:senestehaendelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_SenesteHaendelse_v1" xmlns:garantidokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" xmlns:garantidokumentinternal="http://efpi.dk/ehp2011/xml/schemas/Internal_Garanti_Dokument" xmlns:e-net="http://e-nettet.dk/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/garanti/xml/schemas/EFPI_Garanti_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/e-nettet.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_DeltagerID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Kontonummer_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SagsTilknytning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsTilknytning_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TomtElement_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TomtElement_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/Internal_Garanti_Dokument.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/Internal_Garanti_Dokument" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokument_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiSamling_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiInformationSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiInformationSamling_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiDokumentIntern_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiDokumentIntern_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Anmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Anmodning_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TilbagekaldelsesAnmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelsesAnmodning_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Erstatningsanmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Erstatningsanmodning_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SenesteHaendelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SenesteHaendelse_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TilbagekaldelseAnmodningSvar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelseAnmodningSvar_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Haendelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SimpelPart_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SimpelPart_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../internalschemas/GarantiSelectionStatus.xsd" namespace="http://efpi.dk/internalschemas/GarantiSelectionStatus_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../internalschemas/KolonneSortingsretning.xsd" namespace="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/e-nettet.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_AdviseringOmProcesAktivitet_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_AdviseringOmProcesAktivitet_v1" />
+  <element name="ArkivpakkeHentRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="ArkivpakkeHentRequest" type="tmt:TomtElementType" />
+  <element name="ArkivpakkeHentResponse" type="tns:ArkivpakkeHentResponseType" />
+  <element name="HaendelsesHistorikHentRequestHeader" type="tns:HaendelsesHistorikHentRequestHeaderType" />
+  <element name="HaendelsesHistorikHentRequest" type="tns:HaendelsesHistorikHentRequestType" />
+  <element name="HaendelsesHistorikHentResponse" type="tns:HaendelsesHistorikHentResponseType" />
+  <element name="GarantierListeHentRequestHeader" type="tns:GarantierListeHentRequestHeaderType" />
+  <element name="GarantierListeHentRequest" type="tmt:TomtElementType" />
+  <element name="GarantierListeHentResponse" type="tns:GarantierListeHentResponseType" />
+  <element name="DeponeringskontonrSendRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="DeponeringskontonrSendRequest" type="tns:DeponeringskontonrRequestType" />
+  <element name="DeponeringskontonrSendResponse" type="tns:BehandlingsacceptType" />
+  <element name="OpretOgStartRequestHeader" type="tns:OpretOgStartRequestHeaderType" />
+  <element name="OpretOgStartRequest" type="tmt:TomtElementType" />
+  <element name="OpretOgStartResponse" type="tns:OpretOgStartResponseType" />
+  <element name="ErstatningAnmodningSendRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="ErstatningAnmodningSendRequest" type="tns:ErstatningAnmodningRequestType" />
+  <element name="ErstatningAnmodningSendResponse" type="tns:BehandlingsacceptType" />
+  <element name="ErstatningSvarSendRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="ErstatningSvarSendRequest" type="tns:ErstatningSvarRequestType" />
+  <element name="ErstatningSvarSendResponse" type="tns:BehandlingsacceptType" />
+  <element name="ForretningsmaessigFejlMeldSendRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="ForretningsmaessigFejlMeldSendRequest" type="tns:ForretningsmaessigFejlMeldSendRequestType" />
+  <element name="ForretningsmaessigFejlMeldSendResponse" type="tmt:TomtElementType" />
+  <element name="GarantiDokumentUdkastIlaegRequestHeader" type="tns:GarantiInternalRequestHeaderType" />
+  <element name="GarantiDokumentUdkastIlaegRequest" type="tns:GarantiDokumentUdkastIlaegRequestType" />
+  <element name="GarantiDokumentUdkastIlaegResponse" type="tmt:TomtElementType" />
+  <element name="GarantiProcesHentRequestHeader" type="tns:GarantiInternalRequestHeaderType" />
+  <element name="GarantiProcesHentRequest" type="tmt:TomtElementType" />
+  <element name="GarantiProcesHentResponse" type="tns:GarantiProcesHentResponseType" />
+  <element name="GarantiSendRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="GarantiSendRequest" type="tns:GarantiRequestType" />
+  <element name="GarantiSendResponse" type="tns:BehandlingsacceptType" />
+  <element name="GarantiInformationRequestHeader" type="tns:GarantiInformationHentRequestHeaderType" />
+  <element name="GarantiInformationRequest" type="tns:GarantiInformationHentRequestType" />
+  <element name="GarantiInformationResponse" type="tns:GarantiInformationHentResponseType" />
+  <element name="GemBegrundelseOgOpretUdkastRequestHeader" type="tns:GarantiInternalRequestHeaderType" />
+  <element name="GemBegrundelseOgOpretUdkastRequest" type="tns:GemBegrundelseOgOpretUdkastRequestType" />
+  <element name="GemBegrundelseOgOpretUdkastResponse" type="tns:GemBegrundelseOgOpretUdkastResponseType" />
+  <element name="TilbagekaldelseAnmodningSendRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="TilbagekaldelseAnmodningSendRequest" type="tns:TilbagekaldelseAnmodningRequestType" />
+  <element name="TilbagekaldelseAnmodningSendResponse" type="tns:BehandlingsacceptType" />
+  <element name="TilbagekaldelseSvarSendRequestHeader" type="tns:GarantiStandardSendRequestHeaderType" />
+  <element name="TilbagekaldelseSvarSendRequest" type="tns:TilbagekaldelseSvarRequestType" />
+  <element name="TilbagekaldelseSvarSendResponse" type="tns:BehandlingsacceptType" />
+  <element name="GuaranteeTimerServiceRequestHeader" type="tns:GuaranteeTimerServiceHeaderType" />
+  <element name="GuaranteeTimerServiceRequest" type="tmt:TomtElementType" />
+  <element name="GuaranteeTimerServiceResponse" type="tmt:TomtElementType" />
+  <element name="GetPropertyInformationRequestHeader" type="tns:GetPropertyInformationHeaderType" />
+  <element name="GetPropertyInformationRequest" type="tmt:TomtElementType" />
+  <element name="GetPropertyInformationResponse" type="tns:GetPropertyInformationResponse" />
+  <element name="GetPropertyOwnersResponse" type="tns:GetPropertyOwnersResponse" />
+  <element name="error" type="basis:eFPIDetailsErrorType" />
+  <element name="DeponeringskontonrModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="DeponeringskontonrModtagRequest" type="tns:DeponeringskontonrRequestType" />
+  <element name="DeponeringskontonrModtagResponse" type="tns:BehandlingsacceptType" />
+  <element name="TilbagekaldelseSvarModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="TilbagekaldelseSvarModtagRequest" type="tns:TilbagekaldelseSvarRequestType" />
+  <element name="TilbagekaldelseSvarModtagResponse" type="tns:BehandlingsacceptType" />
+  <element name="ErstatningSvarModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="ErstatningSvarModtagRequest" type="tns:ErstatningSvarRequestType" />
+  <element name="ErstatningSvarModtagResponse" type="tns:BehandlingsacceptType" />
+  <element name="ForretningsmaessigFejlmeldingModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="ForretningsmaessigFejlmeldingModtagRequest" type="tns:ForretningsmaessigFejlmeldingModtagRequestType" />
+  <element name="ForretningsmaessigFejlmeldingModtagResponse" type="tns:BehandlingsacceptType" />
+  <element name="GarantiModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="GarantiModtagRequest" type="tns:GarantiRequestType" />
+  <element name="GarantiModtagResponse" type="tns:BehandlingsacceptType" />
+  <element name="TilbagekaldelseAnmodningModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="TilbagekaldelseAnmodningModtagRequest" type="tns:TilbagekaldelseAnmodningRequestType" />
+  <element name="TilbagekaldelseAnmodningModtagResponse" type="tns:BehandlingsacceptType" />
+  <element name="ErstatningAnmodningModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="ErstatningAnmodningModtagRequest" type="tns:ErstatningAnmodningRequestType" />
+  <element name="ErstatningAnmodningModtagResponse" type="tns:BehandlingsacceptType" />
+  <element name="AdviseringOmProcesAktivitetModtagRequestHeader" type="tns:GarantiStandardModtagRequestHeaderType" />
+  <element name="AdviseringOmProcesAktivitetModtagRequest" type="tns:AdviseringOmProcesAktivitetModtagType" />
+  <element name="AdviseringOmProcesAktivitetModtagResponse" type="tns:BehandlingsacceptType" />
+  <complexType name="ArkivpakkeHentResponseType">
+    <sequence>
+      <element name="Arkiv" type="attachmentbinarydata:AttachmentBinaryDataType" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelsesHistorikHentRequestHeaderType">
+    <sequence>
+      <element minOccurs="0" name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element minOccurs="0" name="DeltagersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" name="DeltagersKontaktinformation" type="basis:AktoersKontaktInfoType" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelsesHistorikHentRequestType">
+    <sequence>
+      <element minOccurs="0" name="DatoFra" type="date" />
+      <element minOccurs="0" name="KlokkesletFra" type="time" />
+      <element minOccurs="0" name="DatoTil" type="date" />
+      <element minOccurs="0" name="KlokkesletTil" type="time" />
+    </sequence>
+  </complexType>
+  <complexType name="HaendelsesHistorikHentResponseType">
+    <sequence>
+      <element name="HaendelseHistorikSamling" type="haendelsemedkontekstsamling:HaendelseMedKontekstSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantierListeHentRequestHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element name="Kolonne" type="tns:GarantierListeHentKolonneType" />
+      <element ref="internalSorting:KolonneSorteringsretning" />
+      <element name="Offset" type="integer" />
+      <element name="AntalRaekker" type="integer" />
+      <element ref="gs:GarantiSelectionStatus" />
+    </sequence>
+  </complexType>
+  <simpleType name="GarantierListeHentKolonneType">
+    <restriction base="string">
+      <enumeration value="Rolle" />
+      <enumeration value="GarantiFor" />
+      <enumeration value="Status" />
+      <enumeration value="SenesteAktivitetsdato" />
+    </restriction>
+  </simpleType>
+  <complexType name="GarantierListeHentResponseType">
+    <sequence>
+      <element name="GarantiSamling" type="garantisamling:GarantiSamlingType" />
+      <element name="SamletAntalGarantier" type="integer" />
+    </sequence>
+  </complexType>
+  <complexType name="AdviseringOmProcesAktivitetModtagType">
+    <sequence>
+      <element ref="adviseringomprocesaktivitet:AdviseringOmProcesAktivitet" />
+    </sequence>
+  </complexType>
+  <complexType name="DeponeringskontonrRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element name="Deponeringskontonr" type="tnt:KontonummerType" />
+    </sequence>
+  </complexType>
+  <complexType name="ErstatningAnmodningRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element ref="erstatningsanmodning:Erstatningsanmodning" />
+    </sequence>
+  </complexType>
+  <complexType name="ErstatningSvarRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element name="ErstatningsSvar" type="erstatningsanmodningsvar:ErstatningAnmodningSvarType" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsmaessigFejlmeldingModtagRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element name="ForretningsmaessigFejlmeldingSend" type="basis:eFPIfejlType" />
+    </sequence>
+  </complexType>
+  <complexType name="ForretningsmaessigFejlMeldSendRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element name="ForretningsmaessigFejlmeldingSend" type="basis:eFPIfejlType" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element ref="garantidokument:GarantiForRestkoebesumSigneret" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiInformationHentRequestType">
+    <sequence>
+      <element name="DatoFra" type="date" />
+      <element name="DatoTil" type="date" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiInformationHentResponseType">
+    <sequence>
+      <element name="GarantiInformationSamling" type="garantiinformationsamling:GarantiInformationSamlingType" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiStandardSendRequestHeaderType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPIprocesID" />
+      <element minOccurs="0" name="AktoersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" ref="basis:AktoersKontaktInfo" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiStandardModtagRequestHeaderType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <element ref="basis:eFPIprocesID" />
+      <element minOccurs="0" name="AktoersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" ref="basis:Procesdata" />
+      <element minOccurs="0" name="EjendomshandelsProcesID" type="basis:eFPIprocesIDType" />
+    </sequence>
+  </complexType>
+  <complexType name="OpretOgStartRequestHeaderType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+      <choice>
+        <element name="EjendomshandelsProcesID" type="basis:eFPIprocesIDType" />
+        <element name="GarantiModtagersPI" type="basis:AktoerIDType" />
+      </choice>
+      <element ref="basis:eFPISagsID" />
+      <element minOccurs="0" ref="basis:InteressentSamling" />
+      <element minOccurs="0" name="AktoersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" ref="basis:AktoersKontaktInfo" />
+    </sequence>
+  </complexType>
+  <complexType name="OpretOgStartRequestType">
+    <sequence />
+  </complexType>
+  <complexType name="OpretOgStartResponseType">
+    <sequence>
+      <element ref="basis:eFPIprocesID" />
+    </sequence>
+  </complexType>
+  <complexType name="BehandlingsacceptType">
+    <sequence />
+  </complexType>
+  <complexType name="GarantiInternalRequestHeaderType">
+    <sequence>
+      <element ref="basis:eFPIprocesID" />
+      <element ref="basis:AktoerID" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiInformationHentRequestHeaderType">
+    <sequence>
+      <element ref="basis:AktoerID" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiDokumentUdkastIlaegRequestType">
+    <sequence>
+      <element ref="garantidokumentintern:GarantiDokumentIntern" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiProcesHentType">
+    <sequence>
+      <element ref="basis:eFPIprocesID" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiProcesHentResponseType">
+    <sequence>
+      <element ref="basis:Procesdata" />
+      <element name="GarantiProcesdata" type="tns:GarantiProcesdataType" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiProcesdataType">
+    <sequence>
+      <element minOccurs="0" name="GarantiDokumentSamling" type="tns:GarantiDokumentSamlingType" />
+      <element minOccurs="0" name="Deponeringskonto" type="tnt:KontonummerType" />
+      <element minOccurs="0" ref="senestehaendelse:SenesteHaendelse" />
+      <element minOccurs="0" name="AarsagTilErstatning" type="s:StringMin2Max10K" />
+      <element minOccurs="0" name="SenesteAnmodning" type="s:StringMin2Max10mio" />
+      <element minOccurs="0" name="EjendomshandelsProcesID" type="basis:eFPIprocesIDType" />
+      <element minOccurs="0" name="Overtagelsesdato" type="dateTime" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiDokumentSamlingType">
+    <sequence>
+      <element maxOccurs="unbounded" ref="garantidokumentintern:GarantiDokumentIntern" />
+    </sequence>
+  </complexType>
+  <complexType name="GemBegrundelseOgOpretUdkastRequestType">
+    <sequence>
+      <element ref="anmodning:Anmodning" />
+    </sequence>
+  </complexType>
+  <complexType name="GemBegrundelseOgOpretUdkastResponseType">
+    <sequence>
+      <element ref="garantidokumentintern:GarantiDokumentIntern" />
+    </sequence>
+  </complexType>
+  <complexType name="TilbagekaldelseAnmodningRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element ref="tilbagekaldelsesanmodning:TilbagekaldelsesAnmodning" />
+    </sequence>
+  </complexType>
+  <complexType name="TilbagekaldelseSvarRequestType">
+    <sequence>
+      <element minOccurs="0" ref="e-net:ForrMaessigRefOgKontaktInfo" />
+      <element name="TilbagekaldelsesSvar" type="tilbagekaldelsesanmodningsvar:TilbagekaldelseAnmodningSvarType" />
+    </sequence>
+  </complexType>
+  <complexType name="GuaranteeTimerServiceHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+    </sequence>
+  </complexType>
+  <complexType name="GetPropertyInformationHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+      <element name="KommuneNr" type="int" />
+      <element name="EjendomNr" type="int" />
+    </sequence>
+  </complexType>
+  <complexType name="GetPropertyInformationResponse">
+    <sequence>
+      <element name="Property" nillable="true" type="e-net:EJDMIDSVAR_Type" />
+    </sequence>
+  </complexType>
+  <complexType name="GetPropertyOwnersResponse">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Owners" type="part:SimpelPartType" />
+    </sequence>
+  </complexType>
+</schema>

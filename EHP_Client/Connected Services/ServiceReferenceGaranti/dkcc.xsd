@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_CountryIdentificationCode.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_FloorIdentifier.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_MailDeliverySublocationIdentifier.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_PersonGivenName.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_PersonMiddleName.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_PersonSurnameName.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_StreetBuildingIdentifier.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/ebxml/xml/schemas/dkcc/2003/02/13/DKCC_SuiteIdentifier.xsd" />
+</schema>

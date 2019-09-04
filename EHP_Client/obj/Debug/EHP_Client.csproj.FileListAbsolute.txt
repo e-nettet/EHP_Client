@@ -10,7 +10,4 @@ c:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.csprojAs
 c:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.UserControlVaelg.resources
 c:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.UserControlLogon.resources
 C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.FormHent.resources
-C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\bin\Debug\EHP_Client.exe.manifest
-C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\bin\Debug\EHP_Client.application
-C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.exe.manifest
-C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.application
+C:\Users\nn\Documents\GitHub\EHP_Client\EHP_Client\obj\Debug\EHP_Client.TrustInfo.xml

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/AdkomstSummariskSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/EjendomStamoplysninger.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/HaeftelseSummariskSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/ServitutSummariskSamling.xsd" />
+  <element name="EjendomSummarisk" type="eakt:EjendomSummariskType">
+    <annotation>
+      <documentation>Summariske oplysninger for en ejendom.</documentation>
+    </annotation>
+  </element>
+  <complexType name="EjendomSummariskType">
+    <sequence>
+      <element ref="eakt:EjendomStamoplysninger" />
+      <element minOccurs="0" ref="eakt:AdkomstSummariskSamling" />
+      <element minOccurs="0" ref="eakt:HaeftelseSummariskSamling" />
+      <element minOccurs="0" ref="eakt:ServitutSummariskSamling" />
+    </sequence>
+  </complexType>
+</schema>

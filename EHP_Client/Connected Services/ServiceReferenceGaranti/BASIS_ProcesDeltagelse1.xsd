@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../efpi.dk/basis/xml/schemas/2007/07/01/BASIS_AktoerRolleID.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../efpi.dk/basis/xml/schemas/2007/07/01/BASIS_Procesversion.xsd" />
+  <element name="ProcesDeltagelse" type="tns:ProcesDeltagelseType" />
+  <complexType name="ProcesDeltagelseType">
+    <sequence>
+      <element name="Procesversion" type="tns:ProcesversionType" />
+      <element maxOccurs="unbounded" name="Rolle" type="tns:AktoerRolleIDType" />
+    </sequence>
+  </complexType>
+</schema>

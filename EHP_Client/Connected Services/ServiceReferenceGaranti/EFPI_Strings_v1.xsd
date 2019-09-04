@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <simpleType name="StringMin1Max64">
+    <restriction base="string">
+      <minLength value="1" />
+      <maxLength value="64" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMin2Max64">
+    <restriction base="string">
+      <minLength value="2" />
+      <maxLength value="64" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMin2Max256">
+    <restriction base="string">
+      <minLength value="2" />
+      <maxLength value="256" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMin3Max256">
+    <restriction base="string">
+      <minLength value="3" />
+      <maxLength value="256" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMin2Max1K">
+    <restriction base="string">
+      <minLength value="2" />
+      <maxLength value="1024" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMin2Max4K">
+    <restriction base="string">
+      <minLength value="2" />
+      <maxLength value="4096" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMin2Max10K">
+    <restriction base="string">
+      <minLength value="2" />
+      <maxLength value="10240" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMax1000">
+    <restriction base="string">
+      <maxLength value="1000" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMin2Max10mio">
+    <restriction base="string">
+      <minLength value="2" />
+      <maxLength value="10485760" />
+    </restriction>
+  </simpleType>
+  <simpleType name="StringMax10mio">
+    <restriction base="string">
+      <maxLength value="10485760" />
+    </restriction>
+  </simpleType>
+</schema>

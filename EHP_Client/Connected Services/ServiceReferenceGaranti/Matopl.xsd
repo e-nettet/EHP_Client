@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://e-nettet.dk/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/FeltTyper.xsd" />
+  <xs:element name="MATOPL" type="tns:MATOPL_Type" />
+  <xs:complexType name="MATOPL_Type">
+    <xs:sequence>
+      <xs:element name="Matrikelbetegnelse_numeriskdel" type="tns:N4" />
+      <xs:element minOccurs="0" name="Matrikelbetegnelse_alfanumeriskdel" type="tns:AN4" />
+      <xs:element name="Ejerlavbetegnelse" type="tns:AN42" />
+      <xs:element minOccurs="0" name="Ejerlejligheds_nummer" type="tns:AN4" />
+      <xs:element minOccurs="0" name="Matrikel-delnummer" type="tns:AN5" />
+      <xs:element name="Ideel_anpart_nr" type="tns:Kodeliste1" />
+      <xs:element name="Hovedmatrikel" type="tns:Kodeliste1" />
+      <xs:element name="Bygning_paa_lejet_grund" type="tns:Kodeliste1" />
+      <xs:element minOccurs="0" name="Areal" type="tns:N15" />
+      <xs:element minOccurs="0" name="BoligAreal" type="tns:N15" />
+      <xs:element minOccurs="0" name="Vejareal" type="tns:N15" />
+      <xs:element name="Kommunekode" type="tns:N3" />
+      <xs:element minOccurs="0" name="OpfoertAar" type="tns:N4" />
+      <xs:element minOccurs="0" name="AntalVaerelser" type="tns:N3" />
+      <xs:element minOccurs="0" name="Zonestatus" type="tns:AN25" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

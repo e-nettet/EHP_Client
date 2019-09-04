@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="EkspeditionstypeUnderpantsaetningFastEjendomOpretIdentifikator" type="model:EkspeditionstypeUnderpantsaetningFastEjendomOpretIdentifikatorType">
+    <annotation>
+      <documentation>Angiver ekspeditionstypen i UnderpantsaetningFastEjendomOpret.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="EkspeditionstypeUnderpantsaetningFastEjendomOpretIdentifikatorType">
+    <restriction base="nonNegativeInteger">
+      <enumeration value="19">
+        <annotation>
+          <documentation>UnderpantsaetningFastEjendom</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

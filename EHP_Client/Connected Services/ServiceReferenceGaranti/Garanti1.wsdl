@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://efpi.dk/garanti/xml/wsdl/" xmlns:wssutil="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" name="Garanti.eFPI" targetNamespace="http://efpi.dk/garanti/xml/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+		eFPI Garanti process
+	</wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:UsingPolicy wssutil:Required="true" />
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="eFPISign">
+    <sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:InitiatorToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+              <wsp:Policy>
+                <sp:WssX509V3Token10 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:InitiatorToken>
+        <sp:RecipientToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+              <wsp:Policy>
+                <sp:WssX509V3Token10 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:RecipientToken>
+        <sp:AlgorithmSuite>
+          <wsp:Policy>
+            <sp:TripleDesRsa15 />
+          </wsp:Policy>
+        </sp:AlgorithmSuite>
+        <sp:Layout>
+          <wsp:Policy>
+            <sp:Lax />
+          </wsp:Policy>
+        </sp:Layout>
+        <sp:IncludeTimestamp />
+        <sp:OnlySignEntireHeadersAndBody />
+        <sp:ProtectTokens />
+        <!-- Sign BinarySecurityToken -->
+      </wsp:Policy>
+    </sp:AsymmetricBinding>
+    <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:MustSupportRefKeyIdentifier />
+        <sp:MustSupportRefIssuerSerial />
+      </wsp:Policy>
+    </sp:Wss10>
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <!--<sp:Header Name="Token" Namespace="anything"/> -->
+    </sp:SignedParts>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="EHPSign">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:InitiatorToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:WssX509V3Token10 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:InitiatorToken>
+            <sp:RecipientToken>
+              <wsp:Policy>
+                <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Never">
+                  <wsp:Policy>
+                    <sp:WssX509V3Token10 />
+                  </wsp:Policy>
+                </sp:X509Token>
+              </wsp:Policy>
+            </sp:RecipientToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:TripleDesRsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:AsymmetricBinding>
+        <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportRefKeyIdentifier />
+            <sp:MustSupportRefIssuerSerial />
+          </wsp:Policy>
+        </sp:Wss10>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:SignedParts>
+        <ramp:RampartConfig xmlns:ramp="http://ws.apache.org/rampart/policy" />
+      </wsp:All>
+      <wsp:All>
+        <!-- Eventhough the policy is made optional, the behavior of EHP is that the policy is mandatory. 
+			 The reason for this implementation is that the combination of how CXF WS-SecurityPolicy implementation. -->
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" wsu:Id="UsernameToken">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SupportingTokens>
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+              <wsp:Policy />
+            </sp:UsernameToken>
+          </wsp:Policy>
+        </sp:SupportingTokens>
+      </wsp:All>
+      <wsp:All>
+        <!-- Eventhough the UsernameToken is made optional, the behavior of EHP is that the usernameToken is mandatory. 
+			 The reason for this implementation is that the combination of how the password is persisted and CXF WS-SecurityPolicy implementation. -->
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://efpi.dk/garanti/xml/wsdl/" location="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?wsdl=EFPI_Garanti.eFPI.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="Garanti.eFPI.UsernameToken" type="tns:Garanti.eFPI">
+    <wsaw:UsingAddressing wsdl:required="true" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ArkivpakkeHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ArkivpakkeHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:ArkivpakkeHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeponeringskontonrSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/DeponeringskontonrSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:DeponeringskontonrSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="OpretOgStart">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/OpretOgStart" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:OpretOgStart" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsmaessigFejlMeldSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ForretningsmaessigFejlMeldSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:ForretningsmaessigFejlMeldSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/HaendelsesHistorikHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:HaendelsesHistorikHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantierListeHent">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantierListeHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GarantierListeHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiDokumentUdkastIlaeg">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiDokumentUdkastIlaeg" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GarantiDokumentUdkastIlaeg" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiProcesHent">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiProcesHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GarantiProcesHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GarantiSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiInformationHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiInformationHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GarantiInformationHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningAnmodningSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningAnmodningSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:ErstatningAnmodningSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningSvarSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningSvarSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:ErstatningSvarSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GemBegrundelseOgOpretUdkast">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GemBegrundelseOgOpretUdkast" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GemBegrundelseOgOpretUdkast" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseAnmodningSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseAnmodningSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:TilbagekaldelseAnmodningSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseSvarSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseSvarSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:TilbagekaldelseSvarSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GuaranteeTimerService">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GuaranteeTimerService" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GuaranteeTimerService" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartialPropertyInformation">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPartialPropertyInformation" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullPropertyInformation">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetFullPropertyInformation" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyOwners">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPropertyOwners" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#UsernameToken" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Garanti.eFPI.eFPISign" type="tns:Garanti.eFPI">
+    <wsaw:UsingAddressing wsdl:required="true" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ArkivpakkeHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ArkivpakkeHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:ArkivpakkeHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeponeringskontonrSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/DeponeringskontonrSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:DeponeringskontonrSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="OpretOgStart">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/OpretOgStart" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:OpretOgStart" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsmaessigFejlMeldSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ForretningsmaessigFejlMeldSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:ForretningsmaessigFejlMeldSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/HaendelsesHistorikHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:HaendelsesHistorikHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantierListeHent">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantierListeHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GarantierListeHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiDokumentUdkastIlaeg">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiDokumentUdkastIlaeg" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GarantiDokumentUdkastIlaeg" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiProcesHent">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiProcesHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GarantiProcesHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GarantiSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiInformationHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiInformationHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GarantiInformationHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningAnmodningSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningAnmodningSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:ErstatningAnmodningSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningSvarSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningSvarSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:ErstatningSvarSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GemBegrundelseOgOpretUdkast">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GemBegrundelseOgOpretUdkast" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GemBegrundelseOgOpretUdkast" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseAnmodningSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseAnmodningSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:TilbagekaldelseAnmodningSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseSvarSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseSvarSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:TilbagekaldelseSvarSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GuaranteeTimerService">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GuaranteeTimerService" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GuaranteeTimerService" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartialPropertyInformation">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPartialPropertyInformation" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullPropertyInformation">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetFullPropertyInformation" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyOwners">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPropertyOwners" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#eFPISign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Garanti.eFPI" type="tns:Garanti.eFPI">
+    <wsaw:UsingAddressing wsdl:required="true" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ArkivpakkeHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ArkivpakkeHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:ArkivpakkeHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeponeringskontonrSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/DeponeringskontonrSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:DeponeringskontonrSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="OpretOgStart">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/OpretOgStart" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:OpretOgStart" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ForretningsmaessigFejlMeldSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ForretningsmaessigFejlMeldSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:ForretningsmaessigFejlMeldSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/HaendelsesHistorikHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:HaendelsesHistorikHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantierListeHent">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantierListeHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GarantierListeHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiDokumentUdkastIlaeg">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiDokumentUdkastIlaeg" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GarantiDokumentUdkastIlaeg" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiProcesHent">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiProcesHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GarantiProcesHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GarantiSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GarantiInformationHent">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GarantiInformationHent" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GarantiInformationHent" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningAnmodningSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningAnmodningSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:ErstatningAnmodningSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ErstatningSvarSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/ErstatningSvarSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:ErstatningSvarSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GemBegrundelseOgOpretUdkast">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GemBegrundelseOgOpretUdkast" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GemBegrundelseOgOpretUdkast" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseAnmodningSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseAnmodningSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:TilbagekaldelseAnmodningSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="TilbagekaldelseSvarSend">
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/TilbagekaldelseSvarSend" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:TilbagekaldelseSvarSend" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GuaranteeTimerService">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GuaranteeTimerService" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GuaranteeTimerService" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartialPropertyInformation">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPartialPropertyInformation" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullPropertyInformation">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetFullPropertyInformation" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPropertyOwners">
+      <wsdl:documentation>
+				This operation is intended for internal use only.
+			</wsdl:documentation>
+      <soap:operation soapAction="http://service.efpi.dk/2011/11/07/Garanti.eFPI/GetPropertyOwners" />
+      <wsdl:input>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:header message="tns:GetPropertyInformation" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#EHPSign" />
+        <soap:body use="literal" parts="body" />
+      </wsdl:output>
+      <wsdl:fault name="EFPIFault">
+        <soap:fault use="literal" name="EFPIFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Garanti.eFPI">
+    <wsdl:port name="Garanti.eFPI.UsernameToken" binding="tns:Garanti.eFPI.UsernameToken">
+      <soap:address location="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI" />
+    </wsdl:port>
+    <wsdl:port name="Garanti.eFPI.eFPISign" binding="tns:Garanti.eFPI.eFPISign">
+      <soap:address location="jms://" />
+    </wsdl:port>
+    <wsdl:port name="Garanti.eFPI" binding="tns:Garanti.eFPI">
+      <soap:address location="jms://" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

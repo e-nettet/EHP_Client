@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsTilknytning_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsTilknytning_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../efpi.dk/basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <element name="SagsTilknytning" type="tns:SagsTilknytningType" />
+  <complexType name="SagsTilknytningType">
+    <choice>
+      <element ref="basis:eFPISagsID" />
+      <element ref="basis:eFPIprocesID" />
+    </choice>
+  </complexType>
+</schema>

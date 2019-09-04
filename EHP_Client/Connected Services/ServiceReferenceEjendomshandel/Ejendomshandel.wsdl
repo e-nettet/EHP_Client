@@ -1,181 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:tns="http://efpi.dk/ejendomshandel/xml/wsdl/" xmlns:ev1="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" name="Ejendomshandel.eFPI" targetNamespace="http://efpi.dk/ejendomshandel/xml/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:documentation>
-		
-		Changelog:
-		+---------+------------------------------------------------------------------------------
-		| Version | Description
-		+---------+------------------------------------------------------------------------------
-		| 0.2     | Initial release of wsdl and xsd. Not compilable and not verified
-		| 0.3     | Partial release of interfaces. All operations are draft in current version.
-		|         |   - Operations based on 1.29 baseline of not337.
-		|         |   - DockumentIlaeg and DokumentHent operations compliant with not337 v1.40
-		|         |   - Fields BoligAreal, OpfoertAar, Zonestatus and AntalVaerelser added to MATOPL
-		| 0.3.1   | Patch release:
-		|         |   - Absolute import and include paths made relative. Missing xsd schemas
-		|         |     added to release
-		|         |   - Added files are OIO compliant. Thus they cannot be compiled with 
-		|         |     standard wsdl compilers due to multiple imports into same namespace.
-		|         |     MSXML.Net a notable exception.
-		|         |   - Operations tagged with a completion level:
-		|         |        Draft:  Operation is in draft, and may be subject to change as development 
-		|         |                progresses.
-		|         |        Final:  Operation and arguments are stable. 
-		|         |        Intern: Operation is for internal use by EHP2011 (e-nettet). Do not use.
-		|         |   - Finansiering added to SalgsopstillingFormular
-		|  		  | Schemas corrected to allow compilation using standard tools.
-		| 1.0beta1| CR70:
-		|         | - Changes to EFPI_DokumentKategori_v1.xsd
-		|         |  - Formidlingsaftale -&gt; FormidlingsaftaleDokument
-		|		  |	 - FormidlingsaftaleFysisk -&gt; FormidlingsaftaleIndskannet
-		|		  |  - FormidlingsaftaleNoegledata (deleted)
-		|		  |  - Koebsaftale -&gt; KoebsaftaleDokument
-		|		  |  - KoebsaftalegrundlagetsNoegledata (deleted)
-		|		  |	 - KoebsaftaleIndskannet (added)
-		|		  | - Changes to EFPI_DokumentData_v1.xsd
-		|         |  - FormidlingsaftalensNoegledataDokument (deleted)
-		|         |  - formidlingsaftale -&gt; FormidlingsaftalensDokument
-		| 		  | Added operation:
-		|		  |	 -AdviseringHistorikHent
-		| 		  |  -DeponeringsInfoHent
-		|		  |  -DeponeringsInfoOpdater
-		|		  |  -DokumentgruppeDokumentHent
-		|		  |  -DokumentgruppeDokumentIlaeg
-		|		  |  -DokumentgruppeDokumentUgyldiggoer
-		|		  |  -EjendomsmaeglersDeponeringsKontoNrOpdater
-		|		  |  -FormidlingsaftaleBaselineHent
-		|		  |  -FormidlingsaftaleBaselineListeHent
-		| 		  |  -ForretningsdokumenterMetadataHent
-		|		  |  -ForretningsmaessigFejlmeldingHent
-		|		  |  -ForretningsmaessigHaendelseMeddel
-		|		  |  -FristforlaengelseAnmod
-		|		  |  -FristforlaengelseAnmodningSvar
-		|		  |  -HaendelseHistorikHent
-		|		  |  -KoebsaftalegrundlagBaselineHent
-		|		  |  -KoebsaftalegrundlagBaselineListeHent
-		|		  |  -SaelgersPIsDeponeringsKontoNrOpdater
-		|		  |  -SalgsopstillingRekvirentHent
-		|		  |  -SalgsopstillingSoeg
-		|      	  |  -UdestaaendeForbeholdHent
-		|		  |  -UdestaaendeForbeholdOpdater
-		|  		  | Defect 2320:
-		|		  |  -Changed RefOgKontaktInfoSamling to Part in DeltagerMetadata
-		|		  | Defect 2321:
-		|		  |  -Changed KontaktinformationEgenOpdaterRequestType
-		|		  |   to use EFPI_KontaktOplysninger_v1 instead of e-net:KontaktInformation. 
-		|		  | Defect 2322:
-		|		  |  -Changed KontaktinformationAndenPartOpdaterRequestType 
-		|		  |   to use EFPI_KontaktOplysninger_v1 instead of e-net:KontaktInformation.
-		|		  | Defect 2323:
-		|		  |  -Changed RolleindehaverSlet/Opret to use rolleogindehaver.
-		|		  | Defect 2324: 
-		|		  |  -Removed Ejendommaegler and used PartType instead in HaendelseKontekst.
-		|		  | Defect 2333: 
-		|		  |  -Created AftalePart to take Saelger and Koeber place.
-		|		  |  -Creates AftalePartSamling to take SaelgerSamling and KoeberSamling place.
-		|		  | Defect 2334:
-		|		  |  -Changed DokumentmetadataBeskrivelse according to KYSs specifications.
-		|		  |  -Added DokumentKategori
-		|		  |  -Change in operations:
-		|		  | 	-DokumentgruppeDokumentHent
-		|		  | 	-DokumentgruppeDokumentIlaeg
-		|		  | 	-DokumentgruppeDokumentUgyldiggoer
-		|		  | 	-DokumentHent
-		|		  | 	-DokumentIlaeg
-		|		  | Defect 2335: 
-		|		  |  -Made SealgersPengeinstitut and Ejendomsmaegler optionel in Deponeringskonti
-		|		  | Defect 2336:
-		|		  |  -Change the types(tns:KoebsaftalegrundlagBaselineHentResponseType)/enet:KoebsaftaleDokument
-		|		  |	  and (tns:FormidlingssaftaleBaselineHentResponseType)/enet:FormidlingsaftaleDokument 
-		|		  |	  to base64binary.
-		|		  | Defect 2620:
-		|		  |  -Removed Opsummering from Ejendomshandlensdata
-		|		  |  -Moved Afslutdato to Statusinfo
-		|		  |  -Udstaaendedeponi remove from Statusinfo.
-		|		  |  -Deponering removed.
-		|		  |  -Forretningsmaessigstatus removed from statusinfo.
-		|		  |  -Baseline in the name of Koebsaftale and Formidlingsaftale.
-		|		  | Defect 2905:
-		|		  |  -Integrated the proposed EFPI_Finansiering.xsd
-		|		  | Defect 2906:
-		|		  |  -Removed rolleogindehaversamling from OpretOgStart header.
-		|		  |  -Removed dokumentid from OpretOgStart response.
-		|		  | Defect 2907:
-		|		  |  -SecondaryPostalLabel replaced with xkom.dk\xml\schemas\2006\01\06\XKOM_AddressComplete.xsd incl.
-		|		  |   underlying schemas.
-		|		  | Defect 2908:
-		|		  |  -Removed all unnecessary schemas under efpi.dk/ehp2011, and moved the simple elements into the schemas
-		|		  |   they are used in.
-		|		  | Defect 2909:
-		|		  |  -Removed UdestaaendeDeponering from UdestaaendeForbeholdType.
-		|		  | Defect 2910:
-		|		  |  -Tingbogsattest has the type Ejendomsummariskhentresultat in EFPI_DokumentData
-		|		  |  -Importet all underlying schemas.
-		|		  | Defect 2911: 
-		|		  |  -Fristforlaengelseanmodning renamed to firstforlaengelse. This categori covers both anmodning and svar.
-		|		  |  -Fristforlaengseanmodningsvar added to dokumentdatatype.
-		|		  |  -Added begrundelse to Fristforlaengseanmodningsvar.
-		|		  | Defect 2912:
-		|		  |  -Added to Oekonomitype:
-		|		  | 	-Ejendomsvaerdi (1)
-		|		  | 	-Grundvaerdi (1)
-		|		  | 	-Stuehusvaerdi (0..1)
-		|		  | 	-Grundlagforejendomsskat (1)
-		|		  | 	-Grundskatteloftvaerd (1)
-		|		  | Defect 2913:
-		|		  |  -Beloeb move from SalgsopstillingDokument to ForhoejelseAfSikkerhedTilEF.			
-		|		  |  -ForhoejelseAfSikkerhedTilEF moved from SalgsopstillingDokument to SalgsopstillingFormular
-		|		  | Defect 2905: 			
-		|		  |  -Integrated the new EFPI_Finansiering.xsd preposed by Nicolas Norby, but with a small change to his structure to
-		|		  |   ensure proper inheritance between the types inside it. 			
-		|		  | Defect 3046:
-		|		  |  -Added "Request" to all header and body types.
-		|		  |  -Added draft (not yet implemented) or implemented (some backend code exists) to operations in WSDL			
-		|		  |  -InitierendeDeltager in OpretOgStart changed to DeltagerID			
-		|		  |  -sagsID in OpretOgStart changed to eFPISagsID to look like Guarantee.			
-		|		  |  -Interessenter changed to Interessent in EFPI_RolleID_v1.xsd			
-		|		  |  -Operation AdviseringHistorikHent removed
-		|		  |  -Operation DokumentGruppeDokumentHent now uses DokumentKategoriType, instead of DokumentGruppeAngivelse.			
-		|		  |  -Beskrivelse in DokumentGruppeDokumentIlaeg is now optional. 	
-		|		  |  -Part in DeltagerMetadata made optionel, to make EjendomsHandelDataHent work in 0.6. Will be made mandatory in later release. 
-		|		  |  -Custom header made for HaendelsesHistorikHent to make ProcesID optional.
-		|		  | Defect 3025:
-		|		  |  -Change HaendelsesHistorikHent to contain two dates called "DatoFra" and "DatoTil" with the types date.
-		|		  | Operation added: SalgsopstillingSoegSpecifik
-		|		  | Defect 3143:
-		|		  |  -Added fault of the operations UdestaaendeForbeholdHent and UdestaaendeForbeholdOpdater
-		|		  | CR073: SalgsopstillingSoge is implemented
-		|		  | SalgsopstillingSoegSpecifik removed
-		|		  | Defect 3266:
-		|		  |  -SagsAktivitetListeHent now marked as internal
-		|		  | Defect 3311:
-		|		  |  - KontaktinformationEgenopdater now uses Part rather than enettet:KontaktInfoType
-		|		  | Defect 3352:
-		|		  |  - Changed KontaktinformationEgenOpdaterRequest	to use EFPI_Part rather than kontaktinformation.	
-		|		  | Defect 3310: 
-		|		  |  - KontaktinformationAndenOpdater removed.
-		|		  | Misspelling:
-		|		  |  -Corrected the spelling of EjendomsmaeglerSagsID in EFPI_HaendelseKontekts
-		|		  | Correction:
-		|		  |  -Changed PTPDocumentsGeneralTest Signature to string from anyType in EFPI_GarantiDokument_v1
-		|		  |  -Made Ejendom optionel in EFPI_HaendelseKontekts_v1
-		|		  | Correction:
-		|		  |  - EFPI_Finansering_v1 - anyType change to String 
-		|		  | Correction:
-		|		  |  - EFPI_HaendelsesspecifikkeNoegledata_v1.xsd - Changed ForretningsmaessigFejlkode from anyType to type string
-		|		  | Internal operation added: TimerService
-		|		  | Defect 3703:
-		|		  |  - Changed wsa version from http://www.w3.org/2004/12/addressing to http://www.w3.org/2005/08/addressing
-		|		  | Internal operation changed: sagsAktivitetListeHent now returns more data about each process.		|		  |
-		|		  |
-		| 1.1.0.1 | CR091:
-		|		  |  - deponeringsInfoOpdater and deponeringsInfohent removed.
-		|		  | CR061:
-		|		  |  - UdestaaendeForbehold moved from EFPI_EHPOpsummering tom EFPI_Statusinformation
-		|		  |
-		|		  |
-		
-	</wsdl:documentation>
+        
+        Changelog:
+        +---------+------------------------------------------------------------------------------
+        | Version | Description
+        +---------+------------------------------------------------------------------------------
+        | 0.2     | Initial release of wsdl and xsd. Not compilable and not verified
+        | 0.3     | Partial release of interfaces. All operations are draft in current version.
+        |         |   - Operations based on 1.29 baseline of not337.
+        |         |   - DockumentIlaeg and DokumentHent operations compliant with not337 v1.40
+        |         |   - Fields BoligAreal, OpfoertAar, Zonestatus and AntalVaerelser added to MATOPL
+        | 0.3.1   | Patch release:
+        |         |   - Absolute import and include paths made relative. Missing xsd schemas
+        |         |     added to release
+        |         |   - Added files are OIO compliant. Thus they cannot be compiled with 
+        |         |     standard wsdl compilers due to multiple imports into same namespace.
+        |         |     MSXML.Net a notable exception.
+        |         |   - Operations tagged with a completion level:
+        |         |        Draft:  Operation is in draft, and may be subject to change as development 
+        |         |                progresses.
+        |         |        Final:  Operation and arguments are stable. 
+        |         |        Intern: Operation is for internal use by EHP2011 (e-nettet). Do not use.
+        |         |   - Finansiering added to SalgsopstillingFormular
+        |            | Schemas corrected to allow compilation using standard tools.
+        | 1.0beta1| CR70:
+        |         | - Changes to EFPI_DokumentKategori_v1.xsd
+        |         |  - Formidlingsaftale -&gt; FormidlingsaftaleDokument
+        |          |     - FormidlingsaftaleFysisk -&gt; FormidlingsaftaleIndskannet
+        |          |  - FormidlingsaftaleNoegledata (deleted)
+        |          |  - Koebsaftale -&gt; KoebsaftaleDokument
+        |          |  - KoebsaftalegrundlagetsNoegledata (deleted)
+        |          |     - KoebsaftaleIndskannet (added)
+        |          | - Changes to EFPI_DokumentData_v1.xsd
+        |         |  - FormidlingsaftalensNoegledataDokument (deleted)
+        |         |  - formidlingsaftale -&gt; FormidlingsaftalensDokument
+        |           | Added operation:
+        |          |     -AdviseringHistorikHent
+        |           |  -DeponeringsInfoHent
+        |          |  -DeponeringsInfoOpdater
+        |          |  -DokumentgruppeDokumentHent
+        |          |  -DokumentgruppeDokumentIlaeg
+        |          |  -DokumentgruppeDokumentUgyldiggoer
+        |          |  -EjendomsmaeglersDeponeringsKontoNrOpdater
+        |          |  -FormidlingsaftaleBaselineHent
+        |          |  -FormidlingsaftaleBaselineListeHent
+        |           |  -ForretningsdokumenterMetadataHent
+        |          |  -ForretningsmaessigFejlmeldingHent
+        |          |  -ForretningsmaessigHaendelseMeddel
+        |          |  -FristforlaengelseAnmod
+        |          |  -FristforlaengelseAnmodningSvar
+        |          |  -HaendelseHistorikHent
+        |          |  -KoebsaftalegrundlagBaselineHent
+        |          |  -KoebsaftalegrundlagBaselineListeHent
+        |          |  -SaelgersPIsDeponeringsKontoNrOpdater
+        |          |  -SalgsopstillingRekvirentHent
+        |          |  -SalgsopstillingSoeg
+        |            |  -UdestaaendeForbeholdHent
+        |          |  -UdestaaendeForbeholdOpdater
+        |            | Defect 2320:
+        |          |  -Changed RefOgKontaktInfoSamling to Part in DeltagerMetadata
+        |          | Defect 2321:
+        |          |  -Changed KontaktinformationEgenOpdaterRequestType
+        |          |   to use EFPI_KontaktOplysninger_v1 instead of e-net:KontaktInformation. 
+        |          | Defect 2322:
+        |          |  -Changed KontaktinformationAndenPartOpdaterRequestType 
+        |          |   to use EFPI_KontaktOplysninger_v1 instead of e-net:KontaktInformation.
+        |          | Defect 2323:
+        |          |  -Changed RolleindehaverSlet/Opret to use rolleogindehaver.
+        |          | Defect 2324: 
+        |          |  -Removed Ejendommaegler and used PartType instead in HaendelseKontekst.
+        |          | Defect 2333: 
+        |          |  -Created AftalePart to take Saelger and Koeber place.
+        |          |  -Creates AftalePartSamling to take SaelgerSamling and KoeberSamling place.
+        |          | Defect 2334:
+        |          |  -Changed DokumentmetadataBeskrivelse according to KYSs specifications.
+        |          |  -Added DokumentKategori
+        |          |  -Change in operations:
+        |          |     -DokumentgruppeDokumentHent
+        |          |     -DokumentgruppeDokumentIlaeg
+        |          |     -DokumentgruppeDokumentUgyldiggoer
+        |          |     -DokumentHent
+        |          |     -DokumentIlaeg
+        |          | Defect 2335: 
+        |          |  -Made SealgersPengeinstitut and Ejendomsmaegler optionel in Deponeringskonti
+        |          | Defect 2336:
+        |          |  -Change the types(tns:KoebsaftalegrundlagBaselineHentResponseType)/enet:KoebsaftaleDokument
+        |          |      and (tns:FormidlingssaftaleBaselineHentResponseType)/enet:FormidlingsaftaleDokument 
+        |          |      to base64binary.
+        |          | Defect 2620:
+        |          |  -Removed Opsummering from Ejendomshandlensdata
+        |          |  -Moved Afslutdato to Statusinfo
+        |          |  -Udstaaendedeponi remove from Statusinfo.
+        |          |  -Deponering removed.
+        |          |  -Forretningsmaessigstatus removed from statusinfo.
+        |          |  -Baseline in the name of Koebsaftale and Formidlingsaftale.
+        |          | Defect 2905:
+        |          |  -Integrated the proposed EFPI_Finansiering.xsd
+        |          | Defect 2906:
+        |          |  -Removed rolleogindehaversamling from OpretOgStart header.
+        |          |  -Removed dokumentid from OpretOgStart response.
+        |          | Defect 2907:
+        |          |  -SecondaryPostalLabel replaced with xkom.dk\xml\schemas\2006\01\06\XKOM_AddressComplete.xsd incl.
+        |          |   underlying schemas.
+        |          | Defect 2908:
+        |          |  -Removed all unnecessary schemas under efpi.dk/ehp2011, and moved the simple elements into the schemas
+        |          |   they are used in.
+        |          | Defect 2909:
+        |          |  -Removed UdestaaendeDeponering from UdestaaendeForbeholdType.
+        |          | Defect 2910:
+        |          |  -Tingbogsattest has the type Ejendomsummariskhentresultat in EFPI_DokumentData
+        |          |  -Importet all underlying schemas.
+        |          | Defect 2911: 
+        |          |  -Fristforlaengelseanmodning renamed to firstforlaengelse. This categori covers both anmodning and svar.
+        |          |  -Fristforlaengseanmodningsvar added to dokumentdatatype.
+        |          |  -Added begrundelse to Fristforlaengseanmodningsvar.
+        |          | Defect 2912:
+        |          |  -Added to Oekonomitype:
+        |          |     -Ejendomsvaerdi (1)
+        |          |     -Grundvaerdi (1)
+        |          |     -Stuehusvaerdi (0..1)
+        |          |     -Grundlagforejendomsskat (1)
+        |          |     -Grundskatteloftvaerd (1)
+        |          | Defect 2913:
+        |          |  -Beloeb move from SalgsopstillingDokument to ForhoejelseAfSikkerhedTilEF.            
+        |          |  -ForhoejelseAfSikkerhedTilEF moved from SalgsopstillingDokument to SalgsopstillingFormular
+        |          | Defect 2905:             
+        |          |  -Integrated the new EFPI_Finansiering.xsd preposed by Nicolas Norby, but with a small change to his structure to
+        |          |   ensure proper inheritance between the types inside it.             
+        |          | Defect 3046:
+        |          |  -Added "Request" to all header and body types.
+        |          |  -Added draft (not yet implemented) or implemented (some backend code exists) to operations in WSDL            
+        |          |  -InitierendeDeltager in OpretOgStart changed to DeltagerID            
+        |          |  -sagsID in OpretOgStart changed to eFPISagsID to look like Guarantee.            
+        |          |  -Interessenter changed to Interessent in EFPI_RolleID_v1.xsd            
+        |          |  -Operation AdviseringHistorikHent removed
+        |          |  -Operation DokumentGruppeDokumentHent now uses DokumentKategoriType, instead of DokumentGruppeAngivelse.            
+        |          |  -Beskrivelse in DokumentGruppeDokumentIlaeg is now optional.     
+        |          |  -Part in DeltagerMetadata made optionel, to make EjendomsHandelDataHent work in 0.6. Will be made mandatory in later release. 
+        |          |  -Custom header made for HaendelsesHistorikHent to make ProcesID optional.
+        |          | Defect 3025:
+        |          |  -Change HaendelsesHistorikHent to contain two dates called "DatoFra" and "DatoTil" with the types date.
+        |          | Operation added: SalgsopstillingSoegSpecifik
+        |          | Defect 3143:
+        |          |  -Added fault of the operations UdestaaendeForbeholdHent and UdestaaendeForbeholdOpdater
+        |          | CR073: SalgsopstillingSoge is implemented
+        |          | SalgsopstillingSoegSpecifik removed
+        |          | Defect 3266:
+        |          |  -SagsAktivitetListeHent now marked as internal
+        |          | Defect 3311:
+        |          |  - KontaktinformationEgenopdater now uses Part rather than enettet:KontaktInfoType
+        |          | Defect 3352:
+        |          |  - Changed KontaktinformationEgenOpdaterRequest    to use EFPI_Part rather than kontaktinformation.    
+        |          | Defect 3310: 
+        |          |  - KontaktinformationAndenOpdater removed.
+        |          | Misspelling:
+        |          |  -Corrected the spelling of EjendomsmaeglerSagsID in EFPI_HaendelseKontekts
+        |          | Correction:
+        |          |  -Changed PTPDocumentsGeneralTest Signature to string from anyType in EFPI_GarantiDokument_v1
+        |          |  -Made Ejendom optionel in EFPI_HaendelseKontekts_v1
+        |          | Correction:
+        |          |  - EFPI_Finansering_v1 - anyType change to String 
+        |          | Correction:
+        |          |  - EFPI_HaendelsesspecifikkeNoegledata_v1.xsd - Changed ForretningsmaessigFejlkode from anyType to type string
+        |          | Internal operation added: TimerService
+        |          | Defect 3703:
+        |          |  - Changed wsa version from http://www.w3.org/2004/12/addressing to http://www.w3.org/2005/08/addressing
+        |          | Internal operation changed: sagsAktivitetListeHent now returns more data about each process.        |          |
+        |          |
+        | 1.1.0.1 | CR091:
+        |          |  - deponeringsInfoOpdater and deponeringsInfohent removed.
+        |          | CR061:
+        |          |  - UdestaaendeForbehold moved from EFPI_EHPOpsummering tom EFPI_Statusinformation
+        |          |
+        |          |
+        
+    </wsdl:documentation>
   <wsdl:types>
     <s:schema>
       <s:import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../schemas/EFPI_Ejendomshandel_v1.xsd" namespace="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" />
@@ -208,6 +208,9 @@
   </wsdl:message>
   <wsdl:message name="ArkivpakkeHentResponse">
     <wsdl:part name="body" element="ev1:ArkivpakkeHentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GarantiudskriftHentResponse">
+    <wsdl:part name="body" element="ev1:GarantiudskriftHentResponse" />
   </wsdl:message>
   <wsdl:message name="RolleindehaverSletResponse">
     <wsdl:part name="body" element="ev1:RolleindehaverSletResponse" />
@@ -268,12 +271,12 @@
     <wsdl:part name="header" element="ev1:SalgsopstillingRekvirentHentRequestHeader" />
     <wsdl:part name="body" element="ev1:SalgsopstillingRekvirentHentRequest" />
   </wsdl:message>
+  <wsdl:message name="ForretningsmaessigFejlMeldSendResponse">
+    <wsdl:part name="body" element="ev1:ForretningsmaessigFejlMeldSendResponse" />
+  </wsdl:message>
   <wsdl:message name="DokumentgruppeDokumentIlaeg">
     <wsdl:part name="header" element="ev1:DokumentgruppeDokumentIlaegRequestHeader" />
     <wsdl:part name="body" element="ev1:DokumentgruppeDokumentIlaegRequest" />
-  </wsdl:message>
-  <wsdl:message name="ForretningsmaessigFejlMeldSendResponse">
-    <wsdl:part name="body" element="ev1:ForretningsmaessigFejlMeldSendResponse" />
   </wsdl:message>
   <wsdl:message name="SalgsopstillingSoeg">
     <wsdl:part name="header" element="ev1:SalgsopstillingSoegRequestHeader" />
@@ -316,16 +319,20 @@
   <wsdl:message name="EjendomshandelOpsummeringHentResponse">
     <wsdl:part name="body" element="ev1:EjendomshandelOpsummeringHentResponse" />
   </wsdl:message>
+  <wsdl:message name="HaendelsesHistorikHentV3">
+    <wsdl:part name="header" element="ev1:HaendelsesHistorikHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:HaendelsesHistorikHentRequestV3" />
+  </wsdl:message>
   <wsdl:message name="RolleindehaverSlet">
     <wsdl:part name="header" element="ev1:RolleindehaverSletRequestHeader" />
     <wsdl:part name="body" element="ev1:RolleindehaverSletRequest" />
   </wsdl:message>
+  <wsdl:message name="EFPIFault">
+    <wsdl:part name="parameters" element="ev1:error" />
+  </wsdl:message>
   <wsdl:message name="FristforlaengelseAnmod">
     <wsdl:part name="header" element="ev1:FristforlaengelseAnmodRequestHeader" />
     <wsdl:part name="body" element="ev1:FristforlaengelseAnmodRequest" />
-  </wsdl:message>
-  <wsdl:message name="EFPIFault">
-    <wsdl:part name="parameters" element="ev1:error" />
   </wsdl:message>
   <wsdl:message name="EjendomshandlensDataHentResponse">
     <wsdl:part name="body" element="ev1:EjendomshandlensDataHentResponse" />
@@ -432,6 +439,14 @@
     <wsdl:part name="header" element="ev1:RolleUdtraedAfRequestHeader" />
     <wsdl:part name="body" element="ev1:RolleUdtraedAfRequest" />
   </wsdl:message>
+  <wsdl:message name="ProceslisteMedGarantifristHent">
+    <wsdl:part name="header" element="ev1:ProceslisteMedGarantifristHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:ProceslisteMedGarantifristHentRequest" />
+  </wsdl:message>
+  <wsdl:message name="GarantiudskriftHent">
+    <wsdl:part name="header" element="ev1:GarantiudskriftHentRequestHeader" />
+    <wsdl:part name="body" element="ev1:GarantiudskriftHentRequest" />
+  </wsdl:message>
   <wsdl:message name="ProcesAfslutIndsigelse">
     <wsdl:part name="header" element="ev1:ProcesAfslutIndsigelseRequestHeader" />
     <wsdl:part name="body" element="ev1:ProcesAfslutIndsigelseRequest" />
@@ -451,6 +466,9 @@
     <wsdl:part name="header" element="ev1:RolleindehaverOpretRequestHeader" />
     <wsdl:part name="body" element="ev1:RolleindehaverOpretRequest" />
   </wsdl:message>
+  <wsdl:message name="ProceslisteMedGarantifristHentResponse">
+    <wsdl:part name="body" element="ev1:ProceslisteMedGarantifristHentResponse" />
+  </wsdl:message>
   <wsdl:message name="DokumentgruppeDokumentHentResponse">
     <wsdl:part name="body" element="ev1:DokumentgruppeDokumentHentResponse" />
   </wsdl:message>
@@ -469,12 +487,12 @@
   <wsdl:message name="ProcesAfslutResponse">
     <wsdl:part name="body" element="ev1:ProcesAfslutResponse" />
   </wsdl:message>
-  <wsdl:message name="FristforlaengelsesAnmodningSvarResponse">
-    <wsdl:part name="body" element="ev1:FristforlaengelsesAnmodningSvarResponse" />
-  </wsdl:message>
   <wsdl:message name="ForretningsmaessigFejlMeldSend">
     <wsdl:part name="header" element="ev1:ForretningsmaessigFejlMeldSendRequestHeader" />
     <wsdl:part name="body" element="ev1:ForretningsmaessigFejlMeldSendRequest" />
+  </wsdl:message>
+  <wsdl:message name="FristforlaengelsesAnmodningSvarResponse">
+    <wsdl:part name="body" element="ev1:FristforlaengelsesAnmodningSvarResponse" />
   </wsdl:message>
   <wsdl:message name="HentHaendelsesHistorikForProcesResponse">
     <wsdl:part name="body" element="ev1:HentHaendelsesHistorikForProcesResponse" />
@@ -489,31 +507,31 @@
   </wsdl:message>
   <wsdl:portType name="Ejendomshandel.eFPI">
     <wsdl:operation name="ArkivpakkeHent">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Deprecated - Use ArkivpakkeHentV2</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ArkivpakkeHent" message="tns:ArkivpakkeHent" />
       <wsdl:output message="tns:ArkivpakkeHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="DokumentgruppeDokumentHent">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Deprecated - Use DokumentgruppeDokumentHentV2</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentHent" message="tns:DokumentgruppeDokumentHent" />
       <wsdl:output message="tns:DokumentgruppeDokumentHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="DokumentgruppeDokumentIlaeg">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentIlaeg" message="tns:DokumentgruppeDokumentIlaeg" />
       <wsdl:output message="tns:DokumentgruppeDokumentIlaegResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="DokumentgruppeDokumentUgyldiggoer">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentUgyldiggoer" message="tns:DokumentgruppeDokumentUgyldiggoer" />
       <wsdl:output message="tns:DokumentgruppeDokumentUgyldiggoerResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="EjendomsmaeglersDeponeringsKontoNrOpdater">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/EjendomsmaeglersDeponeringsKontoNrOpdater" message="tns:EjendomsmaeglersDeponeringsKontoNrOpdater" />
       <wsdl:output message="tns:EjendomsmaeglersDeponeringsKontoNrOpdaterResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
@@ -543,25 +561,31 @@
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="ForretningsmaessigHaendelseMeddel">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ForretningsmaessigHaendelseMeddel" message="tns:ForretningsmaessigHaendelseMeddel" />
       <wsdl:output message="tns:ForretningsmaessigHaendelseMeddelResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="FristforlaengelseAnmod">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/FristforlaengelseAnmod" message="tns:FristforlaengelseAnmod" />
       <wsdl:output message="tns:FristforlaengelseAnmodResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="FristforlaengelsesAnmodningSvar">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/FristforlaengelsesAnmodningSvar" message="tns:FristforlaengelsesAnmodningSvar" />
       <wsdl:output message="tns:FristforlaengelsesAnmodningSvarResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
+    <wsdl:operation name="GarantiudskriftHent">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/GarantiudskriftHent" message="tns:GarantiudskriftHent" />
+      <wsdl:output message="tns:GarantiudskriftHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
     <wsdl:operation name="HaendelsesHistorikHent">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Deprecated - Use HaendelsesHistorikHentV3</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHent" message="tns:HaendelsesHistorikHent" />
       <wsdl:output message="tns:HaendelsesHistorikHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
@@ -597,13 +621,13 @@
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="SaelgersPIsDeponeringsKontoNrOpdater">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/SaelgersPIsDeponeringsKontoNrOpdater" message="tns:SaelgersPIsDeponeringsKontoNrOpdater" />
       <wsdl:output message="tns:SaelgersPIsDeponeringsKontoNrOpdaterResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="SalgsopstillingRekvirentHent">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/SalgsopstillingRekvirentHent" message="tns:SalgsopstillingRekvirentHent" />
       <wsdl:output message="tns:SalgsopstillingRekvirentHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
@@ -669,7 +693,7 @@
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="DokumentHent">
-      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:documentation>Deprecated - Use DokumentHentV2</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentHent" message="tns:DokumentHent" />
       <wsdl:output message="tns:DokumentHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
@@ -681,7 +705,7 @@
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="EjendomshandlensDataHent">
-      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:documentation>Deprecated - Use EjendomshandlensDataHentV2</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/EjendomshandlensDataHent" message="tns:EjendomshandlensDataHent" />
       <wsdl:output message="tns:EjendomshandlensDataHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
@@ -699,7 +723,7 @@
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="UdestaaendeForbeholdOpdater">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/UdestaaendeForbeholdOpdater" message="tns:UdestaaendeForbeholdOpdater" />
       <wsdl:output message="tns:UdestaaendeForbeholdOpdaterResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
@@ -735,13 +759,13 @@
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="ArkivpakkeHentV2">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ArkivpakkeHentV2" message="tns:ArkivpakkeHentV2" />
       <wsdl:output message="tns:ArkivpakkeHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="DokumentgruppeDokumentHentV2">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Implemented</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/DokumentgruppeDokumentHentV2" message="tns:DokumentgruppeDokumentHentV2" />
       <wsdl:output message="tns:DokumentgruppeDokumentHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
@@ -759,9 +783,21 @@
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
     <wsdl:operation name="HaendelsesHistorikHentV2">
-      <wsdl:documentation>Draft</wsdl:documentation>
+      <wsdl:documentation>Deprecated - use HaendelsesHistorikHentV3</wsdl:documentation>
       <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHentV2" message="tns:HaendelsesHistorikHentV2" />
       <wsdl:output message="tns:HaendelsesHistorikHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="HaendelsesHistorikHentV3">
+      <wsdl:documentation>Implemented</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/HaendelsesHistorikHentV3" message="tns:HaendelsesHistorikHentV3" />
+      <wsdl:output message="tns:HaendelsesHistorikHentResponse" />
+      <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
+    </wsdl:operation>
+    <wsdl:operation name="ProceslisteMedGarantifristHent">
+      <wsdl:documentation>Internal</wsdl:documentation>
+      <wsdl:input wsa:Action="http://service.efpi.dk/2011/11/07/Ejendomshandel.eFPI/ProceslisteMedGarantifristHent" message="tns:ProceslisteMedGarantifristHent" />
+      <wsdl:output message="tns:ProceslisteMedGarantifristHentResponse" />
       <wsdl:fault name="EFPIFault" message="tns:EFPIFault" />
     </wsdl:operation>
   </wsdl:portType>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseRenteSats.xsd" />
+  <element name="HaeftelseRenteSatsInterval" type="model:HaeftelseRenteSatsIntervalType">
+    <annotation>
+      <documentation>Interval for rentesats angivet ved minimum og maksimum rentesats.</documentation>
+    </annotation>
+  </element>
+  <complexType name="HaeftelseRenteSatsIntervalType">
+    <sequence>
+      <element minOccurs="0" name="MinimumRenteSats" type="model:HaeftelseRenteSatsType" />
+      <element minOccurs="0" name="MaksimumRenteSats" type="model:HaeftelseRenteSatsType" />
+    </sequence>
+  </complexType>
+</schema>

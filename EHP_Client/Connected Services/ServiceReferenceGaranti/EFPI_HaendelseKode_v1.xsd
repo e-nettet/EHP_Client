@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKode_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKode_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="HaendelseKode" type="tns:HaendelseKodeType" />
+  <simpleType name="HaendelseKodeType">
+    <restriction base="string">
+      <enumeration value="haendelse_opretOgStart_Aktiveret" />
+      <enumeration value="haendelse_procesAfslut_Aktiveret" />
+      <enumeration value="haendelse_procesAfslutIndsigelse_Aktiveret" />
+      <enumeration value="haendelse_rolleOverdrag_Aktiveret" />
+      <enumeration value="haendelse_rolleUdtraedAf_Aktiveret" />
+      <enumeration value="haendelse_dokumentIlaeg_Aktiveret" />
+      <enumeration value="haendelse_kontaktinformationEgenOpdater_Aktiveret" />
+      <enumeration value="haendelse_rolleIndehaverOpret_Aktiveret" />
+      <enumeration value="haendelse_rolleindehaverSlet_Aktiveret" />
+      <enumeration value="haendelse_forretningsmaessigFejlMeld_Aktiveret" />
+      <enumeration value="haendelse_forvarselOmAutoAfslutning" />
+      <enumeration value="haendelse_dokumentgruppeDokumentIlaeg_Aktiveret" />
+      <enumeration value="haendelse_dokumentgruppeDokumentUgyldiggoer_Aktiveret" />
+      <enumeration value="haendelse_ejendomsmaeglersDeponeringsKontoNrOpdater_Aktiveret" />
+      <enumeration value="haendelse_saelgersPIsDeponeringsKontoNrOpdater_Aktiveret" />
+      <enumeration value="haendelse_udestaaendeForbeholdOpdater_Aktiveret" />
+      <enumeration value="haendelse_fristforlaengelseAnmod_Aktiveret" />
+      <enumeration value="haendelse_fristforlaengelseAnmodningSvar_Aktiveret" />
+      <enumeration value="haendelse_garanti_deponeringskontonrSend_Aktiveret" />
+      <enumeration value="haendelse_garanti_erstatningAnmodningSend_Aktiveret" />
+      <enumeration value="haendelse_garanti_erstatningSvarSend_Aktiveret" />
+      <enumeration value="haendelse_garanti_tilbagekaldelseAnmodningSend_Aktiveret" />
+      <enumeration value="haendelse_garanti_tilbagekaldelseSvarSend_Aktiveret" />
+      <enumeration value="haendelse_garanti_garantiSend_Aktiveret" />
+      <enumeration value="haendelse_garanti_opretOgStart_Aktiveret" />
+      <enumeration value="haendelse_garanti_forretningsmaessigFejlMeld_Aktiveret" />
+      <enumeration value="haendelse_ejendomUdbudtTilSalg" />
+      <enumeration value="haendelse_fortrydelsesfristUdloebet" />
+      <enumeration value="haendelse_handelAfsluttet" />
+      <enumeration value="haendelse_koeberFortrudt" />
+      <enumeration value="haendelse_koebsaftaleKogSsigneretIlagt" />
+      <enumeration value="haendelse_koebsaftaleKsigneretIlagt" />
+      <enumeration value="haendelse_koebsaftaleUdkastIlagt" />
+      <enumeration value="haendelse_koebstilbudAfvistAfSaelger" />
+      <enumeration value="haendelse_ejendomIudbudOpdater_Aktiveret" />
+      <enumeration value="haendelse_ejendomEjUdbudtTilSalg" />
+      <enumeration value="haendelse_handelTilbagekaldt" />
+      <enumeration value="haendelse_processenAfsluttet" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:cpr-1="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Virksomhed_v1" xmlns:cvr="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Virksomhed_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/cpr.xsd" namespace="http://rep.oio.dk/cpr.dk/xml/schemas/core/2005/03/18/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/cvr.xsd" namespace="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" />
+  <element name="Virksomhed" type="tns:VirksomhedType" />
+  <complexType name="VirksomhedType">
+    <sequence>
+      <element ref="cvr:CVRnumberIdentifier" />
+      <element minOccurs="0" ref="cpr-1:AuthorityCode" />
+      <element name="Navn" type="strings:StringMin2Max256" />
+      <element minOccurs="0" name="Afdeling" type="strings:StringMin2Max256" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DeltaBeloeb" type="eakt:DeltaBeloebType">
+    <annotation>
+      <documentation>Deltabeloeb ved forhoejelser og nedsaettelser inden for det enkelte tinglysningsobjekt.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="DeltaBeloebType">
+    <restriction base="decimal">
+      <totalDigits value="20" />
+      <fractionDigits value="2" />
+    </restriction>
+  </simpleType>
+</schema>

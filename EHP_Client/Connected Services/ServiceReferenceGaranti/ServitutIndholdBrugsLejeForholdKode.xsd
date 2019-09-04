@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ServitutIndholdBrugsLejeForholdKode" type="model:ServitutIndholdBrugsLejeForholdKodeType">
+    <annotation>
+      <documentation>Angiver en kode for indholdet af et afsnit om brugs- eller lejeforhold i en servitut.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="ServitutIndholdBrugsLejeForholdKodeType">
+    <restriction base="string">
+      <enumeration value="andet" />
+      <enumeration value="jagtret" />
+    </restriction>
+  </simpleType>
+</schema>

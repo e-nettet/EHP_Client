@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ServitutType" type="model:ServitutTypeType">
+    <annotation>
+      <documentation>ServitutType beskriver hvilke kategoriseringklasser af servituter der findes. Anden_servitut kan yderligere opdeles i kategorier og emner. Disse er beskrevet i XML-skemaerne ServitutIndhold****Kode.xsd, hvor **** kan vaere foelgende vaerdier Andet, Anvendelse, Bebyggelse, BrugsLejeForhold, Ejendomsforhold, Faerdsel, Forsyning, KoebSalg, Ledninger, TekniskeAnlaeg.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="ServitutTypeType">
+    <restriction base="string">
+      <enumeration value="andenServitut" />
+      <enumeration value="ekspropriationForeloebig" />
+      <enumeration value="forpagtningskontrakt" />
+      <enumeration value="jordfordelingForeloebig" />
+      <enumeration value="lejekontrakt" />
+      <enumeration value="salgsOgPantsaetningsforbud" />
+      <enumeration value="samejeoverenskomst" />
+      <enumeration value="vedtaegter" />
+    </restriction>
+  </simpleType>
+</schema>

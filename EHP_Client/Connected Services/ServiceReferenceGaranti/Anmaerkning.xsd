@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentAlias.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/MeddelelseTypeTekst.xsd" />
+  <element name="Anmaerkning" type="eakt:AnmaerkningType">
+    <annotation>
+      <documentation>Anmaerkning som indeholder identifikation af rettighed, der ikke respekteres og
+       tekst fra tinglysningsrettten vedr. den manglende respekt.
+		   </documentation>
+    </annotation>
+  </element>
+  <complexType name="AnmaerkningType">
+    <sequence>
+      <element ref="eakt:DokumentAlias" />
+      <element ref="model:Rettighed">
+        <annotation>
+          <documentation>Den foranstaaende rettighed, som dokumentet faar anmaerkninger om.</documentation>
+        </annotation>
+      </element>
+      <choice>
+        <element name="HaeftelseRettighedInformation" type="model:HaeftelseInformationType">
+          <annotation>
+            <documentation>Angives hvis foranstaaende rettighed er en haeftelse.
+             Indeholder summariske informationer om den foranstaaende rettighed,
+             der er angivet anmaerkning om, og medsendes, saa det ikke er noedvendigt
+             at foretage en forespoergsel.
+						 </documentation>
+          </annotation>
+        </element>
+        <element ref="model:ServitutType">
+          <annotation>
+            <documentation>Angives hvis foranstaaende rettighed er en servitut.
+                        Der skal vaelges en enumeration vaerdi, der matcher den servituttype, som Rettighed vedroerer.
+                        </documentation>
+          </annotation>
+        </element>
+        <element ref="eakt:MeddelelseTypeTekst">
+          <annotation>
+            <documentation>Angives hvis foranstaaende rettighed er en meddelelse (gaelder kun BAP boegerne). Enumeration vaerdien matcher den meddelelsestype, som Rettighed vedroerer.
+                        </documentation>
+          </annotation>
+        </element>
+      </choice>
+    </sequence>
+  </complexType>
+</schema>

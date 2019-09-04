@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DokumentOverfoertIndikator" type="eakt:DokumentOverfoertIndikatorType">
+    <annotation>
+      <documentation>Angiver om dokumentet oprindeligt blev oprettet i e-akten som resultat af overfoerslen fra TLS.
+       True angiver at dokumentet blev oprettet i e-akten ifm. overfoerslen.
+       False angiver at dokumentet ikke blev oprettet i e-akten ifm. overfoerslen.
+       </documentation>
+    </annotation>
+  </element>
+  <simpleType name="DokumentOverfoertIndikatorType">
+    <restriction base="boolean" />
+  </simpleType>
+</schema>

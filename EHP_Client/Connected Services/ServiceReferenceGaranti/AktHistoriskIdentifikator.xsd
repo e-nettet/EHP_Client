@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="AktHistoriskIdentifikator" type="eakt:AktHistoriskIdentifikatorType">
+    <annotation>
+      <documentation>
+			   For konverterede data er dokument-alias dato, loebenummer og retskreds for det konverterede dokument.
+			   Elementet er opbygget af dato der bestaar af 8 tal paa formen yyyymmdd, herefter kommer bindestreg.
+			   Loebenummer indeholder 1 til 6 tal. Der er ikke foranstillede nuller. Herefter kommer en bindestreg.
+			   Retskreds bestaar af 2 tal, f. eks. 01 eller 19.
+			   Hvis der findes flere konverteret dokumenter med samme dato/loebenummer, faar disse tilfoejet et suffix paa 
+			   fem tegn: [-][ét tegns dokumenttype][trecifret loebenr]. Dokumentypen er enten A (adkomstdokument),
+			   H (haeftelsesdokument) eller S (servitutdokument).
+			   Eksempler: 20060304-123456-19, 19950507-12345-04, 19981209-1234-21-H0001 og 11111111-0-10-H0054
+              </documentation>
+    </annotation>
+  </element>
+  <simpleType name="AktHistoriskIdentifikatorType">
+    <restriction base="string">
+      <pattern value="\d{8}-(0|([1-9](\d{1,5})?))-\d{2}(-[AHS]\d{4})?" />
+    </restriction>
+  </simpleType>
+</schema>

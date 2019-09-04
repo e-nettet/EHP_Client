@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ServitutIndholdEjendomsforholdKode" type="model:ServitutIndholdEjendomsforholdKodeType">
+    <annotation>
+      <documentation>Angiver en kode for indholdet af et afsnit om ejendomsforhold i en servitut.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="ServitutIndholdEjendomsforholdKodeType">
+    <restriction base="string">
+      <enumeration value="andet" />
+      <enumeration value="byggeretligtSkel" />
+      <enumeration value="grundejerforening" />
+      <enumeration value="hegn" />
+      <enumeration value="udstykning" />
+    </restriction>
+  </simpleType>
+</schema>

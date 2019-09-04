@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:e-net="http://e-nettet.dk/xml/schemas/2007/07/01/" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" xmlns:sagsnr="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../e-nettet.dk/xml/schemas/2007/07/01/e-nettet.xsd" namespace="http://e-nettet.dk/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" />
+  <complexType name="SalgsopstillingSoegParameterType">
+    <choice>
+      <element name="EjendomsmaeglerSagsnummer" type="sagsnr:SagsnummerIdentifikatorType" />
+      <element name="Adresse" type="tns:SalgsopstillingSoegAddresseType" />
+      <element name="BBRNummer" type="e-net:BBR_Type" />
+      <element name="Matrikel" type="tns:SalgsopstillingSoegMatrikelType" />
+    </choice>
+  </complexType>
+  <complexType name="SalgsopstillingSoegAddresseType">
+    <sequence>
+      <element minOccurs="0" name="Vejnavn" type="e-net:AN40" />
+      <element minOccurs="0" name="Vej_nr" type="e-net:AN6" />
+      <element minOccurs="0" name="Etage" type="e-net:AN4" />
+      <element minOccurs="0" name="Lejlighedsnummer" type="e-net:AN6" />
+      <element minOccurs="0" name="Bynavn" type="e-net:AN35" />
+      <element minOccurs="0" name="Postnummer" type="e-net:AN9" />
+      <element minOccurs="0" name="Land" type="e-net:AN3" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingSoegMatrikelType">
+    <sequence>
+      <element name="Matrikelbetegnelse_numeriskdel" type="e-net:N4" />
+      <element minOccurs="0" name="Matrikelbetegnelse_alfanumeriskdel" type="e-net:AN4" />
+      <element name="Ejerlavbetegnelse" type="e-net:AN42" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingSoegFundSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Fund" type="tns:SalgsopstillingSoegFundType" />
+    </sequence>
+  </complexType>
+  <complexType name="SalgsopstillingSoegFundType">
+    <sequence>
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element minOccurs="0" name="SagsnummerIdentifikator" type="sagsnr:SagsnummerIdentifikatorType" />
+      <element minOccurs="0" name="Ejendomsmaegler" type="string" />
+      <element name="Adresse" type="tns:SalgsopstillingSoegAddresseType" />
+      <element minOccurs="0" name="BBRNummer" type="e-net:BBR_Type" />
+      <element name="Matrikel" type="tns:SalgsopstillingSoegMatrikelType" />
+    </sequence>
+  </complexType>
+</schema>

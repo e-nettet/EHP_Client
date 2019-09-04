@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:kms="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" version="1.2" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="CadastralDistrictIdentifier" type="nonNegativeInteger">
+    <annotation>
+      <documentation>Nationwide unambiguous identification of a CadastralDistrict (Village).
+			</documentation>
+    </annotation>
+  </element>
+</schema>

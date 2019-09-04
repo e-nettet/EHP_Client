@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="KolonneSorteringsretning" type="tns:KolonneSorteringsretningType" />
+  <simpleType name="KolonneSorteringsretningType">
+    <restriction base="string">
+      <enumeration value="Faldende" />
+      <enumeration value="Stigende" />
+    </restriction>
+  </simpleType>
+</schema>

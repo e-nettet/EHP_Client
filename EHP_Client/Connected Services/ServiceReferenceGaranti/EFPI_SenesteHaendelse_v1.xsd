@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:s="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_SenesteHaendelse_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SenesteHaendelse_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
+  <element name="SenesteHaendelse" type="tns:SenesteHaendelseType" />
+  <complexType name="SenesteHaendelseType">
+    <sequence>
+      <element name="LatestEvent" type="tns:EventType" />
+      <element minOccurs="0" name="Message" type="s:StringMin2Max10K" />
+      <element name="EventDate" type="dateTime" />
+    </sequence>
+  </complexType>
+  <simpleType name="EventType">
+    <restriction base="string">
+      <enumeration value="ErstatningAnmodningSend" />
+      <enumeration value="ErstatningAnmodningAccepteret" />
+      <enumeration value="ErstatningAnmodningAfvist" />
+      <enumeration value="TilbagekaldelseAnmodningSend" />
+      <enumeration value="TilbagekaldelseAnmodningAccepteret" />
+      <enumeration value="TilbagekaldelseAnmodningAfvist" />
+      <enumeration value="GarantiOpfyldtSend" />
+      <enumeration value="OpretOgStart" />
+      <enumeration value="GarantiSend" />
+    </restriction>
+  </simpleType>
+</schema>

@@ -18,6 +18,7 @@
       <element minOccurs="0" name="WebReference" type="anyURI" />
       <element minOccurs="0" maxOccurs="unbounded" name="KoeberSamling" type="part:SimpelPartType" />
       <element minOccurs="0" maxOccurs="unbounded" name="SaelgerSamling" type="part:SimpelPartType" />
+      <element minOccurs="0" name="EjendomshandelsProcesID" type="basis:eFPIprocesIDType" />
     </sequence>
   </complexType>
 </schema>

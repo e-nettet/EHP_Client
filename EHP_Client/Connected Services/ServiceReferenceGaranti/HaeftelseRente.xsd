@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseRenteFast.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/HaeftelseRenteVariabel.xsd" />
+  <element name="HaeftelseRente" type="model:HaeftelseRenteType">
+    <annotation>
+      <documentation>Oplysninger om rente paa en haeftelse. Rente kan enten vaere fast eller variabel. Renten skal altid angives.
+        Hvis der er aftale om ingen rente skal den angives som nul i HaeftelseRenteFast.
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="HaeftelseRenteType">
+    <choice>
+      <element ref="model:HaeftelseRenteFast" />
+      <element ref="model:HaeftelseRenteVariabel" />
+    </choice>
+  </complexType>
+</schema>

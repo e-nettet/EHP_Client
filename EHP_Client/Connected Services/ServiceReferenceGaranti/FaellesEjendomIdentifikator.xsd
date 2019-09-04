@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Uuid.xsd" />
+  <element name="FaellesEjendomIdentifikator" type="model:UUIDType">
+    <annotation>
+      <documentation>Ogsaa kaldet e-ref. UUID der identificere en ejendom paa tvaers af alle ejendomsregistre som fx tinglysning, kms, skat mv.</documentation>
+    </annotation>
+  </element>
+</schema>

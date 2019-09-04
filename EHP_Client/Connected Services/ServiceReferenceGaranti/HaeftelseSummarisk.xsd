@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:anm="http://rep.oio.dk/tinglysning.dk/schema/anmeldelse/1/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/AnmaerkningSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentAlias.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentInformationOverfoert.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentOverfoertIndikator.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/FristInformationSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/FritekstInformationTekst.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/HaeftelseType.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/BilHaeftelseTypeTekst.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/AndelHaeftelseTypeTekst.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/LoesoereHaeftelseTypeSummariskTekst.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/RelateredeDokumenter.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/OgsaaLystPaaSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/TinglysningAfgiftOverfoerselIndikator.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/RettighedsspaltningStatusTekst.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DeltaBeloeb.xsd" />
+  <element name="HaeftelseSummarisk" type="eakt:HaeftelseSummariskType">
+    <annotation>
+      <documentation>Summariske oplysninger for en haeftelse.</documentation>
+    </annotation>
+  </element>
+  <complexType name="HaeftelseSummariskType">
+    <sequence>
+      <element ref="model:DokumentRevisionIdentifikator" />
+      <element ref="model:TinglysningsDato" />
+      <element ref="model:Pantrettighed" />
+      <element minOccurs="0" ref="eakt:OgsaaLystPaaSamling">
+        <annotation>
+          <documentation>Angiver eventuelt yderligere matrikler haeftelsen er lyst paa. Matrikler gives via EjendomIdentifikatorer. antallet angives i OgsaaLystPaaAntal</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="eakt:DokumentAlias" />
+      <element minOccurs="0" ref="eakt:RelateredeDokumenter" />
+      <choice>
+        <element ref="eakt:HaeftelseType" />
+        <element ref="eakt:BilHaeftelseTypeTekst" />
+        <element ref="eakt:AndelHaeftelseTypeTekst" />
+        <element ref="eakt:LoesoereHaeftelseTypeSummariskTekst" />
+      </choice>
+      <element minOccurs="0" ref="model:AndelIdeel" />
+      <element minOccurs="0" ref="model:HaeftelsePantebrevFormularLovpligtigKode">
+        <annotation>
+          <documentation>Angives altid for ikke-overfoert dokument.
+					Angives ikke for et overfoert dokument.</documentation>
+        </annotation>
+      </element>
+      <element ref="eakt:DokumentOverfoertIndikator" />
+      <element name="KreditorInformationSamling" type="model:RolleInformationSamlingType" />
+      <element minOccurs="0" name="DebitorInformationSamling" type="model:RolleInformationSamlingType">
+        <annotation>
+          <documentation>Debitorer er ikke kendt i konverteringen og feltet er derfor frivilligt.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="MeddelelseshaverInformationSamling" type="model:RolleInformationSamlingType">
+        <annotation>
+          <documentation>Angives altid for et ikke-overfoert dokument.
+					Angives kun for et overfoert dokument, hvis det er et ejerpantebrev.</documentation>
+        </annotation>
+      </element>
+      <choice>
+        <element minOccurs="0" ref="model:FuldmagtAnmeldtSamling">
+          <annotation>
+            <documentation>Fuldmagtshaver hjaelper med at identificere, hvem der skal underskrive
+						en respektpaategning paa et ejerpantebrev med underpantsaetning. Informationen skal
+						sammenholdes med informationen i UnderpanthaverInformationSamling.</documentation>
+          </annotation>
+        </element>
+        <element minOccurs="0" ref="model:ImplicitFuldmagtSamling">
+          <annotation>
+            <documentation>Fuldmagtshaver hjaelper med at identificere, hvem der skal underskrive
+						en respektpaategning paa et ejerpantebrev med underpantsaetning. Informationen skal
+						sammenholdes med informationen i UnderpanthaverInformationSamling.</documentation>
+          </annotation>
+        </element>
+      </choice>
+      <element minOccurs="0" ref="model:UnderpantrettighedSamling" />
+      <element ref="model:HaeftelseBeloeb" />
+      <element minOccurs="0" ref="eakt:DeltaBeloeb" />
+      <choice>
+        <element ref="model:HaeftelseRente">
+          <annotation>
+            <documentation>Angives for et ikke-overfoert dokument.
+            Angives for et overfoert dokument, hvis renten er aendret ved paategning efter overfoerslen.
+            </documentation>
+          </annotation>
+        </element>
+        <element name="HaeftelseRenteOverfoert" type="string">
+          <annotation>
+            <documentation>Angives for et overfoert dokument, hvis renten ikke er aendret ved paategning
+            efter overfoerslen.</documentation>
+          </annotation>
+        </element>
+      </choice>
+      <element minOccurs="0" ref="eakt:AnmaerkningSamling" />
+      <element minOccurs="0" ref="model:RespektSamling" />
+      <element minOccurs="0" ref="eakt:FritekstInformationTekst" />
+      <element minOccurs="0" ref="model:HaeftelseSaerligeLaanevilkaarstypeSamling" />
+      <element minOccurs="0" ref="model:HaeftelseLaantypeKode" />
+      <element minOccurs="0" ref="model:HaeftelseLaanKreditorbetegnelseTekst" />
+      <element minOccurs="0" name="TillaegstekstSamling" type="model:TekstAngivelseSamlingType">
+        <annotation>
+          <documentation>Angiver enten en oplysende tekst givet af Tinglysningsmedarbejderen
+					i den interne sagsportal eller et antal tillaegstekster fra overfoerslen.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="eakt:FristInformationSamling" />
+      <element minOccurs="0" ref="eakt:DokumentInformationOverfoert">
+        <annotation>
+          <documentation>Angives for et overfoert dokument.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="TinglysningAfgiftBetalt" type="model:BeloebVaerdiType">
+        <annotation>
+          <documentation>Det totale tinglysningsbeloeb i danske kroner, der er betalt for anmeldelsen, der beroerte det paagaeldende dokument. Beloebet kan daekke flere dokumenter, hvis behandlingen af anmeldelsen har resulteret i flere dokumenter eller dokumentrevisioner.
+					</documentation>
+        </annotation>
+      </element>
+      <element ref="eakt:TinglysningAfgiftOverfoerselIndikator" />
+      <element minOccurs="0" name="KonverteretDigitalPantebrevIndikator" type="boolean">
+        <annotation>
+          <documentation>Kun for overfoerte dokumenter: True angiver at pantebrevet er digitaliseret og papir udgaven hermed er ugyldig.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:BilStruktur">
+        <annotation>
+          <documentation>Indeholder beriget information om bilen, som den var paa tinglysningstidspunktet.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:AndelBemaerkningTekstSamling">
+        <annotation>
+          <documentation>Benyttes paa for haeftelser i andelsboligbogen. Indeholder yderligere information om andelen.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:PersonbogTekstSamling">
+        <annotation>
+          <documentation>Benyttes paa for haeftelser i personbogen. Indeholder yderligere information om loesoeret.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:VirksomhedspantTypeTekstSamling">
+        <annotation>
+          <documentation>Benyttes paa for haeftelser i personbogen. Type af objekter, som skadesloessbrev virksomhedspant daekker..</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="eakt:RettighedsspaltningStatusTekst" />
+    </sequence>
+  </complexType>
+</schema>

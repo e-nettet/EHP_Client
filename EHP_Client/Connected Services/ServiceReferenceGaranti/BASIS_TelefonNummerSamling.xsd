@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_InformationOgBeskrivelse.xsd" />
+  <element name="TelefonNummerSamling" type="tns:TelefonNummerSamlingType" />
+  <complexType name="TelefonNummerSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="TelefonNummer" type="tns:InformationOgBeskrivelseType" />
+    </sequence>
+  </complexType>
+</schema>

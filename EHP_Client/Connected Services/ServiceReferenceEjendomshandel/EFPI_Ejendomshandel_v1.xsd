@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<schema xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:attachmentbinarydatasamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryDataSamling_v1" xmlns:kontaktoplysninger="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1" xmlns:salgsopstillingdokumentsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokumentSamling_v1" xmlns:haendelsemedkontekstsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" xmlns:internalSorting="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" xmlns:tstt="http://efpi.dk/ehp2011/xml/schemas/EFPI_TimerServiceTaskType_v1" xmlns:ejendomshandlensData="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomshandlensData_v1" xmlns:processoeg="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesSoeg_v1" xmlns:tls="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" xmlns:udestaaendedeponering="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeDeponering_v1" xmlns:formidlingsaftaledokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" xmlns:dokumentkat="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentKategori_v1" xmlns:salgsopsoeg="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" xmlns:beskrivelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Beskrivelse_v1" xmlns:tilstand="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" xmlns:dokumentdata="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentData_v1" xmlns:tmt="http://efpi.dk/ehp2011/xml/schemas/EFPI_TomtElement_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" xmlns:garantihaendelsekontekst="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1" xmlns:rolids="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleIDSamling_v1" xmlns:loebenummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Loebenummer_v1" xmlns:haendelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xmlns:udestaaendestatus="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeStatus_v1" xmlns:rolins="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" xmlns:koebsaftaledokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1" xmlns:haendelsekontekst="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1" xmlns:fristforlaengelsesanmodningsvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" xmlns:delid="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xmlns:kontonummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" xmlns:dokumentmetabeskrivelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" xmlns:opsummering="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" xmlns:diff="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" xmlns:rekvirentelementsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_RekvirentElementSamling_v1" xmlns:sagsnummeridentifikator="http://efpi.dk/ehp2011/xml/schemas/EFPI_SagsnummerIdentifikator_v1" xmlns:salgsopstilling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:rolleogindehaver="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" xmlns:fristforlaengelsesanmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" xmlns:haendelsesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" xmlns:attachmentbinarydata="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" xmlns:tns="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xmlns:procestabeldatasamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesTabelDataSamling_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema xmlns:rolid="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:attachmentbinarydatasamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryDataSamling_v1" xmlns:kontaktoplysninger="http://efpi.dk/ehp2011/xml/schemas/EFPI_KontaktOplysninger_v1" xmlns:pmgs="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesMedGarantifristSamling_v1" xmlns:internalSorting="http://efpi.dk/internalschemas/KolonneSorteringsretning_v1" xmlns:tstt="http://efpi.dk/ehp2011/xml/schemas/EFPI_TimerServiceTaskType_v1" xmlns:ejendomshandlensData="http://efpi.dk/ehp2011/xml/schemas/EFPI_EjendomshandlensData_v1" xmlns:processoeg="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesSoeg_v1" xmlns:loebenummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Loebenummer_v1" xmlns:dokumentmetabeskrivelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentMetaBeskrivelse_v1" xmlns:formidlingsaftaledokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_FormidlingsaftaleDokument_v1" xmlns:dokumentkat="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentKategori_v1" xmlns:salgsopsoeg="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" xmlns:kontonummer="http://efpi.dk/ehp2011/xml/schemas/EFPI_Kontonummer_v1" xmlns:beskrivelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Beskrivelse_v1" xmlns:dokumentdata="http://efpi.dk/ehp2011/xml/schemas/EFPI_DokumentData_v1" xmlns:tmt="http://efpi.dk/ehp2011/xml/schemas/EFPI_TomtElement_v1" xmlns:part="http://efpi.dk/ehp2011/xml/schemas/EFPI_Part_v1" xmlns:rolids="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleIDSamling_v1" xmlns:haendelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xmlns:udestaaendestatus="http://efpi.dk/ehp2011/xml/schemas/EFPI_UdestaaendeStatus_v1" xmlns:rolins="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaverSamling_v1" xmlns:haendelsemedkontekstsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekstSamling_v1" xmlns:delid="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xmlns:gt="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiTilstand_v1" xmlns:opsummering="http://efpi.dk/ehp2011/xml/schemas/EFPI_EHPOpsummering_v1" xmlns:koebsaftaledokument="http://efpi.dk/ehp2011/xml/schemas/EFPI_KoebsaftaleDokument_v1" xmlns:diff="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" xmlns:rekvirentelementsamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_RekvirentElementSamling_v1" xmlns:fristforlaengelsesanmodningsvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodningSvar_v1" xmlns:salgsopstilling="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:rolleogindehaver="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleOgIndehaver_v1" xmlns:fristforlaengelsesanmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_FristforlaengelsesAnmodning_v1" xmlns:haendelsesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" xmlns:attachmentbinarydata="http://efpi.dk/ehp2011/xml/schemas/EFPI_AttachmentBinaryData_v1" xmlns:tns="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xmlns:procestabeldatasamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesTabelDataSamling_v1" xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ejendomshandel/xml/schemas/EFPI_Ejendomshandel_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../../tinglysning.dk/schema/snapshot/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/snapshot/1/" />
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RekvirentElementSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RekvirentElementSamling_v1" />
@@ -44,6 +44,8 @@
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Tilstand_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Tilstand_v1" />
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_XMLDiffResult_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_XMLDiffResult_v1" />
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingDokument_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiTilstand_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiTilstand_v1" />
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ProcesMedGarantifristSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ProcesMedGarantifristSamling_v1" />
   <element name="ArkivpakkeHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
   <element name="ArkivpakkeHentRequest" type="tmt:TomtElementType" />
   <element name="ArkivpakkeHentRequestV2" type="tmt:TomtElementType" />
@@ -99,9 +101,13 @@
   <element name="FristforlaengelsesAnmodningSvarRequestHeader" type="tns:EHPStandardRequestHeaderType" />
   <element name="FristforlaengelsesAnmodningSvarRequest" type="tns:FristforlaengelsesAnmodningSvarRequestType" />
   <element name="FristforlaengelsesAnmodningSvarResponse" type="tmt:TomtElementType" />
+  <element name="GarantiudskriftHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
+  <element name="GarantiudskriftHentRequest" type="tmt:TomtElementType" />
+  <element name="GarantiudskriftHentResponse" type="tns:GarantiudskriftResponseType" />
   <element name="HaendelsesHistorikHentRequestHeader" type="tns:HaendelsesHistorikHentRequestHeaderType" />
   <element name="HaendelsesHistorikHentRequest" type="tns:HaendelsesHistorikHentRequestType" />
   <element name="HaendelsesHistorikHentRequestV2" type="tns:HaendelsesHistorikHentRequestType" />
+  <element name="HaendelsesHistorikHentRequestV3" type="tns:HaendelsesHistorikHentRequestType" />
   <element name="HaendelsesHistorikHentResponse" type="tns:HaendelsesHistorikHentResponseType" />
   <element name="ActionLogEntriesForPtpStatusResponse" type="tns:ActionLogEntriesForPtpStatusResponseType" />
   <element name="HentHaendelsesHistorikForProcesRequestHeader" type="tns:HentHaendelsesHistorikForProcesRequestHeaderType" />
@@ -160,7 +166,7 @@
   <element name="SalgsopstillingSoegResponse" type="tns:SalgsopstillingSoegResponseType" />
   <element name="TimerServiceRequestHeader" type="tns:TimerServiceHeaderType" />
   <element name="TimerServiceRequest" type="tmt:TomtElementType" />
-  <element name="TimerServiceResponse" type="tmt:TomtElementType" />
+  <element name="TimerServiceResponse" type="tns:TimerServiceResponseType" />
   <element name="UdestaaendeForbeholdHentRequestHeader" type="tns:EHPStandardRequestHeaderType" />
   <element name="UdestaaendeForbeholdHentRequest" type="tmt:TomtElementType" />
   <element name="UdestaaendeForbeholdHentResponse" type="tns:UdestaaendeForbeholdHentResponseType" />
@@ -170,6 +176,9 @@
   <element name="XMLDiffRequestHeader" type="tns:EHPStandardRequestHeaderType" />
   <element name="XMLDiffRequest" type="tns:XMLDiffRequestType" />
   <element name="XMLDiffResponse" type="tns:XMLDiffResponseType" />
+  <element name="ProceslisteMedGarantifristHentRequestHeader" type="tns:EHPBasisRequestHeaderType" />
+  <element name="ProceslisteMedGarantifristHentRequest" type="tns:ProceslisteMedGarantifristHentRequestType" />
+  <element name="ProceslisteMedGarantifristHentResponse" type="tns:ProceslisteMedGarantifristHentResponseType" />
   <complexType name="ArkivpakkeHentResponseType">
     <sequence>
       <element name="Arkiv" type="attachmentbinarydata:AttachmentBinaryDataType" />
@@ -208,6 +217,11 @@
       <element name="DeponeringsKontoNr" type="kontonummer:KontonummerType" />
     </sequence>
   </complexType>
+  <complexType name="EHPBasisRequestHeaderType">
+    <sequence>
+      <element name="DeltagerID" type="delid:DeltagerIDType" />
+    </sequence>
+  </complexType>
   <complexType name="EHPStandardRequestHeaderType">
     <sequence>
       <element name="ProcesID" type="basis:eFPIprocesIDType" />
@@ -221,6 +235,11 @@
     <sequence>
       <element name="DeltagerID" type="delid:DeltagerIDType" />
       <element minOccurs="0" name="TimerServiceTask" type="tstt:TimerServiceTaskType" />
+    </sequence>
+  </complexType>
+  <complexType name="TimerServiceResponseType">
+    <sequence>
+      <element name="ResponseText" type="strings:StringMax1000" />
     </sequence>
   </complexType>
   <complexType name="HaendelsesHistorikHentRequestHeaderType">
@@ -306,6 +325,11 @@
   <complexType name="FristforlaengelsesAnmodningSvarRequestType">
     <sequence>
       <element ref="fristforlaengelsesanmodningsvar:FristforlaengelsesAnmodningSvar" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiudskriftResponseType">
+    <sequence>
+      <element name="Dokument" type="base64Binary" />
     </sequence>
   </complexType>
   <complexType name="HaendelsesHistorikHentRequestType">
@@ -420,7 +444,7 @@
   </complexType>
   <complexType name="ProcesAfslutIndsigelseRequestType">
     <sequence>
-      <element name="Begrundelse" type="strings:StringMin2Max10K" />
+      <element name="Begrundelse" type="strings:StringMin2Max1K" />
     </sequence>
   </complexType>
   <complexType name="SagsAktivitetListeHentRequestHeaderType">
@@ -583,6 +607,30 @@
   <complexType name="XMLDiffResponseType">
     <sequence>
       <element name="XMLDiffResult" type="diff:XMLDiffResultType" />
+    </sequence>
+  </complexType>
+  <complexType name="ProceslisteMedGarantifristHentRequestType">
+    <sequence>
+      <element minOccurs="0" name="GarantiTilstand" type="gt:GarantiTilstandType">
+        <annotation>
+          <documentation>If omitted, all states will be included.</documentation>
+        </annotation>
+      </element>
+      <element name="SenestGarantistillelseFraOgMed" type="date">
+        <annotation>
+          <documentation>All returned processes will have guarantee deadline on or after this date.</documentation>
+        </annotation>
+      </element>
+      <element name="SenestGarantistillelseTilOgMed" type="date">
+        <annotation>
+          <documentation>All returned processes will have guarantee deadline on or before this date.</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="ProceslisteMedGarantifristHentResponseType">
+    <sequence>
+      <element name="ProcesMedGarantifristSamling" type="pmgs:ProcesMedGarantifristSamlingType" />
     </sequence>
   </complexType>
 </schema>

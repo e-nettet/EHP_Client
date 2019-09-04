@@ -10,6 +10,7 @@ namespace EHP_Client
         private string partyid;
         private string actas; // Agere på vegne af
         private string password;
+        private AktoerregistereFPIClient client;
 
         public AktoerregisterUtils(Miljoe miljoe, string partyid, string actas, string password)
         {
@@ -17,6 +18,7 @@ namespace EHP_Client
             this.partyid = partyid;
             this.actas = actas;
             this.password = password;
+            client = ClientFactory.GetAktoerregistereFPIClient(partyid, password, GetEndpointAddress());
         }
 
 
@@ -40,7 +42,6 @@ namespace EHP_Client
         }
         public HentAlleAktoerInformationerResponseType GetHentAlleAktoerInformationer()
         {
-            AktoerregistereFPIClient client = ClientFactory.GetAktoerregistereFPIClient(partyid, password, GetEndpointAddress());
             HentAlleAktoerInformationerResponseType response = client.HentAlleAktoerInformationer(new HentAlleAktoerInformationerType());
             return (response);
         }

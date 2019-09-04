@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:haendelsekode="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKode_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xmlns:delid="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xmlns:haendelsespecifikkenoegledata="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelsesspecifikkeNoegledata_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema xmlns:strings="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" xmlns:haendelsekode="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKode_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xmlns:delid="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xmlns:haendelsespecifikkenoegledata="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelsesspecifikkeNoegledata_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Strings_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Strings_v1" />
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelsesspecifikkeNoegledata_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelsesspecifikkeNoegledata_v1" />
   <import schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseKode_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKode_v1" />
@@ -12,6 +13,7 @@
       <element name="HaendelseBeskrivelse" type="strings:StringMin2Max10K" />
       <element minOccurs="0" name="SpecifikkeNoegledata" type="haendelsespecifikkenoegledata:HaendelsesspecifikkeNoegledataType" />
       <element name="UdloestAfDeltagerID" type="delid:DeltagerIDType" />
+      <element minOccurs="0" name="HaendelseID" type="basis:Uuid" />
     </sequence>
   </complexType>
 </schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BilFabrikatTekst.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BilModelTekst.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BilVariantTekst.xsd" />
+  <element name="BilMaerke" type="model:BilMaerkeType">
+    <annotation>
+      <documentation>Maerke paa bil</documentation>
+    </annotation>
+  </element>
+  <complexType name="BilMaerkeType">
+    <sequence>
+      <element ref="model:BilFabrikatTekst" />
+      <element minOccurs="0" ref="model:BilModelTekst" />
+      <element minOccurs="0" ref="model:BilVariantTekst" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitAndet.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitAnvendelse.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitBebyggelse.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitBrugsLejeForhold.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitEjendomsforhold.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitFaerdsel.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitForsyning.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitKoebSalg.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitLedninger.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutAfsnitTekniskeAnlaeg.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutFortrinsret.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Tidsbegraensning.xsd" />
+  <element name="ServitutInformation" type="model:ServitutInformationType">
+    <annotation>
+      <documentation>Angiver detaljer om servitut, der kun vedroerer servituttyperne AndenServitut.
+			Reference til bilag af typen GML (Geographical Markup Language) filer til brug for Kort og Matrikelstyrelsens senere stedfaestelse af servituten, skal angives i bilagssamlingen i anmelderinformation.
+			</documentation>
+    </annotation>
+  </element>
+  <complexType name="ServitutInformationType">
+    <annotation>
+      <documentation>
+			Mindst et af nedenstaaende elementer skal angives. 
+			</documentation>
+    </annotation>
+    <sequence>
+      <element minOccurs="0" ref="model:Tidsbegraensning" />
+      <element minOccurs="0" ref="model:ServitutAfsnitKoebSalg" />
+      <element minOccurs="0" ref="model:ServitutAfsnitAnvendelse" />
+      <element minOccurs="0" ref="model:ServitutAfsnitBebyggelse" />
+      <element minOccurs="0" ref="model:ServitutAfsnitEjendomsforhold" />
+      <element minOccurs="0" ref="model:ServitutAfsnitTekniskeAnlaeg" />
+      <element minOccurs="0" ref="model:ServitutAfsnitLedninger" />
+      <element minOccurs="0" ref="model:ServitutAfsnitFaerdsel" />
+      <element minOccurs="0" ref="model:ServitutAfsnitForsyning" />
+      <element minOccurs="0" ref="model:ServitutAfsnitBrugsLejeForhold" />
+      <element minOccurs="0" ref="model:ServitutAfsnitAndet" />
+      <element minOccurs="0" ref="model:ServitutFortrinsret" />
+    </sequence>
+  </complexType>
+</schema>

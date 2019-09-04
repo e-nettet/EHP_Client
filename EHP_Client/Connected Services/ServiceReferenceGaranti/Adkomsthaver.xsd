@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" xmlns:itst="http://rep.oio.dk/itst.dk/xml/schemas/2006/01/17/" xmlns:xkom-2="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" xmlns:cvr="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/cvr.xsd" namespace="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/xkom.xsd" namespace="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" />
+  <element name="Adkomsthaver" type="eakt:AdkomsthaverType">
+    <annotation>
+      <documentation>Adkomsthaver oplysninger.</documentation>
+    </annotation>
+  </element>
+  <complexType name="AdkomsthaverType">
+    <sequence>
+      <choice>
+        <element ref="model:PersonSimpelIdentifikator" />
+        <element ref="cvr:LegalUnitName" />
+      </choice>
+      <element minOccurs="0" ref="cvr:CVRnumberIdentifier" />
+      <element minOccurs="0" ref="xkom-2:AddressSpecific">
+        <annotation>
+          <documentation>Angives altid for ikke-overfoert dokument.
+           Angives for et overfoert dokument, hvis oplysningen findes.</documentation>
+        </annotation>
+      </element>
+      <element ref="model:AndelIdeel" />
+    </sequence>
+  </complexType>
+</schema>

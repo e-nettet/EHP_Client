@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:fremsendelseInfo="http://efpi.dk/ehp2011/xml/schemas/EFPI_FremsendelseInfo_v1" xmlns:erstatningSvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseInformation_v1" xmlns:tilbagekaldelsesAnmodning="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelsesAnmodning_v1" xmlns:tilbagekaldelsesSvar="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelseAnmodningSvar_v1" xmlns:erstatningAnmodningInfo="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningAnmodningInfo_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseInformation_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningsanmodningSvar_v1.xsd" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TilbagekaldelsesAnmodning_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelsesAnmodning_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_TilbagekaldelseAnmodningSvar_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_TilbagekaldelseAnmodningSvar_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_FremsendelseInfo_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_FremsendelseInfo_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_ErstatningAnmodningInfo_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_ErstatningAnmodningInfo_v1" />
+  <element name="GarantiHaendelseInformation" type="tns:GarantiHaendelseInformationType" />
+  <complexType name="GarantiHaendelseInformationType">
+    <choice>
+      <element ref="fremsendelseInfo:FremsendelseInfo" />
+      <element ref="erstatningAnmodningInfo:ErstatningAnmodningInfo" />
+      <element name="ErstatningSvar" type="erstatningSvar:ErstatningAnmodningSvarType" />
+      <element name="TilbagekaldelsesAnmodning" type="tilbagekaldelsesAnmodning:TilbagekaldelsesAnmodningType" />
+      <element name="TilbagekaldelsesSvar" type="tilbagekaldelsesSvar:TilbagekaldelseAnmodningSvarType" />
+    </choice>
+  </complexType>
+</schema>

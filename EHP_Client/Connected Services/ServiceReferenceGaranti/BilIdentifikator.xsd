@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:kms="http://rep.oio.dk/kms.dk/xml/schemas/2005/03/11/" xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" xmlns:xkom-2="http://rep.oio.dk/xkom.dk/xml/schemas/2006/01/06/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Stelnummer.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/KortStelnummer.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/StelnummerLbnr.xsd" />
+  <element name="BilIdentifikator" type="model:BilIdentifikatorType">
+    <annotation>
+      <documentation>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">Identifikation af en bil.</p>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">Har bilen et 17 ciffer stelnummer benyttes model:Stelnummer</p>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">Har bilen ikke et 17 ciffer stelnummer benyttes model:KortStelnummer samt model:StelnummerLbnr</p>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">Findes model:StelnummerLbnr ikke, undlades feltet.</p>
+        <p xmlns="http://www.w3.org/2001/XMLSchema">model:StelnummerLbnr tildeles af e-TL.</p>
+      </documentation>
+    </annotation>
+  </element>
+  <complexType name="BilIdentifikatorType">
+    <choice>
+      <element ref="model:Stelnummer" />
+      <sequence>
+        <element ref="model:KortStelnummer" />
+        <element minOccurs="0" ref="model:StelnummerLbnr">
+          <annotation>
+            <documentation>Angives hvis det findes</documentation>
+          </annotation>
+        </element>
+      </sequence>
+    </choice>
+  </complexType>
+</schema>

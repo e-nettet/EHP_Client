@@ -8,6 +8,7 @@
       <enumeration value="SEND_CLOSURE_NOTIFICATIONS" />
       <enumeration value="SEND_DAILY_NOTIFICATIONS" />
       <enumeration value="SEND_FAILED_DAILY_NOTIFICATIONS" />
+      <enumeration value="DELETE_CLOSED" />
       <enumeration value="ALL" />
     </restriction>
   </simpleType>

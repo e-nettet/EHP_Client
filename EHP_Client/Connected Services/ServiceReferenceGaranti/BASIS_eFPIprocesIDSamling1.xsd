@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../efpi.dk/basis/xml/schemas/2007/07/01/BASIS_eFPIprocesID.xsd" />
+  <element name="eFPIprocesIDSamling" type="tns:eFPIprocesIDSamlingType" />
+  <complexType name="eFPIprocesIDSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" ref="tns:eFPIprocesID" />
+    </sequence>
+  </complexType>
+</schema>

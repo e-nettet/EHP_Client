@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="HaeftelsePantebrevFormularLovpligtigKode" type="model:HaeftelsePantebrevFormularLovpligtigKodeType">
+    <annotation>
+      <documentation>Angiver koder for Justitsministeriets lovpligtige pantebrevsformularer</documentation>
+    </annotation>
+  </element>
+  <simpleType name="HaeftelsePantebrevFormularLovpligtigKodeType">
+    <restriction base="string">
+      <enumeration value="a" />
+      <enumeration value="Aa" />
+      <enumeration value="b" />
+      <enumeration value="Ab" />
+      <enumeration value="sdo" />
+      <enumeration value="Asdo" />
+      <enumeration value="sdro" />
+      <enumeration value="Asdro" />
+      <enumeration value="bil" />
+      <enumeration value="pantebrevAndel" />
+      <enumeration value="skadesloesbrev" />
+      <enumeration value="Askadesloesbrev" />
+      <enumeration value="skadesloesbrevBil" />
+      <enumeration value="skadesloesbrevLoesoere" />
+      <enumeration value="skadesloesbrevVirksomhedspant" />
+      <enumeration value="skadesloesbrevFordringspant" />
+      <enumeration value="skadesloesbrevAndel" />
+      <enumeration value="indekspantebrev" />
+      <enumeration value="Aindekspantebrev" />
+      <enumeration value="loesoere" />
+      <enumeration value="hoestpantebrev" />
+      <enumeration value="ApantebrevAndel" />
+      <enumeration value="AskadesloesbrevAndel" />
+      <enumeration value="Abil" />
+      <enumeration value="AskadesloesbrevBil" />
+      <enumeration value="Aloesoere" />
+      <enumeration value="AskadesloesbrevLoesoere" />
+      <enumeration value="AskadesloesbrevVirksomhedspant" />
+      <enumeration value="AskadesloesbrevFordringspant" />
+      <enumeration value="Ahoestpantebrev" />
+    </restriction>
+  </simpleType>
+</schema>

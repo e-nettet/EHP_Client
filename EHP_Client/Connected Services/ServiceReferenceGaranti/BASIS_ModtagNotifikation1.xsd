@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_ProcesdataSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_Sagsdata.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_AktoerID.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_ProcesReference.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_SagsReference.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_Notifikation.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_DokumentID.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIprocesID.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPISagsID.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIDokumentSamling.xsd" />
+  <element name="ModtagNotifikation" type="tns:ModtagNotifikationType" />
+  <complexType name="ModtagNotifikationType">
+    <sequence>
+      <element name="Notifikation" type="tns:NotifikationType" />
+      <element name="NotifikationsReference" type="anyURI" />
+      <element minOccurs="0" name="AktoersEgenNotifikationsReference" type="string" />
+      <element minOccurs="0" name="NotifikationsBeskrivelse" type="string" />
+      <element name="TidsStempel" type="dateTime" />
+      <element name="AktoerID" type="tns:AktoerIDType" />
+      <choice>
+        <element ref="tns:Sagsdata" />
+        <element name="NotifikationsData">
+          <complexType>
+            <sequence>
+              <element minOccurs="0" ref="tns:ProcesdataSamling" />
+              <element minOccurs="0" ref="tns:eFPIDokumentSamling" />
+            </sequence>
+          </complexType>
+        </element>
+      </choice>
+    </sequence>
+  </complexType>
+</schema>

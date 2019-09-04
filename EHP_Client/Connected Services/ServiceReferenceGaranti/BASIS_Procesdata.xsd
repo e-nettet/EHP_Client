@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIProcesStatus.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIProcesType.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIprocesID.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIInvolveretAktoerSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_eFPIInvolveretDokumentSamling.xsd" />
+  <element name="Procesdata" type="tns:ProcesdataType" />
+  <complexType name="ProcesdataType">
+    <sequence>
+      <element ref="tns:eFPIprocesID" />
+      <element ref="tns:eFPIProcesStatus" />
+      <element ref="tns:eFPIProcesType" />
+      <element ref="tns:eFPIInvolveretAktoerSamling" />
+      <element ref="tns:eFPIInvolveretDokumentSamling" />
+    </sequence>
+  </complexType>
+</schema>

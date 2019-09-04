@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiSamling_v1" xmlns:rolle="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" xmlns:salgsopstillingsoeg="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiSamling_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_RolleID_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_RolleID_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_SalgsopstillingSoeg_v1" />
+  <complexType name="GarantiSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="Garanti" type="tns:GarantiType" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiType">
+    <sequence>
+      <element name="ProcesID" type="basis:eFPIprocesIDType" />
+      <element name="RolleID" type="rolle:RolleIDType" />
+      <element minOccurs="0" name="Adresse" type="string" />
+      <element minOccurs="0" name="Koebere" type="string" />
+      <element minOccurs="0" name="Saelgere" type="string" />
+      <element minOccurs="0" name="SidstOpdateret" type="dateTime" />
+      <element minOccurs="0" name="StatusLabel" type="string" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BeloebVaerdi.xsd" />
+  <element name="SkoedeKoebesum" type="model:SkoedeKoebesumType">
+    <annotation>
+      <documentation>Angiver den pris, som ejendommen er koebt for. Alle beloeb der angives skal vaere positive.
+       I alt koebesummen beregnes (IAltKoebesum = KontantKoebesum + ArvGaveBeloeb + OvertagneRestancer +
+       AfloesningsbareServitutter + AnlaegsBidrag)".
+       </documentation>
+    </annotation>
+  </element>
+  <complexType name="SkoedeKoebesumType">
+    <sequence>
+      <element name="KontantKoebesum" type="model:BeloebVaerdiType" />
+      <element minOccurs="0" name="ArvGaveBeloeb" type="model:BeloebVaerdiType">
+        <annotation>
+          <documentation>Der er tale om arv, naar en persons formue eller ejendele helt eller delvis udloddes til en anden pga.
+           slaegtskab eller ifoelge testamentarisk bestemmelse - baade ved a conto-udlodning eller ved den endelige udlodning. Der
+           er tale om en gave, naar man giver eller modtager noget af vaerdi, og der ikke skal betales fuldt ud for det.
+           </documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="OvertagneRestancer" type="model:BeloebVaerdiType" />
+      <element minOccurs="0" name="AfloesningsbareServitutter" type="model:BeloebVaerdiType" />
+      <element minOccurs="0" name="AnlaegsBidrag" type="model:BeloebVaerdiType" />
+      <element name="IAltKoebesum" type="model:BeloebVaerdiType" />
+    </sequence>
+  </complexType>
+</schema>

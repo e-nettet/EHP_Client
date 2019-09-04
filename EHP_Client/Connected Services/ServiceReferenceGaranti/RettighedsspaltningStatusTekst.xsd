@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="RettighedsspaltningStatusTekst" type="eakt:RettighedsspaltningStatusTekstType">
+    <annotation>
+      <documentation>Angiver status for en spaltet rettighed.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="RettighedsspaltningStatusTekstType">
+    <restriction base="string">
+      <enumeration value="prioritetsspaltet">
+        <annotation>
+          <documentation>
+						Angiver at denne rettighed er en prioritetsspaltning af den foregaaende version paa dette tinglysningsobjekt,
+						hvor der er tinglyst en forhoejelse (eller en anden paategning som er mere bebyrdende), og uden en mellemliggende rettigheds accept.
+					</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="prioritetsspaltetSampant">
+        <annotation>
+          <documentation>Angiver at denne rettighed er en prioritetsspaltning af den foregaaende version paa et andet tinglysningsobjekt, hvor dette rettighedsdokument ogsaa er lyst.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="fristspaltet">
+        <annotation>
+          <documentation>Angiver at rettighedsdokumentet er paategnet med frist hvilket har foraarsaget en spaltning.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="fristspaltetSampant">
+        <annotation>
+          <documentation>Angiver at rettighedsdokumentet er paategnet med frist paa et andet tinglysningsobjekt, hvor dette rettighedsdokument ogsaa er lyst.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="udvidet">
+        <annotation>
+          <documentation>Angiver at rettighedsdokumentet i denne version er udvidet til at omfatte dette dokument, hvilket det ikke gjorde i den forudgaaende version.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="relakseret">
+        <annotation>
+          <documentation>Angiver at rettighedsdokumentet er relakseret ud af dette tinglysningsobjekt i den efterfoelgende version.</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

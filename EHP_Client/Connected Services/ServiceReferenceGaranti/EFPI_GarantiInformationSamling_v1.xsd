@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:haendelsesamling="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiInformationSamling_v1" xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiInformationSamling_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/basis.xsd" namespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseSamling_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseSamling_v1" />
+  <complexType name="GarantiInformationSamlingType">
+    <sequence>
+      <element minOccurs="0" maxOccurs="unbounded" name="GarantiInformation" type="tns:GarantiInformationType" />
+    </sequence>
+  </complexType>
+  <complexType name="GarantiInformationType">
+    <sequence>
+      <element ref="basis:eFPIprocesID" />
+      <element ref="basis:eFPIProcesStatus" />
+      <element minOccurs="0" name="AktoersEgenProcesReference" type="basis:ProcesReferenceType" />
+      <element minOccurs="0" name="EjendomshandelsProcesID" type="basis:eFPIprocesIDType" />
+      <element name="GarantiStiller" type="basis:AktoerIDType" />
+      <element name="GarantiModtagersPI" type="basis:AktoerIDType" />
+      <element ref="haendelsesamling:HaendelseSamling" />
+    </sequence>
+  </complexType>
+</schema>

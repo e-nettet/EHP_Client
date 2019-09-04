@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <element name="OgsaaLystPaaSamling" type="eakt:OgsaaLystPaaSamlingType">
+    <annotation>
+      <documentation>Angiver eventuelt yderligere matrikler/biler rettigheden er lyst paa. Matrikler gives via EjendomIdentifikatorer. Biler gives via BilIdentifikatorer. Antallet fremgaar af OgsaaLystPaaAntal.</documentation>
+    </annotation>
+  </element>
+  <complexType name="OgsaaLystPaaSamlingType">
+    <sequence>
+      <element name="OgsaaLystPaaAntal" type="nonNegativeInteger" />
+      <choice minOccurs="0">
+        <element ref="model:EjendomIdentifikatorSamling" />
+        <element ref="model:BilIdentifikatorSamling" />
+        <element ref="model:AndelIdentifikatorSamling" />
+        <element ref="model:LoesoereIdentifikatorSamling" />
+      </choice>
+    </sequence>
+  </complexType>
+</schema>

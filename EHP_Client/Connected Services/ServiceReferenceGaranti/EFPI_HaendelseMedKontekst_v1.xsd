@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:haendelsekontekst="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1" xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekst_v1" xmlns:garantihaendelsekontekst="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1" xmlns:haendelse="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseMedKontekst_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_Haendelse_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_Haendelse_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_HaendelseKontekst_v1" />
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1.xsd" namespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_GarantiHaendelseKontekst_v1" />
+  <element name="HaendelseMedKontekst" type="tns:HaendelseMedKontekstType" />
+  <complexType name="HaendelseMedKontekstType">
+    <sequence>
+      <choice>
+        <element ref="haendelsekontekst:HaendelseKontekst" />
+        <element ref="garantihaendelsekontekst:GarantiHaendelseKontekst" />
+      </choice>
+      <element ref="haendelse:Haendelse" />
+    </sequence>
+  </complexType>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:ois="http://rep.oio.dk/ois.dk/xml/schemas/2006/04/25/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/BilagReference.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/ServitutIndholdKoebSalgKode.xsd" />
+  <element name="ServitutIndholdKoebSalg" type="model:ServitutIndholdKoebSalgType">
+    <annotation>
+      <documentation>
+			Angiver indholdet af et afsnit om koeb og salg i en servitut.
+			</documentation>
+    </annotation>
+  </element>
+  <complexType name="ServitutIndholdKoebSalgType">
+    <sequence>
+      <element ref="model:ServitutIndholdKoebSalgKode" />
+    </sequence>
+  </complexType>
+</schema>

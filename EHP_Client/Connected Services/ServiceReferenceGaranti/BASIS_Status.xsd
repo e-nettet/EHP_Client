@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="Status" type="tns:StatusType" />
+  <simpleType name="StatusType">
+    <restriction base="string">
+      <enumeration value="OK" />
+      <enumeration value="Error" />
+    </restriction>
+  </simpleType>
+</schema>

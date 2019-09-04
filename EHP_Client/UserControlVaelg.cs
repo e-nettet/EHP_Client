@@ -19,6 +19,7 @@ namespace EHP_Client
         public UserControlVaelg()
         {
             InitializeComponent();
+            Dock = DockStyle.Fill;
             comboBox1.DataSource = Enum.GetValues(typeof(Funktion));
         }
 

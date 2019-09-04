@@ -6,13 +6,21 @@
       <enumeration value="haendelse_opretOgStart_Aktiveret" />
       <enumeration value="haendelse_procesAfslut_Aktiveret" />
       <enumeration value="haendelse_procesAfslutIndsigelse_Aktiveret" />
-      <enumeration value="haendelse_rolleOverdrag_Aktiveret" />
+      <enumeration value="haendelse_rolleOverdrag_Aktiveret">
+        <annotation>
+          <documentation>No longer being used</documentation>
+        </annotation>
+      </enumeration>
       <enumeration value="haendelse_rolleUdtraedAf_Aktiveret" />
       <enumeration value="haendelse_dokumentIlaeg_Aktiveret" />
       <enumeration value="haendelse_kontaktinformationEgenOpdater_Aktiveret" />
       <enumeration value="haendelse_rolleIndehaverOpret_Aktiveret" />
       <enumeration value="haendelse_rolleindehaverSlet_Aktiveret" />
-      <enumeration value="haendelse_forretningsmaessigFejlMeld_Aktiveret" />
+      <enumeration value="haendelse_forretningsmaessigFejlMeld_Aktiveret">
+        <annotation>
+          <documentation>Not in use</documentation>
+        </annotation>
+      </enumeration>
       <enumeration value="haendelse_forvarselOmAutoAfslutning" />
       <enumeration value="haendelse_dokumentgruppeDokumentIlaeg_Aktiveret" />
       <enumeration value="haendelse_dokumentgruppeDokumentUgyldiggoer_Aktiveret" />
@@ -28,7 +36,11 @@
       <enumeration value="haendelse_garanti_tilbagekaldelseSvarSend_Aktiveret" />
       <enumeration value="haendelse_garanti_garantiSend_Aktiveret" />
       <enumeration value="haendelse_garanti_opretOgStart_Aktiveret" />
-      <enumeration value="haendelse_garanti_forretningsmaessigFejlMeld_Aktiveret" />
+      <enumeration value="haendelse_garanti_forretningsmaessigFejlMeld_Aktiveret">
+        <annotation>
+          <documentation>Not in use</documentation>
+        </annotation>
+      </enumeration>
       <enumeration value="haendelse_ejendomUdbudtTilSalg" />
       <enumeration value="haendelse_fortrydelsesfristUdloebet" />
       <enumeration value="haendelse_handelAfsluttet" />
@@ -37,7 +49,11 @@
       <enumeration value="haendelse_koebsaftaleKsigneretIlagt" />
       <enumeration value="haendelse_koebsaftaleUdkastIlagt" />
       <enumeration value="haendelse_koebstilbudAfvistAfSaelger" />
-      <enumeration value="haendelse_ejendomIudbudOpdater_Aktiveret" />
+      <enumeration value="haendelse_ejendomIudbudOpdater_Aktiveret">
+        <annotation>
+          <documentation>Not in use</documentation>
+        </annotation>
+      </enumeration>
       <enumeration value="haendelse_ejendomEjUdbudtTilSalg" />
       <enumeration value="haendelse_handelTilbagekaldt" />
       <enumeration value="haendelse_processenAfsluttet" />

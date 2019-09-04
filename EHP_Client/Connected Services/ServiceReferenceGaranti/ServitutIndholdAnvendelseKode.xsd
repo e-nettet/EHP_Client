@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="ServitutIndholdAnvendelseKode" type="model:ServitutIndholdAnvendelseKodeType">
+    <annotation>
+      <documentation>Angiver en kode for indholdet af et afsnit om anvendelse i en servitut.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="ServitutIndholdAnvendelseKodeType">
+    <restriction base="string">
+      <enumeration value="andet" />
+      <enumeration value="anvendelsesforhold" />
+      <enumeration value="byplanVedtaegt" />
+      <enumeration value="fredning" />
+      <enumeration value="hoejdeBegraensning" />
+      <enumeration value="lokalplan" />
+      <enumeration value="sanering" />
+    </restriction>
+  </simpleType>
+</schema>

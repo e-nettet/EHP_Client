@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/FaellesEjendomIdentifikator.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/Bygningsnummer.xsd" />
+  <element name="BygningLejetGrund" type="model:BygningLejetGrundType">
+    <annotation>
+      <documentation>Angiver en ejendom af typen bygning paa lejet grund.</documentation>
+    </annotation>
+  </element>
+  <complexType name="BygningLejetGrundType">
+    <sequence>
+      <element ref="model:Bygningsnummer" />
+      <element minOccurs="0" ref="model:FaellesEjendomIdentifikator" />
+    </sequence>
+  </complexType>
+</schema>

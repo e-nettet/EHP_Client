@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:cvr="http://rep.oio.dk/cvr.dk/xml/schemas/2005/03/22/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="AktoerID" type="tns:AktoerIDType" />
+  <simpleType name="AktoerIDType">
+    <restriction base="string">
+      <maxLength value="256" />
+    </restriction>
+  </simpleType>
+</schema>

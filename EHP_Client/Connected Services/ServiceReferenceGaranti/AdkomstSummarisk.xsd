@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <import schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/model/1/tinglysning.xsd" namespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/AdkomstType.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/AdkomsthaverSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/AnmaerkningSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentAlias.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentInformationOverfoert.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/DokumentOverfoertIndikator.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/FristInformationSamling.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/RelateredeDokumenter.xsd" />
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../tinglysning.dk/schema/elektroniskakt/1/OgsaaLystPaaSamling.xsd" />
+  <element name="AdkomstSummarisk" type="eakt:AdkomstSummariskType">
+    <annotation>
+      <documentation>Summariske oplysninger for en adkomst.
+			 En adkomst har en AndelIdeel og en eller flere adkomsthavere til denne.
+			 </documentation>
+    </annotation>
+  </element>
+  <complexType name="AdkomstSummariskType">
+    <sequence>
+      <element ref="model:DokumentRevisionIdentifikator" />
+      <element ref="model:TinglysningsDato" />
+      <element minOccurs="0" ref="eakt:OgsaaLystPaaSamling">
+        <annotation>
+          <documentation>Angiver eventuelt antal yderligere matrikler adkomsten er lyst paa.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="eakt:DokumentAlias" />
+      <element minOccurs="0" ref="eakt:RelateredeDokumenter" />
+      <element ref="eakt:AdkomstType" />
+      <element ref="eakt:DokumentOverfoertIndikator" />
+      <element ref="eakt:AdkomsthaverSamling" />
+      <element minOccurs="0" ref="model:ValutaKode">
+        <annotation>
+          <documentation>Angiver valutaen for alle beloeb i adkomsten.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" ref="model:SkoedeKoebesum" />
+      <element minOccurs="0" ref="eakt:AnmaerkningSamling" />
+      <element minOccurs="0" name="TillaegstekstSamling" type="model:TekstAngivelseSamlingType" />
+      <element minOccurs="0" ref="eakt:FristInformationSamling" />
+      <element minOccurs="0" ref="eakt:DokumentInformationOverfoert">
+        <annotation>
+          <documentation>Angives for et overfoert dokument.</documentation>
+        </annotation>
+      </element>
+      <element minOccurs="0" name="TinglysningAfgiftBetalt" type="model:BeloebVaerdiType">
+        <annotation>
+          <documentation>Det totale tinglysningsbeloeb i danske kroner, der er betalt for anmeldelsen, der beroerte det paagaeldende dokument. Beloebet kan daekke flere dokumenter, hvis behandlingen af anmeldelsen har resulteret i flere dokumenter eller dokumentrevisioner.
+					</documentation>
+        </annotation>
+      </element>
+    </sequence>
+  </complexType>
+</schema>

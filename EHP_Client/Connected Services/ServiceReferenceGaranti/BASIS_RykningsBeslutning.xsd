@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="RykningsBeslutning" type="tns:RykningsBeslutningType" />
+  <simpleType name="RykningsBeslutningType">
+    <restriction base="string">
+      <enumeration value="http://efpi.dk/Rykning/Dokumentstatus/Afvist" />
+      <enumeration value="http://efpi.dk/Rykning/Dokumentstatus/Accepteret" />
+      <enumeration value="http://efpi.dk/Rykning/Dokumentstatus/ManuelBehandling" />
+    </restriction>
+  </simpleType>
+</schema>

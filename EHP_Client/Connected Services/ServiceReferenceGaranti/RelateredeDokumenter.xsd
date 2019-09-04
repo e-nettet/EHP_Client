@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:eakt="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/elektroniskakt/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="RelateredeDokumenter" type="eakt:RelateredeDokumenter">
+    <annotation>
+      <documentation>
+			Reference til relaterede dokumenter. 
+			Eksempel: 
+			I TLS eksisterer baade en haeftelse og en servitut med dato = 05.02.1987, oprindeligt dagbogsnummer = 2386 og retskreds = 18. 
+			I eTL oprettes et haeftelsesdokument med alias = 19870205-2386-18-H0001 og et servitutdokument med alias = 19870205-2386-18-S0001
+			Paa haeftelsesdokumentet vil RelateredeDokumenter indeholde: Servitut: UUID:12345678-1234-1234-1234c123456789012 Alias:19870205-2386-18-S0001
+			Paa servitutdokumentet vil RelateredeDokumenter indeholde: Haeftelse: UUID:12345678-1234-1234-1234c123456789012 Alias:19870205-2386-18-H0001
+			</documentation>
+    </annotation>
+  </element>
+  <simpleType name="RelateredeDokumenter">
+    <restriction base="string">
+      <maxLength value="255" />
+    </restriction>
+  </simpleType>
+</schema>

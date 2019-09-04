@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
-using EHP_Client;
 
 namespace EHP_Client
 {
@@ -9,10 +9,10 @@ namespace EHP_Client
 
     public partial class FormHent : Form
     {
-
         private ServiceReferenceTBIS.ValidatePartyResponse validatePartyResponse;
         private Funktion funktion;
-            
+        private DataTable dataTable;
+
         public FormHent()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace EHP_Client
             EnableButtons(false);
             switch (wizardTabcontrol1.SelectedIndex)
             {
-                case 0: // Login side
+                case 0:// Login side
                     {
                         if (!backgroundWorkerRKNET.IsBusy) { backgroundWorkerRKNET.RunWorkerAsync(); }
                         break;
@@ -39,7 +39,7 @@ namespace EHP_Client
                         funktion = userControlVaelg1.Function;
                         switch (funktion)
                         {
-                            case Funktion.aktoerer:
+                            case Funktion.aktoerer: // Aktører
                                 {
                                     if (!backgroundWorkerAktoerer.IsBusy) { backgroundWorkerAktoerer.RunWorkerAsync(); }
                                     break;
@@ -51,7 +51,8 @@ namespace EHP_Client
                                 }
                             case Funktion.garantier:
                                 {
-                                    SetStatus("Not implemented yet..");
+                                    if (!backgroundWorkerGaranti.IsBusy) { backgroundWorkerGaranti.RunWorkerAsync(); }
+                                    //SetStatus("Not implemented yet..");
                                     break;
                                 }
                             case Funktion.ejendomshandler: // Ejendomshandelsprocesser
@@ -83,6 +84,10 @@ namespace EHP_Client
 
         }
 
+        private void backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            SetStatus(e.UserState.ToString());
+        }
 
         private void BackgroundWorkerRKNET_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
@@ -91,78 +96,41 @@ namespace EHP_Client
             backgroundWorkerRKNET.ReportProgress(0, validatePartyResponse.backEndStatusCode.ToString() + " " + validatePartyResponse.backEndStatusText);
         }
 
-        private void backgroundWorkerRKNET_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-            SetStatus(e.UserState.ToString());
-        }
-
         private void backgroundWorkerRKNET_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             if (validatePartyResponse.backEndStatusCode == 0) { wizardTabcontrol1.SelectedIndex += 1; }
             EnableButtons(true);
         }
 
-        private void backgroundWorkerHaendelser_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void backgroundWorkerEjendomshandler_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             EjendomshandelUtils ejendomshandelUtils = new EjendomshandelUtils(userControlLogon1.Miljoe, userControlLogon1.PartID, userControlLogon1.ActAs, userControlLogon1.Password);
-            backgroundWorkerHaendelser.ReportProgress(0, "Henter hændelseshistorik");
+            backgroundWorkerEjendomshandler.ReportProgress(0, "Henter aktive processer");
             try
             {
-                ServiceReferenceEjendomshandel.HaendelsesHistorikHentResponseType response = ejendomshandelUtils.GetHaendelsesHistorikHentResponseType();
-                backgroundWorkerHaendelser.ReportProgress(0, response.HaendelseHistorikSamling.Length.ToString() + " hændelser hentet");
-                resetDataGridwied();
-                for (int i = 0; i < response.HaendelseHistorikSamling.Length; i++)
+                ServiceReferenceEjendomshandel.SagsAktivitetListeHentResponseType response = ejendomshandelUtils.GetSagsAktivitetListeHentResponseType();
+                backgroundWorkerEjendomshandler.ReportProgress(0, response.ProcesSamling.Length.ToString() + "aktive processer hentet");
+
+                dataTable = new DataTable();
+                dataTable.Columns.Add("ProcesID", typeof(string));
+                dataTable.Columns.Add("Adresse", typeof(string));
+                dataTable.Columns.Add("Rolle", typeof(string));
+                dataTable.Columns.Add("Tilstand", typeof(string));
+
+                for (int i = 0; i < response.ProcesSamling.Length; i++)
                 {
-                    int rowIndex = dataGridView1.Rows.Add();
-                    dataGridView1.Rows[rowIndex].Cells["Tidsstempel"].Value = response.HaendelseHistorikSamling[i].Haendelse.Tidsstempel;
-                    dataGridView1.Rows[rowIndex].Cells["Hændelsekode"].Value = response.HaendelseHistorikSamling[i].Haendelse.HaendelseKode;
-                    dataGridView1.Rows[rowIndex].Cells["Hændelsebeskrivelse"].Value = response.HaendelseHistorikSamling[i].Haendelse.HaendelseBeskrivelse;
-                    dataGridView1.Rows[rowIndex].Cells["ProcesID"].Value = ((ServiceReferenceEjendomshandel.HaendelseKontekstType)response.HaendelseHistorikSamling[i].Item).ProcesID;
+                    string adresse = "";
+                    try { adresse = ejendomshandelUtils.GetPrettyAddress(response.ProcesSamling[i].Adresse); }
+                    catch (Exception g) { adresse = "Ingen adresse"; }
+                    dataTable.Rows.Add(response.ProcesSamling[i].eFPIprocesID, adresse, response.ProcesSamling[i].Rolle, response.ProcesSamling[i].Tilstand);
                 }
             }
-            catch (Exception f) { backgroundWorkerHaendelser.ReportProgress(0, f.Message); }
-        }
-
-        private void resetDataGridwied()
-        {
-            dataGridView1.Rows.Clear();
-            dataGridView1.Columns.Clear();
-            switch (funktion)
-            {
-                case Funktion.aktoerer:
-                    {
-                        dataGridView1.Columns.Add("Aktør", "Aktør");
-                        dataGridView1.Columns.Add("Navn", "Navn");
-                        dataGridView1.Columns.Add("Roller", "Roller");
-                        break;
-                    }
-                case Funktion.ejendomshandler:
-                    {
-                        dataGridView1.Columns.Add("ProcesID", "ProcesID");
-                        dataGridView1.Columns.Add("Adresse", "Adresse");
-                        dataGridView1.Columns.Add("Rolle", "Rolle");
-                        dataGridView1.Columns.Add("Tilstand", "Tilstand");
-                        dataGridView1.Columns.Add("Rolle", "Rolle");
-                        break;
-                    }
-                case Funktion.haendelser:
-                    {
-                        dataGridView1.Columns.Add("Tidsstempel", "Tidsstempel");
-                        dataGridView1.Columns.Add("Hændelsekode", "Hændelsekode");
-                        dataGridView1.Columns.Add("Hændelsebeskrivelse", "Hændelsebeskrivelse");
-                        break;
-                    }
-                default: break;
-            }
-        }
-
-        private void backgroundWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
-        {
-            SetStatus(e.UserState.ToString());
+            catch (Exception f) { backgroundWorkerEjendomshandler.ReportProgress(0, f.Message); }
         }
 
         private void backgroundWorkerEjendomshandler_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            dataGridView1.DataSource = dataTable;
             wizardTabcontrol1.SelectedIndex += 1;
             EnableButtons(true);
         }
@@ -174,54 +142,99 @@ namespace EHP_Client
             try {
                 ServiceReferenceAktoerregister.HentAlleAktoerInformationerResponseType response = aktoerregisterUtils.GetHentAlleAktoerInformationer();
                 backgroundWorkerAktoerer.ReportProgress(0, response.AktoerDataSamling.Length.ToString() + " aktørinformationer hentet");
-                resetDataGridwied();
+
+                dataTable = new DataTable();
+                dataTable.Columns.Add("Aktør", typeof(string));
+                dataTable.Columns.Add("Navn", typeof(string));
+                dataTable.Columns.Add("Roller", typeof(string));
+
                 for (int i = 0; i < response.AktoerDataSamling.Length; i++)
                 {
-                    int rowIndex = dataGridView1.Rows.Add();
-                    dataGridView1.Rows[rowIndex].Cells["Aktør"].Value = response.AktoerDataSamling[i].AktoerInformation.AktoerID;
-                    dataGridView1.Rows[rowIndex].Cells["Navn"].Value = response.AktoerDataSamling[i].AktoerInformation.AktoerNavn;
-                    dataGridView1.Rows[rowIndex].Cells["Roller"].Value = aktoerregisterUtils.GetPrettyRoller(response.AktoerDataSamling[i].ProcesDeltagelseSamling);
+                    dataTable.Rows.Add(
+                        response.AktoerDataSamling[i].AktoerInformation.AktoerID, 
+                        response.AktoerDataSamling[i].AktoerInformation.AktoerNavn, 
+                        aktoerregisterUtils.GetPrettyRoller(response.AktoerDataSamling[i].ProcesDeltagelseSamling));
                 }
             }
             catch (Exception f) { backgroundWorkerAktoerer.ReportProgress(0, f.Message); }
         }
-
-
+        
         private void backgroundWorkerAktoerer_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            dataGridView1.DataSource = dataTable;
             wizardTabcontrol1.SelectedIndex += 1;
             EnableButtons(true);
         }
 
-        private void backgroundWorkerEjendomshandler_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void backgroundWorkerHaendelser_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            SagshaandteringUtils sagshaandteringUtils = new SagshaandteringUtils(userControlLogon1.Miljoe, userControlLogon1.PartID, userControlLogon1.ActAs, userControlLogon1.Password);
             EjendomshandelUtils ejendomshandelUtils = new EjendomshandelUtils(userControlLogon1.Miljoe, userControlLogon1.PartID, userControlLogon1.ActAs, userControlLogon1.Password);
-            backgroundWorkerEjendomshandler.ReportProgress(0, "Henter aktive processer");
+            backgroundWorkerHaendelser.ReportProgress(0, "Henter hændelseshistorik");
             try
             {
-                ServiceReferenceEjendomshandel.SagsAktivitetListeHentResponseType response = ejendomshandelUtils.GetSagsAktivitetListeHentResponseType();
-                backgroundWorkerEjendomshandler.ReportProgress(0, response.ProcesSamling.Length.ToString() + "aktive processer hentet");
-                resetDataGridwied();
-                for (int i = 0; i < response.ProcesSamling.Length; i++)
-                {
-                    int rowIndex = dataGridView1.Rows.Add();
-                    dataGridView1.Rows[rowIndex].Cells["ProcesID"].Value = response.ProcesSamling[i].eFPIprocesID;
-                    try { dataGridView1.Rows[rowIndex].Cells["Adresse"].Value = ejendomshandelUtils.GetPrettyAddress(response.ProcesSamling[i].Adresse); }
-                    catch(Exception g) { dataGridView1.Rows[rowIndex].Cells["Adresse"].Value = "Ingen adresse"; }
-                    dataGridView1.Rows[rowIndex].Cells["Rolle"].Value = response.ProcesSamling[i].Rolle;
-                    dataGridView1.Rows[rowIndex].Cells["Tilstand"].Value = response.ProcesSamling[i].Tilstand;
+                ServiceReferenceEjendomshandel.HaendelsesHistorikHentResponseType response = ejendomshandelUtils.GetHaendelsesHistorikHentResponseType();
+                backgroundWorkerHaendelser.ReportProgress(0, response.HaendelseHistorikSamling.Length.ToString() + " hændelser hentet");
 
+                dataTable = new DataTable();
+                dataTable.Columns.Add("Tidsstempel", typeof(DateTime));
+                dataTable.Columns.Add("Hændelsekode", typeof(string));
+                dataTable.Columns.Add("Hændelsebeskrivelse", typeof(string));
+                dataTable.Columns.Add("ProcesID", typeof(string));
+
+                for (int i = 0; i < response.HaendelseHistorikSamling.Length; i++)
+                {
+                    dataTable.Rows.Add(
+                        response.HaendelseHistorikSamling[i].Haendelse.Tidsstempel,
+                        response.HaendelseHistorikSamling[i].Haendelse.HaendelseKode,
+                        response.HaendelseHistorikSamling[i].Haendelse.HaendelseBeskrivelse,
+                        ((ServiceReferenceEjendomshandel.HaendelseKontekstType)response.HaendelseHistorikSamling[i].Item).ProcesID);
                 }
             }
-            catch (Exception f) { backgroundWorkerEjendomshandler.ReportProgress(0, f.Message); }
-
+            catch (Exception f) { backgroundWorkerHaendelser.ReportProgress(0, f.Message); }
         }
 
         private void backgroundWorkerHaendelser_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
+            dataGridView1.DataSource = dataTable;
             wizardTabcontrol1.SelectedIndex += 1;
             EnableButtons(true);
         }
+
+        private void backgroundWorkerGaranti_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            SagshaandteringUtils sagshaandteringUtils = new SagshaandteringUtils(userControlLogon1.Miljoe, userControlLogon1.PartID, userControlLogon1.ActAs, userControlLogon1.Password);
+            GarantiUtils garantiUtils = new GarantiUtils(userControlLogon1.Miljoe, userControlLogon1.PartID, userControlLogon1.ActAs, userControlLogon1.Password);
+            backgroundWorkerGaranti.ReportProgress(0, "Henter aktive processer");
+            try
+            {
+                ServiceReferenceGaranti.GarantierListeHentResponseType response = garantiUtils.GetGarantierListeHentResponseType();
+                backgroundWorkerGaranti.ReportProgress(0, response.GarantiSamling.Length.ToString() + "aktive processer hentet");
+
+                dataTable = new DataTable();
+                dataTable.Columns.Add("ProcesID", typeof(string));
+                dataTable.Columns.Add("Rolle", typeof(string));
+                dataTable.Columns.Add("Køber", typeof(string));
+                dataTable.Columns.Add("Sælger", typeof(string));
+
+                for (int i = 0; i < response.GarantiSamling.Length; i++)
+                {
+                    dataTable.Rows.Add(
+                        response.GarantiSamling[i].ProcesID, 
+                        response.GarantiSamling[i].RolleID, 
+                        response.GarantiSamling[i].Koebere, 
+                        response.GarantiSamling[i].Saelgere
+                        );
+                }
+            }
+            catch (Exception f) { backgroundWorkerGaranti.ReportProgress(0, f.Message); }
+        }
+
+        private void backgroundWorkerGaranti_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            dataGridView1.DataSource = dataTable;
+            wizardTabcontrol1.SelectedIndex += 1;
+            EnableButtons(true);
+        }
+
     }
 }

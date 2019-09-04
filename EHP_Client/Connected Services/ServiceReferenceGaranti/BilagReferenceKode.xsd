@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:model="http://rep.oio.dk/tinglysning.dk/schema/model/1/" elementFormDefault="qualified" targetNamespace="http://rep.oio.dk/tinglysning.dk/schema/model/1/" version="11.0.4" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="BilagReferenceKode" type="model:BilagReferenceKodeType">
+    <annotation>
+      <documentation>Angiver de mulige koder for en bilagreference.</documentation>
+    </annotation>
+  </element>
+  <simpleType name="BilagReferenceKodeType">
+    <restriction base="nonNegativeInteger">
+      <enumeration value="1">
+        <annotation>
+          <documentation>Udlaegsattest, udstedt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="2">
+        <annotation>
+          <documentation>Arrestattest,udstedt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="3">
+        <annotation>
+          <documentation>Ejendomsdom, med ankepaategning, afsagt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="4">
+        <annotation>
+          <documentation>Mortifikationsdom, med ankepaategning, afsagt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="5">
+        <annotation>
+          <documentation>Auktionsskoede med evt. transportskoede.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="6">
+        <annotation>
+          <documentation>Bobestyrerattest, udstedt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="7">
+        <annotation>
+          <documentation>Kuratorattest, udstedt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="8">
+        <annotation>
+          <documentation>Tilladelse til erhvervelse af fast ejendom i Danmark, udstedt af JM.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="9">
+        <annotation>
+          <documentation>Tilladelse til erhvervelse, udstedt af Statsamt.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="10">
+        <annotation>
+          <documentation>Tilladelse fra Skov- og Naturstyrelsen om selskabs erhvervelse af fast ejendom..</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="11">
+        <annotation>
+          <documentation>Dokumentation fra menighedsraad om tegningsreglerne for raadet.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="12">
+        <annotation>
+          <documentation>Attestation fra Direktoratet for FoedevareErhverv om behoerig afgivelse af erklaeringer i medfoer af landbrugslovens erhvervelsesbestemmelser.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="13">
+        <annotation>
+          <documentation>Godkendelse fra Kirkeministeriet eller Stiftsoevrigheden til salg eller pantsaetning af jordelig kirkelig gods.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="14">
+        <annotation>
+          <documentation>Tilladelse til erhvervelse af arbejderbolig.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="15">
+        <annotation>
+          <documentation>Stiftelsesdokumenter for selskab under stiftelse.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="16">
+        <annotation>
+          <documentation>Anden dokumentation for, at anmeldelse af nystiftet selskab er sket overfor Erhvervs- og Selskabsstyrelsen indenfor de i loven kraevede tidsfrister.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="17">
+        <annotation>
+          <documentation>Kommunalbestyrelsens samtykke til salg af ejendom fra Almen boligorganisation.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="18">
+        <annotation>
+          <documentation>Matrikelkort med attestation?  = e-rids ? (ved salg af nyudstykket parcel).</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="19">
+        <annotation>
+          <documentation>Dokumentation fra generalforsamling om tegningsregler m.v. for forening.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="20">
+        <annotation>
+          <documentation>Vedtaegter m.v. for forening.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="21">
+        <annotation>
+          <documentation>Intressentskabskontrakt med tegningsregler m.v..</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="22">
+        <annotation>
+          <documentation>Dispensation eller tilladelse fra Jordbrugskommissionen vedr. erhvervelse af landsbrugsejendom.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="23">
+        <annotation>
+          <documentation>Skiftefuldmagter, udstedt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="24">
+        <annotation>
+          <documentation>Notering af umyndiggoerelse paa fast ejendom.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="25">
+        <annotation>
+          <documentation>Notering af aegtepagt som saereje.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="26">
+        <annotation>
+          <documentation>Tinglysning af aegtepagt som adkomst.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="27">
+        <annotation>
+          <documentation>Meddelelse om konkurs, udstedt foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="28">
+        <annotation>
+          <documentation>Samme vedr. gaeldssaneringer, tvangsakkord.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="29">
+        <annotation>
+          <documentation>Tinglysning af vielsesattest raadighedsindskraenkende.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="30">
+        <annotation>
+          <documentation>Prokura, gaeldende fra foer 25. marts 2008.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="31">
+        <annotation>
+          <documentation>Samtykke for indehaver af forkoebsret eller tilbagekoebsret.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="32">
+        <annotation>
+          <documentation>Original bobestyrerattest, hvis en ejendom saelges af bobestyrer.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="33">
+        <annotation>
+          <documentation>Original skifteretsattest, hvis en ejendom saelges af et doedsbo.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="34">
+        <annotation>
+          <documentation>Godkendelse fra kommunalbestyrelsen til tinglysning af servitut, jf. planlovens § 42.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="35">
+        <annotation>
+          <documentation>Samtykke til bortforpagtning af landbrugsejendom fra Direktoratet for  FoedevareErhverv.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="36">
+        <annotation>
+          <documentation>Godkendelse af pantsaetning fra vaerge.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="37">
+        <annotation>
+          <documentation>Godkendelse af pantsaetning fra Almennyttige boligselskaber.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="38">
+        <annotation>
+          <documentation>GML-dokument med koordinator til servitutter og bygning paa lejet grund.</documentation>
+        </annotation>
+      </enumeration>
+      <enumeration value="80">
+        <annotation>
+          <documentation>Andet.</documentation>
+        </annotation>
+      </enumeration>
+    </restriction>
+  </simpleType>
+</schema>

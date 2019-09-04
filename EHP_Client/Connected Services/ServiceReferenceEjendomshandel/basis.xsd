@@ -69,4 +69,5 @@
   <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_StatusInfo.xsd" />
   <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_StatusInfoSamling.xsd" />
   <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_TelefonNummerSamling.xsd" />
+  <include schemaLocation="https://test-bolighandel.e-nettet.dk:443/efpi/ejendomshandel/Ejendomshandel.eFPI?xsd=../../../basis/xml/schemas/2007/07/01/BASIS_Uuid.xsd" />
 </schema>

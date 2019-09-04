@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:basis="http://efpi.dk/basis/xml/schemas/2007/07/01/" xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" version="1.0" xml:lang="da" xmlns="http://www.w3.org/2001/XMLSchema">
+  <include schemaLocation="https://e-bolighandel.e-nettet.dk:443/efpi/garanti/Garanti.eFPI?xsd=../../../../efpi.dk/basis/xml/schemas/2007/07/01/BASIS_DokumentReference.xsd" />
+  <element name="HandlingSamling">
+    <complexType>
+      <sequence>
+        <element minOccurs="0" maxOccurs="unbounded" name="Handling">
+          <complexType>
+            <sequence>
+              <element minOccurs="0" name="HandlingFrist" type="dateTime" />
+              <element name="HandlingSkridtSamling">
+                <complexType>
+                  <sequence>
+                    <element maxOccurs="unbounded" name="HandlingSkridt">
+                      <complexType>
+                        <sequence>
+                          <element name="Id">
+                            <simpleType>
+                              <restriction base="string">
+                                <maxLength value="256" />
+                              </restriction>
+                            </simpleType>
+                          </element>
+                          <element name="ParameterSamling">
+                            <complexType>
+                              <sequence>
+                                <element minOccurs="0" maxOccurs="unbounded" name="Parameter">
+                                  <complexType>
+                                    <sequence>
+                                      <element name="navn">
+                                        <simpleType>
+                                          <restriction base="string">
+                                            <maxLength value="256" />
+                                          </restriction>
+                                        </simpleType>
+                                      </element>
+                                      <element name="vaerdi">
+                                        <simpleType>
+                                          <restriction base="string">
+                                            <maxLength value="256" />
+                                          </restriction>
+                                        </simpleType>
+                                      </element>
+                                    </sequence>
+                                  </complexType>
+                                </element>
+                              </sequence>
+                            </complexType>
+                          </element>
+                        </sequence>
+                      </complexType>
+                    </element>
+                  </sequence>
+                </complexType>
+              </element>
+              <element name="DokumentReferenceSamling">
+                <complexType>
+                  <sequence>
+                    <element minOccurs="0" maxOccurs="unbounded" ref="tns:DokumentReference" />
+                  </sequence>
+                </complexType>
+              </element>
+            </sequence>
+          </complexType>
+        </element>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

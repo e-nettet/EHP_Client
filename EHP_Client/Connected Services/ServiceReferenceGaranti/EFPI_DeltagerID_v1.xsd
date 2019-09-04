@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/ehp2011/xml/schemas/EFPI_DeltagerID_v1" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="DeltagerID" type="tns:DeltagerIDType" />
+  <simpleType name="DeltagerIDType">
+    <restriction base="anyURI">
+      <minLength value="1" />
+      <maxLength value="256" />
+    </restriction>
+  </simpleType>
+</schema>

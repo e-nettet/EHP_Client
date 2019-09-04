@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://efpi.dk/basis/xml/schemas/2007/07/01/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://efpi.dk/basis/xml/schemas/2007/07/01/" xml:lang="DA" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="eFPIfejl" type="tns:eFPIfejlType" />
+  <complexType name="eFPIfejlType">
+    <sequence>
+      <element name="fejlkode" type="string" />
+      <element minOccurs="0" name="fejluddybning" type="string" />
+      <element name="faultactor" type="anyURI" />
+      <element name="xmldetajler" type="anyType" />
+    </sequence>
+  </complexType>
+</schema>
